@@ -39,5 +39,6 @@ export class VirementComponent implements OnInit {
     this.newOperation.compteDestination = new Compte()
     this.newOperation.agent = new Agent()
     this.newOperation.agent.id = 1
+    this.newOperation.compteSource.numCompte = 1
   }
 }

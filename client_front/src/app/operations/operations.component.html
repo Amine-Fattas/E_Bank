@@ -17,7 +17,8 @@
                     <th>Date d'Opération</th>
                     <th>Source</th>
                     <th>Destination</th>
-                    <th>Acteur</th>
+                    <th>Client</th>
+                    <th>Agent</th>
                     <th>Montant(DH)</th>                    
                 </tr>
                   <tr *ngFor="let o of pageOperation">
@@ -30,11 +31,8 @@
                     <td *ngIf="o.compteDestination!=null; else elseTag">
                         {{o.compteDestination.numCompte}}</td>
 
-                    <td *ngIf="o.agent!=null; else elseCl">Ag:{{o.agent.id}}</td>
-                    <ng-template #elseCl>
-                        <td>Cl:{{o.compteSource.numCompte}}</td>
-                    </ng-template>
-                    
+                    <td>-</td>
+                    <td>{{o.agent.id}}</td>
                     <td>{{o.montant}}</td>
                     <td>
                        

@@ -5,26 +5,29 @@
 <nav class="main-nav">
     <ul class="main-nav-ul">
     
-        <li><a >Client<span class="sub-arrow"></span></a>
+        <!-- <li><a >Client<span class="sub-arrow"></span></a>
            <ul class="sub-menu">
                <li><a routerLink="/listClient" routerLinkActive="currentTab">Liste client </a></li>
            </ul>
-        </li>
-        <li><a href="#">Compte<span class="sub-arrow"></span></a>
+        </li> -->
+        <li><a routerLink="/compte" routerLinkActive="currentTab" router> Compte<span class="sub-arrow"></span></a>
             <ul class="sub-menu">
-                <li><a href="#">Compte active</a></li>
-                <li><a href="#">Compte desactive</a></li>
-                <li><a href="#">Ajout d'un compte</a></li>
+                <li><a routerLink="/compte/courant" routerLinkActive="currentTab">Compte Courant</a></li>
+                <li><a routerLink="/compte/epargne" routerLinkActive="currentTab">Compte Epargne</a></li>
             </ul>
         </li>
         <li><a routerLink="/operations" routerLinkActive="currentTab" router>Operation <span class="sub-arrow"></span></a>
         <ul class="sub-menu">
             <li><a routerLink="/operations/liste" routerLinkActive="currentTab">Liste Operation</a></li>
-            <li><a routerLink="/operations/retrait" routerLinkActive="currentTab">Retrait</a></li>
-            <li><a routerLink="/operations/virement" routerLinkActive="currentTab">Virement</a></li>
-            <li><a routerLink="/operations/versement" routerLinkActive="currentTab">Versement</a></li>
+            <li><a routerLink="/operations/recharge" routerLinkActive="currentTab">Recharge</a></li>
+            <li><a routerLink="/operations/virement/externe" routerLinkActive="currentTab">Virement Externe</a></li>
+            <li><a routerLink="/operations/virement/interne" routerLinkActive="currentTab">Virement Interne</a></li>
         </ul>
         </li>
+
+        
+        <li><a routerLink="/contact" routerLinkActive="currentTab">Contactez Nous</a></li>
+           
     </ul>
 </nav>
 </div>

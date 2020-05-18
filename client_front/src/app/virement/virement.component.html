@@ -1,10 +1,8 @@
 <div class="container"> 
     <form #form="ngForm" (ngSubmit)="onSubmit()" novalidate>
-        <h1>Virement</h1>
+        <h1>Virement Externe</h1>
         <!-- {{form.value | json}} -->
-        <input [(ngModel)]="newOperation.compteSource.numCompte" name="compteSource"
-         class="input" type="text" placeholder="Compte Source (RIB / CIN)">
-
+        
         <input [(ngModel)]="newOperation.compteDestination.numCompte" name="compteDestination"
          class="input" type="text" placeholder="Compte Destination (RIB / CIN)">
 
