@@ -1,0 +1,54 @@
+<div class="spacer">
+    <div class="panel panel-primary">
+       <!--<div class="panel-heading "><span class="title">Liste des client</span> </div>-->
+        <div class="panel-heading search">
+           <input type="search" placeholder="search ... " [(ngModel)]="motif">
+           <i style="position: absolute; left: 62%; top:-10% ;cursor: pointer;" ><img src="../assets/images/search.png" ></i>
+        </div>
+        
+
+        <div class="panel-body">
+           
+              <br>
+            <table class="table table-striped">
+                <tr>
+                    <th>N° d'opération</th>
+                    <th>Type</th>
+                    <th>Date d'Opération</th>
+                    <th>Source</th>
+                    <th>Destination</th>
+                    <th>Acteur</th>
+                    <th>Montant(DH)</th>                    
+                </tr>
+                  <tr *ngFor="let o of pageOperation">
+                    <td>{{o.numOperation}}</td>
+                    <td>{{o.typeOperation}}</td>
+                    <td>{{o.dateOperation}}</td>
+                    <td *ngIf="o.compteSource!=null; else elseTag">
+                        {{o.compteSource.numCompte}}</td>
+                    <ng-template #elseTag><td>-</td></ng-template>
+                    <td *ngIf="o.compteDestination!=null; else elseTag">
+                        {{o.compteDestination.numCompte}}</td>
+
+                    <td *ngIf="o.agent!=null; else elseCl">Ag:{{o.agent.id}}</td>
+                    <ng-template #elseCl>
+                        <td>Cl:{{o.compteSource.numCompte}}</td>
+                    </ng-template>
+                    
+                    <td>{{o.montant}}</td>
+                    <td>
+                       
+                        <a href=""> <img src="../assets/images/detail.png"   title="detail" class="img-responsive"></a>
+
+                    </td>
+                </tr>
+            </table>
+        
+
+          
+            
+        </div>
+    </div>
+</div>
+
+

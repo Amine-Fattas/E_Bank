@@ -1,0 +1,108 @@
+<!--<div class=" spacer">
+    <div class="panel panel-default">
+        <div class="panel-heading title">Update Client</div>
+        <div class="panel-body ">
+            <form #f="ngForm" class="" style="max-width: 900px; position: absolute;right: 0; top:25%">
+
+
+                <div class="row ">
+                    <div class="col-lg-4 col-12">
+                <div class="form-group w-75">
+                    <input  class="form-control" type="text" [(ngModel)]="client.nom" name="nom"  placeholder="Nom" required>
+                </div>
+                </div>
+                <div class="col-lg-4 col-12">
+                <div class="form-group w-75">
+                    <input  class="form-control" type="text" [(ngModel)]="client.prenom" name="prenom"  placeholder="Prenom" required>
+                </div>
+                </div>
+                <div class="col-lg-4 col-12">
+                <div class="form-group w-75">
+                    
+                    <input  class="form-control" type="text" [(ngModel)]="client.cin" name="cin" placeholder="Cin" required>
+                </div>
+                </div>
+                </div>
+
+                 <br>
+                
+                <div class="row ">
+               
+                    <div class="col-lg-4 col-12">
+                        <div class="form-group w-75">
+                    
+                    <input  class="form-control" type="text" [(ngModel)]="client.sexe" name="sexe"  placeholder="Sexe" required>
+                </div>
+                </div>
+    
+                <div class="col-lg-4 col-12">
+                    <div class="form-group w-75">
+                    
+                    <input  class="form-control" type="text" [(ngModel)]="client.numTel" name="tel" placeholder="Telephone" required>
+                </div>
+                </div>
+
+                <div class="col-lg-4 col-12">
+                    <div class="form-group w-75">
+                    
+                    <input  class="form-control" type="date" [(ngModel)]="client.dateNaissance" name="dateNaissance" placeholder="Date de naissance" required>
+                </div>
+                </div>
+                </div>
+                <br>
+              <div class="row">
+               <div class="form-group w-50" style="position: absolute;right:30%;">
+                     
+                    <input  class="form-control" type="email" [(ngModel)]="client.email" name="email" placeholder="Email"  email>
+                </div>
+            </div>
+        
+               <button [disabled]="!f.valid" type="submit" (click)="updateContact()" class="btn btn-primary">Save</button>
+            </form>
+         </div>
+        </div>
+    </div>-->
+    <div class="">
+    
+    <form #f="ngForm" >
+        <div class="contact-form">
+            <div class="title">Update Client</div>
+            <div class=" content">
+                <div class="row ">
+                    <div class="col-lg-6 col-12 ">
+                  <input type="text" [(ngModel)]="client.nom" name="nom" placeholder="Nom"  required>
+                     </div>
+                     <div class="col-lg-6 col-12  ">
+                <input type="text"  [(ngModel)]="client.prenom" name="prenom" placeholder="Prenom"  required>
+                     </div>
+                </div>
+                <div class="row ">
+                    <div class="col-lg-6 col-12  ">
+                        <input type="text"  [(ngModel)]="client.cin" name="cin" placeholder="Cin"  required>
+                     </div>
+                     <div class="col-lg-6 col-12  ">
+                        <input type="text" [(ngModel)]="client.sexe" name="sexe" placeholder="Sexe"  required>
+                     </div>
+                </div>
+                <div class="row">
+                <div class="col-lg-6 col-12 ">
+                    <input type="text" [(ngModel)]="client.numTel" name="numTel" placeholder="Telephone"  required>
+                 </div>
+                 <div class="col-lg-6 col-12  ">
+                    <input type="date"  [(ngModel)]="client.dateNaissance" name="dateNaissance" placeholder="Date de naissance"  required>
+                 </div>
+            </div>
+            
+                
+            <div class="row" >
+                <input  style="width: 40%;margin-left: 180px;" [(ngModel)]="client.email" name="email" type="email" placeholder="Email"  required>
+            </div>
+
+              
+            </div>
+            <button [disabled]="!f.valid" (click)="updateClient()" type="submit" class="btn">Save</button>
+       
+    </div>
+</form>
+</div>
+    

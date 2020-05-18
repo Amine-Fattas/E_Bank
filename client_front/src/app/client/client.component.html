@@ -1,0 +1,53 @@
+<div class=" spacer">
+    <div class="panel panel-primary">
+       <!--<div class="panel-heading "><span class="title">Liste des client</span> </div>-->
+        <div class="panel-heading search">
+           <input type="search" placeholder="search ... " [(ngModel)]="motCle">
+           <i style="position: absolute; left: 62%; top:-10% ;cursor: pointer;" ><img src="../assets/images/search.png" ></i>
+        </div>
+        
+
+        <div class="panel-body">
+           
+              <br>
+            <table class="table table-striped">
+                <tr>
+                    <th>Id</th>
+                    <th>Nom</th>
+                    <th>Prenom</th>
+                    <th>Cin</th>
+                    <th>Email</th>
+                    <th>Telephone</th>
+                    <th>Date Naissance</th>
+                </tr>
+                  <tr *ngFor="let c of pageClient">
+                    <td>{{c.id}}</td>
+                    <td>{{c.nom}}</td>
+                    <td>{{c.prenom}}</td>
+                    <td>{{c.cin}}</td>
+                    <td>{{c.email}}</td>
+                    <td>{{c.numTel}}</td>
+                    <td>{{c.dateNaissance}}</td>
+                    <td>
+                       <a > <img src="../assets/images/delete.png"   title="delete" class="img-responsive"></a>
+                       &nbsp; <a (click)="onEditContact(c.id)"> <img src="../assets/images/update.png"   title="update" class="img-responsive"></a>
+                       &nbsp; <a href=""> <img src="../assets/images/detail.png"   title="detail" class="img-responsive"></a>
+
+                    </td>
+                    
+                   <!--<td>
+                        <button class="btn btn-info btn-lg" (click)="onEditContact(c.id)">Edit</button>
+                    </td>
+                    <td>
+                        <button class="btn btn-info btn-lg" (click)="onDeleteContact(c)">delete</button>
+                    </td>-->
+                </tr>
+            </table>
+        
+
+          
+            
+        </div>
+    </div>
+</div>
+

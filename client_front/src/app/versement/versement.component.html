@@ -1,0 +1,19 @@
+<div class="container">
+    <form #form="ngForm" (ngSubmit)="onSubmit()" novalidate>
+        <h1>Versement</h1>
+        <!-- {{form.value | json}} -->
+        <input [(ngModel)]="newOperation.compteDestination.numCompte" name="compteDestination"
+         class="input" type="text" placeholder="Compte Destination (RIB / CIN)">
+         
+        <input [(ngModel)]="newOperation.montant" name="montant"
+         class="input" type="number" min="0" placeholder="Montant">
+        
+        <button type="submit" class="submit">Verser</button>
+        
+        <!-- {{newOperation | json}} -->
+    </form>
+    
+</div>
+
+
+
