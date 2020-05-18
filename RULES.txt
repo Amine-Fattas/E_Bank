@@ -9,5 +9,5 @@
 	le 1er modifie,commit et push, puis le 2e pull l'update et continue
 
 
-*** La suite A venir
+**** La suite A venir
 4/ 
