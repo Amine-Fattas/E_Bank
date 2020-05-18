@@ -1,0 +1,13 @@
+1/ TOUJOURS Checker les github s'il y a une nouvelle version (commit)
+  s'il  y en a=> ouvrir le bash dans /E_Bank (master) et faites: git pull
+
+2/ tjr ouvrir le bash dans le dossie parent, PATH : /E_Bank (master)
+
+
+3/ ne JAMAIS modifier les meme fichiers en meme temps, garder une communication avec les autres
+  si vous souhaiter modifier le meme fichier, faites le tour de rôles:
+	le 1er modifie,commit et push, puis le 2e pull l'update et continue
+
+
+*** La suite A venir
+4/ 
