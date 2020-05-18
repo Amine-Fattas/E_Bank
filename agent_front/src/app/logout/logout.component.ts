@@ -15,7 +15,7 @@ export class LogoutComponent implements OnInit {
   ngOnInit(): void {
   }
   logout(){
-    console.log("logout");
+    console.log("logouuuuuuut");
     this.logoutService.logout().subscribe(res=> console.log(res));
   }
 
