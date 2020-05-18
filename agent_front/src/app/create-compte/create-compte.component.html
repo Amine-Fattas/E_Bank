@@ -1,0 +1,90 @@
+
+<div class="container">
+    <div class="row " >
+        <div class="col-lg-2 col-12">
+            <app-nemu-bar></app-nemu-bar>
+        </div>
+        <div class="col-lg-10 col-12">
+       
+      <form #f="ngForm"  class="compteForm" (ngSubmit)="onSave(f.value)" novalidate>
+  
+            <div class="head">
+                Nouveau compte
+                <img style="float: right" class="img-responsive" src="../assets/images/compte.png">
+            </div>
+            <div class="content">
+                    <div class="row">
+                        <div class="col-lg-6 col-12">
+                      <input class="inputStyle" type="text" [(ngModel)]="client.nom" name="nom" #name='ngModel' placeholder="Nom" required><br>
+                      <small class="text-danger " [class.d-none]="name.valid || name.untouched">Ce champs est obligatoire</small>
+                         </div>
+                         <div class="col-lg-6 col-12 boxStyle">
+                            <input type="radio" value="homme" name="sexe" [(ngModel)]="client.sexe" #type='ngModel' required > Homme
+                            <input type="radio" value="femme" name="sexe" [(ngModel)]="client.sexe" #type='ngModel'  required> Femme   
+                            <small class="text-danger" [class.d-none]="type.valid || type.untouched">Ce champs est obligatoire</small>
+                    </div>
+                        
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-6 col-12">
+                            
+                               <input class="inputStyle"  type="text"  [(ngModel)]="client.prenom" name="prenom" #pre='ngModel' placeholder="Prenom"  required><br>
+                                <small class="text-danger " [class.d-none]="pre.valid || pre.untouched">Ce champs est obligatoire</small>
+
+                        
+                            
+                         </div>
+                         <div class="col-lg-6 col-12">
+                            <input  class="inputStyle"  type="text"  [(ngModel)]="client.cin" name="cin" #ci='ngModel' placeholder="Cin"  required><br>
+                            <small class="text-danger " [class.d-none]="ci.valid || ci.untouched">Ce champs est obligatoire</small>
+
+                            
+                           
+                            </div>
+                       
+                    </div>
+                    <div class="row">
+                    <div class="col-lg-6 col-12 ">
+                        <input class="inputStyle"  type="number" (keypress)="numericOnly($event)"   [(ngModel)]="client.numTel" name="numTel" #num='ngModel' placeholder="Telephone"  required><br>
+                       <small class="text-danger " [class.d-none]="! num.errors?.required || num.untouched">Ce champs est obligatoire</small>
+                    </div> 
+                        <!--<div *ngIf="num.errors && num.touched">
+                            <small class="text-danger" *ngIf="num.errors.required">Ce champs est obligatoire</small>
+                            <small class="text-danger" *ngIf="num.errors.pattern">le numero est de 10 chiffre avec un 0 au debut </small>
+                         </div>-->
+                         <div class="col-lg-6 col-12 ">
+                         <input  class="inputStyle"  [(ngModel)]="client.email" name="email" type="email" #em='ngModel' placeholder="Email"  required><br>
+                            <small class="text-danger " [class.d-none]="em.valid || em.untouched">Ce champs est obligatoire</small>
+                         </div>
+                     </div>
+                    
+                     
+               
+                
+                    
+                <div class="row">
+                    <div class="col-lg-6 col-12">
+                        <input class="inputStyle"  type="date"  [(ngModel)]="client.dateNaissance" #dateN='ngModel' name="dateNaissance" placeholder="Date de naissance"  required><br>
+                        <small class="text-danger" [class.d-none]="dateN.valid || dateN.untouched">Ce champs est obligatoire</small>
+                     </div>
+                   
+                  
+                    <div class="col-lg-6 col-12 boxStyle">
+                            <input type="radio" value="CC" name="typeCompte" [(ngModel)]="compte.typeCompte" #type='ngModel' required > Compte Courant<br>
+                            <input type="radio" value="CE" name="typeCompte" [(ngModel)]="compte.typeCompte" #type='ngModel'  required> Compte Epargne   
+                            <small class="text-danger" [class.d-none]="type.valid || type.untouched">Ce champs est obligatoire</small>
+                    </div>
+                    <button [disabled]="!f.valid"  type="btn" class="btn">Save</button>
+                </div>
+               
+                 
+               
+            </div>
+               
+           
+        
+    </form>
+
+    </div>
+    </div>
+    </div>

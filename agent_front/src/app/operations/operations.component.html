@@ -1,0 +1,54 @@
+
+    <div class="container">
+        <div class="row " >
+            <div class="col-lg-2 col-12">
+                <app-nemu-bar></app-nemu-bar>
+            </div>
+            <div class="col-lg-10 col-12">
+    <div class="panel panel-primary">
+       <!--<div class="panel-heading "><span class="title">Liste des client</span> </div>-->
+        <div class="panel-heading search">
+           <input type="search" placeholder="search ... " [(ngModel)]="motif">
+           <i style="position: absolute; left: 62%; top:-10% ;cursor: pointer;" ><img src="../assets/images/search.png" ></i>
+        </div>
+        
+
+        <div class="panel-body">
+           
+              <br>
+            <table class="table table-striped">
+                <tr>
+                    <th>N°</th>
+                    <th>Type</th>
+                    <th>Date d'Opération</th>
+                    <th>Acteur</th>
+                    <th>Source</th>
+                    <th>Destination</th>
+                    <th>Montant(DH)</th>                    
+                </tr>
+                  <tr *ngFor="let o of pageOperation">
+                    <td>{{o.numOperation}}</td>
+                    <td>{{o.type}}</td>
+                    <td>{{o.date}}</td>
+                    <td>{{o.acteur}}</td>
+                    <td>{{o.source}}</td>
+                    <td>{{o.destination}}</td>
+                    <td>{{o.montant}}</td>
+                    <td>{{o.numTel}}</td>
+                    <td>
+                       <!-- <a > <img src="../assets/images/delete.png"   title="delete" class="img-responsive"></a>
+                       &nbsp; <a (click)="onEditContact(c.numOperation)"> <img src="../assets/images/update.png"   title="update" class="img-responsive"></a> -->
+                       &nbsp; <a href=""> <img src="../assets/images/detail.png"   title="detail" class="img-responsive"></a>
+
+                    </td>
+                </tr>
+            </table>
+        
+
+          
+            
+        </div>
+    </div>
+
+
+

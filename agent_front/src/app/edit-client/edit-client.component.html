@@ -1,0 +1,53 @@
+
+    <div class="container">
+        <div class="container">
+            <div class="row " >
+                <div class="col-lg-2 col-12">
+                    <app-nemu-bar></app-nemu-bar>
+                </div>
+                <div class="col-lg-10 col-12">
+    <form #f="ngForm" >
+        <div class="contact-form">
+            <div class="title">Update Client</div>
+            <div class="content">
+                <div class="row ">
+                    <div class="col-lg-6 col-12 ">
+                  <input type="text" [(ngModel)]="client.nom" name="nom" placeholder="Nom"  required>
+                     </div>
+                     <div class="col-lg-6 col-12  ">
+                <input type="text"  [(ngModel)]="client.prenom" name="prenom" placeholder="Prenom"  required>
+                     </div>
+                </div>
+                <div class="row ">
+                    <div class="col-lg-6 col-12  ">
+                        <input type="text"  [(ngModel)]="client.cin" name="cin" placeholder="Cin"  required>
+                     </div>
+                     <div class="col-lg-6 col-12  ">
+                        <input type="text" [(ngModel)]="client.sexe" name="sexe" placeholder="Sexe"  required>
+                     </div>
+                </div>
+                <div class="row">
+                <div class="col-lg-6 col-12 ">
+                    <input type="text" [(ngModel)]="client.numTel" name="numTel" placeholder="Telephone"  required>
+                 </div>
+                 <div class="col-lg-6 col-12  ">
+                    <input type="date"  [(ngModel)]="client.dateNaissance" name="dateNaissance" placeholder="Date de naissance"  required>
+                 </div>
+            </div>
+            
+                
+            <div class="row" >
+                <input  style="width: 40%;margin-left: 180px;" [(ngModel)]="client.email" name="email" type="email" placeholder="Email"  required>
+            </div>
+           
+            <button [disabled]="!f.valid"  (click)="updateClient()" type="btn" class="btn submit">Save</button> 
+           
+        </div>
+           
+       
+    </div>
+</form>
+</div>
+</div>
+</div>
+    

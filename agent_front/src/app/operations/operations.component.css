@@ -1,0 +1,44 @@
+.spacer{
+    position: absolute;
+    left: 10%;
+    top:8%;
+    max-width: 880px;
+
+}
+.title{
+    font-size: 20px;
+    font-weight: bolder;
+    font-style: italic;
+   margin-left: 290px;
+}
+th{
+  color:  #696969
+}
+
+input{
+ 
+  border: none;
+  
+    border-bottom:solid gray 1px;
+    
+    width:40%; 
+    position: absolute;
+    left: 20%;
+    top:-10%
+    
+}
+
+input:focus,
+select:focus,
+textarea:focus,
+button:focus {
+    outline: none;
+}
+
+.search{
+  margin-left: 20px;
+  margin-top: 20px;
+}
+
+
+

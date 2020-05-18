@@ -1,0 +1,36 @@
+
+    <div class="sidebar">
+        <header>Name of App</header>
+        <div style="background-color: black;"></div>
+<nav class="main-nav">
+    <ul class="main-nav-ul">
+    
+        <li><a >Client<span class="sub-arrow"></span></a>
+           <ul class="sub-menu">
+               <li><a  routerLink="/listClient">Liste client </a></li>
+           </ul>
+        </li>
+        <li><a href="#">Compte<span class="sub-arrow"></span></a>
+            <ul class="sub-menu">
+                <li><a routerLink="/comptes/listCompte">Liste Compte</a></li>
+                <li><a routerLink="/comptes/ajoutCompte">Ajout d'un compte</a></li>
+                <li><a routerLink="/comptes/compteDesactive" >Compte desactive</a></li>
+            </ul>
+        </li>
+        <li><a routerLink="/operations" routerLinkActive="currentTab" router>Operation <span class="sub-arrow"></span></a>
+        <ul class="sub-menu">
+            <li><a routerLink="/operations/liste" >Liste Operation</a></li>
+            <li><a routerLink="/operations/retrait" routerLinkActive="currentTab">Retrait</a></li>
+            <li><a routerLink="/operations/virement" routerLinkActive="currentTab">Virement</a></li>
+            <li><a routerLink="/operations/versement" routerLinkActive="currentTab">Versement</a></li>
+        </ul>
+        </li>
+    </ul>
+</nav>
+
+
+</div>
+
+
+
+

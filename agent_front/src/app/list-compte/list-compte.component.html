@@ -1,0 +1,33 @@
+<div class="container">
+    <div class="row " >
+        <div class="col-lg-2 col-12">
+            <app-nemu-bar></app-nemu-bar>
+        </div>
+        <div class="col-lg-10 col-12">
+    <div class="content">
+   <!-- <div class="head">Liste des comptes actives </div>-->
+    <div class="search">
+        <input type="search" (keyup)="keyBoardEvent($event)" placeholder="search ... " [(ngModel)]="motCle">
+    </div>
+    <div class="listCompte">
+    <table class="table table-striped">
+        <tr>
+            <th>Type </th><th>Num </th><th>date création</th><th>Frais d'ouverture</th><th>Rib</th><th>Solde</th><th>Agent</th><th>Client</th>
+        </tr>
+        <tr *ngFor="let c of pageCompte">
+            <td>{{c.typeCompte}}</td>
+            <td>{{c.numCompte}}</td>
+            <td>{{c.dateCreation | date:'short'}}</td>
+            <td>{{c.fraisOuverture}}</td>
+            <td>{{c.rib}}</td>
+            <td>{{c.solde}}</td>
+            <td>{{c.agent.id}}</td>
+            <td>{{c.client.id}}</td>
+            <td>
+                <a  class="desactive" (click)="onDesactiver(c)">Désactiver</a>
+            </td>
+    </table>
+
+</div>
+
+</div>
