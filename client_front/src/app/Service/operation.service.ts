@@ -30,5 +30,9 @@ export class OperationService {
     return this.http.post<any>(this._url+"virement", operation)
   }
 
+  recharge(operation: Operation, codeRacharge:number){
+    return this.http.post<any>(this._url+"recharge/"+codeRacharge, operation)
+  }
+
   
 }

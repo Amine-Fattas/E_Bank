@@ -1,1 +1,22 @@
-<p>compte-courant works!</p>
+<div class="component-container">
+        <form>
+            <h1>Votre Compte Courant</h1>
+
+            <label for="nom">Mr./Mme.</label>
+            <h5 id="nom">{{compte.client.prenom}} {{compte.client.nom}}</h5>
+            <label for="rib">RIB</label>
+            <h5 id="rib">{{compte.rib}}</h5>
+            <label for="dateCreation">Date de création</label>
+            <h5 id="dateCreation">{{compte.dateCreation}}</h5>
+            <label for="solde">Solde</label>
+            <h5 id="solde">{{compte.solde | number: '.2'}} MAD</h5>
+            <label for="etat">Etat</label>
+            <h5 id="etat">{{compte.etat}}</h5>
+        </form>
+
+        <form>
+            <h1>Agent</h1>
+            <label for="nomAgent">Mr./Mme.</label>
+            <h5 id="nomAgent">{{compte.agent.prenom}} {{compte.agent.nom}}</h5>
+        </form>
+</div>

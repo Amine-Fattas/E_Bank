@@ -1,4 +1,4 @@
-<div class="spacer">
+<div class="spacer component-container">
     <div class="panel panel-primary">
        <!--<div class="panel-heading "><span class="title">Liste des client</span> </div>-->
         <div class="panel-heading search">
@@ -17,9 +17,7 @@
                     <th>Date d'Opération</th>
                     <th>Source</th>
                     <th>Destination</th>
-                    <th>Client</th>
-                    <th>Agent</th>
-                    <th>Montant(DH)</th>                    
+                    <th>Montant</th>                    
                 </tr>
                   <tr *ngFor="let o of pageOperation">
                     <td>{{o.numOperation}}</td>
@@ -31,9 +29,7 @@
                     <td *ngIf="o.compteDestination!=null; else elseTag">
                         {{o.compteDestination.numCompte}}</td>
 
-                    <td>-</td>
-                    <td>{{o.agent.id}}</td>
-                    <td>{{o.montant}}</td>
+                    <td>{{o.montant | number: '.2'}} MAD</td>
                     <td>
                        
                         <a href=""> <img src="../assets/images/detail.png"   title="detail" class="img-responsive"></a>
