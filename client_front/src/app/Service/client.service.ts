@@ -8,16 +8,19 @@ import { Client } from '../model/client';
 export class ClientService {
   constructor(private http:HttpClient){}
 
+  // _url = "https://ebank-client-back.herokuapp.com/client/"
+  _url = "http://localhost:8081/"
+
   getClients(){
-    return this.http.get("http://localhost:8081/client/listClient");
+    return this.http.get(this._url+"listClient");
 }
 
 getClient(id:number){
-  return this.http.get<Client>("http://localhost:8081//client/"+id);
+  return this.http.get<Client>(this._url+"client/"+id);
 }
 
 updateClient(client:Client){
-  return this.http.put("http://localhost:8081//client/update/"+client.id,client);
+  return this.http.put(this._url+"client/update/"+client.id,client);
 }
 
 }

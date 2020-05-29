@@ -8,7 +8,8 @@ import { Compte } from '../model/Compte';
 export class CompteService {
   constructor(private http:HttpClient){}
 
-  _url = "http://localhost:8081/compte/CC/"
+  // _url = "http://localhost:8081/compte/CC/"
+  _url = "https://ebank-client-back.herokuapp.com/compte/CC/"
 
 getCompte(id:number){
   return this.http.get<Compte>(this._url+id)
