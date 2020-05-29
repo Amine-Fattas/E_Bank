@@ -1,14 +1,14 @@
-<div class="container">
+<div class="component-container">
     <form #form="ngForm" (ngSubmit)="onSubmit()" novalidate>
         <h1>Recharge</h1>
         <!-- {{form.value | json}} -->
-        <!-- [(ngModel)]="newOperation.montant" -->
+     
         <input  name="codeRecharge"
-         class="input" type="text" maxlength="10" placeholder="Code de recharge">
+         class="input" type="text" [(ngModel)]="codeRecharge.code"  maxlength="8" placeholder="Code de recharge">
         
         <button type="submit" class="submit">Recharger</button>
         
-        <!-- {{newOperation | json}} -->
+        <!-- {{codeRecharge | json}} -->
     </form>
     
 </div>

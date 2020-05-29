@@ -7,7 +7,8 @@ import { Operation } from '../model/operation';
 })
 export class OperationService {
 
-  _url = "http://localhost:8081/operation/"
+  // _url = "http://localhost:8081/operation/"
+   _url ="https://ebank-client-back.herokuapp.com/operations"
   constructor(private http: HttpClient) { }
 
   getOperations(){
@@ -28,6 +29,10 @@ export class OperationService {
 
   virer(operation: Operation){
     return this.http.post<any>(this._url+"virement", operation)
+  }
+
+  recharge(operation: Operation, codeRacharge:number){
+    return this.http.post<any>(this._url+"recharge/"+codeRacharge, operation)
   }
 
   
