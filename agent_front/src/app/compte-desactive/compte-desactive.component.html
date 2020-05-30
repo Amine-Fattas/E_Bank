@@ -1,11 +1,11 @@
-<div class="container">
+<!--<div class="container">
     <div class="row " >
         <div class="col-lg-2 col-12">
             <app-nemu-bar></app-nemu-bar>
         </div>
         <div class="col-lg-10 col-12">
     <div class="content">
-   <!-- <div class="head">Liste des comptes actives </div>-->
+ 
     <div class="search">
         <input type="search" (keyup)="keyBoardEvent($event)" placeholder="search ... " [(ngModel)]="motCle">
     </div>
@@ -23,6 +23,7 @@
             <td>{{c.solde}}</td>
             <td>{{c.agent.id}}</td>
             <td>{{c.client.id}}</td>
+        </tr>
             
     </table>
 
@@ -30,4 +31,39 @@
 
 </div>
 </div>
-</div>
+</div>-->
+<div id="body">
+    <app-nemu-bar></app-nemu-bar>
+
+    <div class="route">
+      <div  class="content">
+        <input type="search" (keyup)="keyBoardEvent($event)" placeholder="search ... " [(ngModel)]="motCle">
+        <table class="table table-striped" >
+          <thead style="color: #FF4500; font-weight: bolder; font-style: italic;">
+            <tr>
+                <th>Type </th>
+                <th>Num </th>
+                <th>date création</th>
+                <th>Frais d'ouverture</th>
+                <th>Rib</th>
+                <th>Solde</th>
+                <th>Agent</th>
+                <th>Client</th>
+            </tr>
+          </thead>
+          <tbody >
+            <tr *ngFor="let c of pageCompte">
+                <td>{{c.typeCompte}}</td>
+                <td>{{c.numCompte}}</td>
+                <td>{{c.dateCreation | date:'short'}}</td>
+                <td>{{c.fraisOuverture}}</td>
+                <td>{{c.rib}}</td>
+                <td>{{c.solde}}</td>
+                <td>{{c.agent.id}}</td>
+                <td>{{c.client.id}}</td>
+            </tr>
+              
+          </tbody>
+        </table>
+      </div>
+    </div>

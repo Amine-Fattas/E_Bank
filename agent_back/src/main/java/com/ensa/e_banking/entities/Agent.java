@@ -79,12 +79,6 @@ public class Agent {
 
 
 	
-
-
-
-
-
-	
 	public Long getId() {
 		return id;
 	}

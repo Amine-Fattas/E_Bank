@@ -1,8 +1,6 @@
 package com.ensa.e_banking.interfacesMetier;
 
 import java.util.List;
-
-import com.ensa.e_banking.entities.Client;
 import com.ensa.e_banking.entities.Operation;
 
 public interface OperationMetier {

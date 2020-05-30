@@ -2,33 +2,54 @@ package com.ensa.e_banking.security;
 
 import java.io.IOException;
 
-import javax.servlet.Filter;
+import java.util.ArrayList;
+
 import javax.servlet.FilterChain;
 import javax.servlet.ServletException;
-import javax.servlet.ServletRequest;
-import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.filter.OncePerRequestFilter;
 
-public class JWTAuthorizationFilter extends OncePerRequestFilter {
+import io.jsonwebtoken.Claims;
+import io.jsonwebtoken.Jwts;
+
+public class JWTAuthorizationFilter  extends OncePerRequestFilter{
 
 	@Override
 	protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
 			throws ServletException, IOException {
-		System.out.println("***************************");
 		
+		String jwtToken=request.getHeader(SecurityConstants.HEADER_STRING);
 		
-	String jwt=request.getHeader("Authorization");
-	if(jwt==null) {
-		throw new RuntimeException("Not authorize");
-	}
-	
-	filterChain.doFilter(request, response);
+		if(jwtToken==null || !jwtToken.startsWith(SecurityConstants.TOKEN_PREFIX)) {
+			filterChain.doFilter(request, response);
+			return;
+			}
+		
+		Claims claims=Jwts.parser()
+				//signer avec le secret
+				.setSigningKey(SecurityConstants.SECRET)
+				//supprimer le prefix
+				.parseClaimsJws(jwtToken.replace(SecurityConstants.TOKEN_PREFIX,""))
+				 // recuperer le token
+				.getBody();
+		       //recuperer le username
+				String username=claims.getSubject();
+				
+				
+				UsernamePasswordAuthenticationToken authenticationToken=
+				new UsernamePasswordAuthenticationToken(username, null,new ArrayList<>());
+				
+				SecurityContextHolder.getContext().setAuthentication(authenticationToken);
+				
+				filterChain.doFilter(request, response);
+			
+				}
+
 		
 	}
 
-	
 
-}

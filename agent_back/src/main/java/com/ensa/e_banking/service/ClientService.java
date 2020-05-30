@@ -2,19 +2,17 @@ package com.ensa.e_banking.service;
 
 import java.util.List;
 
+import javax.mail.MessagingException;
+
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Sort;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.ensa.e_banking.dao.ClientRepository;
+import com.ensa.e_banking.config.SmtpMailSender;
 import com.ensa.e_banking.entities.Client;
 import com.ensa.e_banking.interfacesMetier.ClientMetier;
 
@@ -22,15 +20,19 @@ import com.ensa.e_banking.interfacesMetier.ClientMetier;
 
 
 @RestController
-
 @CrossOrigin("*")
 public class ClientService {
 	@Autowired
 	private ClientMetier clientMetier;
 	
+	@Autowired
+	private SmtpMailSender smtpMailSender;
+	
 	@RequestMapping(value="/client/ajoutClient",method=RequestMethod.POST)
 	public Client saveClient(@RequestBody Client client) {
+		System.out.println("ajoutC-1");
 		client.setPassord(clientMetier.genererPassword());
+		System.out.println(client.getPassord());
 		return clientMetier.saveClient(client);
 	}
 	
@@ -39,15 +41,26 @@ public class ClientService {
 		System.out.println("list");
 		return clientMetier.getClients(page);
 	}*/
+	
+	@RequestMapping("/client/send-email")
+	public void sendMail(@RequestBody Client client) throws MessagingException {
+		System.out.println("email");
+		System.out.println(client);
+		String body="Votre mot de passe est "+client.getPassord()+" Bienvenue chez nous";
+		this.smtpMailSender.sendMail("nouamanemakhloufi6@gmail.com", "Your Password", body);
+		
+	}
+	
 	@RequestMapping(value="/client/listClient",method=RequestMethod.GET)
 	public List<Client> listeClient() {
-		
+		System.out.println("list");
 		return clientMetier.getClients();
 	}
 
 	
 	@RequestMapping(value="/client/update/{id}",method=RequestMethod.PUT)
 	public Client update(@PathVariable long id,@RequestBody Client client){
+		System.out.println("edit");
 		client.setId(id);
 	    client.setPassord(clientMetier.getClientById(id).getPassord());
 		return clientMetier.upDateClient(id, client);

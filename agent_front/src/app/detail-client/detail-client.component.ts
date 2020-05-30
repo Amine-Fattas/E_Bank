@@ -8,28 +8,37 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['./detail-client.component.css']
 })
 export class DetailClientComponent implements OnInit {
-  public motCle:string;
-  pageOperation:any=[];
-  idClient:number;
-  constructor(public activatedRoute:ActivatedRoute,public serviceOperation:OperationService,
+  public motCle: string;
+  pageOperation: any = [];
+  idClient: number;
+  constructor(public activatedRoute:ActivatedRoute,public serviceOperation: OperationService,
     public router:Router) {
-     this.idClient=activatedRoute.snapshot.params['id'];
+     this.idClient = activatedRoute.snapshot.params['id'];
    }
 
-  ngOnInit(): void {
-   
-  this.afficherList();
-    
-  }
+  ngOnInit(): void { this.afficherList(); }
 
-  afficherList(){
+
+  afficherList() {
     console.log(this.idClient);
     this.serviceOperation.getOperationsParClient(this.idClient)
-    .subscribe(data=>{
-     this.pageOperation=data;
-    console.log(data)},
-    erreur=>console.log("nooooo"+erreur)
-    )
+    .subscribe(data => {
+     this.pageOperation = data;
+    },
+    erreur => console.log(erreur)
+    );
   }
 
 }
+
+/*
+keyBoardEvent(e) {
+  console.log(this.motCle);
+  console.log(this.motCle.length);
+  if ( this.motCle.length !== 0) {
+    this.recherche();
+  }
+  else {
+    this.listClient();
+  }
+}*/

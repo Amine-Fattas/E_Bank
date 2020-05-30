@@ -4,9 +4,6 @@ import java.util.Date;
 
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
-
-import org.springframework.boot.jackson.JsonComponent;
-
 import com.fasterxml.jackson.annotation.JsonTypeName;
 
 @Entity
@@ -24,10 +21,7 @@ public CompteEpargne(Client client, Agent agent) {
 	super(client, agent);
 }
 
-public CompteEpargne(Long numCompte) {
-	super(numCompte);
 
-}
 
 public CompteEpargne(String rib, Date dateCreation, boolean etat, Double fraisOuverture) {
 	super(rib, dateCreation, etat, fraisOuverture);

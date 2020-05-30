@@ -16,20 +16,24 @@ export class ClientService {
   return this.http.get("http://localhost:8081/client/chercher/"+motCle);
 }
 
-getClient(id:number){
-  return this.http.get<Client>("http://localhost:8081//client/"+id);
+getClient(id: number) {
+  return this.http.get<Client>("http://localhost:8081/client/"+id);
 }
 
-updateClient(client:Client){
-  return this.http.put("http://localhost:8081//client/update/"+client.id,client);
+updateClient(client: Client) {
+  return this.http.put("http://localhost:8081/client/update/"+client.id,client);
 }
 
-deleteClient(id:number){
+deleteClient(id: number) {
   return this.http.delete("http://localhost:8081/client/delete/"+id);
 }
 
-saveClient(client:Client){
+saveClient(client: Client) {
   return this.http.post("http://localhost:8081/client/ajoutClient",client);
+}
+sendEmailToClient(client: Client) {
+  console.log("email")
+  return this.http.post("http://localhost:8081/client/send-email",client);
 }
 
 }

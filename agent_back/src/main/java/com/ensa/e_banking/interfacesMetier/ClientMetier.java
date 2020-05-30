@@ -2,8 +2,6 @@ package com.ensa.e_banking.interfacesMetier;
 
 import java.util.List;
 
-import org.springframework.data.domain.Page;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import com.ensa.e_banking.entities.Client;
 
@@ -19,6 +17,7 @@ public interface ClientMetier {
     public String genererPassword();
     public Client getClientById(Long id);
     public boolean deleteClient(Long id);
+    
 	
    
 	

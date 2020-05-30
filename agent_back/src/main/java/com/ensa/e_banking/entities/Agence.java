@@ -2,6 +2,7 @@ package com.ensa.e_banking.entities;
 
 import java.util.Collection;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -34,7 +35,7 @@ public class Agence {
 	private String ville;
 	
 	
-	@OneToMany(mappedBy="agence",fetch=FetchType.LAZY)
+	@OneToMany(mappedBy="agence",fetch=FetchType.LAZY,cascade=CascadeType.ALL)
 	private Collection<Agent> agent;
 
 	public int getNumAgence() {

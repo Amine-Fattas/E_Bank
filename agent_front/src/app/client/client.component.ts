@@ -27,17 +27,23 @@ export class ClientComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    console.log("init")
    this.listClient();
   }
 
   listClient(){
+    console.log('list')
     this.clientService.getClients()
-    .subscribe((data:any)=>{
-     
+    .subscribe((data)=>{
       this.pageClient=data;
-      
-      },(error)=>console.log(error));
-  }
+       }),(error)=> err=>{
+         console.log("errrrrre")
+        this.router.navigateByUrl("/login");
+      }
+    }
+   
+
+    
   
 
   onEditClient(id:number){
@@ -48,7 +54,7 @@ export class ClientComponent implements OnInit {
   this.router.navigate(['detailsClient',id]);
  }
 
- onDeleteClient(client:Client){
+ onDeleteClient(client: Client){
   Swal.fire({
     title: 'Vous etes sur?',
     icon: 'warning',
@@ -58,76 +64,48 @@ export class ClientComponent implements OnInit {
     cancelButtonText: 'Non',
     confirmButtonText: 'Oui supprimé !'
   }).then((result) => {
-    if (result.value) {
-      
+    if (result.value) {  
      Swal.fire(
       'Suprression avec succés',
       'success'
     )
       this.clientService.deleteClient(client.id)
-     .subscribe(data=>{
-      console.log(this.pageClient.indexOf(client))
+     .subscribe(data => {
+       console.log(this.pageClient.indexOf(client));
        this.pageClient.splice(
         this.pageClient.indexOf(client),1);
       },
       err=>{ Swal.fire(
         'Erreur non supprime')})
-     
     }
   })
 }
 
-/*goPages(){
- this.clientService.getClients()
-  .subscribe((data:any)=>{
-    this.pageClient=data;
-    },(error)=>console.log(error));
-
-}*/
 
 
-keyBoardEvent(e){
+
+keyBoardEvent(e) {
   console.log(this.motCle);
   console.log(this.motCle.length);
-  if(this.motCle.length != 0){
+  if ( this.motCle.length !== 0) {
     this.recherche();
   }
-  else{
+  else {
     this.listClient();
   }
 }
 
-recherche(){
- 
+recherche() {
   this.clientService.chercherClient(this.motCle)
-  .subscribe((data:any)=>{
-   this.pageClient=data;
-   //this.pages=data.totalPages;
-   if(data.empty){
+  .subscribe((data: any) => {
+   this.pageClient = data;
+   if ( data.empty) {
       Swal.fire(
         'Aucun enregistrement n est trouvé')}
-    },(error)=>console.log(error));
-   
+    } , ( error) => console.log(error));
 }
 
 
-/*goNext(){
- 
-  if(this.page < this.pages){
-    this.page=this.page+1;
-    this.goPages();
-  }
- 
-}
-
-goPrevious(){
- 
-  if(this.page >0){
-  this.page=this.page-1;
-  this.goPages();
-  }
-
-  }*/
 }
 
  

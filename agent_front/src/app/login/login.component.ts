@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 
 import { Agent } from '../model/Agent';
 import { AgentService } from '../Service/agent.service';
+import { AuthentificationService } from '../Service/authentification.service';
 
 
 @Component({
@@ -13,48 +14,46 @@ import { AgentService } from '../Service/agent.service';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
+  mode: number;
 
   public credentials = {
     username: '',
     password: ''
   };
 
-  agent:Agent;
+  agent: Agent;
   
 
 
   constructor(
     private loginService:LoginService,
    private agentService:AgentService,
+   private authService:AuthentificationService,
     private router: Router) { }
-    
-  ngOnInit(): void {
+      ngOnInit(): void {
       this.agentService.currentAgent.subscribe(
         agent => this.agent = agent
       )
-
-    
   }
 
-  login(){
-    console.log("log-1");
+ /* login(){
+
     this.loginService.authenticate(this.credentials).subscribe(
      res=>{
-      
+      console.log(res);
       this.agentService.changeAgent(res); 
           
           // currentAgent = res;
         }
             
     );
-    /*this.loginService.currentAgent.subscribe(mess=>
-      {console.log("hello")});*/
-    console.log("log-2");
+    
+  
     this.router.navigateByUrl('/acceuil');
-  }
-}
 
-export var currentAgent: Agent
+}}
+
+export var currentAgent: Agent*/
 
 
     /*console.log("login-1")
@@ -68,9 +67,19 @@ export var currentAgent: Agent
 
    /* this.loginService.authenticate(this.credentials,()=>{
       this.router.navigateByUrl('/acceuil');
-      
     });*/
-    
-
+    onLogin(user) {
+       this.authService.login(user)
+      .subscribe(resp=>{
+        let jwt = resp.headers.get('authorization');
+        this.authService.saveToken(jwt);
+        this.router.navigateByUrl('/acceuil');
+        this.authService.currentAgent().subscribe(resp => {this.agentService.changeAgent(resp);})
+      }
+        ),
+        err => {this.router.navigateByUrl('/login');}
+    }
+  }
+  export var currentAgent: Agent;
   
 

@@ -1,84 +1,91 @@
-*{
-    padding: 0;
-    margin:0;
+
+html {
+  position: relative;
+  min-height: 100%;
 }
-.sidebar{
-    position: fixed;
-    left:0;
-    width: 250px;
-    height: 100vh;
-    background: #042331;
+
+body {
+  padding-top: 4.5rem;
+  margin-bottom: 4.5rem;
+ 
 }
-.sidebar header{
-    font-size: 22px;
+
+subTitle{
     color: white;
-    text-align: center;
-    line-height: 70px;
-    background: #063146;
-    user-select: none;
+    font-weight: bolder;
+    font-style: italic;
 }
 
-a{
-    text-decoration: none;
-
+.nav-link:hover {
+  background-color: black;
+  opacity: 0.6;
+  color: tomato;
+  transition: all 0.8s;
 }
 
-li{
-    list-style: none;
+.nav-link-collapse:after {
+padding-left:15px;
+margin-top: 21px;
+content:"\f0a9";
+font-family: 'FontAwesome';
 }
 
-.main-nav {
-    width: 250px;
+
+
+
+.nav-item ul.nav-second-level {
+padding-left: 0;
+}
+
+.nav-item ul.nav-second-level > .nav-item {
+padding-left: 20px;
+}
+
+a {
+ 
+  color:gray;
+  text-decoration: none;
+  font-size: 15px;
+  text-transform: uppercase;
+  
+}
+
+nav div span{
     
-}
-
-.main-nav a{
-    color:white;
-    display: block;
-    height: 100%;
-    width: 100%;
-    line-height: 65px;
-    font-size: 15px;
-    padding-left: 40px;
-    text-transform: uppercase;
-    text-transform: .2em;
-    box-sizing: border-box;
-    border-top:1px solid rgb(255,255,255,.1);
-    border-bottom: 1px solid black;
-    transition: .4s;
-}
-
-.main-nav a:hover, .currentTab{
-    padding-left: 50px;
-    /*background: #063146;*/
-   
-}
-
-.main-nav-ul ul{
-    display: none;
-}
-
-.main-nav-ul li:hover ul{
-    display: block; 
-    background: #063146;
-   
-}
-.main-nav ul ul a::before{
-    content: '\203A';
-    margin-right: 20px;
-}
-
-.main-nav-ul .sub-arrow::after{
-    content: '\203A';
-    float: right;
-    margin-right: 20px;
-    transform: rotate(90deg);
-    -webkit-transform: rotate(90deg);
-    -moz-transform: rotate (90 deg);
-}
-
-.main-nav li:hover .sub-arrow::after{
-    content:'\2039';
+  height: 100%;
+  width: 100%;
+  line-height: 65px;
+  font-size: 15px;
+  padding-left: 40px;
+  text-transform: uppercase;
+  text-transform: .2em;
+  box-sizing: border-box;
+  transition: .4s;
 }
 
 
+
+@media (min-width: 650px) {
+.sidenav {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 230px;
+  height: calc(100vh - 3.5rem);
+  margin-top: 3.5rem;
+  background: black;
+  box-sizing: border-box;
+  border-top: 1px solid rgba(0, 0, 0, 0.3);
+  color: tomato;
+}
+
+.navbar-expand-lg .sidenav {
+  flex-direction: column;
+}
+
+.content-wrapper {
+  margin-left: 230px;
+}
+
+
+}

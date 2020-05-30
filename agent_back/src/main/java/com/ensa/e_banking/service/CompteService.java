@@ -1,25 +1,16 @@
 package com.ensa.e_banking.service;
 
 import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
-
-import com.ensa.e_banking.entities.Client;
 import com.ensa.e_banking.entities.Compte;
 import com.ensa.e_banking.interfacesMetier.CompteMetier;
-import com.fasterxml.jackson.databind.JsonMappingException;
 
-//import junit.framework.Test;
 
 @RestController
 @CrossOrigin("*")
@@ -29,7 +20,8 @@ public class CompteService {
 	private CompteMetier compteMetier;
 	
 	
-	 @RequestMapping(value="/compte/ajoutCompte",method=RequestMethod.POST)
+	
+	 @RequestMapping(value="/compte/saveCompte",method=RequestMethod.POST)
 	 public Compte saveCompte(@RequestBody Compte compte) {
 		 System.out.println("ajout");
 		 return compteMetier.saveCompte(compte);

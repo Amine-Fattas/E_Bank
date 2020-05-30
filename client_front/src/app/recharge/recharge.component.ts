@@ -34,7 +34,7 @@ export class RechargeComponent implements OnInit {
   }
 
   onSubmit(){
-    this.newOperation.agent = this.compte.agent
+    this.newOperation.agent = null //this.compte.agent
     this.newOperation.compteDestination = this.compte
     this.newOperation.numOperation = Math.floor(Math.random() * 1000000)
     console.log("Succes Recharge \n"+this.newOperation)

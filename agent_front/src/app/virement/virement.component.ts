@@ -15,7 +15,7 @@ export class VirementComponent implements OnInit {
 
   constructor(private _operationService: OperationService) { }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {}}
     /*this.init()
   }
 
@@ -31,7 +31,7 @@ export class VirementComponent implements OnInit {
 
   init(){
     this.newOperation = new Operation()
-    this.newOperation.typeOperation = "Virement"
+    this.newOperation.typeOperation = "Ag:Virement"
     this.newOperation.numOperation = 0
     this.newOperation.dateOperation = new Date()
     this.newOperation.montant = 0
@@ -39,5 +39,6 @@ export class VirementComponent implements OnInit {
     this.newOperation.compteDestination = new Compte()
     this.newOperation.agent = new Agent()
     this.newOperation.agent.idAgent= 1
-  }*/
+  }
 }
+*/

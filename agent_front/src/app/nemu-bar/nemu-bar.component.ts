@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-nemu-bar',
@@ -7,9 +9,30 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NemuBarComponent implements OnInit {
 
-  constructor() { }
+  constructor(private route:Router) { }
 
   ngOnInit(): void {
   }
+  logout(){
+    Swal.fire({
+      title: 'Vous etes sur de se déconnecte ?',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      cancelButtonText: 'Non',
+      confirmButtonText: 'Oui !'
+    }).then((result) => {
+      if (result.value) {  
+        localStorage.removeItem('token');
+        this.route.navigateByUrl('/login');
+      }
+        err=>{ Swal.fire(
+          'Erreur ...')}
+      
+    })
+  }
 
-}
+    
+  }
+

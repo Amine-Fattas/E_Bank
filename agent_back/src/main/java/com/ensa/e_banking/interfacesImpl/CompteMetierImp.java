@@ -1,29 +1,34 @@
 package com.ensa.e_banking.interfacesImpl;
 
-import java.security.SecureRandom;
-import java.util.Arrays;
-import java.util.Collections;
+
 import java.util.Date;
 import java.util.List;
-import java.util.Random;
+
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Sort;
+
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.ensa.e_banking.dao.CompteRepository;
 import com.ensa.e_banking.entities.Agence;
 import com.ensa.e_banking.entities.Client;
 import com.ensa.e_banking.entities.Compte;
+import com.ensa.e_banking.interfacesMetier.ClientMetier;
 import com.ensa.e_banking.interfacesMetier.CompteMetier;
-import com.fasterxml.jackson.core.JsonProcessingException;
+
+
 @Service
 public class CompteMetierImp implements CompteMetier{
 
 	@Autowired
 	CompteRepository compteRepository;
+	
+	@Autowired
+	ClientMetier clientMetier;
+	
     Long numCompte;
 
 	
@@ -36,13 +41,13 @@ public class CompteMetierImp implements CompteMetier{
     
 	@Override
 	public Compte saveCompte(Compte compte){
-
+		
+		compte.getClient().setPassord(clientMetier.genererPassword());
+        clientMetier.saveClient(compte.getClient());
         compte.setDateCreation(new Date());
         compte.setSolde(0.0);
         compte.setEtat(true);
- 
         compte.setFraisOuverture(20.0);
-    
         if(compteRepository.dernierEnregistrement() != null) {
       
         numCompte=compteRepository.dernierEnregistrement()+1;
@@ -51,7 +56,7 @@ public class CompteMetierImp implements CompteMetier{
   
         compte.setNumCompte(numCompte);
         compte.setRib(formaterRib(agence.getCodeBanque(),agence.getCodeGuichet(),numCompte));
-    
+        System.out.println("done");
 		return compteRepository.save(compte);
 	}
 
@@ -103,7 +108,8 @@ public class CompteMetierImp implements CompteMetier{
 		
 		return compteRepository.chercherD("%"+mc+"%");
 	}
+   
 
 
 
-}
+    }

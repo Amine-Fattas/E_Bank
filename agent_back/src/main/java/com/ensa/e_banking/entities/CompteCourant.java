@@ -4,10 +4,6 @@ import java.util.Date;
 
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
-
-import org.springframework.boot.jackson.JsonComponent;
-
-import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 
 @Entity
@@ -21,10 +17,7 @@ public class CompteCourant extends Compte{
 		
 	}
 
-	public CompteCourant(Long numCompte) {
-		super(numCompte);
-		// TODO Auto-generated constructor stub
-	}
+	
 
 	public CompteCourant(String rib, Date dateCreation, boolean etat, Double fraisOuverture) {
 		super(rib, dateCreation, etat, fraisOuverture);

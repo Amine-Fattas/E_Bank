@@ -1,8 +1,5 @@
 
-.search{
-    margin-left: 20px;
-    margin-top: 20px;
-}
+
 input{
  
     border: none;
@@ -23,60 +20,14 @@ input[type="search"]::-webkit-search-cancel-button{
   -webkit-appearance:none;
 }
 
-  .listCompte{
-      margin-top: 10px;
-     
-  }
-
-
   .desactive{
       font-size: 15px;
-      color: #4682B4;
+      color: black;
       font-weight: bolder;
       font-style: italic;
       text-decoration: underline;
       cursor: pointer;
   }
 
-  .round {
-    border-radius: 50%;
-  }
-  .previous {
-    background-color: #BBD2E1;
-    color: black;
-    font-size: 20px;
-  }
-  
-  .next {
-    background-color: #063146;
-    color: white;
-    font-size: 20px;
-  }
-  
-  .pageNext{
-    text-decoration: none;
-    display: inline-block;
-    padding: 8px 16px;
-  }
-  
-  .pageNext:hover {
-    background-color: #5472AE;
-    color: black;
-  }
-  
-  .pagePrevious{
-    text-decoration: none;
-    display: inline-block;
-    padding: 8px 16px;
-  }
-  
-  .pagePrevious:hover {
-    background-color: #A9A9A9;
-    color: black;
-  }
-  
-  .pagination{
-  float: right;
-   
-  }
+ 
   

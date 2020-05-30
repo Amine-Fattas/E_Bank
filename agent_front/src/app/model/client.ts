@@ -11,6 +11,7 @@ export class Client{
     public numTel:number;
     public dateNaissance:Date;
     public compte:Compte;
+    public passord:string;
  
     constructor(){}
  }

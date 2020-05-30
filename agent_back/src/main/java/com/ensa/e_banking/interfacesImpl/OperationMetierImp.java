@@ -1,6 +1,6 @@
 package com.ensa.e_banking.interfacesImpl;
 
-import java.util.Date;
+
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,8 +10,6 @@ import org.springframework.transaction.annotation.Transactional;
 import com.ensa.e_banking.dao.AgentRepository;
 import com.ensa.e_banking.dao.CompteRepository;
 import com.ensa.e_banking.dao.OperationRepository;
-import com.ensa.e_banking.entities.Agent;
-import com.ensa.e_banking.entities.Client;
 import com.ensa.e_banking.entities.Compte;
 import com.ensa.e_banking.entities.Operation;
 
@@ -32,7 +30,7 @@ public class OperationMetierImp implements OperationMetier{
 		public boolean retirer(Operation operation) {
 		 
 			Compte compte=compteRepository.findById(operation.getCompteSource().getNumCompte()).orElse(null);
-			if(compte == null) throw new RuntimeException("Compte n'existe pas");
+			if(compte == null || compte.isEtat() == false) throw new RuntimeException("Compte n'existe pas");
 			
 			if(compte.getSolde() < operation.getMontant())  throw new RuntimeException("Solde insuffisant");
 			
@@ -48,7 +46,7 @@ public class OperationMetierImp implements OperationMetier{
 		@Transactional
 		public boolean verser(Operation operation) {
 			Compte compte=compteRepository.findById(operation.getCompteDestination().getNumCompte()).get();
-			if(compte==null)  throw new RuntimeException("Compte n'existe pas");
+			if(compte==null || compte.isEtat() == false)  throw new RuntimeException("Compte n'existe pas");
 			
 			compte.setSolde(compte.getSolde()+operation.getMontant());
 			operationRepository.save(operation);
@@ -62,10 +60,10 @@ public class OperationMetierImp implements OperationMetier{
 		@Override
 		public boolean virement(Operation operation) {
 			Compte compteSource =compteRepository.findById(operation.getCompteSource().getNumCompte()).orElse(null);
-			if(compteSource == null) throw new RuntimeException("Compte n'existe pas");
+			if(compteSource == null || compteSource.isEtat() == false) throw new RuntimeException("Compte n'existe pas ou désactivé");
 			
 			Compte compteDestination = compteRepository.findById(operation.getCompteDestination().getNumCompte()).get();
-			if(compteDestination ==null)  throw new RuntimeException("Compte n'existe pas");
+			if(compteDestination ==null || compteDestination.isEtat() == false)  throw new RuntimeException("Compte n'existe pas ou désactivé");
 			
 			if(compteSource.getSolde() < operation.getMontant())  throw new RuntimeException("Solde insuffisant");
 			

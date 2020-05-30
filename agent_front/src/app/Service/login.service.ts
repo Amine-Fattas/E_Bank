@@ -40,9 +40,7 @@ export class LoginService {
   
   }
 
-  logout(){
-    return   this.http.get("http://localhost:8081/logout");
-  }
+  
   }
 
 

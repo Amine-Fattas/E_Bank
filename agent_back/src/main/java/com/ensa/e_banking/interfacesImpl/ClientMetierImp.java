@@ -4,26 +4,19 @@ import java.security.SecureRandom;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
-
-
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.RequestParam;
-
 import com.ensa.e_banking.dao.ClientRepository;
 import com.ensa.e_banking.entities.Client;
-import com.ensa.e_banking.entities.Compte;
 import com.ensa.e_banking.interfacesMetier.ClientMetier;
+
+
 
 @Service
 public class ClientMetierImp implements ClientMetier{
     
 	@Autowired
 	private ClientRepository clientRepository;
-	
 	 final String letterLower = "abcdefghijklmnopqrstuvwxyz";
      final String letterUpper= letterLower.toUpperCase();
      final String number = "0123456789";
@@ -33,16 +26,7 @@ public class ClientMetierImp implements ClientMetier{
 	
 	@Override
 	public Client saveClient(Client c) {
-		
-		List<Client> clientList=clientRepository.findAll();
-		
-		for(Client client : clientList) {
-			
-			if(c.getCin()==client.getCin()) {
-				return c;
-			}
-		}
-		System.out.println("sav-3");
+		System.out.println("save");
 		return clientRepository.save(c);
 	}
 

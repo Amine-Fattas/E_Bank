@@ -8,11 +8,12 @@ import { DetailClientComponent } from './detail-client/detail-client.component';
 import { OperationsComponent } from './operations/operations.component';
 import { VirementComponent } from './virement/virement.component';
 import { VersementComponent } from './versement/versement.component';
-import { CreateCompteComponent } from './create-compte/create-compte.component';
+
 import { ListCompteComponent } from './list-compte/list-compte.component';
 import { CompteDesactiveComponent } from './compte-desactive/compte-desactive.component';
 import { NemuBarComponent } from './nemu-bar/nemu-bar.component';
 import { LoginComponent } from './login/login.component';
+import { MultiFormComponent } from './multi-form/multi-form.component';
 
 
 
@@ -30,7 +31,7 @@ const routes: Routes = [
   { path: "acceuil", component:NemuBarComponent},
   {path:"comptes",
         children:[
-          {path:"ajoutCompte",component:CreateCompteComponent},
+          {path:"ajoutCompte",component:MultiFormComponent},
           {path:"listCompte",component:ListCompteComponent},
           {path:"compteDesactive",component:CompteDesactiveComponent}
         ]},
@@ -57,6 +58,5 @@ export const routingComponents = [ClientComponent,
                                   OperationsComponent,
                                   VirementComponent,
                                   VersementComponent,
-                                  DetailClientComponent,
-                                  CreateCompteComponent
+                                  DetailClientComponent
                                 ]

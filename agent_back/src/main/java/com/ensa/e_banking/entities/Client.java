@@ -1,49 +1,44 @@
 package com.ensa.e_banking.entities;
 
-import java.io.Serializable;
 import java.util.Collection;
 import java.util.Date;
-
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
-import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 
 @Entity
 @Table
-public class Client  implements Serializable {
+public class Client {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long id;
 	private String nom;
 	private String prenom;
+	@Column(unique = true)
 	private String cin;
 	private String email;
+	
 	 @Column(unique = true)
-	private String passord;
+	private String password;
 	private String sexe;
+	
 	@Temporal(TemporalType.DATE)
 	private Date dateNaissance;
 	private String numTel;
 	//private String profession;
 	
 	
-	@OneToMany(mappedBy="client",cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@OneToMany(mappedBy="client",cascade = CascadeType.ALL)
 	private Collection<Compte> comptes;
     
 	
@@ -96,12 +91,12 @@ public class Client  implements Serializable {
 	}
 
 	public String getPassord() {
-		return passord;
+		return password;
 	}
 
 	
 	public void setPassord(String passord) {
-		this.passord = passord;
+		this.password = passord;
 	}
 
 	
@@ -172,7 +167,7 @@ public class Client  implements Serializable {
 		this.prenom = prenom;
 		this.cin = cin;
 		this.email = email;
-		this.passord = passord;
+		this.password = passord;
 		this.sexe = sexe;
 		this.dateNaissance = dateNaissance;
 		this.numTel = numTel;

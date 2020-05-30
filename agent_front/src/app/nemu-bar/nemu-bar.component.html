@@ -1,11 +1,15 @@
 
-    <div class="sidebar">
-        <header>Name of App</header>
-        <div style="background-color: black;"></div>
+<!--<div class="sidebar">
+  
+        <header>
+            Name of App
+              
+        </header>
+        
 <nav class="main-nav">
     <ul class="main-nav-ul">
-    
-        <li><a >Client<span class="sub-arrow"></span></a>
+        <li>
+          <a >Client<span class="sub-arrow"></span></a>
            <ul class="sub-menu">
                <li><a  routerLink="/listClient">Liste client </a></li>
            </ul>
@@ -26,11 +30,162 @@
         </ul>
         </li>
     </ul>
-</nav>
+</nav>-->
+<!--<body>
+
+  <div class="row d-flex d-md-block flex-nowrap wrapper">
+      <div class="col-md-3 col-1 pl-0 pr-0 collapse width show" id="sidebar">
+        
+          <div class="list-group">
+            
+            <a  class="list-group-item d-inline-block collapsed" style="font-weight: bolder;font-style: italic;"
+             data-parent="#sidebar"> <span class="d-none d-md-inline">Bank app</span></a>
+              <a href="#menu1" class="list-group-item d-inline-block collapsed" style="text-align: center;" data-toggle="collapse" aria-expanded="false"><i class="fa fa-users"></i><span class="d-none d-md-inline">Client</span> </a>
+              <div class="collapse" id="menu1" data-parent="#sidebar">
+                  <a  routerLink="/listClient" class="list-group-item" data-toggle="collapse"><i class="fa fa-caret-right"></i>Liste Client</a>
+              </div>   
+
+              
+             
+              <a href="#menu2" class="list-group-item d-inline-block collapsed" style="text-align: center;" data-toggle="collapse" aria-expanded="false"> <i class="fa fa-money"></i><span class="d-none d-md-inline">Compte</span></a>
+                  <div class="collapse" id="menu2" data-parent="#sidebar">
+                      <a routerLink="/comptes/ajoutCompte" class="list-group-item" data-parent="#menu1sub1"><i class="fa fa-caret-right"></i>Ajout Compte</a>
+                      <a routerLink="/comptes/listCompte" class="list-group-item" data-parent="#menu1sub1"><i class="fa fa-caret-right"></i>Liste Compte</a>
+                      <a routerLink="/comptes/compteDesactive" class="list-group-item" data-parent="#menu1sub1"><i class="fa fa-caret-right"></i>Compte désactivé</a>
+                      
+                 
+              </div>
+    
+              <a href="#menu3" class="list-group-item d-inline-block collapsed" style="text-align: center;" data-toggle="collapse" aria-expanded="false"><i class="fa fa-address-card"></i><span class="d-none d-md-inline">Operation</span></a>
+              <div class="collapse" id="menu3" data-parent="#sidebar">
+                  <a routerLink="/operations/liste" class="list-group-item"  data-parent="#menu3"><i class="fa fa-caret-right"></i>Liste Operation</a>
+                  <a routerLink="/operations/retrait" class="list-group-item" data-parent="#menu3"><i class="fa fa-caret-right"></i>Retrait</a>
+                  <a routerLink="/operations/virement"class="list-group-item" data-parent="#menu3"><i class="fa fa-caret-right"></i>Virement</a>
+                  <a routerLink="/operations/versement" class="list-group-item" data-parent="#menu3"><i class="fa fa-caret-right"></i>Versement</a>
+                  
+              </div>
+              
+          </div>
+         
+      </div>
+      </div>
+    </body>   -->
 
 
-</div>
+  <nav class="navbar navbar-expand-lg  fixed-top" style="background: black;">
+    <a class="navbar-brand" style="color: tomato; font-weight: bolder; font-style: italic;">Bank App</a>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-toggle="collapse"
+      data-target="#navbarCollapse"
+      aria-controls="navbarCollapse"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+      
+    >
+      <!--<span  class="navbar-toggler-icon"> </span>-->
+      <span class="navbar-toggler-icon">   
+        <i class="fa fa-bars" style="color:tomato; font-size:28px;"></i>
+    </span>
+    </button>
+  
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+      <ul class="navbar-nav mr-auto sidenav" id="navAccordion">
+        
+        <li class="nav-item">
+          <a
+            class="nav-link nav-link-collapse"
+            href="#"
+            id="hasSubItems"
+            data-toggle="collapse"
+            data-target="#collapseSubItems1"
+            aria-controls="collapseSubItems1"
+            aria-expanded="false"
+          ><i class="fa fa-address-card"></i><span>Client</span> </a>
+          <ul class="nav-second-level collapse" id="collapseSubItems1" data-parent="#navAccordion">
+            <li class="nav-item">
+              <a class="nav-link" routerLink="/listClient">
+                <span class="nav-link-text">  Liste Client</span>
+              </a>
+      
+           
+          </ul>
+        </li>
+        
 
-
-
-
+        <li class="nav-item">
+          <a
+            class="nav-link nav-link-collapse"
+            href="#"
+            id="hasSubItems"
+            data-toggle="collapse"
+            data-target="#collapseSubItems2"
+            aria-controls="collapseSubItems2"
+            aria-expanded="false"
+          ><i class="fa fa-money"></i> <span>Compte</span></a>
+          <ul class="nav-second-level collapse" id="collapseSubItems2" data-parent="#navAccordion">
+            <li class="nav-item">
+              <a class="nav-link" routerLink="/comptes/ajoutCompte">
+                <span class="nav-link-text">  Ajout Compte</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" routerLink="/comptes/listCompte">
+                <span class="nav-link-text"> Liste Compte</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" routerLink="/comptes/compteDesactive">
+                <span class="nav-link-text">  Compte désactivé</span>
+              </a>
+            </li>
+          </ul>
+        </li>
+       
+        <li class="nav-item">
+          <a
+            class=" nav-link nav-link-collapse"
+            href="#"
+            id="hasSubItems"
+            data-toggle="collapse"
+            data-target="#collapseSubItems4"
+            aria-controls="collapseSubItems4"
+            aria-expanded="false"
+          ><i class="fa fa-address-card"></i> <span>Operation</span></a>
+          <ul class="nav-second-level collapse" id="collapseSubItems4" data-parent="#navAccordion">
+            <li class="nav-item">
+              <a class="nav-link" routerLink="/operations/liste">
+                <span class="nav-link-text">Liste Operation</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link"  routerLink="/operations/retrait">
+                <span class="nav-link-text"> Retrait</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" routerLink="/operations/versement">
+                <span class="nav-link-text"> Versement</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" routerLink="/operations/virement">
+                <span class="nav-link-text" >  Virement</span>
+              </a>
+            </li>
+          </ul>
+        </li>
+        
+      </ul>
+      <form class="form-inline ml-auto mt-3 mt-md-0">
+        
+        <button class="btn btn-outline-secondary my-2 my-sm-0" (click)="logout()" type="submit">Logout</button>
+      </form>
+    </div>
+  </nav>
+  
+ 
+   
+    
+    

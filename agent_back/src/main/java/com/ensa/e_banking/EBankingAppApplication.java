@@ -4,11 +4,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.crypto.password.PasswordEncoder;
-
 import com.ensa.e_banking.dao.AgentRepository;
 import com.ensa.e_banking.entities.Agence;
 import com.ensa.e_banking.entities.Agent;
@@ -23,11 +20,13 @@ import com.ensa.e_banking.entities.Agent;
 public class EBankingAppApplication implements CommandLineRunner {
 	@Autowired
 	AgentRepository agentRepository;
-
+	
+	
 	
 	public static void main(String[] args) {
 	
 			SpringApplication.run(EBankingAppApplication.class, args);
+			 
 		}
 	@Autowired
    BCryptPasswordEncoder bCryptPasswordEncoder=new  BCryptPasswordEncoder();
@@ -40,6 +39,8 @@ public class EBankingAppApplication implements CommandLineRunner {
 	agentRepository.save(agent2);
 		
 	}
+	
+	
 
 	}
 
