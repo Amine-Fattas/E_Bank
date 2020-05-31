@@ -23,7 +23,7 @@ export class RechargeComponent implements OnInit {
   ngOnInit(): void {
     this.init()
     this.codeRecharge = new CodeRecharge()
-    this._compteService.getCompte(1).subscribe(
+    this._compteService.getCurrentCompte().subscribe(
       data => {
         this.compte = data
         console.log(this.compte)

@@ -1,4 +1,4 @@
-<!--<div class="container"> 
+<div class="container"> 
     <div class="container">
         <div class="row " >
             <div class="col-lg-2 col-12">
@@ -7,11 +7,11 @@
             <div class="col-lg-10 col-12">
     <form #form="ngForm" (ngSubmit)="onSubmit()" novalidate>
         <h1>Virement</h1>
-        {{form.value | json}} 
-        <input [(ngModel)]="newOperation.compteSource.numCompte" name="compteSource"
+        <!-- {{form.value | json}}  -->
+        <input [(ngModel)]="_compteSource.rib" name="compteSource"
          class="input" type="text" placeholder="Compte Source (RIB / CIN)">
 
-        <input [(ngModel)]="newOperation.compteDestination.numCompte" name="compteDestination"
+        <input [(ngModel)]="_compteDestination.rib" name="compteDestination"
          class="input" type="text" placeholder="Compte Destination (RIB / CIN)">
 
         <input [(ngModel)]="newOperation.montant" name="montant"
@@ -19,10 +19,10 @@
 
         <button type="submit" class="submit">Valider</button>
 
-        {{newOperation | json}}
+        <!-- {{newOperation | json}} -->
     </form>   
 </div>
 </div>
-</div>-->
+</div>
 
 

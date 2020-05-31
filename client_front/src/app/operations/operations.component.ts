@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { OperationService } from '../Service/operation.service';
 import { Operation } from '../model/operation';
 import { Compte } from '../model/Compte';
+import { CompteService } from '../Service/compte.service';
 
 @Component({
   selector: 'app-operations',
@@ -14,29 +15,33 @@ export class OperationsComponent implements OnInit {
   public motif:string;
   pageOperation:any;
   operationTest: any;
+  compte: Compte
 
-  constructor(private operationService: OperationService) { }
+  constructor(private operationService: OperationService,
+              private _compteService: CompteService) { }
   // {"numOperation": 0, "type": "Retrait", "date": "11/11/2020", "acteur": "Agent","source": "CL1", "destination": "CL2", "montant": 200}
   ngOnInit(): void {
-    this.operationService.getOperations()
+    this._compteService.getCurrentCompte().subscribe(
+      data => {
+        this.compte = data
+        console.log(this.compte)
+
+        this.operationService.getOperation(this.compte.numCompte)
         .subscribe(
           data =>{
             console.log("show : "+data);
             this.operationTest =<Operation>data;
-            // if(this.operationTest.compteSource == null){
-            //   this.operationTest.compteSource = new Compte()
-            //   this.operationTest.compteSource.numCompte = 0
-            // }
-            // else if(this.operationTest.compteDestination == null){
-            //   this.operationTest.compteDestination = new Compte()
-            //   this.operationTest.compteDestination.numCompte = 0
-            // }
 
             this.pageOperation = this.operationTest;
             console.log(this.operationTest)
           },
           error => console.error(error)
-          )      
+          )  
+
+      },
+      error => console.error(error)
+    )
+        
   }
     filter(op: Operation):any{
       

@@ -14,6 +14,7 @@ import { CompteDesactiveComponent } from './compte-desactive/compte-desactive.co
 import { NemuBarComponent } from './nemu-bar/nemu-bar.component';
 import { LoginComponent } from './login/login.component';
 import { MultiFormComponent } from './multi-form/multi-form.component';
+import { RetraitComponent } from './retrait/retrait.component';
 
 
 
@@ -39,6 +40,7 @@ const routes: Routes = [
       children: [
         { path: "", redirectTo: "/operations/liste", pathMatch: "full"},
         { path: "liste", component: OperationsComponent},
+        { path: "retrait", component: RetraitComponent},
         { path: "virement", component: VirementComponent},
         { path: "versement", component: VersementComponent}
       ]
@@ -58,5 +60,6 @@ export const routingComponents = [ClientComponent,
                                   OperationsComponent,
                                   VirementComponent,
                                   VersementComponent,
-                                  DetailClientComponent
+                                  DetailClientComponent,
+                                  RetraitComponent
                                 ]

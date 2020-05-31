@@ -28,6 +28,9 @@ public interface CompteRepository extends JpaRepository<Compte,Long> {
 	
 	@Query(value ="SELECT * FROM compte where etat =0",nativeQuery=true)
 	List <Compte> findCompteDesactive();
+	
+	@Query(value ="SELECT * FROM compte where rib=:x",nativeQuery=true)
+	Compte findCompteByRib(@Param("x") String rib);
 
 	
 

@@ -8,6 +8,7 @@ import { Compte } from '../model/compte';
 export class CompteService {
 
   constructor(private http:HttpClient){}
+  _url = "http://localhost:8081/compte/CC/"
 
   getComptes(){
     return this.http.get("http://localhost:8081/compte/listCompteActive");  
@@ -29,6 +30,10 @@ export class CompteService {
     }
     saveCompte(compte: Compte) {
       return this.http.post<Compte>("http://localhost:8081/compte/saveCompte",compte);
+    }
+
+    getCompteByRib(rib:String){
+      return this.http.get<Compte>(this._url+"rib/"+rib)
     }
 
 }

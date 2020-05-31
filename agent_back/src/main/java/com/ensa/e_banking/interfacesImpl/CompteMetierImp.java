@@ -76,6 +76,11 @@ public class CompteMetierImp implements CompteMetier{
 	public Compte consulterCompte(Long id) {
 		return  compteRepository.findById(id).get();
 	}
+	
+	@Override
+	public Compte getCompteByRib(String rib) {
+		return  compteRepository.findCompteByRib(rib);
+	}
 
 	@Override
 	public String formaterRib(int codeBanque, int codeGuichet,Long numCompte) {

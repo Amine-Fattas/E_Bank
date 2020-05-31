@@ -26,6 +26,7 @@ import { LogoutComponent } from './logout/logout.component';
 import { AuthentificationService } from './Service/authentification.service';
 import { MultiFormComponent } from './multi-form/multi-form.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { RetraitComponent } from './retrait/retrait.component';
 
 
 
@@ -42,7 +43,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     CompteDesactiveComponent,
     LoginComponent,
     LogoutComponent,
-    MultiFormComponent
+    MultiFormComponent,
+    RetraitComponent
   ],
   imports: [
     BrowserModule, AppRoutingModule,HttpClientModule,FormsModule,BrowserAnimationsModule ,MatStepperModule,

@@ -28,13 +28,22 @@
                 </tr>
                   <tr *ngFor="let o of pageOperation">
                     <td>{{o.numOperation}}</td>
-                    <td>{{o.type}}</td>
-                    <td>{{o.date}}</td>
-                    <td>{{o.acteur}}</td>
-                    <td>{{o.source}}</td>
-                    <td>{{o.destination}}</td>
-                    <td>{{o.montant}}</td>
-                    <td>{{o.numTel}}</td>
+                    <td>{{o.typeOperation}}</td>
+                    <td>{{o.dateOperation}}</td>
+                    <td *ngIf="o.agent!=null; else elseAgent">
+                        Ag: {{o.agent.id}}</td>
+                    <ng-template #elseAgent><td>-</td></ng-template>
+
+
+                    <td *ngIf="o.compteSource!=null; else elseTag">
+                        {{o.compteSource.numCompte}}</td>
+                    <ng-template #elseTag><td>-</td></ng-template>
+                    <td *ngIf="o.compteDestination!=null; else elseTag">
+                        {{o.compteDestination.numCompte}}</td>
+
+                    <td>{{o.montant | number: '.2'}} MAD</td>
+                    <td>
+                    <!-- <td>{{o.numTel}}</td> -->
                     <td>
                        <!-- <a > <img src="../assets/images/delete.png"   title="delete" class="img-responsive"></a>
                        &nbsp; <a (click)="onEditContact(c.numOperation)"> <img src="../assets/images/update.png"   title="update" class="img-responsive"></a> -->

@@ -19,7 +19,7 @@ export class VirementComponent implements OnInit {
               private _compteService: CompteService) { }
 
   ngOnInit(): void {
-    this._compteService.getCompte(1).subscribe(
+    this._compteService.getCurrentCompte().subscribe(
       data => {
         this.compte = data
         console.log(this.compte)
@@ -31,7 +31,7 @@ export class VirementComponent implements OnInit {
 
   onSubmit(){
     this.newOperation.compteSource.numCompte = this.compte.numCompte
-    this.newOperation.agent = this.compte.agent
+    this.newOperation.agent = null
     this.newOperation.numOperation = Math.floor(Math.random() * 1000000)
     console.log("Succes Virement \n"+this.newOperation)
     this._operationService.virer(this.newOperation)

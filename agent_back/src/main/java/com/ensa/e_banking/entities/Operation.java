@@ -29,7 +29,7 @@ import com.fasterxml.jackson.annotation.JsonSubTypes.Type;
 
 
 
-public abstract class Operation {
+public class Operation {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)

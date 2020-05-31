@@ -32,10 +32,14 @@ public class OperationService {
 		return operationMetier.virement(operation);
 	}
 	
+	@RequestMapping(value="/operation/recharge/{codeRecharge}",method=RequestMethod.POST)
+	 public boolean recharge(@RequestBody Operation operation, @PathVariable Long codeRecharge) {
+		return operationMetier.recharge(operation, codeRecharge);
+	}
+	
 	@RequestMapping(value="/operation/listOperation/{id}",method=RequestMethod.GET)
 	public List<Operation> getOperationsByClient(@PathVariable Long id){
-		
-		return operationMetier.getOperations();
+		return operationMetier.getOperationByIdClient(id);
 	}
 	@RequestMapping(value="/operation/list",method=RequestMethod.GET)
 	public List<Operation> getList(){

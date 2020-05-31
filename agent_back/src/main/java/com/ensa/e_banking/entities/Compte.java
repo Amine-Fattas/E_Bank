@@ -14,6 +14,9 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonSubTypes.Type;
@@ -39,6 +42,7 @@ public  class Compte{
 	@Id 
 	private Long numCompte;
 	private String rib;
+	@Temporal(TemporalType.DATE)
 	private Date dateCreation;
 	private Double solde;
 	private boolean etat;
@@ -57,7 +61,10 @@ public  class Compte{
 	
    
 	@OneToMany(mappedBy="compteSource",cascade = CascadeType.ALL)
-	private Collection<Operation> operations;
+	private Collection<Operation> compteSource;
+	
+	@OneToMany(mappedBy="compteDestination",cascade = CascadeType.ALL)
+	private Collection<Operation> compteDestination;
 	
 	
 
@@ -139,12 +146,23 @@ public  class Compte{
 	}
      
 	@JsonIgnore
-	public Collection<Operation> getOperations() {
-		return operations;
+	public Collection<Operation> getCompteSource() {
+		return compteSource;
 	}
 
-	public void setOperations(Collection<Operation> operations) {
-		this.operations = operations;
+
+	public void setCompteSource(Collection<Operation> compteSource) {
+		this.compteSource = compteSource;
+	}
+
+	@JsonIgnore
+	public Collection<Operation> getCompteDestination() {
+		return compteDestination;
+	}
+
+
+	public void setCompteDestination(Collection<Operation> compteDestination) {
+		this.compteDestination = compteDestination;
 	}
 
 	
@@ -153,6 +171,9 @@ public  class Compte{
 	}
 	
 
+
+
+	
 
 
 	public Compte(String rib,Date dateCreation,boolean etat,Double fraisOuverture) {

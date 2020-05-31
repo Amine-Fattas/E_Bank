@@ -9,8 +9,9 @@ public interface OperationMetier {
        public boolean retirer(Operation operation);
        //public getReleverBancainre
        public boolean virement(Operation operation);
+       public boolean recharge(Operation operation, Long codeRecharge);
        public double fraisVirement(double montant);
-       public List<Operation> getOperationById(Long id);
+       public List<Operation> getOperationByIdClient(Long id);
        public List<Operation> getOperations();
 
 }

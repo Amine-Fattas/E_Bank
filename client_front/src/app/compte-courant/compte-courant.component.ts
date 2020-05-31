@@ -19,7 +19,7 @@ export class CompteCourantComponent implements OnInit {
     this.compte = new Compte()
     this.compte.client = new Client()
     this.compte.agent = new Agent()
-    this.compteService.getCompte(1).subscribe(
+    this.compteService.getCurrentCompte().subscribe(
       data => {
         this.compte = data
         console.log(this.compte)
