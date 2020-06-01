@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round"/>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+
+    <title>Agents</title>
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="../static/css/bootstrap.min.css" th:href="@{css/bootstrap.min.css}" />
+    <!-- bootstrap theme -->
+    <link rel="stylesheet" href="../static/css/bootstrap-theme.css" th:href="@{css/bootstrap-theme.css}" />
+    <!--external css-->
+    <!-- font icon -->
+    <link rel="stylesheet" href="../static/css/elegant-icons-style.css" th:href="@{css/elegant-icons-style.css}" />
+    <link rel="stylesheet" href="../static/css/font-awesome.min.css" th:href="@{css/font-awesome.min.css}" />
+    <!-- Custom styles -->
+    <link rel="stylesheet" href="../static/css/style.css" th:href="@{css/style.css}" />
+    <link rel="stylesheet" href="../static/css/style-responsive.css" th:href="@{css/style-responsive.css}" />
+
+</head>
+
+<body>
+<!-- container section start -->
+<section id="container" class="">
+    <!--header start-->
+
+    <header class="header dark-bg">
+        <div class="toggle-nav">
+            <div class="icon-reorder tooltips" data-original-title="Toggle Navigation" data-placement="bottom"><i class="icon_menu"></i></div>
+        </div>
+
+        <!--logo start-->
+        <a href="/" class="logo">AFOIHI-<span class="lite">BANK</span></a>
+        <!--logo end-->
+
+        <div class="nav search-row" id="top_menu">
+            <!--  search form start -->
+            <ul class="nav top-menu">
+                <li>
+                    <form class="navbar-form">
+                        <input class="form-control" placeholder="Search" type="text">
+                    </form>
+                </li>
+            </ul>
+            <!--  search form end -->
+        </div>
+
+        <div class="top-nav notification-row">
+            <!-- notificatoin dropdown start-->
+            <ul class="nav pull-right top-menu">
+                <!-- user login dropdown start-->
+                <li class="dropdown">
+                    <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                            <span class="profile-ava">
+
+                            </span>
+                        <span class="username">Deconnexion</span>
+                        <b class="caret"></b>
+                    </a>
+                    <ul class="dropdown-menu extended logout">
+                        <div class="log-arrow-up"></div>
+                        <li class="eborder-top">
+                            <a href="#"><i class="icon_profile"></i>My Profile</a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="icon_key_alt"></i>Log Out</a>
+                        </li>
+
+                    </ul>
+                </li>
+                <!-- user login dropdown end -->
+            </ul>
+            <!-- notificatoin dropdown end-->
+        </div>
+    </header>
+    <!--header end-->
+
+    <!--sidebar start-->
+    <aside>
+        <div id="sidebar" class="nav-collapse ">
+            <!-- sidebar menu start-->
+            <ul class="sidebar-menu">
+                <li class="">
+                    <a class="" href="/">
+                        <i class="icon_house_alt"></i>
+                        <span>Dashboard</span>
+                    </a>
+                </li>
+                <li class="sub-menu">
+                    <a href="javascript:;" class="">
+                        <i class="icon_document_alt"></i>
+                        <span>Agences</span>
+                        <span class="menu-arrow arrow_carrot-right"></span>
+                    </a>
+                    <ul class="sub">
+                        <li><a class="" href="/liste">ListeAgences</a></li>
+                        <li><a class="" href="/addAgence">AjoutAgence</a></li>
+                    </ul>
+                </li>
+
+
+                <li class="sub-menu">
+                    <a href="javascript:;" class="">
+                        <i class="icon_table"></i>
+                        <span>Agents</span>
+                        <span class="menu-arrow arrow_carrot-right"></span>
+                    </a>
+                    <ul class="sub">
+                        <li><a class="" href="/index">ListeAgents</a></li>
+                        <li><a class="" href="/add">AjoutAgent</a></li>
+                    </ul>
+                </li>
+
+            </ul>
+            <!-- sidebar menu end-->
+        </div>
+    </aside>
+    <!--sidebar end-->
+
+    <!--main content start-->
+    <section id="main-content">
+        <section class="wrapper">
+            <div class="row">
+                <div class="col-lg-12">
+                    <ol class="breadcrumb">
+                        <li><i class="fa fa-home"></i><a href="/">Home</a></li>
+                        <li><i class="fa fa-bars"></i>Agents</li>
+                        <li><i class="fa fa-square-o"></i>Liste</li>
+                    </ol>
+                </div>
+            </div>
+            <!-- page start-->
+            <section class="panel">
+                <header class="panel-heading">
+                    Liste Des Agents
+                </header>
+
+                <table class="table table-striped table-advance table-hover">
+                    <thead>
+                    <tr>
+                        <th>Image</th>
+                        <th>numContrat</th>
+                        <th>nom</th>
+                        <th>prenom</th>
+                        <th>cin</th>
+                        <th>login</th>
+                        <th>password</th>
+                        <th>Agence</th>
+                        <th>Actions</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="a:${listeAgents}">
+                        <td>
+                            <a id="photoButton" th:href="@{img/icone.jpg}">
+<img th:src="@{img/icone.jpg}"  width="40" height="40" />
+                            </a>
+                        </td>
+                        <td th:text="${a.getNumContrat()}"></td>
+                        <td th:text="${a.getNom()}"></td>
+                        <td th:text="${a.getPrenom()}"></td>
+                        <td th:text="${a.getCin()}"></td>
+                        <td th:text="${a.getLogin()}"></td>
+                        <td th:text="${a.getPassword()}"></td>
+                        <td><a th:href="@{get-agence(id=${a?.getAgence()?.getNomAgence()})}" th:text="${a?.getAgence()?.getNomAgence()}"></a></td>
+
+
+                        <td>
+                            <a id="deleteButton" th:href="@{delete(id=${a.getSuffixContrat()})}" class="delete" data-toggle="modal" data-target="#deleteModal"><i class="material-icons" title="Delete">&#xE872;</i></a>
+                            <a th:href="@{edit(id=${a.getSuffixContrat()})}" class="edit"><i class="material-icons" title="Edit">&#xE254;</i></a>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </section>
+            <!-- page end-->
+        </section>
+        <div th:if="${listeAgents.totalPages != 1}" class="form-group col-md-11 pagination-centered">
+            <ul class="pagination">
+                <li class="page-item" th:classappend="${listeAgents.number eq 0} ? disabled">
+                    <a class="pageLink" th:href="@{index(page=1)}" ><i class="material-icons">first_page</i></a>
+                </li>
+                <li th:classappend="${listeAgents.number eq 0} ? disabled">
+                    <a class="pageLink" th:href="@{index(page=${listeAgents.number})}"><i class="material-icons">chevron_left</i></a>
+                </li>
+                <li class="page-item" th:classappend="${listeAgents.number + 1 eq page} ? actived"
+                    th:each="page : ${#numbers.sequence(pager.startPage, pager.endPage)}">
+                    <a class="pageLink" th:href="@{index(page=${page})}" th:text="${page}"></a>
+                </li>
+                <li th:classappend="${listeAgents.number + 1 eq listeAgents.totalPages} ? disabled">
+                    <a class="pageLink" th:href="@{index(page=${listeAgents.number + 2})}"><i class="material-icons">chevron_right</i></a>
+                </li>
+                <li th:classappend="${listeAgents.number + 1 eq listeAgents.totalPages} ? disabled">
+                    <a class="pageLink" th:href="@{index(page=${listeAgents.totalPages})}"><i class="material-icons">last_page</i></a>
+                </li>
+
+            </ul>
+        </div><!-- fin total page-->
+    </section>
+    <!--main content end-->
+
+</section>
+
+
+
+<!-- Delete Modal HTML -->
+<div id="deleteModal" class="modal" tabindex="-1" role="dialog" style="display: none;">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Suppression</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>êtes-vous sûr de supprimer?</p>
+            </div>
+            <div class="modal-footer">
+                <a id="confirmDeleteButton" href="" class="btn btn-danger">Oui, supprimer</a>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Modal pour image -->
+
+<div  class="modal fade" tabindex="-1" role="dialog" id="photoModal">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Image</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+              <img id="agentPhoto" src="" width="95%" height="95%" />
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- javascripts -->
+<script   th:src="@{js/jquery.js}"></script>
+<script th:src="@{js/bootstrap.min.js}"></script>
+<!-- nice scroll -->
+<script  th:src="@{js/jquery.scrollTo.min.js}"></script>
+<script th:src="@{js/jquery.nicescroll.js}"></script>
+<!--custome script for all page-->
+<script  th:src="@{js/scripts.js}"></script>
+<script  th:src="@{js/script.js}"></script>
+
+
+</body>
+
+</html>
