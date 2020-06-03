@@ -29,7 +29,7 @@ public class Client {
 	private String email;
 	
 	 @Column(unique = true)
-	private String password;
+	private String passClient;
 	private String sexe;
 	
 	@Temporal(TemporalType.DATE)
@@ -91,12 +91,12 @@ public class Client {
 	}
 
 	public String getPassord() {
-		return password;
+		return passClient;
 	}
 
 	
 	public void setPassord(String passord) {
-		this.password = passord;
+		this.passClient = passord;
 	}
 
 	
@@ -167,7 +167,7 @@ public class Client {
 		this.prenom = prenom;
 		this.cin = cin;
 		this.email = email;
-		this.password = passord;
+		this.passClient= passord;
 		this.sexe = sexe;
 		this.dateNaissance = dateNaissance;
 		this.numTel = numTel;
