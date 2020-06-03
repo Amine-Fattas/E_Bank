@@ -9,7 +9,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import com.ensa.e_banking.dao.AgentRepository;
 import com.ensa.e_banking.entities.Agence;
 import com.ensa.e_banking.entities.Agent;
-import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
+//import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 
 
 @SpringBootApplication
@@ -17,7 +17,7 @@ import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 	"com.ensa.e_banking.interfacesMetier","com.ensa.e_banking.dao","com.ensa.e_banking.security",
 	"com.ensa.e_banking.config"
 	})
-@EnableEurekaClient
+//@EnableEurekaClient
 public class EBankingAppApplication implements CommandLineRunner {
 	@Autowired
 	AgentRepository agentRepository;
