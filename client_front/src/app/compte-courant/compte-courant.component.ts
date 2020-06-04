@@ -3,6 +3,7 @@ import { CompteService } from '../Service/compte.service';
 import { Compte } from '../model/Compte';
 import { Client } from '../model/client';
 import { Agent } from '../model/Agent';
+import { error } from 'protractor';
 
 @Component({
   selector: 'app-compte-courant',
@@ -16,6 +17,7 @@ export class CompteCourantComponent implements OnInit {
   compte: Compte
 
   ngOnInit(): void {
+    // this.getTest();
     this.compte = new Compte()
     this.compte.client = new Client()
     this.compte.agent = new Agent()
@@ -27,7 +29,13 @@ export class CompteCourantComponent implements OnInit {
       error => console.error(error)
     )
   }
-
+  // getTest(){
+  //   this.compteService.test().subscribe(respo =>{
+  //     console.log(respo);
+  //   },error =>{
+  //     console.log(error);
+  //   })
+  // }
 
 
 }

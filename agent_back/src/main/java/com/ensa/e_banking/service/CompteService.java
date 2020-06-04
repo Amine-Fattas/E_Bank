@@ -2,6 +2,7 @@ package com.ensa.e_banking.service;
 
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -11,14 +12,20 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import com.ensa.e_banking.entities.Compte;
 import com.ensa.e_banking.interfacesMetier.CompteMetier;
+import org.springframework.web.server.ResponseStatusException;
+
+import javax.servlet.http.HttpServletRequest;
 
 
 @RestController
-@CrossOrigin("*")
+@CrossOrigin(value = "*",allowedHeaders = "*")
 public class CompteService {
 	
 	@Autowired
 	private CompteMetier compteMetier;
+
+	@Autowired
+	private test test;
 	
 	
 	
@@ -30,6 +37,9 @@ public class CompteService {
 	 
 	 @RequestMapping(value="/compte/CC/{id}",method=RequestMethod.GET)
 	 public Compte getCompte(@PathVariable Long id) {
+//	 	if(!test.check(req)){
+//	 		throw new ResponseStatusException(HttpStatus.NOT_FOUND);
+//		}
 		 return compteMetier.consulterCompte(id);
 	 }
 	 
