@@ -17,8 +17,8 @@ public CompteEpargne() {
 
 }
 
-public CompteEpargne(Client client, Agent agent) {
-	super(client, agent);
+public CompteEpargne(Long numClient, Agent agent) {
+	super(numClient, agent);
 }
 
 

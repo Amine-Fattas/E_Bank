@@ -44,7 +44,7 @@ public class EBankingAppApplication implements CommandLineRunner {
 	@Override
 	public void run(String... args) throws Exception {
 		//Role de l'app agent client
-
+/*
 
 	Agent agent1=new Agent((long) 1,"ikram","makhloufi","EC5681","ikram",bCryptPasswordEncoder.encode("ikram123"),new Agence(1));
 	agentRepository.save(agent1);

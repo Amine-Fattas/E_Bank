@@ -47,11 +47,9 @@ public  class Compte{
 	private Double solde;
 	private boolean etat;
 	private Double fraisOuverture;
-	
-	
-    @ManyToOne
-	@JoinColumn(name="id_client")
-	private Client client;
+
+
+	private Long numClient;
 	
    
    // @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
@@ -127,14 +125,7 @@ public  class Compte{
 	}
 	
 	
-	public Client getClient() {
-		return client;
-	}
 
-
-	public void setClient(Client client) {
-		this.client = client;
-	}
 	
 	public Agent getAgent() {
 		return agent;
@@ -169,11 +160,7 @@ public  class Compte{
 	public Compte() {
 	super();
 	}
-	
 
-
-
-	
 
 
 	public Compte(String rib,Date dateCreation,boolean etat,Double fraisOuverture) {
@@ -185,14 +172,18 @@ public  class Compte{
 	}
 
 
-	public Compte( Client client,Agent agent) {
+	public Compte(Long client,Agent agent) {
 		super();
-		this.client = client;
+		this.numClient = client;
 		this.agent = agent;
 		
 	}
-	
-	
-	
 
+	public Long getNumClient() {
+		return numClient;
+	}
+
+	public void setNumClient(Long numClient) {
+		this.numClient = numClient;
+	}
 }

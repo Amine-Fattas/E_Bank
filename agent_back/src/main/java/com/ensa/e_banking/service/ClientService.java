@@ -31,8 +31,8 @@ public class ClientService {
 	@RequestMapping(value="/agent/ajoutClient",method=RequestMethod.POST)
 	public Client saveClient(@RequestBody Client client) {
 		System.out.println("ajoutC-1");
-		client.setPassord(clientMetier.genererPassword());
-		System.out.println(client.getPassord());
+		client.setPassword(clientMetier.genererPassword());
+		System.out.println(client.getPassword());
 		return clientMetier.saveClient(client);
 	}
 	
@@ -46,7 +46,7 @@ public class ClientService {
 	public void sendMail(@RequestBody Client client) throws MessagingException {
 		System.out.println("email");
 		System.out.println(client);
-		String body="Votre mot de passe est "+client.getPassord()+" Bienvenue chez nous";
+		String body="Votre mot de passe est "+client.getPassword()+" Bienvenue chez nous";
 		this.smtpMailSender.sendMail("nouamanemakhloufi6@gmail.com", "Your Password", body);
 		
 	}
@@ -62,7 +62,7 @@ public class ClientService {
 	public Client update(@PathVariable long id,@RequestBody Client client){
 		System.out.println("edit");
 		client.setId(id);
-	    client.setPassord(clientMetier.getClientById(id).getPassord());
+	    client.setPassword(clientMetier.getClientById(id).getPassword());
 		return clientMetier.upDateClient(id, client);
 	}
 	
