@@ -28,7 +28,7 @@ public class ClientService {
 	@Autowired
 	private SmtpMailSender smtpMailSender;
 	
-	@RequestMapping(value="/client/ajoutClient",method=RequestMethod.POST)
+	@RequestMapping(value="/agent/ajoutClient",method=RequestMethod.POST)
 	public Client saveClient(@RequestBody Client client) {
 		System.out.println("ajoutC-1");
 		client.setPassord(clientMetier.genererPassword());
@@ -42,7 +42,7 @@ public class ClientService {
 		return clientMetier.getClients(page);
 	}*/
 	
-	@RequestMapping("/client/send-email")
+	@RequestMapping("/agent/send-email")
 	public void sendMail(@RequestBody Client client) throws MessagingException {
 		System.out.println("email");
 		System.out.println(client);
@@ -51,14 +51,14 @@ public class ClientService {
 		
 	}
 	
-	@RequestMapping(value="/client/listClient",method=RequestMethod.GET)
+	@RequestMapping(value="/agent/listClient",method=RequestMethod.GET)
 	public List<Client> listeClient() {
 		System.out.println("list");
 		return clientMetier.getClients();
 	}
 
 	
-	@RequestMapping(value="/client/update/{id}",method=RequestMethod.PUT)
+	@RequestMapping(value="/agent/update/{id}",method=RequestMethod.PUT)
 	public Client update(@PathVariable long id,@RequestBody Client client){
 		System.out.println("edit");
 		client.setId(id);
@@ -66,13 +66,13 @@ public class ClientService {
 		return clientMetier.upDateClient(id, client);
 	}
 	
-	@RequestMapping(value="/client/{id}",method=RequestMethod.GET)
+	@RequestMapping(value="/agent/{id}",method=RequestMethod.GET)
 	public Client getContact(@PathVariable Long id){
 		return clientMetier.getClientById(id);
 	}
 	
 
-	@RequestMapping(value="/client/delete/{id}",method=RequestMethod.DELETE)
+	@RequestMapping(value="/agent/delete/{id}",method=RequestMethod.DELETE)
 	public boolean supprimer(@PathVariable long id){
 	  
 		return clientMetier.deleteClient(id);
@@ -86,7 +86,7 @@ public class ClientService {
 		return clientMetier.chercher(mc, page,size);
 	}*/
 	
-	@RequestMapping(value="/client/chercher/{mc}",method=RequestMethod.GET)
+	@RequestMapping(value="/agent/chercher/{mc}",method=RequestMethod.GET)
 	public List<Client> chercher(@PathVariable String mc){
 		System.out.println("cherche");
 		return clientMetier.chercher(mc);}

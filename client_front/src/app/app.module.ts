@@ -9,6 +9,7 @@ import { NemuBarComponent } from './nemu-bar/nemu-bar.component';
 import { ClientService } from './Service/client.service';
 
 import { routingComponents } from './app-routing.module';
+import { LoginComponent } from './login/login.component';
 
 
 
@@ -17,7 +18,8 @@ import { routingComponents } from './app-routing.module';
   declarations: [
     AppComponent,
     NemuBarComponent,
-    routingComponents
+    routingComponents,
+    LoginComponent
   ],
   imports: [
     BrowserModule,

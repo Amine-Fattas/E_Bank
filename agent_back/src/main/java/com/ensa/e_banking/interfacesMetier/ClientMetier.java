@@ -17,9 +17,7 @@ public interface ClientMetier {
     public String genererPassword();
     public Client getClientById(Long id);
     public boolean deleteClient(Long id);
-    
-	
-   
-	
 
+
+    Client getClientByEmail(String email);
 }

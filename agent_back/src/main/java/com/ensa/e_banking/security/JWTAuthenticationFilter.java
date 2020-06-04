@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 
+import net.bytebuddy.implementation.bind.MethodDelegationBinder;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -37,7 +38,8 @@ public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilte
 	@Override
 	public Authentication attemptAuthentication(HttpServletRequest request, HttpServletResponse response)
 			throws AuthenticationException {
-		
+		System.out.println("attempt-agent");
+
 		Agent agent=null;
 		
 		try {
@@ -58,7 +60,7 @@ public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilte
 	@Override
 	protected void successfulAuthentication(HttpServletRequest request, HttpServletResponse response, FilterChain chain,
 			Authentication authResult) throws IOException, ServletException {
-	
+		System.out.println("success-agent");
 		User springUser=(User)authResult.getPrincipal();
 		String jwtToken=Jwts.builder()
 		.setSubject(springUser.getUsername())
@@ -69,6 +71,7 @@ public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilte
 		.compact();
 		response.addHeader(SecurityConstants.HEADER_STRING,
 		SecurityConstants.TOKEN_PREFIX+jwtToken);
+
        
 		
 	}

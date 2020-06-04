@@ -25,10 +25,10 @@ public class Agent {
 	private String cin;
 	private String username;
 	private String password;
-	
-	
-	
-	
+
+
+
+
 
 	@ManyToOne
     @JoinColumn(name="id_agence")
@@ -54,6 +54,8 @@ public class Agent {
 		this.password = password;
 		
 	}
+
+
 
 
 	public String getUsername() {

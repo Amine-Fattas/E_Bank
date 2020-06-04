@@ -11,25 +11,27 @@ export class CompteService {
   _url = "http://localhost:8081/compte/CC/"
 
   getComptes(){
-    return this.http.get("http://localhost:8081/compte/listCompteActive");  
+    return this.http.get("http://localhost:8081/agent/listCompteActive");  
   }
 
   chercherCompteA(motCle: String){
-  return this.http.get("http://localhost:8081/compte/chercherA?mc="+motCle);
+  return this.http.get("http://localhost:8081/agent/chercherA?mc="+motCle);
    }
 
    chercherCompteD(motCle: String){
-    return this.http.get("http://localhost:8081/compte/chercherD?mc="+motCle);
+    return this.http.get("http://localhost:8081/agent/chercherD?mc="+motCle);
      }
 
    desactiverCompte(compte: Compte){
-    return this.http.put("http://localhost:8081/compte/desactiverCompte",compte);
+    return this.http.put("http://localhost:8081/agent/desactiverCompte",compte);
      }
+     
     getCompteDesactive(){
-      return this.http.get("http://localhost:8081/compte/listCompteDesactive");
+      return this.http.get("http://localhost:8081/agent/listCompteDesactive");
     }
+
     saveCompte(compte: Compte) {
-      return this.http.post<Compte>("http://localhost:8081/compte/saveCompte",compte);
+      return this.http.post<Compte>("http://localhost:8081/agent/saveCompte",compte);
     }
 
     getCompteByRib(rib:String){

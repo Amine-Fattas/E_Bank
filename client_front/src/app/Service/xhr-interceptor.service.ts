@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
-import { HttpInterceptor, HttpRequest, HttpHandler,HttpHeaders } from '@angular/common/http';
+import { HttpInterceptor, HttpRequest, HttpHandler } from '@angular/common/http';
 
-
-@Injectable()
-export class XhrInterceptor implements HttpInterceptor{
+@Injectable({
+  providedIn: 'root'
+})
+export class XhrInterceptorService implements HttpInterceptor{
   private jwtToken:string;
 
   constructor(){}
@@ -21,11 +22,12 @@ export class XhrInterceptor implements HttpInterceptor{
     this.jwtToken=localStorage.getItem('token');
      console.log(this.jwtToken);
 
-     
-    const xhr=req.clone({ setHeaders: { Authorization: ` ${this.jwtToken}`} });
+ 
+    const xhr=req.clone({ setHeaders: { Authorization: ` ${this.jwtToken}` } });
 
     return next.handle(xhr);
   }
   }
 
+  
 }

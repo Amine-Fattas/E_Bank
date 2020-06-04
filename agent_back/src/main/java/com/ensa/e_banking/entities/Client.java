@@ -2,16 +2,8 @@ package com.ensa.e_banking.entities;
 
 import java.util.Collection;
 import java.util.Date;
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
+import javax.persistence.*;
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 
@@ -27,22 +19,35 @@ public class Client {
 	@Column(unique = true)
 	private String cin;
 	private String email;
-	
+
 	 @Column(unique = true)
 	private String passClient;
 	private String sexe;
-	
+
 	@Temporal(TemporalType.DATE)
 	private Date dateNaissance;
 	private String numTel;
 	//private String profession;
-	
-	
+
+
+
 	@OneToMany(mappedBy="client",cascade = CascadeType.ALL)
 	private Collection<Compte> comptes;
-    
-	
-	public Long getId() {
+
+    public Client(String nom, String prenom, String cin, String email, String password, String sexe, Date date, String numTel) {
+		super();
+		this.nom = nom;
+		this.prenom = prenom;
+		this.cin = cin;
+		this.email = email;
+		this.passClient= password;
+		this.sexe = sexe;
+		this.dateNaissance = dateNaissance;
+		this.numTel = numTel;
+    }
+
+
+    public Long getId() {
 		return id;
 	}
 
@@ -160,21 +165,10 @@ public class Client {
 		this.id = id;
 	}
 
-	public Client(String nom, String prenom, String cin, String email, String passord, String sexe, Date dateNaissance,
-			String numTel) {
-		super();
-		this.nom = nom;
-		this.prenom = prenom;
-		this.cin = cin;
-		this.email = email;
-		this.passClient= passord;
-		this.sexe = sexe;
-		this.dateNaissance = dateNaissance;
-		this.numTel = numTel;
-	}
-	
 
-	
 
-    
+
+
+
+
 }

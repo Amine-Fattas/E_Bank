@@ -1,10 +1,13 @@
 package com.ensa.e_banking.security;
 
 import java.util.ArrayList;
+import java.util.Collection;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
 
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -24,6 +27,7 @@ public class AppUserDetailsService implements UserDetailsService {
 		
 		Agent agent = agentRepository.findByUsername(username);
 		if(agent==null) throw new UsernameNotFoundException(username);
+
 		
 		return new User(agent.getUsername(),agent.getPassword(),new ArrayList<>());
 		}
