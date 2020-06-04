@@ -83,6 +83,12 @@ public class ClientMetierImp implements ClientMetier{
 	}
 
 	@Override
+	public Client getClientByEmail(String email) {
+
+		return clientRepository.findByEmail(email);
+	}
+
+	@Override
 	public List<Client> getClients() {
 		
 		return clientRepository.findAll();

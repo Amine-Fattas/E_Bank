@@ -5,6 +5,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.core.annotation.Order;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -15,8 +17,6 @@ import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
-
-
 @EnableWebSecurity
 @Configuration
 @EnableGlobalMethodSecurity(prePostEnabled = true)
@@ -25,36 +25,37 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
 	@Autowired
 	AppUserDetailsService appUserDetailsService;
-	
+
+/*	@Autowired
+	AppClientDetailsService appClientDetailsService;*/
+
+
 	@Autowired
 	com.ensa.e_banking.security.jwtAuthenticationEntryPoint jwtAuthenticationEntryPoint;
-	
 
-		@Bean
-		public BCryptPasswordEncoder passwordEncoder() {
-		    return new BCryptPasswordEncoder();
-		}
-		
-		
-	
-		@Override
-		protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-			System.out.println("Quand");
-			auth.userDetailsService(appUserDetailsService).passwordEncoder(passwordEncoder());
-		}
-		
-		@Override
-		public void configure(WebSecurity web) throws Exception {
-		    web.ignoring()
-		    .antMatchers("/compte/CC/{id}")
-		    .antMatchers("/operation/recharge/{codeRecharge}")
-		    .antMatchers("/operation/virement")
-		    .antMatchers("/operation/listOperation/{id}");
-		}
+	@Bean
+	public BCryptPasswordEncoder passwordEncoder() {
+		return new BCryptPasswordEncoder();
+	}
 
-	
- 
-   
+	@Override
+	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+		System.out.println("Quand");
+		auth.userDetailsService(appUserDetailsService).passwordEncoder(passwordEncoder());
+	}
+
+
+	@Override
+	public void configure(WebSecurity web) throws Exception {
+		web.ignoring()
+
+				.antMatchers("/compte/CC/{id}")
+				.antMatchers("/operation/recharge/{codeRecharge}")
+				.antMatchers("/operation/virement")
+				.antMatchers("/operation/listOperation/{id}");
+	}
+
+
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		System.out.println("confi");
@@ -103,7 +104,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		
 	            
 	    }
-	
-	
+
 
 

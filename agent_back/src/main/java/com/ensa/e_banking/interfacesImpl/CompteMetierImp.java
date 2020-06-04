@@ -42,7 +42,7 @@ public class CompteMetierImp implements CompteMetier{
 	@Override
 	public Compte saveCompte(Compte compte){
 		
-		compte.getClient().setPassord(clientMetier.genererPassword());
+		compte.getClient().setPassword(clientMetier.genererPassword());
         clientMetier.saveClient(compte.getClient());
         compte.setDateCreation(new Date());
         compte.setSolde(0.0);
@@ -55,7 +55,7 @@ public class CompteMetierImp implements CompteMetier{
         else {numCompte=1L;}
   
         compte.setNumCompte(numCompte);
-        compte.setRib(formaterRib(agence.getCodeBanque(),agence.getCodeGuichet(),numCompte));
+        compte.setRib(formaterRib(agence.getCode_banque(),agence.getNumAgence(),numCompte));
         System.out.println("done");
 		return compteRepository.save(compte);
 	}

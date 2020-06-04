@@ -7,12 +7,17 @@ import { VirementInterneComponent } from './virement-interne/virement-interne.co
 import { RechargeComponent } from './recharge/recharge.component';
 import { CompteCourantComponent } from './compte-courant/compte-courant.component';
 import { CompteEpargneComponent } from './compte-epargne/compte-epargne.component';
+import { NemuBarComponent } from './nemu-bar/nemu-bar.component';
+import { LoginComponent } from './login/login.component';
 
 
 
 
 const routes: Routes = [
-  { path: "", redirectTo: "/compte/courant", pathMatch: "full"},
+ /* { path: "", redirectTo: "/compte/courant", pathMatch: "full"},*/
+  { path: '', redirectTo: '/login', pathMatch: 'full' }, 
+  { path: 'login',component:LoginComponent},
+  { path: "acceuil", component:NemuBarComponent},
   { path: "compte", 
       children: [
         { path: "", redirectTo: "/compte/courant", pathMatch: "full"},

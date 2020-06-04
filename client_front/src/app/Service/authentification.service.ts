@@ -1,17 +1,19 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Agent } from '../model/Agent';
-
+import { Client } from '../model/client';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthentificationService {
-  
-  private host:string="http://localhost:8081";
+
   constructor(private http:HttpClient) { }
 
+  private host:string="http://localhost:8081";
+ 
+
   login(user){
+   
     return  this.http.post(this.host+"/login",user,{'observe':'response'});
   }
 
@@ -19,17 +21,8 @@ export class AuthentificationService {
     localStorage.setItem('token',jwt);
   }
 
-  currentAgent(){
+  currentClient(){
    
-   return this.http.get<Agent>(this.host+"/agent/currentAgent");
+   return this.http.get<Client>(this.host+"/client/currentClient");
   }
-
 }
-
-
-
-
-    
-
-
-

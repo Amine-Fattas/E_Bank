@@ -9,31 +9,31 @@ export class ClientService {
   constructor(private http:HttpClient){}
 
   getClients(){
-    return this.http.get("http://localhost:8081/client/listClient");
+    return this.http.get("http://localhost:8081/agent/listClient");
 }
 
  chercherClient(motCle:String){
-  return this.http.get("http://localhost:8081/client/chercher/"+motCle);
+  return this.http.get("http://localhost:8081/agent/chercher/"+motCle);
 }
 
 getClient(id: number) {
-  return this.http.get<Client>("http://localhost:8081/client/"+id);
+  return this.http.get<Client>("http://localhost:8081/agent/"+id);
 }
 
 updateClient(client: Client) {
-  return this.http.put("http://localhost:8081/client/update/"+client.id,client);
+  return this.http.put("http://localhost:8081/agent/update/"+client.id,client);
 }
 
 deleteClient(id: number) {
-  return this.http.delete("http://localhost:8081/client/delete/"+id);
+  return this.http.delete("http://localhost:8081/agent/delete/"+id);
 }
 
 saveClient(client: Client) {
-  return this.http.post("http://localhost:8081/client/ajoutClient",client);
+  return this.http.post("http://localhost:8081/agent/ajoutClient",client);
 }
 sendEmailToClient(client: Client) {
   console.log("email")
-  return this.http.post("http://localhost:8081/client/send-email",client);
+  return this.http.post("http://localhost:8081/agent/send-email",client);
 }
 
 }

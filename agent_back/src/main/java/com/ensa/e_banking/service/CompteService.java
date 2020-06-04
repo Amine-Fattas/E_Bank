@@ -29,7 +29,7 @@ public class CompteService {
 	
 	
 	
-	 @RequestMapping(value="/compte/saveCompte",method=RequestMethod.POST)
+	 @RequestMapping(value="/agent/saveCompte",method=RequestMethod.POST)
 	 public Compte saveCompte(@RequestBody Compte compte) {
 		 System.out.println("ajout");
 		 return compteMetier.saveCompte(compte);
@@ -59,25 +59,25 @@ public class CompteService {
 			return compteMetier.getComptes(page);
 		}*/
 	 
-	 @RequestMapping(value="/compte/listCompteActive",method=RequestMethod.GET)
+	 @RequestMapping(value="/agent/listCompteActive",method=RequestMethod.GET)
 		public 	List<Compte> listeCompteActive() {
 			return compteMetier.getCompteActive();
 		}
-	 @RequestMapping(value="/compte/listCompteDesactive",method=RequestMethod.GET)
+	 @RequestMapping(value="/agent/listCompteDesactive",method=RequestMethod.GET)
 		public 	List<Compte> listeCompteDesactive() {
 			return compteMetier.getCompteDesactive();
 		}
 	 
-	@RequestMapping(value="/compte/chercherA",method=RequestMethod.GET)
+	@RequestMapping(value="/agent/chercherA",method=RequestMethod.GET)
 		public List<Compte> chercherA(@RequestParam(name="mc",defaultValue="") String mc){
 			return compteMetier.chercherA(mc);
 		}
-	@RequestMapping(value="/compte/chercherD",method=RequestMethod.GET)
+	@RequestMapping(value="/agent/chercherD",method=RequestMethod.GET)
 	public List<Compte> chercherD(@RequestParam(name="mc",defaultValue="") String mc){
 		return compteMetier.chercherD(mc);
 	}
 	
-	 @RequestMapping(value="/compte/desactiverCompte",method=RequestMethod.PUT)
+	 @RequestMapping(value="/agent/desactiverCompte",method=RequestMethod.PUT)
 		public 	Compte desactiverCompte(@RequestBody Compte compte) {
 			return compteMetier.DesactiverCompte(compte);
 		}

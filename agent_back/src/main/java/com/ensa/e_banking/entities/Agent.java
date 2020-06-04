@@ -25,18 +25,13 @@ public class Agent {
 	private String cin;
 	private String username;
 	private String password;
-	
-	
-	
-	
+	private String numContrat;
 
-	@ManyToOne
-    @JoinColumn(name="id_agence")
-	private Agence agence;
+	private int numAgence;
 	
 
    
-	public Agent(Long id, String nom, String prenom, String cin, String username, String password, Agence agence) {
+	public Agent(Long id, String nom, String prenom, String cin, String username, String password, int numAgence) {
 		super();
 		this.id = id;
 		this.nom = nom;
@@ -44,7 +39,7 @@ public class Agent {
 		this.cin = cin;
 		this.username = username;
 		this.password = password;
-		this.agence = agence;
+		this.numAgence=numAgence;
 	}
 
 
@@ -54,6 +49,8 @@ public class Agent {
 		this.password = password;
 		
 	}
+
+
 
 
 	public String getUsername() {
@@ -121,15 +118,6 @@ public class Agent {
 		this.cin = cin;
 	}
 
-   @JsonIgnore
-	public Agence getAgence() {
-		return agence;
-	}
-
-
-	public void setAgence(Agence agence) {
-		this.agence = agence;
-	}
 
 
 
@@ -140,13 +128,13 @@ public class Agent {
 
 
 
-	public Agent(Long id, String nom, String prenom, String cin, Agence agence) {
+	public Agent(Long id, String nom, String prenom, String cin, int numAgence) {
 		super();
 		this.id = id;
 		this.nom = nom;
 		this.prenom = prenom;
 		this.cin = cin;
-		this.agence = agence;
+		this.numAgence = numAgence;
 	}
 
 
@@ -156,9 +144,19 @@ public class Agent {
 		this.id = id;
 	}
 
+	public String getNumContrat() {
+		return numContrat;
+	}
 
+	public void setNumContrat(String numContrat) {
+		this.numContrat = numContrat;
+	}
 
-	
-	
-    
+	public int getNumAgence() {
+		return numAgence;
+	}
+
+	public void setNumAgence(int numAgence) {
+		this.numAgence = numAgence;
+	}
 }

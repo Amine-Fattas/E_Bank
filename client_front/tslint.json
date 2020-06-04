@@ -1,7 +1,7 @@
 {
-  "extends": "tslint:recommended",
+ /* "extends": "tslint:recommended",*/
   "rules": {
-    "array-type": false,
+    /*"array-type": false,
     "arrow-parens": false,
     "deprecation": {
       "severity": "warning"
@@ -87,5 +87,6 @@
   },
   "rulesDirectory": [
     "codelyzer"
-  ]
+  ]*/
+  }
 }

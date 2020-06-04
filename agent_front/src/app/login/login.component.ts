@@ -69,12 +69,16 @@ export var currentAgent: Agent*/
       this.router.navigateByUrl('/acceuil');
     });*/
     onLogin(user) {
+      console.log("user1")
        this.authService.login(user)
       .subscribe(resp=>{
+        console.log("user2")
+        console.log(resp.headers)
         let jwt = resp.headers.get('authorization');
         this.authService.saveToken(jwt);
         this.router.navigateByUrl('/acceuil');
-        this.authService.currentAgent().subscribe(resp => {this.agentService.changeAgent(resp);})
+       this.authService.currentAgent().subscribe(resp => {this.agentService.changeAgent(resp);
+        console.log(resp);})
       }
         ),
         err => {this.router.navigateByUrl('/login');}
