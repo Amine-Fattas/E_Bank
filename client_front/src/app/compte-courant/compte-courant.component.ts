@@ -3,6 +3,8 @@ import { CompteService } from '../Service/compte.service';
 import { Compte } from '../model/Compte';
 import { Client } from '../model/client';
 import { Agent } from '../model/Agent';
+import { error } from 'protractor';
+import { AuthentificationService } from '../Service/authentification.service';
 
 @Component({
   selector: 'app-compte-courant',
@@ -11,23 +13,39 @@ import { Agent } from '../model/Agent';
 })
 export class CompteCourantComponent implements OnInit {
 
-  constructor(private compteService: CompteService) { }
+  constructor(private _compteService: CompteService,
+              private _authentificationService: AuthentificationService) { }
 
   compte: Compte
+  client: Client
 
   ngOnInit(): void {
+    // this.getTest();
     this.compte = new Compte()
     this.compte.client = new Client()
     this.compte.agent = new Agent()
-    this.compteService.getCurrentCompte().subscribe(
-      data => {
-        this.compte = data
-        console.log(this.compte)
-      },
-      error => console.error(error)
+    this._authentificationService.currentClient().subscribe(
+      client => {
+        this.client = client;
+        console.log(client);
+        this._compteService.getCompteByIdClient(this.client.id).subscribe(
+          data => {
+            this.compte = data
+            console.log(this.compte)
+            this.compte.client = this.client
+          },
+          error => console.error(error)
+        )
+      }
     )
   }
-
+  // getTest(){
+  //   this.compteService.test().subscribe(respo =>{
+  //     console.log(respo);
+  //   },error =>{
+  //     console.log(error);
+  //   })
+  // }
 
 
 }

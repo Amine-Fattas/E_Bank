@@ -48,33 +48,61 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	@Override
 	public void configure(WebSecurity web) throws Exception {
 		web.ignoring()
-
-				.antMatchers("/compte/CC/{id}")
 				.antMatchers("/operation/recharge/{codeRecharge}")
 				.antMatchers("/operation/virement")
-				.antMatchers("/operation/listOperation/{id}");
+				.antMatchers("/operation/listOperation/{id}")
+				.antMatchers("/compte/CC/client/{id}");
 	}
 
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
+		System.out.println("confi");
 
-		http.cors();
+	        /*  http.authorizeRequests().anyRequest().fullyAuthenticated().and().httpBasic()
+	          .and()
+	          .logout().permitAll();*/
+//		http.cors().disable();
+				http.csrf().disable()
+				 .authorizeRequests().anyRequest().authenticated()
+				.and().sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+		 .and()
+		 /*.antMatchers("/login")*/
 
-		http.csrf().disable()
+//		 .anyRequest()
+//		 .permitAll()
 
-				.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
-				.and()
-				.authorizeRequests()
+//		 .authenticated()
+		 .addFilter(new JWTAuthenticationFilter(authenticationManager()))
+		 .addFilterBefore(new JWTAuthorizationFilter(),
+		 UsernamePasswordAuthenticationFilter.class);
+
+		/* http.csrf().disable()
+		// don't create session
+		
+		 .authorizeRequests()
+         .antMatchers("/login")
+         .permitAll()
+         .anyRequest()
+         .authenticated()
+		  .and()
+		// make sure we use stateless session; session won't be used to
+		// store user's state.
+		.exceptionHandling().authenticationEntryPoint(jwtAuthenticationEntryPoint).and().sessionManagement()
+		.sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+        .and()
+		.addFilter(new JWTAuthenticationFilter(authenticationManager()))
+		.addFilterBefore(new JWTAuthorizationFilter(),
+				UsernamePasswordAuthenticationFilter.class);
+
+		*/
+		}
+	          
+	    
+	          
+		
+	            
+	    }
 
 
-				.anyRequest()
-
-				.authenticated()
-				.and()
-				.addFilter(new JWTAuthenticationFilter(authenticationManager()))
-				.addFilterBefore(new JWTAuthorizationFilter(),
-						UsernamePasswordAuthenticationFilter.class);
-	}
-}
 

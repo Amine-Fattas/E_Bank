@@ -32,6 +32,9 @@ public interface CompteRepository extends JpaRepository<Compte,Long> {
 	@Query(value ="SELECT * FROM compte where rib=:x",nativeQuery=true)
 	Compte findCompteByRib(@Param("x") String rib);
 
+	@Query(value ="SELECT * FROM compte where id_client=:x",nativeQuery=true)
+	Compte findCompteByIdClient(@Param("x") Long id_client);
+
 	
 
 	

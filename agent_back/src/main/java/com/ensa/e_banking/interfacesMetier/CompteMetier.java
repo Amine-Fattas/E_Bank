@@ -19,6 +19,7 @@ public interface CompteMetier {
 	  public List<Compte> getCompteDesactive();
       public List<Compte> chercherD(String mc);
       public Compte getCompteByRib(String rib);
+      public Compte getCompteByIdClient(Long idClient);
      
       
 	
