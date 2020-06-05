@@ -4,7 +4,7 @@ import { HttpInterceptor, HttpRequest, HttpHandler } from '@angular/common/http'
 @Injectable({
   providedIn: 'root'
 })
-export class XhrInterceptorService implements HttpInterceptor{
+export class XhrInterceptor implements HttpInterceptor{
   private jwtToken:string;
 
   constructor(){}
