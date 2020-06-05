@@ -3,19 +3,7 @@ package com.ensa.e_banking.entities;
 
 import java.util.Collection;
 import java.util.Date;
-import javax.persistence.CascadeType;
-import javax.persistence.DiscriminatorColumn;
-import javax.persistence.DiscriminatorType;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Inheritance;
-import javax.persistence.InheritanceType;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
+import javax.persistence.*;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
@@ -48,8 +36,8 @@ public  class Compte{
 	private boolean etat;
 	private Double fraisOuverture;
 
-
-	private Long numClient;
+    @Transient
+	private Client Client;
 	
    
    // @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
@@ -183,7 +171,7 @@ public  class Compte{
 		return numClient;
 	}
 
-	public void setNumClient(Long numClient) {
-		this.numClient = numClient;
+	public void setNumClient(Client client) {
+		this.client =client;
 	}
 }
