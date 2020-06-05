@@ -4,6 +4,8 @@ import { OperationService } from '../Service/operation.service';
 import { Compte } from '../model/Compte';
 import { Agent } from '../model/Agent';
 import { CompteService } from '../Service/compte.service';
+import { AuthentificationService } from '../Service/authentification.service';
+import { Client } from '../model/client';
 
 @Component({
   selector: 'app-recharge',
@@ -15,21 +17,32 @@ export class RechargeComponent implements OnInit {
   newOperation: Operation
   compte: Compte
   codeRecharge: CodeRecharge
+  client: Client
 
 
   constructor(private _operationService: OperationService,
-              private _compteService: CompteService) { }
+              private _compteService: CompteService,
+              private _authentificationService: AuthentificationService) { }
 
   ngOnInit(): void {
     this.init()
     this.codeRecharge = new CodeRecharge()
-    this._compteService.getCurrentCompte().subscribe(
-      data => {
-        this.compte = data
-        console.log(this.compte)
-      },
-      error => console.error(error)
+    this._authentificationService.currentClient().subscribe(
+      client => {
+        this.client = client;
+        console.log(client);
+        this._compteService.getCompteByIdClient(this.client.id).subscribe(
+          data => {
+            this.compte = data
+            console.log(this.compte)
+            this.compte.client = this.client
+          },
+          error => console.error(error)
+        )
+      }
     )
+
+    
 
   }
 

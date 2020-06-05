@@ -22,6 +22,6 @@ export class AuthentificationService {
   }
 
   currentClient(){
-    return this.http.get<Client>(this.host+"/client/currentClient");
+   return this.http.get<Client>(this.host+"/client/currentClient");
   }
 }

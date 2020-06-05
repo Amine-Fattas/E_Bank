@@ -11,6 +11,7 @@ export class Compte{
     public fraisOuverture:number=0;
     public agent:Agent=new Agent();
     public client:Client=new Client();
+    public idClient: number= 0;
     
     constructor(){}
     set agentC(value) {

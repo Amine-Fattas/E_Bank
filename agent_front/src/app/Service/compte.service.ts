@@ -33,6 +33,7 @@ export class CompteService {
     saveCompte(compte: Compte) {
       return this.http.post<Compte>("http://localhost:8081/agent/saveCompte",compte);
     }
+    
 
     getCompteByRib(rib:String){
       return this.http.get<Compte>(this._url+"rib/"+rib)

@@ -36,8 +36,13 @@ public  class Compte{
 	private boolean etat;
 	private Double fraisOuverture;
 
-    @Transient
-	private Client Client;
+
+
+	@Transient
+	private Client client;
+
+	private Long idClient;
+
 	
    
    // @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
@@ -52,7 +57,32 @@ public  class Compte{
 	@OneToMany(mappedBy="compteDestination",cascade = CascadeType.ALL)
 	private Collection<Operation> compteDestination;
 	
-	
+//	Constructors
+
+	public Compte() {
+		super();
+	}
+
+
+
+	public Compte(String rib,Date dateCreation,boolean etat,Double fraisOuverture) {
+		super();
+		this.rib = rib;
+		this.dateCreation = dateCreation;
+		this.etat = etat;
+		this.fraisOuverture = fraisOuverture;
+	}
+
+
+	public Compte(Client client,Agent agent) {
+		super();
+		this.client = client;
+		this.agent = agent;
+
+	}
+
+
+//	Getters & Setter
 
 	public Long getNumCompte() {
 		return numCompte;
@@ -145,33 +175,23 @@ public  class Compte{
 	}
 
 	
-	public Compte() {
-	super();
+
+
+	public Client getClient() {
+		return client;
+	}
+
+	public void setClient(Client client) {
+		this.client = client;
+	}
+
+	public Long getIdClient() {
+		return idClient;
 	}
 
 
+	public void setIdClient(Long idClient) {
+		this.idClient = idClient;
 
-	public Compte(String rib,Date dateCreation,boolean etat,Double fraisOuverture) {
-		super();
-		this.rib = rib;
-		this.dateCreation = dateCreation;
-		this.etat = etat;
-		this.fraisOuverture = fraisOuverture;
-	}
-
-
-	public Compte(Long client,Agent agent) {
-		super();
-		this.numClient = client;
-		this.agent = agent;
-		
-	}
-
-	public Long getNumClient() {
-		return numClient;
-	}
-
-	public void setNumClient(Client client) {
-		this.client =client;
 	}
 }

@@ -10,11 +10,11 @@ import org.springframework.data.repository.query.Param;
 
 import com.ensa.e_banking.entities.Client;
 
-
-public interface ClientRepository extends JpaRepository<Client,Long>{
- Client findByEmail(String email);
-
- @Query("select c from Client c  where c.nom like :x or c.prenom like :x ")	
-public List<Client> chercher(@Param("x") String mc);
-
-}
+//
+//public interface ClientRepository extends JpaRepository<Client,Long>{
+// Client findByEmail(String email);
+//
+// @Query("select c from Client c  where c.nom like :x or c.prenom like :x ")
+//public List<Client> chercher(@Param("x") String mc);
+//
+//}
