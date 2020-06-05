@@ -1,14 +1,13 @@
-package com.ensa.e_banking.entities;
+package com.ensa.entities;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-@Entity
-@Table
+
 public class Recharge {
 	
-	@Id
+
 	private Long codeRecharge;
 	private Double valeur;
 	

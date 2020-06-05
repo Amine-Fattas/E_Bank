@@ -1,4 +1,4 @@
-package com.ensa.e_banking.entities;
+package com.ensa.entities;
 
 import java.util.Date;
 
@@ -23,46 +23,32 @@ import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.annotation.JsonSubTypes.Type;
 
-@Entity
-@Table
+//@Entity
 //@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 //@DiscriminatorColumn(name="type_operation",discriminatorType = DiscriminatorType.STRING,length=8)
-//
-//
-//@JsonTypeInfo(use=JsonTypeInfo.Id.NAME,include=JsonTypeInfo.As.PROPERTY,property="typeOperation")
-//@JsonSubTypes({
-//		@Type(name="virement",value=Virement.class),
-//		@Type(name="retrait",value=Retrait.class)
-//})
+
+
+
 public class Operation {
 	
 	
-//	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Id
 	private Long numOperation;
 	private String typeOperation;
-	@Temporal(TemporalType.DATE)
 	private Date dateOperation;
 	private double montant;
   
-	@ManyToOne
-	@JoinColumn(name="id_Source")
+	
 	private Compte compteSource;
 	
 	
-	@ManyToOne
-	@JoinColumn(name="id_Destination")
+	
 	private Compte compteDestination;
-	//dans la banque c'est l'agent qui effectue les operation
+	
    
-	@ManyToOne
-	@JoinColumn(name="id_agent")
+	
 	private Agent agent;
 	
-	/*@ManyToOne
-	@JoinColumn(name="id_client")
-	private Client client;*/
-
+	
 	
 	public Long getNumOperation() {
 		return numOperation;
@@ -71,16 +57,6 @@ public class Operation {
 	public void setNumOperation(Long numOperation) {
 		this.numOperation = numOperation;
 	}
-	
-	
-	public String getTypeOperation() {
-		return typeOperation;
-	}
-
-	public void setTypeOperation(String typeOperation) {
-		this.typeOperation = typeOperation;
-	}
-	
 
 	public Date getDateOperation() {
 		return dateOperation;
@@ -135,7 +111,15 @@ public class Operation {
 	}
 
 	
+	public String getTypeOperation() {
+		return typeOperation;
+	}
+
 	
+	public void setTypeOperation(String typeOperation) {
+		this.typeOperation = typeOperation;
+	}
+
 	public Compte getCompteSource() {
 		return compteSource;
 	}
@@ -156,21 +140,25 @@ public class Operation {
 	}
 
 
+	
 
-
-	public Operation(Long numOperation, String typeOperation, Date dateOperation, double montant, Compte compteSource,
+	public Operation(Long numOperation, Date dateOperation, double montant, Compte compteSource,
 			Compte compteDestination, Agent agent) {
 		super();
 		this.numOperation = numOperation;
-		this.typeOperation = typeOperation;
 		this.dateOperation = dateOperation;
 		this.montant = montant;
 		this.compteSource = compteSource;
 		this.compteDestination = compteDestination;
 		this.agent = agent;
+		
 	}
-	
-	
+
+	/*public Operation(Compte compte, Agent agent) {
+		super();
+		this.compte = compte;
+		this.agent = agent;
+	}*/
 	
 
 	

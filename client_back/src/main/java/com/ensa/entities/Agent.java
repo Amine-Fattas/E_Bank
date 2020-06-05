@@ -1,4 +1,4 @@
-package com.ensa.e_banking.entities;
+package com.ensa.entities;
 
 import java.util.Collection;
 
@@ -14,29 +14,42 @@ import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
-@Entity
-@Table
+
 public class Agent {
-	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long id;
 	private String nom;
 	private String prenom;
 	private String cin;
 	private String username;
 	private String password;
-	//pour activer desactiver un agent
-	private boolean enable;
-	
+	private String numContrat;
+
+
+
+	private Agence agence;
 	
 
    
+	public Agent(Long id, String nom, String prenom, String cin, String username, String password, Agence agence) {
+		super();
+		this.id = id;
+		this.nom = nom;
+		this.prenom = prenom;
+		this.cin = cin;
+		this.username = username;
+		this.password = password;
+		this.agence = agence;
+	}
+
+
 	public Agent(String username, String password, boolean enable) {
 		super();
 		this.username = username;
 		this.password = password;
-		this.enable = enable;
+		
 	}
+
+
 
 
 	public String getUsername() {
@@ -59,24 +72,6 @@ public class Agent {
 		this.password = password;
 	}
 
-
-
-	
-	public boolean isEnable() {
-		return enable;
-	}
-
-
-
-		public void setEnable(boolean enable) {
-		this.enable = enable;
-	}
-
-
-
-	@ManyToOne
-    @JoinColumn(name="id_agence")
-	private Agence agence;
 
 
 	

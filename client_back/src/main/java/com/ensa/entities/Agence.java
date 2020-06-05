@@ -1,7 +1,8 @@
-package com.ensa.e_banking.entities;
+package com.ensa.entities;
 
 import java.util.Collection;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -12,30 +13,27 @@ import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
-@Entity
-@Table
+
 public class Agence {
-	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	
     //il faut avoir des taux predefini comme pour le taux de virement
 
-	private int numAgence;
+	private int numAgence;//code guichet
 	
 	//nom Banque A,J = 1 ; B,K,S = 2 ; C,L,T = 3 ; D,M,U = 4 ; E,N,V = 5 F,O,W = 6 ; G,P,X = 7 ; H,Q,Y = 8 ; I,R,Z = 9
 	
 	private String nomAgence;
 	// 5 chiffre
-	private int codeBanque=30045;
-	// 5 chiffre
-	private int codeGuichet=23415;
+	private int code_banque=30045;
+	
+	
 	
 	private String adresse;
 	private String ville;
+	private String tel;
 	
 	
-	@OneToMany(mappedBy="agence",fetch=FetchType.LAZY)
-	private Collection<Agent> agent;
+	
 
 	public int getNumAgence() {
 		return numAgence;
@@ -56,23 +54,14 @@ public class Agence {
 
 	
 	public int getCodeBanque() {
-		return codeBanque;
+		return code_banque;
 	}
 
 	public void setCodeBanque(int codeBanque) {
-		this.codeBanque = codeBanque;
+		this.code_banque = codeBanque;
 	}
 
-	public int getCodeGuichet() {
-		return codeGuichet;
-	}
 
-	
-	public void setCodeGuichet(int codeGuichet) {
-		this.codeGuichet = codeGuichet;
-	}
-
-	
 	public String getAdresse() {
 		return adresse;
 	}
@@ -92,14 +81,7 @@ public class Agence {
 		this.ville = ville;
 	}
 
-	@JsonIgnore
-	public Collection<Agent> getAgent() {
-		return agent;
-	}
-
-	public void setAgent(Collection<Agent> agent) {
-		this.agent = agent;
-	}
+	
 
 
 	public Agence() {
@@ -108,16 +90,22 @@ public class Agence {
 	}
 
 
-	public Agence(int numAgence, String nomAgence, int codeBanque, int codeGuichet, String adresse, String ville
+	public Agence(int numAgence, String nomAgence, int codeBanque,String adresse, String ville
 			) {
 		super();
 		this.numAgence = numAgence;
 		this.nomAgence = nomAgence;
-		this.codeBanque = codeBanque;
-		this.codeGuichet = codeGuichet;
+		this.code_banque = codeBanque;
+		
 		this.adresse = adresse;
 		this.ville = ville;
 		
+	}
+
+
+	public Agence(int numAgence) {
+		super();
+		this.numAgence = numAgence;
 	}
 	
 	
