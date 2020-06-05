@@ -159,10 +159,17 @@ public class Operation {
 		this.compte = compte;
 		this.agent = agent;
 	}*/
-	
 
-	
-	
-	
-   
+	@Override
+	public String toString() {
+		return "Operation{" +
+				"numOperation=" + numOperation +
+				", typeOperation='" + typeOperation + '\'' +
+				", dateOperation=" + dateOperation +
+				", montant=" + montant +
+				", compteSource=" + compteSource +
+				", compteDestination=" + compteDestination +
+				", agent=" + agent +
+				'}';
+	}
 }

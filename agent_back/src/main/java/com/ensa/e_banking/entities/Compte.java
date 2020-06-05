@@ -3,19 +3,7 @@ package com.ensa.e_banking.entities;
 
 import java.util.Collection;
 import java.util.Date;
-import javax.persistence.CascadeType;
-import javax.persistence.DiscriminatorColumn;
-import javax.persistence.DiscriminatorType;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Inheritance;
-import javax.persistence.InheritanceType;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
+import javax.persistence.*;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
@@ -48,8 +36,10 @@ public  class Compte{
 	private boolean etat;
 	private Double fraisOuverture;
 
+	@Transient
+	private Client client;
 
-	private Long numClient;
+	private Long idClient;
 	
    
    // @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
@@ -64,7 +54,32 @@ public  class Compte{
 	@OneToMany(mappedBy="compteDestination",cascade = CascadeType.ALL)
 	private Collection<Operation> compteDestination;
 	
-	
+//	Constructors
+
+	public Compte() {
+		super();
+	}
+
+
+
+	public Compte(String rib,Date dateCreation,boolean etat,Double fraisOuverture) {
+		super();
+		this.rib = rib;
+		this.dateCreation = dateCreation;
+		this.etat = etat;
+		this.fraisOuverture = fraisOuverture;
+	}
+
+
+	public Compte(Client client,Agent agent) {
+		super();
+		this.client = client;
+		this.agent = agent;
+
+	}
+
+
+//	Getters & Setter
 
 	public Long getNumCompte() {
 		return numCompte;
@@ -157,33 +172,21 @@ public  class Compte{
 	}
 
 	
-	public Compte() {
-	super();
+
+
+	public Client getClient() {
+		return client;
 	}
 
-
-
-	public Compte(String rib,Date dateCreation,boolean etat,Double fraisOuverture) {
-		super();
-		this.rib = rib;
-		this.dateCreation = dateCreation;
-		this.etat = etat;
-		this.fraisOuverture = fraisOuverture;
+	public void setClient(Client client) {
+		this.client = client;
 	}
 
-
-	public Compte(Long client,Agent agent) {
-		super();
-		this.numClient = client;
-		this.agent = agent;
-		
+	public Long getIdClient() {
+		return idClient;
 	}
 
-	public Long getNumClient() {
-		return numClient;
-	}
-
-	public void setNumClient(Long numClient) {
-		this.numClient = numClient;
+	public void setIdClient(Long idClient) {
+		this.idClient = idClient;
 	}
 }

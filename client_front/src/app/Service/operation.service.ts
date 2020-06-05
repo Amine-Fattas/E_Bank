@@ -8,31 +8,32 @@ import { Operation } from '../model/operation';
 export class OperationService {
 
    _url = "http://localhost:8081/operation/"
+   _urlClient = "http://localhost:8082/operation/"
    //_url ="https://ebank-client-back.herokuapp.com/operations"
   constructor(private http: HttpClient) { }
 
-  getOperations(){
-    return this.http.get(this._url+"list")
-  }
+  // getOperations(){
+  //   return this.http.get(this._urlClient+"list")
+  // }
 
   getOperation(idClient: number){
-    return this.http.get(this._url+"listOperation/"+idClient)
+    return this.http.get(this._urlClient+"listOperation/"+idClient)
   }
 
   verser(operation: Operation){
-    return this.http.post<any>(this._url+"versement", operation)
+    return this.http.post<any>(this._urlClient+"versement", operation)
   }
 
   retirer(operation: Operation){
-    return this.http.post<any>(this._url+"retrait", operation)
+    return this.http.post<any>(this._urlClient+"retrait", operation)
   }
 
   virer(operation: Operation){
-    return this.http.post<any>(this._url+"virement", operation)
+    return this.http.post<any>(this._urlClient+"virement", operation)
   }
 
   recharge(operation: Operation, codeRacharge:number){
-    return this.http.post<any>(this._url+"recharge/"+codeRacharge, operation)
+    return this.http.post<any>(this._urlClient+"recharge/"+codeRacharge, operation)
   }
 
   

@@ -1,6 +1,7 @@
 package com.ensa.e_banking.service;
 
 import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -11,11 +12,17 @@ import org.springframework.web.bind.annotation.RestController;
 import com.ensa.e_banking.entities.Operation;
 import com.ensa.e_banking.interfacesMetier.OperationMetier;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.xml.ws.http.HTTPException;
+
 @RestController
 @CrossOrigin("*")
 public class OperationService {
 	@Autowired
 	OperationMetier operationMetier;
+
+	@Autowired
+	test test;
 	
 	@RequestMapping(value="/operation/versement",method=RequestMethod.POST)
 	public boolean verser(@RequestBody Operation operation) {
@@ -28,17 +35,20 @@ public class OperationService {
 	}
 	
 	@RequestMapping(value="/operation/virement",method=RequestMethod.POST)
-	 public boolean virement(@RequestBody Operation operation) {
+	 public boolean virement(@RequestBody Operation operation, HttpServletRequest req) {
+		if(!test.check(req)) throw new HTTPException(403);
 		return operationMetier.virement(operation);
 	}
 	
 	@RequestMapping(value="/operation/recharge/{codeRecharge}",method=RequestMethod.POST)
-	 public boolean recharge(@RequestBody Operation operation, @PathVariable Long codeRecharge) {
+	 public boolean recharge(@RequestBody Operation operation, @PathVariable Long codeRecharge, HttpServletRequest req) {
+		if(!test.check(req)) throw new HTTPException(403);
 		return operationMetier.recharge(operation, codeRecharge);
 	}
 	
 	@RequestMapping(value="/operation/listOperation/{id}",method=RequestMethod.GET)
-	public List<Operation> getOperationsByClient(@PathVariable Long id){
+	public List<Operation> getOperationsByClient(@PathVariable Long id, HttpServletRequest req){
+		if(!test.check(req)) throw new HTTPException(403);
 		return operationMetier.getOperationByIdClient(id);
 	}
 	@RequestMapping(value="/operation/list",method=RequestMethod.GET)

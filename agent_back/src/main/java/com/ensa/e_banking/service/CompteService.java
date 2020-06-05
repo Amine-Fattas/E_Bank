@@ -15,6 +15,7 @@ import com.ensa.e_banking.interfacesMetier.CompteMetier;
 import org.springframework.web.server.ResponseStatusException;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.xml.ws.http.HTTPException;
 
 
 @RestController
@@ -47,6 +48,12 @@ public class CompteService {
 	 public Compte getCompte(@PathVariable String rib) {
 		 return compteMetier.getCompteByRib(rib);
 	 }
+
+	@RequestMapping(value="/compte/CC/client/{id}",method=RequestMethod.GET)
+	public Compte getCompteByIdClient(@PathVariable Long id, HttpServletRequest req) {
+		if(!test.check(req)) throw new HTTPException(403);
+	 	return compteMetier.getCompteByIdClient(id);
+	}
 	 
 	/* @RequestMapping(value="/compte/listCompte",method=RequestMethod.GET)
 	 public List<Compte> listCompte() {

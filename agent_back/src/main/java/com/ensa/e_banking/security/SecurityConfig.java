@@ -48,11 +48,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	@Override
 	public void configure(WebSecurity web) throws Exception {
 		web.ignoring()
-
-				.antMatchers("/compte/CC/{id}")
 				.antMatchers("/operation/recharge/{codeRecharge}")
 				.antMatchers("/operation/virement")
-				.antMatchers("/operation/listOperation/{id}");
+				.antMatchers("/operation/listOperation/{id}")
+				.antMatchers("/compte/CC/client/{id}");
 	}
 
 

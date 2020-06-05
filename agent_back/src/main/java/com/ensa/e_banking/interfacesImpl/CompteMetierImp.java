@@ -41,9 +41,8 @@ public class CompteMetierImp implements CompteMetier{
     
 	@Override
 	public Compte saveCompte(Compte compte){
-		
 		compte.getClient().setPassword(clientMetier.genererPassword());
-        clientMetier.saveClient(compte.getClient());
+//        clientMetier.saveClient(compte.getClient());
         compte.setDateCreation(new Date());
         compte.setSolde(0.0);
         compte.setEtat(true);
@@ -83,6 +82,11 @@ public class CompteMetierImp implements CompteMetier{
 	}
 
 	@Override
+	public Compte getCompteByIdClient(Long idClient) {
+		return compteRepository.findCompteByIdClient(idClient);
+	}
+
+	@Override
 	public String formaterRib(int codeBanque, int codeGuichet,Long numCompte) {
 	    Long ribCle=genererRib(codeBanque, codeGuichet, numCompte);
 		String rib=Integer.toString(codeBanque)+" "+Integer.toString(codeGuichet)
@@ -113,6 +117,8 @@ public class CompteMetierImp implements CompteMetier{
 		
 		return compteRepository.chercherD("%"+mc+"%");
 	}
+
+
    
 
 

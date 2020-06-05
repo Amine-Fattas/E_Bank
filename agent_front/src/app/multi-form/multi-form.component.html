@@ -16,9 +16,11 @@
                       <small class="text-danger " [class.d-none]="name.valid || name.untouched">Ce champs est obligatoire</small>
                          </div>
                          <div class="col-lg-6 col-12 boxStyle">
-                            <input type="radio" value="homme" name="sexe" [(ngModel)]="client.sexe" #type='ngModel' required > Homme
-                            <input type="radio" value="femme" name="sexe" [(ngModel)]="client.sexe" #type='ngModel'  required> Femme 
-                              
+                            <input id="homme" type="radio" value="homme" name="sexe" [(ngModel)]="client.sexe" #type='ngModel' required >
+                            <label for="homme">Homme</label> 
+                            <input id="femme" type="radio" value="femme" name="sexe" [(ngModel)]="client.sexe" #type='ngModel'  required>
+                            <label for="femme">Femme</label>  
+
                             <small class="text-danger" [class.d-none]="type.valid || type.untouched">Ce champs est obligatoire</small>
                     </div>
                         

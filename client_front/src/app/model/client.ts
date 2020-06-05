@@ -1,7 +1,7 @@
 
 export class Client{
 
-    public id:number;
+    public id:number=0;
     public nom:string="";
     public prenom:string="";
     public cin:string="";
