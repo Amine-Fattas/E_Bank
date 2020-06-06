@@ -51,7 +51,10 @@ public class CORSFilter implements Filter {
 
 		if ("OPTIONS".equalsIgnoreCase(request.getMethod())) {
 			response.setStatus(HttpServletResponse.SC_OK);
+			System.out.println(request.getMethod());
 		} else {
+			System.out.println(request.getMethod());
+			System.out.println("cors else ");
 			chain.doFilter(req, resp);
 		}
 

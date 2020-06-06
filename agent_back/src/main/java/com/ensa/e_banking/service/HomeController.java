@@ -33,8 +33,9 @@ public class HomeController{
 	public Agent currentAgent() {
 		System.out.println("agent");
 		Authentication auth=SecurityContextHolder.getContext().getAuthentication();
+		System.out.println(auth);
 	    if(!auth.getPrincipal().equals("anonymousUser")) {
-	    	System.out.println(auth.getPrincipal());
+	    	System.out.println("je suis la");
 	    	Agent agent = agentMetier.getAgentByUsername(auth.getName());
 	         return agent;
 	    }

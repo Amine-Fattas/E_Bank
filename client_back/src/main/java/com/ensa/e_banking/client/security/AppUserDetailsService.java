@@ -22,7 +22,7 @@ public class AppUserDetailsService implements UserDetailsService {
 		System.out.println("load");
 		Client client = clientRepository.findByUsername(username);
 		if(client==null) throw new UsernameNotFoundException(username);
-
+System.out.println(client.toString());
 		return new User(client.getUsername(),client.getPassword(),new ArrayList<>());
 	}
 

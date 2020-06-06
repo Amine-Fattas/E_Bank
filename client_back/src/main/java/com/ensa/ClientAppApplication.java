@@ -7,11 +7,13 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import com.ensa.dao.ClientRepository;
 import com.ensa.entities.Client;
 import org.springframework.web.client.RestTemplate;
+import org.springframework.context.annotation.ComponentScan;
 
 @SpringBootApplication
 public class ClientAppApplication implements CommandLineRunner{

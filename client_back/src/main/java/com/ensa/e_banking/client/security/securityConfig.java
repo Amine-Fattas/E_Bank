@@ -12,6 +12,7 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 @EnableWebSecurity
 @Configuration
@@ -39,14 +40,14 @@ public class securityConfig extends WebSecurityConfigurerAdapter {
 		web.ignoring()
 				.antMatchers("/client/list")
 				.antMatchers("/client/delete/{id}")
-				.antMatchers("/client/{id}")
+				//.antMatchers("/client/{id}")
 				.antMatchers("/client/update/{id}")
 				.antMatchers("/client/ajoutClient");
 	}
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
-
+           System.out.println("config");
 		http.cors();
 
 		http.csrf().disable()

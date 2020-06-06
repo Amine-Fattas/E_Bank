@@ -17,18 +17,23 @@ public class HomeController {
     @Autowired
     ClientRepository clientRepository;
 
-
+    @CrossOrigin(origins = "http://localhost:4200")
     @RequestMapping("/client/currentClient")
     public Client currentClient() {
         System.out.println("agent");
-        Authentication auth= SecurityContextHolder.getContext().getAuthentication();
-        if(!auth.getPrincipal().equals("anonymousUser")) {
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        if (!auth.getPrincipal().equals("anonymousUser")) {
+
             System.out.println(auth.getPrincipal());
             Client client = clientRepository.findByUsername(auth.getName());
             return client;
         }
         return null;
+
     }
+
+
+
 
     @RequestMapping("/client/list")
     public List<Client> getClients(){

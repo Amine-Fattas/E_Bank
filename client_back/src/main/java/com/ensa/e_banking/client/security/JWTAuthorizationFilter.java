@@ -1,5 +1,6 @@
 package com.ensa.e_banking.client.security;
 
+import java.awt.*;
 import java.io.IOException;
 import java.util.ArrayList;
 
@@ -23,18 +24,19 @@ public class JWTAuthorizationFilter extends OncePerRequestFilter{
 	@Override
 	protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
 			throws ServletException, IOException {
-		
+		System.out.println("doFilterInternal");
 		String jwtToken=request.getHeader(SecurityConstants.HEADER_STRING);
 		
 
 	
 		
 		if(jwtToken==null || !jwtToken.startsWith(SecurityConstants.TOKEN_PREFIX)) {
+
 			filterChain.doFilter(request, response);
 			return;
 			}
-		
-		
+
+		System.out.println("jwtToken");
 		Claims claims=Jwts.parser()
 				//signer avec le secret
 				.setSigningKey(SecurityConstants.SECRET)
@@ -49,9 +51,10 @@ public class JWTAuthorizationFilter extends OncePerRequestFilter{
 				
 				UsernamePasswordAuthenticationToken authenticationToken=
 				new UsernamePasswordAuthenticationToken(username, null,new ArrayList<>());
-				
+				System.out.println(authenticationToken);
+		System.out.println("============================");
 				SecurityContextHolder.getContext().setAuthentication(authenticationToken);
-				
+
 				filterChain.doFilter(request, response);
 			
 				}
