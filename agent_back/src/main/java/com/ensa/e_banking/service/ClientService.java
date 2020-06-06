@@ -76,7 +76,12 @@ public class ClientService {
 //
 	@RequestMapping(value="/client/{id}",method=RequestMethod.GET)
 	public Client getClientById(@PathVariable Long id){
-		return restTemplate.getForObject(url+"/client/"+id, Client.class);
+//		return restTemplate.getForObject(url+"/client/"+id, Client.class);
+		List<Client> list = getClients();
+		for(Client cl : list){
+			if(cl.getId() == id) return cl;
+		}
+		return null;
 	}
 
 
