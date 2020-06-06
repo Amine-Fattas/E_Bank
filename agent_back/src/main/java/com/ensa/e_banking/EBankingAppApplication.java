@@ -48,10 +48,10 @@ public class EBankingAppApplication implements CommandLineRunner {
 		//Role de l'app agent client
 
 
-	Agent agent1=new Agent((long) 1,"ikram","makhloufi","EC5681","ikram",bCryptPasswordEncoder.encode("ikram123"),1);
-	agentRepository.save(agent1);
-	Agent agent2=new Agent((long) 2,"nouam","makhloufi","EC5641","noua",bCryptPasswordEncoder.encode("noua123"),1);
-	agentRepository.save(agent2);
+//	Agent agent1=new Agent((long) 1,"ikram","makhloufi","EC5681","ikram",bCryptPasswordEncoder.encode("ikram123"),1);
+//	agentRepository.save(agent1);
+//	Agent agent2=new Agent((long) 2,"nouam","makhloufi","EC5641","noua",bCryptPasswordEncoder.encode("noua123"),1);
+//	agentRepository.save(agent2);
 
 	/*Client client1=new Client("cliente","cliente","ED5641","client2020@gmail.com",bCryptPasswordEncoder.encode("client123"),"femme",new Date(),"06512388");
 	clientRepository.save(client1);*/

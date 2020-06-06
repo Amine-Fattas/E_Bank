@@ -18,16 +18,16 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @Configuration
 @EnableGlobalMethodSecurity(prePostEnabled = true)
 public class securityConfig extends WebSecurityConfigurerAdapter {
-	
+
 	@Autowired
 	AppUserDetailsService appUserDetailsService;
-	
+
 
 	@Bean
 	public BCryptPasswordEncoder passwordEncoder() {
 		return new BCryptPasswordEncoder();
 	}
-	
+
 
 	@Override
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
@@ -37,12 +37,14 @@ public class securityConfig extends WebSecurityConfigurerAdapter {
 
 	@Override
 	public void configure(WebSecurity web) throws Exception {
-		web.ignoring()
-				.antMatchers("/client/list")
-				.antMatchers("/client/delete/{id}")
-				//.antMatchers("/client/{id}")
-				.antMatchers("/client/update/{id}")
-				.antMatchers("/client/ajoutClient");
+
+		super.configure(web);
+			web.ignoring()
+					.antMatchers("/client/list")
+					.antMatchers("/client/delete/{id}")
+					.antMatchers("/client/update/{id}")
+					.antMatchers("/client/ajoutClient");
+
 	}
 
 	@Override
