@@ -8,8 +8,10 @@ import { Client } from '../model/client';
 export class ClientService {
   constructor(private http:HttpClient){}
 
+  private _url = "http://localhost:8081/"
+
   getClients(){
-    return this.http.get("http://localhost:8081/agent/listClient");
+    return this.http.get(this._url+"client/list");
 }
 
  chercherClient(motCle:String){
@@ -17,15 +19,15 @@ export class ClientService {
 }
 
 getClient(id: number) {
-  return this.http.get<Client>("http://localhost:8081/agent/"+id);
+  return this.http.get<Client>(this._url+"client/"+id);
 }
 
 updateClient(client: Client) {
-  return this.http.put("http://localhost:8081/agent/update/"+client.id,client);
+  return this.http.put(this._url+"client/update/"+client.id,client);
 }
 
 deleteClient(id: number) {
-  return this.http.delete("http://localhost:8081/agent/delete/"+id);
+  return this.http.delete(this._url+"client/delete/"+id);
 }
 
 saveClient(client: Client) {

@@ -6,7 +6,7 @@ export class Client{
     public nom:string="";
     public prenom:string="";
     public cin:string="";
-    public email:string="";
+    public username:string="";
     public sexe:string="";
     public numTel:number;
     public dateNaissance:Date;

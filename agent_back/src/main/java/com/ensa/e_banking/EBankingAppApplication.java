@@ -6,8 +6,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.web.client.RestTemplate;
 
 //import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 
@@ -25,6 +27,10 @@ public class EBankingAppApplication implements CommandLineRunner {
 //	@Autowired
 //	ClientRepository clientRepository;
 
+	@Bean
+	public RestTemplate restTemplate(){
+		return new RestTemplate();
+	}
 
 
 	

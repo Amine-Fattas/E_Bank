@@ -5,12 +5,14 @@ import java.util.List;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
 import com.ensa.e_banking.entities.Client;
 import com.ensa.e_banking.entities.Compte;
 import com.ensa.e_banking.entities.Operation;
+import org.springframework.transaction.annotation.Transactional;
 
 public interface CompteRepository extends JpaRepository<Compte,Long> {
 	@Query("select c from Compte c  where c.rib like :x  and c.etat =1")	
@@ -34,6 +36,10 @@ public interface CompteRepository extends JpaRepository<Compte,Long> {
 
 	@Query(value ="SELECT * FROM compte where id_client=:x",nativeQuery=true)
 	Compte findCompteByIdClient(@Param("x") Long id_client);
+
+	@Modifying
+	@Query(value ="delete FROM compte where id_client=:x",nativeQuery=true)
+	int deleteCompteByIdClient(@Param("x") Long id_client);
 
 	
 
