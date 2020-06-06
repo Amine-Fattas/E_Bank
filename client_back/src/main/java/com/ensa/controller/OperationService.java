@@ -1,5 +1,6 @@
 package com.ensa.controller;
 
+import com.ensa.entities.Compte;
 import com.ensa.entities.Operation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.ParameterizedTypeReference;
@@ -24,14 +25,16 @@ public class OperationService {
 
 	@RequestMapping(value="/operation/virement",method= RequestMethod.POST)
 	 public boolean virement(@RequestBody Operation operation) {
-		restTemplate.postForObject(url+"/operation/virement", operation, Operation.class);
+		Compte compteDestination = restTemplate.getForObject(url+"/compte/CC/rib/"+operation.getCompteDestination().getRib(), Compte.class);
+		operation.setCompteDestination(compteDestination);
+		restTemplate.postForObject(url+"/operation/virement", operation, boolean.class);
 		return true;
 	}
 
 	@RequestMapping(value="/operation/recharge/{codeRecharge}",method= RequestMethod.POST)
 	 public boolean recharge(@RequestBody Operation operation, @PathVariable Long codeRecharge) {
 		System.out.println("Recharge : "+operation.toString());
-		restTemplate.postForObject(url+"/operation/recharge/"+codeRecharge, operation, Operation.class);
+		restTemplate.postForEntity(url+"/operation/recharge/"+codeRecharge, operation, boolean.class);
 		return true;
 	}
 

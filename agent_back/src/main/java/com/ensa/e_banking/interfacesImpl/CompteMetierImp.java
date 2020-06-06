@@ -18,6 +18,7 @@ import com.ensa.e_banking.entities.Client;
 import com.ensa.e_banking.entities.Compte;
 import com.ensa.e_banking.interfacesMetier.ClientMetier;
 import com.ensa.e_banking.interfacesMetier.CompteMetier;
+import org.springframework.web.client.RestTemplate;
 
 
 @Service
@@ -28,8 +29,12 @@ public class CompteMetierImp implements CompteMetier{
 	
 	@Autowired
 	ClientMetier clientMetier;
+
+	@Autowired
+	RestTemplate restTemplate;
 	
     Long numCompte;
+	private String url = "http://localhost:8082";
 
 	
 	Agence agence=new Agence();
@@ -43,6 +48,7 @@ public class CompteMetierImp implements CompteMetier{
 	public Compte saveCompte(Compte compte){
 		compte.getClient().setPassword(clientMetier.genererPassword());
 //        clientMetier.saveClient(compte.getClient());
+		restTemplate.postForObject(url+"/client/ajoutClient", compte.getClient(), Client.class);
         compte.setDateCreation(new Date());
         compte.setSolde(0.0);
         compte.setEtat(true);
@@ -56,7 +62,8 @@ public class CompteMetierImp implements CompteMetier{
         compte.setNumCompte(numCompte);
         compte.setRib(formaterRib(agence.getCode_banque(),agence.getNumAgence(),numCompte));
         System.out.println("done");
-		return compteRepository.save(compte);
+		compteRepository.save(compte);
+		return compte;
 	}
 
 	@Override

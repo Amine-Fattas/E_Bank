@@ -108,14 +108,16 @@ public  class Compte{
 	public void setAgent(Agent agent) {
 		this.agent = agent;
 	}
-     
 
 
+	public String getTypeCompte() {
+		return typeCompte;
+	}
 
-	
+	public void setTypeCompte(String typeCompte) {
+		this.typeCompte = typeCompte;
+	}
 
-
-	
 	public Compte() {
 	super();
 	}
@@ -139,10 +141,21 @@ public  class Compte{
 		super();
 		this.client = client;
 		this.agent = agent;
-		
-	}
-	
-	
-	
 
+	}
+
+	@Override
+	public String toString() {
+		return "Compte{" +
+				"typeCompte='" + typeCompte + '\'' +
+				", numCompte=" + numCompte +
+				", rib='" + rib + '\'' +
+				", dateCreation=" + dateCreation +
+				", solde=" + solde +
+				", etat=" + etat +
+				", fraisOuverture=" + fraisOuverture +
+				", client=" + client +
+				", agent=" + agent +
+				'}';
+	}
 }

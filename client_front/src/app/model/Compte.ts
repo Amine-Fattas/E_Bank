@@ -2,7 +2,7 @@ import { Agent } from './Agent';
 import { Client } from './client';
 
 export class Compte{
-	typeCompte: string="CC"
+	typeCompte: string = null
 	numCompte: number;
 	 rib: string="";
 	 dateCreation: Date;
