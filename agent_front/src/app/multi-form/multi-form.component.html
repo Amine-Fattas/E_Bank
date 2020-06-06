@@ -45,7 +45,7 @@
                     </div> 
                        
                          <div class="col-lg-6 col-12 ">
-                         <input  class="inputStyle"  [(ngModel)]="client.email" name="email" type="email" #em='ngModel' placeholder="Email"  required><br>
+                         <input  class="inputStyle"  [(ngModel)]="client.username" name="email" type="email" #em='ngModel' placeholder="Email"  required><br>
                             <small class="text-danger " [class.d-none]="em.valid || em.untouched">Ce champs est obligatoire</small>
                          </div>
                      </div>
@@ -100,8 +100,7 @@
     <mat-step [completed]="nextS2">
         <ng-template matStepLabel><b>Etape 3</b></ng-template>
         Bilan client<br>
-       <strong>Nom & Prenom :</strong> {{nouveauCompte?.client.nom}} {{nouveauCompte?.client.nom}}<br>
-        <strong>Mot de passe initial:</strong> {{nouveauCompte?.client.passord}}<br>
+       <strong>Nom & Prenom :</strong> {{nouveauCompte?.client.prenom}} {{nouveauCompte?.client.nom}}<br>
         <strong>Rib :</strong> {{nouveauCompte?.rib}}
     </mat-step>
 </mat-horizontal-stepper>

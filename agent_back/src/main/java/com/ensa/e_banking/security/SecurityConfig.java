@@ -51,7 +51,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 				.antMatchers("/operation/recharge/{codeRecharge}")
 				.antMatchers("/operation/virement")
 				.antMatchers("/operation/listOperation/{id}")
-				.antMatchers("/compte/CC/client/{id}");
+				.antMatchers("/compte/CC/client/{id}")
+				.antMatchers("/compte/CC/rib/{rib}");
 	}
 
 

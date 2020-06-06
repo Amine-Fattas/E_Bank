@@ -22,9 +22,13 @@ public class CompteService {
 
 	@RequestMapping(value="/compte/CC/client/{id}",method=RequestMethod.GET)
 	public Compte getCompteByIdClient(@PathVariable Long id) {
-		RestTemplate restTemplate = new RestTemplate();
 		Compte compte =  restTemplate.getForObject(url+"/compte/CC/client/"+id, Compte.class);
 		return compte;
+	}
+
+	@RequestMapping(value="/compte/CC/rib/{rib}",method=RequestMethod.GET)
+	public Compte getCompte(@PathVariable String rib) {
+		return restTemplate.getForObject(url+"/compte/CC/rib/"+rib, Compte.class);
 	}
 	
 

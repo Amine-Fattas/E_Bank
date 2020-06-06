@@ -16,6 +16,7 @@ export class VirementComponent implements OnInit {
 
   newOperation: Operation
   compte: Compte
+  _compteDestination: Compte
   client: Client
 
   constructor(private _operationService: OperationService,
@@ -41,7 +42,7 @@ export class VirementComponent implements OnInit {
   }
 
   onSubmit(){
-    this.newOperation.compteSource.numCompte = this.compte.numCompte
+    this.newOperation.compteSource = this.compte
     this.newOperation.agent = null
     this.newOperation.numOperation = Math.floor(Math.random() * 1000000)
     console.log("Succes Virement \n"+this.newOperation)
@@ -50,6 +51,13 @@ export class VirementComponent implements OnInit {
                 data => console.log("Success ! :", data),
                 error => console.error("Error ! : ", error)
               )
+    // this._compteService.getCompteByRib(this.newOperation.compteDestination.rib).subscribe(
+    //   data => {
+    //     this._compteDestination = data;
+    //     this.newOperation.compteDestination = this._compteDestination
+        
+    //   }
+    // )
   }
 
   init(){
