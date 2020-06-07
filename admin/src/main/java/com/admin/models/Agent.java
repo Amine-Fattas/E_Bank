@@ -6,27 +6,97 @@ import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Collection;
 
-@Entity
-//@Builder(builderMethodName = "builder")
-// pas utlise lombok genere gett et setters
 public class Agent implements Serializable{
-    private String img;
+	private Long id;
 	private String nom;
 	private String prenom;
 	private String cin;
-	private String login;
+	private String username;
 	private String password;
-    @Id
-	private Long suffixContrat;
 	private String numContrat;
-	@ManyToOne
+
+
+	@Transient
 	private Agence agence;
-	//private String nomAgence;
+
+	private int numAgence;
+	/*
 	@OneToMany (mappedBy = "agent")
-	private Collection<Client> listeClients;
+	private Collection<Client> listeClients;*/
+
+	public Long getId() {
+		return id;
+	}
 
 
 
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public String getNom() {
+		return nom;
+	}
+
+	public int getNumAgence() {
+		return numAgence;
+	}
+
+	public void setNumAgence(int numAgence) {
+		this.numAgence = numAgence;
+	}
+
+	public void setNom(String nom) {
+		this.nom = nom;
+	}
+
+	public String getPrenom() {
+		return prenom;
+	}
+
+	public void setPrenom(String prenom) {
+		this.prenom = prenom;
+	}
+
+	public String getCin() {
+		return cin;
+	}
+
+	public void setCin(String cin) {
+		this.cin = cin;
+	}
+
+	public String getUsername() {
+		return username;
+	}
+
+	public void setUsername(String username) {
+		this.username = username;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	public String getNumContrat() {
+		return numContrat;
+	}
+
+	public void setNumContrat(String numContrat) {
+		this.numContrat = numContrat;
+	}
+
+	public Agence getAgence() {
+		return agence;
+	}
+
+	public void setAgence(Agence agence) {
+		this.agence = agence;
+	}
 
 	public Agent() {
 		super();
@@ -36,76 +106,15 @@ public class Agent implements Serializable{
 		//this.numContrat=Integer.toString(agence.getNumAgence())+"-"+Long.toString(suffixContrat);
 	}
 
-
-	public Agence getAgence() {
-		return agence;
-	}
-
-	public void setAgence(Agence agence) {
+	public Agent(Long id,String nom, String prenom, String cin, String username, String password, String numContrat, Agence agence) {
+		this.id=id;
+		this.nom = nom;
+		this.prenom = prenom;
+		this.cin = cin;
+		this.username = username;
+		this.password = password;
+		this.numContrat = numContrat;
 		this.agence = agence;
 	}
-	public String getNom() {
-		return nom;
-	}
-	public void setNom(String nom) {
-		this.nom = nom;
-	}
-	public String getPrenom() {
-		return prenom;
-	}
-	public void setPrenom(String prenom) {
-		this.prenom = prenom;
-	}
-	public String getCin() {
-		return cin;
-	}
-	public void setCin(String cin) {
-		this.cin = cin;
-	}
-	public String getLogin() {
-		return login;
-	}
-	public void setLogin(String login) {
-		this.login = login;
-	}
-	public String getPassword() {
-		return password;
-	}
-	public void setPassword(String password) {
-		this.password = password;
-	}
-
-	public long getSuffixContrat() {
-		return suffixContrat;
-	}
-
-	public void setSuffixContrat(Long suffixContrat) {
-		this.suffixContrat = suffixContrat;
-	}
-
-	public String getNumContrat() {
-		return numContrat;
-	}
-
-	public void setNumContrat(String numContrat) {
-		this.numContrat = numContrat;
-
-	}
-
-
-	//public String getNomAgence() { return nomAgence; }
-
-	//public void setNomAgence(String nomAgence) {this.nomAgence = nomAgence;}
-
-	public Collection<Client> getListeClients() {
-		return listeClients;
-	}
-
-	public void setListeClients(Collection<Client> listeClients) {
-		this.listeClients = listeClients;
-	}
-
-
-
 
 }

@@ -15,7 +15,7 @@ export class ClientService {
 }
 
  chercherClient(motCle:String){
-  return this.http.get("http://localhost:8081/agent/chercher/"+motCle);
+  return this.http.get(this._url+"agent/chercher/"+motCle);
 }
 
 getClient(id: number) {

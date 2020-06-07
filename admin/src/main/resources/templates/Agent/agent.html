@@ -162,8 +162,8 @@
                     <td><a th:href="@{get-agence(id=${a?.getAgence()?.getNomAgence()})}" th:text="${a?.getAgence()?.getNomAgence()}"></a></td>
 
                     <td>
-                        <a id="deleteButton" th:href="@{delete(id=${a.getSuffixContrat()})}" class="delete" data-toggle="modal" data-target="#deleteModal"><i class="material-icons"  title="Delete">&#xE872;</i></a>
-                        <a th:href="@{edit(id=${a.getSuffixContrat()})}" class="edit"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
+                        <a id="deleteButton" th:href="@{delete(id=${a.getId()})}" class="delete" data-toggle="modal" data-target="#deleteModal"><i class="material-icons"  title="Delete">&#xE872;</i></a>
+                        <a th:href="@{edit(id=${a.getId()})}" class="edit"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
                     </td>
                     </tbody>
                 </table>

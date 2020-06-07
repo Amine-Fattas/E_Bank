@@ -22,35 +22,6 @@ public class CORSFilter implements Filter {
 
 
 
-<<<<<<< HEAD
-		@Override
-		public void doFilter(ServletRequest req, ServletResponse resp, FilterChain chain)
-				throws IOException, ServletException {
-			HttpServletResponse response = (HttpServletResponse) resp;
-			HttpServletRequest request = (HttpServletRequest) req;
-			request.getHeader("Origin");
-			response.setHeader("Access-Control-Allow-Origin", "*");
-			response.setHeader("Access-Control-Allow-Methods", "POST, GET, OPTIONS, DELETE, PUT");
-			response.setHeader("Access-Control-Max-Age", "3600");
-		    response.setHeader("Access-Control-Allow-Credentials", "true");
-			response.setHeader("Access-Control-Allow-Headers",
-					"x-requested-with, Content-Type, Authorization, credential, X-XSRF-TOKEN");
-
-			
-			response.addHeader("Access-Control-Expose-Headers",
-					"Access-Control-Allow-Origin,Access-Control-Allow-Credentials, authorization"
-					);
-
-			if ("OPTIONS".equalsIgnoreCase(request.getMethod())) {
-				response.setStatus(HttpServletResponse.SC_OK);
-				System.out.println(request.getMethod());
-			} else {
-				System.out.println(request.getMethod());
-				System.out.println("cors else");
-				chain.doFilter(req, resp);
-			}
-			
-=======
 	@Override
 	public void init(FilterConfig fc) throws ServletException {
 	}
@@ -83,7 +54,7 @@ public class CORSFilter implements Filter {
 			response.setStatus(HttpServletResponse.SC_OK);
 		} else {
 			chain.doFilter(req, resp);
->>>>>>> c94fab087052fec9f81d32f06a848b24538dc3e1
+
 		}
 
 	}

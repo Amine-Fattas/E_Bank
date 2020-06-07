@@ -66,6 +66,14 @@ public class HomeController {
 		return clientRepository.save(client);
     }
 
+    @RequestMapping(value="/client/recherche/{mc}",method= RequestMethod.GET)
+    public List<Client> getClientByMc(@PathVariable String mc){
+        System.out.println(mc);
+        return clientRepository.chercher("%"+mc+"%");
+
+    }
+
+
     //	@RequestMapping(value="/agent/update/{id}",method=RequestMethod.PUT)
 //	public Client update(@PathVariable long id,@RequestBody Client client){
 //		System.out.println("edit");

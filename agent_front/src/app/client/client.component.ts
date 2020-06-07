@@ -99,7 +99,9 @@ recherche() {
   this.clientService.chercherClient(this.motCle)
   .subscribe((data: any) => {
    this.pageClient = data;
-   if ( data.empty) {
+   console.log(data)
+   if (data.length==0) {
+     console.log("vide")
       Swal.fire(
         'Aucun enregistrement n est trouvé')}
     } , ( error) => console.log(error));

@@ -48,11 +48,17 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	@Override
 	public void configure(WebSecurity web) throws Exception {
 		web.ignoring()
+				//.antMatchers("/agent/{id}")
+				.antMatchers("agent/update/{id}")
+				.antMatchers("/agent/add")
+				.antMatchers("/agent/list")
+				.antMatchers("/operation/list")
+				.antMatchers("/agent/listCompteDesactive")
+				.antMatchers("/agent/listCompteActive")
 				.antMatchers("/operation/recharge/{codeRecharge}")
 				.antMatchers("/operation/virement")
 				.antMatchers("/operation/listOperation/{id}")
 				.antMatchers("/compte/CC/client/{id}")
-				
 				.antMatchers("/compte/CC/rib/{rib}");
 	}
 

@@ -5,77 +5,113 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import java.io.Serializable;
 import java.util.Collection;
+import java.util.Date;
 
-@Entity
+
 public class CompteBancaire implements Serializable {
 
- @Id
- private int rib;
- private Double credit;
- private int numCarte;
- private String type;
- private String status;
+    private String typeCompte;
+    private Long numCompte;
+    private String rib;
+    private Date dateCreation;
+    private Double solde;
+    private boolean etat;
+    private Double fraisOuverture;
 
 
- @OneToMany
- private Collection<Operation> operations;
+    //private Client client;
+    private Long idClient;
 
-    public Collection<Operation> getOperations() {
-        return operations;
+    public Long getIdClient() {
+        return idClient;
     }
 
-    public void setOperations(Collection<Operation> operations) {
-        this.operations = operations;
+    public void setIdClient(Long idClient) {
+        this.idClient = idClient;
     }
 
-    public String getType() {
-        return type;
+    private Agent agent;
+
+    public String getTypeCompte() {
+        return typeCompte;
     }
 
-    public void setType(String type) {
-        this.type = type;
+    public void setTypeCompte(String typeCompte) {
+        this.typeCompte = typeCompte;
     }
 
-    public String getStatus() {
-        return status;
+    public Long getNumCompte() {
+        return numCompte;
     }
 
-    public void setStatus(String status) {
-        this.status = status;
+    public void setNumCompte(Long numCompte) {
+        this.numCompte = numCompte;
     }
 
-
-    public CompteBancaire() {
-    }
-
-    public CompteBancaire(int rib, Double credit, int numCarte) {
-        this.rib=rib;
-        this.credit=credit;
-        this.numCarte=numCarte;
-
-    }
-
-    public int getRib() {
+    public String getRib() {
         return rib;
     }
 
-    public void setRib(int rib) {
+    public void setRib(String rib) {
         this.rib = rib;
     }
 
-    public int getNumCarte() {
-        return numCarte;
+    public Date getDateCreation() {
+        return dateCreation;
     }
 
-    public void setNumCarte(int numCarte) {
-        this.numCarte = numCarte;
+    public void setDateCreation(Date dateCreation) {
+        this.dateCreation = dateCreation;
     }
 
-    public Double getCredit() {
-        return credit;
+    public Double getSolde() {
+        return solde;
     }
 
-    public void setCredit(Double credit) {
-        this.credit = credit;
+    public void setSolde(Double solde) {
+        this.solde = solde;
+    }
+
+    public boolean isEtat() {
+        return etat;
+    }
+
+    public void setEtat(boolean etat) {
+        this.etat = etat;
+    }
+
+    public Double getFraisOuverture() {
+        return fraisOuverture;
+    }
+
+    public void setFraisOuverture(Double fraisOuverture) {
+        this.fraisOuverture = fraisOuverture;
+    }
+
+
+
+    public Agent getAgent() {
+        return agent;
+    }
+
+    public void setAgent(Agent agent) {
+        this.agent = agent;
+    }
+
+
+    public CompteBancaire(String typeCompte, Long numCompte, String rib, Date dateCreation, Double solde, boolean etat, Double fraisOuverture, Client client, Agent agent) {
+        this.typeCompte = typeCompte;
+        this.numCompte = numCompte;
+        this.rib = rib;
+        this.dateCreation = dateCreation;
+        this.solde = solde;
+        this.etat = etat;
+        this.fraisOuverture = fraisOuverture;
+
+        this.agent = agent;
+    }
+
+    public CompteBancaire() {
+
     }
 }

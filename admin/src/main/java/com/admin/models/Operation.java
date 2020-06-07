@@ -4,19 +4,25 @@ import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
 
-@Entity
+
 public class Operation implements Serializable {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+
     private Long numOperation;
-    private Date date;
-    private String description;
-    private String type;
-    private String status;
-    @ManyToOne
-  //  @JoinColumn(name = "compte_bancaire_rib")
-    private CompteBancaire compte;
+    private String typeOperation;
+    private Date dateOperation;
+    private double montant;
+
+
+    private CompteBancaire compteSource;
+
+
+
+    private CompteBancaire compteDestination;
+
+
+
+    private Agent agent;
 
 
     public Long getNumOperation() {
@@ -27,19 +33,65 @@ public class Operation implements Serializable {
         this.numOperation = numOperation;
     }
 
-    public String getType() {
-        return type;
+    public String getTypeOperation() {
+        return typeOperation;
     }
 
-    public void setType(String type) {
-        this.type = type;
+    public void setTypeOperation(String typeOperation) {
+        this.typeOperation = typeOperation;
     }
 
-    public Date getDate() {
-        return date;
+    public Date getDateOperation() {
+        return dateOperation;
     }
 
-    public void setDate(Date date) {
-        this.date = date;
+    public void setDateOperation(Date dateOperation) {
+        this.dateOperation = dateOperation;
     }
+
+    public double getMontant() {
+        return montant;
+    }
+
+    public void setMontant(double montant) {
+        this.montant = montant;
+    }
+
+    public CompteBancaire getCompteSource() {
+        return compteSource;
+    }
+
+    public void setCompteSource(CompteBancaire compteSource) {
+        this.compteSource = compteSource;
+    }
+
+    public CompteBancaire getCompteDestination() {
+        return compteDestination;
+    }
+
+    public void setCompteDestination(CompteBancaire compteDestination) {
+        this.compteDestination = compteDestination;
+    }
+
+    public Agent getAgent() {
+        return agent;
+    }
+
+    public void setAgent(Agent agent) {
+        this.agent = agent;
+    }
+
+
+    public Operation(Long numOperation, String typeOperation, Date dateOperation, double montant, CompteBancaire compteSource, CompteBancaire compteDestination, Agent agent) {
+        this.numOperation = numOperation;
+        this.typeOperation = typeOperation;
+        this.dateOperation = dateOperation;
+        this.montant = montant;
+        this.compteSource = compteSource;
+        this.compteDestination = compteDestination;
+        this.agent = agent;
+    }
+
+
+   public Operation(){}
 }

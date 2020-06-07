@@ -39,5 +39,6 @@ export class OperationsComponent implements OnInit {
           error => console.error(error)
           ) 
   }
+  
 
 }

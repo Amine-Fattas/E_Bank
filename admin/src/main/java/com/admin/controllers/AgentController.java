@@ -1,21 +1,19 @@
 package com.admin.controllers;
 
 import com.admin.Repository.AgenceRepository;
-import com.admin.Repository.AgentRepository;
-import com.admin.models.Agence;
-import com.admin.models.Agent;
-import com.admin.models.Pager;
+import com.admin.models.*;
 
-import com.admin.models.Password;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.http.HttpMethod;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.client.RestTemplate;
 
 import java.util.List;
 import java.util.Optional;
@@ -23,36 +21,76 @@ import java.util.Optional;
 
 @Controller
 public class AgentController {
-    @Autowired
-    private AgentRepository agentRepository;
+
     @Autowired
     private AgenceRepository agenceRepository;
     private static final int BUTTONS_TO_SHOW = 5;
     private static final int INITIAL_PAGE = 0;
     private static final int INITIAL_PAGE_SIZE = 8;
-    // private static final int[] PAGE_SIZES = { 5, 10, 20 };
+    private String url = "http://localhost:8081";
+    @Autowired
+    RestTemplate restTemplate;
 
-
-    /*private String getUrlWithoutParameters(String url) throws URISyntaxException {
-        URI uri = new URI(url);
-        return new URI(uri.getScheme(),
-                uri.getAuthority(),
-                uri.getPath(),
-                null, // Ignore the query part of the input url
-                uri.getFragment()).toString();
-    }*/
+    @RequestMapping(value="/index")
+    public String list(Model model) {
+        ResponseEntity<List<Agent>> response = restTemplate.exchange(
+                url+"/agent/list", HttpMethod.GET, null, new ParameterizedTypeReference<List<Agent>>() {}
+        );
+        List<Agent> list = response.getBody();
+        model.addAttribute("listAgents",list);
+        return "Agent/Agents";
+    }
 
     @RequestMapping(value = "/")
-    public String home()
-    { return"home";
+    public String home() {
+        return "home";
     }
 
     @RequestMapping(value = "/profile")
-    public String profile()
-    { return"profile";
+    public String profile() {
+        return "profile";
     }
 
 
+    @RequestMapping(value="/save" , method= RequestMethod.POST)
+    public String save(Model model,Agent agent){
+        agent.setPassword(Password.pass());
+      //  Agence agence=agenceRepository.findByNomAgence(agent.getAgence().getNomAgence());
+
+       //agent.setAgence(agence);
+        //       agent.getAgence().setNumAgence(agence.getNumAgence());
+        restTemplate.postForObject(url+"/agent/add", agent, Agent.class);
+       return "redirect:/index";
+    }
+    @RequestMapping(value="/add" , method= RequestMethod.GET)
+    public String add(Model model, Agent agent){
+        model.addAttribute("agent",new Agent());
+        List<Agence> Agences = agenceRepository.findAll();
+        model.addAttribute("listeAgences",Agences);
+        return "Agent/add-agent";
+    }
+
+    @RequestMapping(value="/update" , method=RequestMethod.PUT)
+    public String update(Model model, Long id, Agent agent){
+       // restTemplate.postForObject(url+"/agent/update/"+id, agent, Agent.class);
+            restTemplate.put(url+"/agent/update/"+id, agent);
+            return  "redirect:/index";
+        }
+
+    @RequestMapping(path = "/edit", method = RequestMethod.GET)
+    public String editAgent(Model model,Long id) {
+
+      Agent agent=restTemplate.getForObject(url+"/agent/"+id,Agent.class);
+        List<Agence> Agences = agenceRepository.findAll();
+        model.addAttribute("listeAgence",Agences);
+        model.addAttribute("agent",agent);
+        return "Agent/edit-agent";
+    }
+
+    }
+
+
+/*
     @RequestMapping(value="/findAgentsByAgence")
     public String findAgentsByAgence(Model model,Integer id,@RequestParam("page") Optional<Integer> page)
     {
@@ -101,15 +139,11 @@ public class AgentController {
         //model.addAttribute("data",agentRepository.findAll(PageRequest.of(page,4)));
         return "Agent/Agents";
 
-    }
+    }*/
 
-    @RequestMapping(value="/add" , method= RequestMethod.GET)
-    public String add(Model model, Agent agent){
-        model.addAttribute("agent",new Agent());
-        List<Agence> Agences = agenceRepository.findAll();
-        model.addAttribute("listeAgences",Agences);
-        return "Agent/add-agent";
-    }
+
+
+    /*
     @RequestMapping(path = "/edit", method = RequestMethod.GET)
     public String editAgent(Model model,Long id) {
         Agent a=  agentRepository.findById(id).get();
@@ -119,39 +153,9 @@ public class AgentController {
         return "Agent/edit-agent";
     }
 
-    @RequestMapping(value="/update" , method=RequestMethod.POST)
-    public String update(Model model, Long id, Agent agent){
-        Agent a=agentRepository.findById(id).get();
-        if(id==a.getSuffixContrat())
-            agent.setSuffixContrat(id);
-        agent.setNumContrat("AFOIH-"+Long.toString(agent.getSuffixContrat()));
-        Agence agence=agenceRepository.findByNomAgence(agent.getAgence().getNomAgence());
-        agent.setAgence(agence);
-        agentRepository.save(agent);
-        return "redirect:/index";
-    }
 
-    @RequestMapping(value="/save" , method= RequestMethod.POST)
-    public String save(Model model,Agent agent){
 
-        Long lastSuffix;
-        if(agentRepository.last_suffix() == null){
-            lastSuffix=10000000L;
-        }
-        else{lastSuffix=agentRepository.last_suffix()+1;}
-        agent.setSuffixContrat(lastSuffix);
-        agent.setNumContrat("AFOIH-"+Long.toString(agent.getSuffixContrat()));
-        agent.setPassword(Password.pass());
-        agent.setLogin(Long.toString(agent.getSuffixContrat())+"@AFOIHebank.com");
-        // System.out.println(id);
-        // System.out.println(agent.getAgence().getNomAgence());
-        Agence agence=agenceRepository.findByNomAgence(agent.getAgence().getNomAgence());
-        // System.out.println(agence);
-        agent.setAgence(agence);
-        //       agent.getAgence().setNumAgence(agence.getNumAgence());
-        agentRepository.save(agent);
-        return "redirect:/index";
-    }
+
     @RequestMapping(value="/delete" , method= RequestMethod.GET)
     public String delete(Model model, Long id){
         Agent a=agentRepository.findById(id).get();
@@ -159,4 +163,4 @@ public class AgentController {
         return "redirect:/index";
 
     }
-}
+}*/

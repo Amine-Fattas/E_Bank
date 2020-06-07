@@ -184,9 +184,9 @@
                 <td>{{c.nom}}</td>
                 <td>{{c.prenom}}</td>
                 <td>{{c.cin}}</td>
-                <td>{{c.email}}</td>
+                <td>{{c.username}}</td>
                 <td>{{c.numTel}}</td>
-                <td>{{c.dateNaissance}}</td>
+                <td>{{c.dateNaissance |date:'MM/dd/yyyy'}}</td>
                 <td style="cursor: pointer;">
                    <a  (click)="onDeleteClient(c)"> <img src="../assets/images/delete.png"   title="delete" class="img-responsive"></a>
                    &nbsp; <a (click)="onEditClient(c.id)"> <img src="../assets/images/update.png"   title="update" class="img-responsive"></a>

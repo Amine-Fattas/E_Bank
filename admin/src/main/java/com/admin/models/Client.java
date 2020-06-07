@@ -3,56 +3,35 @@ package com.admin.models;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Collection;
+import java.util.Date;
 
-@Entity
+
 public class Client implements Serializable {
 
-    @Id
-    private int id;
-    @OneToOne
-    private CompteBancaire compteC;
-    @OneToOne
-    private CompteBancaire compteE;
-    @ManyToOne
-    private Agent agent;
-    private Long numAgent;
+
+    private Long id;
     private String nom;
     private String prenom;
+
     private String cin;
-    private String login;
+    private String username;
+
+
     private String password;
+    private String sexe;
 
 
-    public String getPassword() {
-        return password;
+    private Date dateNaissance;
+    private String numTel;
+
+
+
+    public Long getId() {
+        return id;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public String getLogin() {
-        return login;
-    }
-
-    public void setLogin(String login) {
-        this.login = login;
-    }
-
-    public String getCin() {
-        return cin;
-    }
-
-    public void setCin(String cin) {
-        this.cin = cin;
-    }
-
-    public String getPrenom() {
-        return prenom;
-    }
-
-    public void setPrenom(String prenom) {
-        this.prenom = prenom;
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getNom() {
@@ -63,54 +42,72 @@ public class Client implements Serializable {
         this.nom = nom;
     }
 
-    public int getId() {
-        return id;
+    public String getPrenom() {
+        return prenom;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setPrenom(String prenom) {
+        this.prenom = prenom;
     }
 
-    public Agent getAgent() {
-        return agent;
+    public String getCin() {
+        return cin;
     }
 
-    public void setAgent(Agent agent) {
-        this.agent = agent;
+    public void setCin(String cin) {
+        this.cin = cin;
     }
 
-    public CompteBancaire getCompteC() {
-        return compteC;
+    public String getUsername() {
+        return username;
     }
 
-    public void setCompteC(CompteBancaire compteC) {
-        this.compteC = compteC;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
-    public CompteBancaire getCompteE() {
-        return compteE;
+    public String getPassword() {
+        return password;
     }
 
-    public void setCompteE(CompteBancaire compteE) {
-        this.compteE = compteE;
+    public void setPassword(String password) {
+        this.password = password;
     }
 
-
-
-
-    public Long getNumAgent() {
-        return numAgent;
+    public String getSexe() {
+        return sexe;
     }
 
-    public void setNumAgent(Long agent) {
-        this.numAgent = agent;
+    public void setSexe(String sexe) {
+        this.sexe = sexe;
     }
 
-    public Client() {
-            super();
-            // TODO Auto-generated constructor stub
-        }
+    public Date getDateNaissance() {
+        return dateNaissance;
+    }
 
+    public void setDateNaissance(Date dateNaissance) {
+        this.dateNaissance = dateNaissance;
+    }
 
+    public String getNumTel() {
+        return numTel;
+    }
 
+    public void setNumTel(String numTel) {
+        this.numTel = numTel;
+    }
+
+    public Client(String nom, String prenom, String cin, String username, String password, String sexe, Date dateNaissance, String numTel) {
+        this.nom = nom;
+        this.prenom = prenom;
+        this.cin = cin;
+        this.username = username;
+        this.password = password;
+        this.sexe = sexe;
+        this.dateNaissance = dateNaissance;
+        this.numTel = numTel;
+    }
+
+    public Client(){}
 }

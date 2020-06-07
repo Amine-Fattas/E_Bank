@@ -52,6 +52,7 @@ public class OperationService {
 		if(!test.check(req)) throw new HTTPException(403);
 		return operationMetier.getOperationByIdClient(id);
 	}
+
 	@RequestMapping(value="/operation/list",method=RequestMethod.GET)
 	public List<Operation> getList(){
 	return  operationMetier.getOperations();

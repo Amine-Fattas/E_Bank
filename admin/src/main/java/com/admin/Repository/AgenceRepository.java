@@ -11,6 +11,7 @@ import java.util.List;
 public interface AgenceRepository extends JpaRepository<Agence, Integer> {
 
     Agence findByNomAgence(String id);
+    Agence findById(int id);
 
     @Query(value="SELECT num_agence from agence order by num_agence desc LIMIT 1",nativeQuery=true)
     public Integer lastcodeguichet();

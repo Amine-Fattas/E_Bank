@@ -131,9 +131,9 @@
             </div>
             <!-- page start-->
             <!--notification start-->
-            <form th:action="@{update(id=${agent.suffixContrat})}" method="post">
+            <form th:action="@{update(id=${agent?.id})}" method="put">
 
-                <input type="hidden" name="suffix" th:value="${agent.suffixContrat}" />
+                <input type="hidden" name="suffix" th:value="${agent?.numContrat}" />
                 <div class="form-group formgroup">
                     <div class="labeldiv"><label class="control-label ctrlabel">Nom</label></div>
                     <input class="form-control form-control-lg input" type="text" name="nom" th:value="${agent.nom}" />
@@ -146,14 +146,14 @@
                     <div class="labeldiv"><label class="control-label ctrlabel">CIN</label></div>
                     <input class="form-control form-control-lg input" type="text" name="cin"  th:value="${agent.cin}"/>
                 </div>
-                <input type="hidden" name="login" th:value="${agent.login}" />
+                <input type="hidden" name="login" th:value="${agent.Username}" />
                 <input type="hidden" name="password" th:value="${agent.password}" />
                 <div class="form-group formgroup">
                     <div class="labeldiv"><label class="control-label ctrlabel">Agence</label></div>
-                    <select class="form-control" th:field="*{agent.agence.nomAgence}">
+                    <select class="form-control" th:field="*{agent.agence.numAgence}">
                         <option th:each="a:${listeAgence}"
-                                th:text="${a.nomAgence}"
-                                th:value="${a.nomAgence}"/>
+                                th:text="${a.numAgence}"
+                                th:value="${a.numAgence}"/>
                     </select>
                 </div>
                 <div class="divsave">

@@ -15,6 +15,7 @@ import { NemuBarComponent } from './nemu-bar/nemu-bar.component';
 import { LoginComponent } from './login/login.component';
 import { MultiFormComponent } from './multi-form/multi-form.component';
 import { RetraitComponent } from './retrait/retrait.component';
+import { ProfileComponent } from './profile/profile.component';
 
 
 
@@ -29,7 +30,7 @@ const routes: Routes = [
   // {path:"contacts",component:ContactsComponent},
   // {path:"new-contact",component: NouveauContactComponent},
   { path: "editClient/:id", component: EditClientComponent},
-  { path: "acceuil", component:NemuBarComponent},
+  { path: "acceuil", component:ProfileComponent},
   {path:"comptes",
         children:[
           {path:"ajoutCompte",component:MultiFormComponent},

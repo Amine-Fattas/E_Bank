@@ -74,7 +74,7 @@ public class ClientService {
 		return true;
 	}
 //
-	/*@RequestMapping(value="/client/{id}",method=RequestMethod.GET)
+	@RequestMapping(value="/client/{id}",method=RequestMethod.GET)
 	public Client getClientById(@PathVariable Long id){
 //		return restTemplate.getForObject(url+"/client/"+id, Client.class);
 		List<Client> list = getClients();
@@ -99,12 +99,21 @@ public class ClientService {
 //			@RequestParam(name="size",defaultValue="5") int size
 //			){
 //		return clientMetier.chercher(mc, page,size);
-//	}*/
+//	}
+//	/*
 //
-//	@RequestMapping(value="/agent/chercher/{mc}",method=RequestMethod.GET)
-//	public List<Client> chercher(@PathVariable String mc){
-//		System.out.println("cherche");
-//		return clientMetier.chercher(mc);}
+	@RequestMapping(value="/agent/chercher/{mc}",method=RequestMethod.GET)
+	public List<Client> chercher(@PathVariable String mc){
+		System.out.println(mc);
+
+			ResponseEntity<List<Client>> response = restTemplate.exchange(
+					url+"/client/recherche/"+mc, HttpMethod.GET, null, new ParameterizedTypeReference<List<Client>>() {}
+			);
+
+			List<Client> list = response.getBody();
+			return  list;
+		}
+
 
     @RequestMapping(value="/client/list",method = RequestMethod.GET)
     public List<Client> getClients(){

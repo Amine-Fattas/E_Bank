@@ -1,7 +1,6 @@
 package com.admin.controllers;
 
 import com.admin.Repository.AgenceRepository;
-import com.admin.Repository.AgentRepository;
 import com.admin.models.Agence;
 import com.admin.models.Agent;
 import com.admin.models.Pager;
@@ -21,20 +20,19 @@ import java.util.Optional;
 
 @Controller
 public class AgenceController{
-    @Autowired
+   @Autowired
     private AgenceRepository agenceRepository;
 
-    @Autowired
-    private AgentRepository agentRepository;
+
 
     private static final int BUTTONS_TO_SHOW = 5;
     private static final int INITIAL_PAGE = 0;
     private static final int INITIAL_PAGE_SIZE = 8;
 
     @RequestMapping(value="/get-agence")
-    public String findAgence(Model model, String id)
+    public String findAgence(Model model, int id)
     {
-        Agence agence = agenceRepository.findByNomAgence(id);
+        Agence agence = agenceRepository.findById(id);
         model.addAttribute("agence",agence);
         return "Agence/agence";
     }
@@ -64,7 +62,7 @@ public class AgenceController{
     }
     @RequestMapping(path = "/editAgence", method = RequestMethod.GET)
     public String editAgence(Model model,int numAgence) {
-        Agence a= agenceRepository.findById(numAgence).get();
+        Agence a= agenceRepository.findById(numAgence);
         model.addAttribute("agence",a);
         return "Agence/edit-agence";
     }
@@ -88,7 +86,7 @@ public class AgenceController{
         agenceRepository.save(agence);
         return "redirect:/liste";
     }
-    @RequestMapping(value="/deleteAgence" , method= RequestMethod.GET)
+   /* @RequestMapping(value="/deleteAgence" , method= RequestMethod.GET)
     @Cascade(CascadeType.DELETE)
     public String deleteAgence(Model model, Integer numAgence){
         Agence a=agenceRepository.findById(numAgence).get();
@@ -101,5 +99,5 @@ public class AgenceController{
         agenceRepository.delete(a);
         return "redirect:/liste";
 
-    }
+    }*/
 }

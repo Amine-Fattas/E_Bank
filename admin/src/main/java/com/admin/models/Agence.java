@@ -14,8 +14,8 @@ public class Agence implements Serializable {
     private String ville;
     private String tel;
     static private int code_banque= 435;
-    @OneToMany
-    private Collection<Agent> agents;
+    /*@OneToMany
+    private Collection<Agent> agents;*/
 
 
 

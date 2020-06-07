@@ -40,6 +40,7 @@ public class securityConfig extends WebSecurityConfigurerAdapter {
 
 		super.configure(web);
 			web.ignoring()
+					.antMatchers("/client/recherche/{mc}")
 					.antMatchers("/client/list")
 					.antMatchers("/client/delete/{id}")
 					.antMatchers("/client/update/{id}")

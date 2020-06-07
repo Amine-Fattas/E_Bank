@@ -162,10 +162,10 @@
                             <div class="form-group ">
                                 <label  class="control-label col-lg-2">Agence<span class="required">*</span></label>
                                 <div class="col-lg-10">
-                                <select class="form-control" th:field="${agent.agence.nomAgence}">
+                                <select class="form-control" th:field="${agent.numAgence}">
                                     <option th:each="a:${listeAgences}"
-                                            th:text="${a.getNomAgence()}"
-                                            th:value="${a.nomAgence}"/>
+                                            th:text="${a.getNumAgence()}"
+                                            th:value="${a.numAgence}"/>
                                 </select>
                                 </div>
                             </div>

@@ -1,4 +1,4 @@
-package com.admin.Repository;
+/*package com.admin.Repository;
 
 import com.admin.models.Agence;
 import com.admin.models.Agent;
@@ -19,8 +19,8 @@ public interface AgentRepository extends JpaRepository<Agent, Long> , PagingAndS
     List<Agent> findAllByAgenceNumAgence(Integer id);
 
 
-    @Query(value="SELECT suffix_contrat from agent order by num_contrat desc LIMIT 1",nativeQuery=true)
-    public Long last_suffix();
 
 
-}
+
+
+}*/

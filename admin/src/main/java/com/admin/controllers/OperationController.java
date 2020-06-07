@@ -1,25 +1,43 @@
 package com.admin.controllers;
 
-import com.admin.Repository.OperationRepository;
+
+import com.admin.models.Client;
 import com.admin.models.CompteBancaire;
+import com.admin.models.Operation;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.ParameterizedTypeReference;
+import org.springframework.http.HttpMethod;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.client.RestTemplate;
+
+import java.util.List;
+
 
 @Controller
 public class OperationController {
+    private String url = "http://localhost:8081";
 
     @Autowired
-    private OperationRepository operationRepository;
-
-    //@RequestMapping(value="/comptebancaire")
-   /* public String list(Model model, int id) {
-        CompteBancaire compte = operationRepository.findById(id).get();
-        model.addAttribute("operations",compte.getOperations());
-        return "CompteBancaire/ComptesBancaires";
+    RestTemplate restTemplate;
 
 
-    }*/
+
+
+
+    @RequestMapping(value="/operations")
+    public String listOperation(Model model) {
+
+        ResponseEntity<List<Operation>> response = restTemplate.exchange(
+                url+"/operation/list", HttpMethod.GET, null, new ParameterizedTypeReference<List<Operation>>() {}
+        );
+        List<Operation> listOpe = response.getBody();
+        model.addAttribute("operations",listOpe);
+        return "Operation/operations";
+
+
+    }
 
 }

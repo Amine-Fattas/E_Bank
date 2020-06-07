@@ -149,13 +149,12 @@
                         <th>prenom</th>
                         <th>cin</th>
                         <th>login</th>
-                        <th>password</th>
                         <th>Agence</th>
                         <th>Actions</th>
                     </tr>
                     </thead>
                     <tbody>
-                    <tr th:each="a:${listeAgents}">
+                    <tr th:each="a:${listAgents}">
                         <td>
                             <a id="photoButton" th:href="@{img/icone.jpg}">
 <img th:src="@{img/icone.jpg}"  width="40" height="40" />
@@ -165,14 +164,14 @@
                         <td th:text="${a.getNom()}"></td>
                         <td th:text="${a.getPrenom()}"></td>
                         <td th:text="${a.getCin()}"></td>
-                        <td th:text="${a.getLogin()}"></td>
-                        <td th:text="${a.getPassword()}"></td>
-                        <td><a th:href="@{get-agence(id=${a?.getAgence()?.getNomAgence()})}" th:text="${a?.getAgence()?.getNomAgence()}"></a></td>
+                        <td th:text="${a.getUsername()}"></td>
+                      <td th:text="${a.getNumAgence()}"></td>
+                        <td><a th:href="@{get-agence(id=${a?.getNumAgence()})}" th:text="${a?.getNumAgence()}"></a></td>
 
 
-                        <td>
-                            <a id="deleteButton" th:href="@{delete(id=${a.getSuffixContrat()})}" class="delete" data-toggle="modal" data-target="#deleteModal"><i class="material-icons" title="Delete">&#xE872;</i></a>
-                            <a th:href="@{edit(id=${a.getSuffixContrat()})}" class="edit"><i class="material-icons" title="Edit">&#xE254;</i></a>
+                       <td>
+                            <a id="deleteButton" th:href="@{delete(id=${a.getId()})}" class="delete" data-toggle="modal" data-target="#deleteModal"><i class="material-icons" title="Delete">&#xE872;</i></a>
+                            <a th:href="@{edit(id=${a.getId()})}" class="edit"><i class="material-icons" title="Edit">&#xE254;</i></a>
                         </td>
                     </tr>
                     </tbody>
@@ -180,7 +179,7 @@
             </section>
             <!-- page end-->
         </section>
-        <div th:if="${listeAgents.totalPages != 1}" class="form-group col-md-11 pagination-centered">
+      <!--  <div th:if="${listeAgents.totalPages != 1}" class="form-group col-md-11 pagination-centered">
             <ul class="pagination">
                 <li class="page-item" th:classappend="${listeAgents.number eq 0} ? disabled">
                     <a class="pageLink" th:href="@{index(page=1)}" ><i class="material-icons">first_page</i></a>
@@ -200,7 +199,7 @@
                 </li>
 
             </ul>
-        </div><!-- fin total page-->
+        </div>-->
     </section>
     <!--main content end-->
 
