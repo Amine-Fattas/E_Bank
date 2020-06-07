@@ -1,69 +1,124 @@
 
+  
 
   body {
-    margin:0;
-    padding: 0;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif, Helvetica, sans-serif;
-    background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)),url('/assets/images/bankAcceuil.jpg');
-    
+
+    background: #222D32;
+    font-family: 'Roboto', sans-serif;
+    background:  linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)),url("/assets/images/photoAcceuil.jpg");
+    height: 100vh;
     background-repeat: no-repeat;
-      
-   background-size: cover;
-   
-   
-    background-position:left;
-   -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-  }
-  .form-area{
-    position: absolute;
-    top:28%;
-    left:65%;
-    transform: translate(-(50%,-50%));
-    width: 300px;
-    box-sizing: border-box;
-    background:rgba(0,0,0,0.5);
-    padding: 3%;
-  }
-  
-  
-  .form-area p{
-    margin:0;
-    
-    font-weight: bolder;
-    font-style: italic;
-    color: whitesmoke;
-  }
-  
-  .form-area input,select{
-    margin-bottom: 9%;
-    width: 100%;
-  }
-  
-  .form-area input[type=text],
-  .form-area input[type=password]{
-    border:none;
-    border-bottom:1px solid #ffffff;
-    background-color: transparent;
-    outline: none;
-    height: 2%;
-    color: #ffffff;
-    display: 4%
-  
-  }
-  
-  ::placeholder{
-    color: gray;
-  }
-  
-  button{
-  
-    width: 100%;
-    border: none;
-    outline: none;
-    background-color: #FFCC00;
-    cursor: pointer;
-    border-radius: 20px;
-    color: #ffffff;
-  }
+    background-size: cover;
+     background-position:left;
+    -webkit-background-size: cover;
+     -moz-background-size: cover;
+     -o-background-size: cover;
+}
+
+.wrapper{
+ 
+	background-color: rgba(0,0,0,0.2);
+	margin: auto;
+	padding: 0px;
+	border-radius: 5px;
+	box-shadow: 0px 0px 10px #000;
+  position: absolute;
+  right: 20px;
+  top: 100px;
+  width: 400px;
+
+	height: 350px;
+}
+.wrapper:before{
+	background-size: cover;
+	content: "";
+	position: fixed;
+	top: 0px;
+	bottom: 0px;
+	left: 0px;
+	right: 0px;
+	z-index: -1;
+	display: block;
+	filter: blur(3px);
+}
+.wrapper .header-text{
+	font-size: 32px;
+	font-weight: 600;
+	padding-bottom: 30px;
+  text-align: center;
+  color: #fff;
+  font-style: italic;
+}
+ 
+.wrapper input{
+/*  border:none;
+  border-bottom:1px solid #ffffff;
+  background-color: transparent;
+  outline: none;
+  height: 2%;
+  color: #ffffff;
+  display: 4%*/
+	padding: 10px;
+  margin: 10px 0px;
+  border:none;
+  border-bottom:1px solid #ffffff;
+  background-color: transparent;
+  color: #ffffff;
+ 
+  outline: none;
+	border-radius: 5px;
+	width: 70%;
+	font-size: 16px;
+margin-left: 20%;
+}
+.wrapper input[type=checkbox]{
+	display: none;
+}
+.wrapper label{
+	position: relative;
+	margin-left: 5px;
+	margin-right: 10px;
+	top: 5px;
+	display: inline-block;
+	width: 20px;
+	height: 20px;
+	cursor: pointer;
+ 
+}
+.wrapper label:before{
+	content: "";
+	display: inline-block;
+	width: 20px;
+	height: 20px;
+	border-radius: 5px;
+	position: absolute;
+	left: 0px;
+	bottom: 1px;
+	background-color: #ddd;
+ 
+}
+.wrapper input[type=checkbox]:checked + label:before{
+	content: '\2713';
+	font-size: 20px;
+	color: #262626;
+	text-align: center;
+	line-height: 20px;
+}
+.wrapper span{
+	font-size: 14px;
+}
+.wrapper button{
+	background-color: #FFCC00;
+	color: #fff;
+	border:none;
+	border-radius: 5px;
+	cursor: pointer;
+  width: 80%;
+  font-style: italic;
+	font-size: 18px;
+	padding: 10px;
+	margin: 50px 40px;
+}
+span a{
+	color:#ddd;
+}

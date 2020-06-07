@@ -10,6 +10,9 @@ import { ClientService } from './Service/client.service';
 
 import { routingComponents } from './app-routing.module';
 import { LoginComponent } from './login/login.component';
+import { AcceuilComponent } from './acceuil/acceuil.component';
+
+
 
 
 
@@ -19,7 +22,8 @@ import { LoginComponent } from './login/login.component';
     AppComponent,
     NemuBarComponent,
     routingComponents,
-    LoginComponent
+    LoginComponent,
+    AcceuilComponent
   ],
   imports: [
     BrowserModule,

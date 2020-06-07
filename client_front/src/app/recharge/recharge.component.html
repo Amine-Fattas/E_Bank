@@ -1,15 +1,39 @@
+
 <app-nemu-bar></app-nemu-bar>
-<div class="component-container">
+<br>
+<div class="container">
+    
+    <div class="card" style="margin-left: 30%;">
+      <div class="card__container">
+          <h1 class="card__header">
+          Recharge
+        </h1>
+        <form #form="ngForm" (ngSubmit)="onSubmit()" novalidate>
+            
+     
+            <input  name="codeRecharge"
+             class="input" type="text" [(ngModel)]="codeRecharge.code"  maxlength="8" placeholder="Code de recharge">
+            <br>
+            <button type="submit" class="submit">Recharger</button>
+            
+         
+        </form>
+      </div>
+   
+    
+  </div>
+</div>
+
+<!--<div>
     <form #form="ngForm" (ngSubmit)="onSubmit()" novalidate>
         <h1>Recharge</h1>
-        <!-- {{form.value | json}} -->
-     
+ 
         <input  name="codeRecharge"
          class="input" type="text" [(ngModel)]="codeRecharge.code"  maxlength="8" placeholder="Code de recharge">
-        
+        <br>
         <button type="submit" class="submit">Recharger</button>
         
-        <!-- {{codeRecharge | json}} -->
+     
     </form>
     
-</div>
+</div>-->

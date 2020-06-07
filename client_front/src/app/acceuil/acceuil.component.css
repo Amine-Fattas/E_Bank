@@ -1,0 +1,25 @@
+
+.card::before{
+  position: absolute;
+  top:2rem;
+  right:-0.5rem;
+  content: '';
+  background: tomato;
+  height: 28px;
+  width: 28px;
+  transform : rotate(45deg);
+}
+
+.card::after{
+  position: absolute;
+  content: 'Information';
+  top: 11px;
+  right: -14px;
+  padding: 0.5rem;
+  width: 10rem;
+  background: black;
+  color: white;
+  text-align: center;
+  font-family: 'Roboto', sans-serif;
+  box-shadow: 4px 4px 15px rgba(26, 35, 126, 0.2);
+}

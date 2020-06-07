@@ -6,11 +6,11 @@ import { CompteService } from '../Service/compte.service';
 import { Agent } from '../model/Agent';
 
 @Component({
-  selector: 'app-nemu-bar',
-  templateUrl: './nemu-bar.component.html',
-  styleUrls: ['./nemu-bar.component.css']
+  selector: 'app-acceuil',
+  templateUrl: './acceuil.component.html',
+  styleUrls: ['./acceuil.component.css']
 })
-export class NemuBarComponent implements OnInit {
+export class AcceuilComponent implements OnInit {
   compte: Compte
   client: Client
   constructor(private _compteService: CompteService,

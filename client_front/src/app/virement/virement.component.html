@@ -1,19 +1,27 @@
 <app-nemu-bar></app-nemu-bar>
-<div class="component-container"> 
-    <form #form="ngForm" (ngSubmit)="onSubmit()" novalidate>
-        <h1>Virement Externe</h1>
-        <!-- {{form.value | json}} -->
-        
-        <input [(ngModel)]="newOperation.compteDestination.rib" name="compteDestination"
-         class="input" type="text" placeholder="Compte Destination (RIB / CIN)">
+<br>
+    <div class="card" style="margin-left: 30%;">
+      <div class="card__container">
+          <h1 class="card__header">
+         Virement
+        </h1>
+        <form #form="ngForm" (ngSubmit)="onSubmit()" novalidate>
+     
+            <!-- {{form.value | json}} -->
+            
+            <input [(ngModel)]="newOperation.compteDestination.rib" name="compteDestination"
+             class="input" type="text" placeholder="Compte Destination (RIB / CIN)">
+    
+            <input [(ngModel)]="newOperation.montant" name="montant"
+             class="input" type="number" min="0" placeholder="Montant"><br>
+   
+            <button type="submit" class="submit">Valider</button>
+    
+            <!-- {{newOperation | json}} -->
+        </form>   
+      </div>
+    </div>
+    
 
-        <input [(ngModel)]="newOperation.montant" name="montant"
-         class="input" type="number" min="0" placeholder="Montant">
-
-        <button type="submit" class="submit">Valider</button>
-
-        <!-- {{newOperation | json}} -->
-    </form>   
-</div>
 
 

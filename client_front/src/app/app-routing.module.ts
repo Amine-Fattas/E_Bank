@@ -9,6 +9,7 @@ import { CompteCourantComponent } from './compte-courant/compte-courant.componen
 import { CompteEpargneComponent } from './compte-epargne/compte-epargne.component';
 import { NemuBarComponent } from './nemu-bar/nemu-bar.component';
 import { LoginComponent } from './login/login.component';
+import { AcceuilComponent } from './acceuil/acceuil.component';
 
 
 
@@ -17,7 +18,7 @@ const routes: Routes = [
  /* { path: "", redirectTo: "/compte/courant", pathMatch: "full"},*/
   { path: '', redirectTo: '/login', pathMatch: 'full' }, 
   { path: 'login',component:LoginComponent},
-  { path: "acceuil", component:NemuBarComponent},
+  { path: "acceuil", component:AcceuilComponent},
   { path: "compte", 
       children: [
         { path: "", redirectTo: "/compte/courant", pathMatch: "full"},

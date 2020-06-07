@@ -1,4 +1,4 @@
-<body>
+<!--<body >
  
     <div class="form-area">
       <form #f="ngForm" (ngSubmit)="onLogin(f.value)">
@@ -12,6 +12,21 @@
         </form>
         </div>
         
-  </body>
-  
-  
+  </body>-->
+  <body>
+   <div class="container">
+    <div class="wrapper">
+        <div class="header-text">Bienvenue</div>
+        <form #f="ngForm" (ngSubmit)="onLogin(f.value)">
+        <input type="text"  name="username" ngModel="" placeholder="Your Email Address" required>
+        <input type="password"   name="password" ngModel="" placeholder="Your Password" required>
+        <button  type="submit">Login</button>
+        </form>
+
+    </div>
+   
+        
+ 
+          
+</div>
+</body>

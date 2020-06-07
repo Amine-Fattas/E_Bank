@@ -1,0 +1,37 @@
+
+<app-nemu-bar></app-nemu-bar>
+<br>
+
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-6 col-12 ">
+          <div class="card">
+            <div class="card__container">
+                <h1 class="card__header">
+                  Bienvenue Mr/Ms {{compte.client.prenom}} {{compte.client.prenom}}
+              </h1>
+              <p class="card__body">
+               Rib : {{compte.rib}} <br>
+               Solde : {{compte.solde | number: '.2'}} MAD
+              </p>  
+            </div>
+          </div>
+           
+        </div>
+        <div class="col-lg-6 col-12">
+      
+      <div class="card">
+        <div class="card__container">
+            <h1 class="card__header">
+              Contactez nous :
+          </h1>
+          <p class="card__body">
+            <br>
+           Agent : {{compte.agent.prenom}} {{compte.agent.nom}} <br>
+           Email : {{compte.agent.username}}<br>
+           
+          </p>  
+        </div>
+      </div>
+    </div>
+  </div>
