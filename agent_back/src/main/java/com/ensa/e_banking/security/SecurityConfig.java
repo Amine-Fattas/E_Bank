@@ -49,7 +49,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	public void configure(WebSecurity web) throws Exception {
 		web.ignoring()
 				//.antMatchers("/agent/{id}")
-				.antMatchers("agent/update/{id}")
+				.antMatchers("/agent/deleteagence/{id}")
+				.antMatchers("/agent/deleteagent/{id}")
+				.antMatchers("/agent/agentsbyagence/{id}")
+				.antMatchers("/agent/update/{id}")
 				.antMatchers("/agent/add")
 				.antMatchers("/agent/list")
 				.antMatchers("/operation/list")

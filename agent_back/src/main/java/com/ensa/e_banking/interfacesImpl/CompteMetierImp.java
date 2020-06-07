@@ -5,6 +5,7 @@ import java.util.Date;
 import java.util.List;
 
 
+import com.ensa.e_banking.service.HomeController;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -23,6 +24,11 @@ import org.springframework.web.client.RestTemplate;
 
 @Service
 public class CompteMetierImp implements CompteMetier{
+
+
+	@Autowired
+	private HomeController homeController;
+
 
 	@Autowired
 	CompteRepository compteRepository;
@@ -60,7 +66,7 @@ public class CompteMetierImp implements CompteMetier{
         else {numCompte=1L;}
   
         compte.setNumCompte(numCompte);
-        compte.setRib(formaterRib(agence.getCode_banque(),agence.getNumAgence(),numCompte));
+        compte.setRib(formaterRib(agence.getCode_banque(),homeController.currentAgent().getNumAgence(),numCompte));
         System.out.println("done");
 		compteRepository.save(compte);
 		return compte;

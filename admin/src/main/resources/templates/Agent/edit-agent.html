@@ -83,7 +83,7 @@
                 <li class="">
                     <a class="" href="/">
                         <i class="icon_house_alt"></i>
-                        <span>Dashboard</span>
+                        <span>Acceuil</span>
                     </a>
                 </li>
                 <li class="sub-menu">
@@ -111,6 +111,55 @@
                     </ul>
                 </li>
 
+
+
+                <li class="sub-menu">
+                    <a href="javascript:;" class="">
+                        <i class="icon_document_alt"></i>
+                        <span>Clients</span>
+                        <span class="menu-arrow arrow_carrot-right"></span>
+                    </a>
+                    <ul class="sub">
+                        <li><a class="" href="/clients">ListeClients</a></li>
+                    </ul>
+
+                </li>
+
+                <li class="sub-menu">
+                    <a href="javascript:;" class="">
+                        <i class="icon_document_alt"></i>
+                        <span>Comptes</span>
+                        <span class="menu-arrow arrow_carrot-right"></span>
+                    </a>
+                    <ul class="sub">
+                        <li><a class="" href="/comptebancaireactive">ComptesActives</a></li>
+                        <li><a class="" href="/comptebancairedesavtive">Comptes Désactivés</a></li>
+                    </ul>
+
+                </li>
+
+                <li class="sub-menu">
+                    <a href="javascript:;" class="">
+                        <i class="icon_document_alt"></i>
+                        <span>Opérations</span>
+                        <span class="menu-arrow arrow_carrot-right"></span>
+                    </a>
+                    <ul class="sub">
+                        <li><a class="" href="/operations">Liste Opértions</a></li>
+                    </ul>
+
+                </li>
+
+
+
+
+
+
+
+
+
+
+
             </ul>
             <!-- sidebar menu end-->
         </div>
@@ -131,9 +180,9 @@
             </div>
             <!-- page start-->
             <!--notification start-->
-            <form th:action="@{update(id=${agent?.id})}" method="put">
+            <form th:action="@{'/update/'+${agent.id}}" method="post">
 
-                <input type="hidden" name="suffix" th:value="${agent?.numContrat}" />
+                <input type="hidden" name="suffix" th:value="${agent.numContrat}" />
                 <div class="form-group formgroup">
                     <div class="labeldiv"><label class="control-label ctrlabel">Nom</label></div>
                     <input class="form-control form-control-lg input" type="text" name="nom" th:value="${agent.nom}" />
@@ -146,14 +195,14 @@
                     <div class="labeldiv"><label class="control-label ctrlabel">CIN</label></div>
                     <input class="form-control form-control-lg input" type="text" name="cin"  th:value="${agent.cin}"/>
                 </div>
-                <input type="hidden" name="login" th:value="${agent.Username}" />
+                <input type="hidden" name="login" th:value="${agent.username}" />
                 <input type="hidden" name="password" th:value="${agent.password}" />
                 <div class="form-group formgroup">
                     <div class="labeldiv"><label class="control-label ctrlabel">Agence</label></div>
-                    <select class="form-control" th:field="*{agent.agence.numAgence}">
+                    <select class="form-control" th:field="${agent.agence.nomAgence}">
                         <option th:each="a:${listeAgence}"
-                                th:text="${a.numAgence}"
-                                th:value="${a.numAgence}"/>
+                                th:text="${a.nomAgence}"
+                                th:value="${a.nomAgence}"/>
                     </select>
                 </div>
                 <div class="divsave">

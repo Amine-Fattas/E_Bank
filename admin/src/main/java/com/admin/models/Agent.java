@@ -19,7 +19,7 @@ public class Agent implements Serializable{
 	@Transient
 	private Agence agence;
 
-	private int numAgence;
+	private Integer numAgence;
 	/*
 	@OneToMany (mappedBy = "agent")
 	private Collection<Client> listeClients;*/
@@ -38,11 +38,11 @@ public class Agent implements Serializable{
 		return nom;
 	}
 
-	public int getNumAgence() {
+	public Integer getNumAgence() {
 		return numAgence;
 	}
 
-	public void setNumAgence(int numAgence) {
+	public void setNumAgence(Integer numAgence) {
 		this.numAgence = numAgence;
 	}
 
@@ -115,6 +115,17 @@ public class Agent implements Serializable{
 		this.password = password;
 		this.numContrat = numContrat;
 		this.agence = agence;
+	}
+
+	public Agent(Long id,String nom, String prenom, String cin, String username, String password, String numContrat, Integer numAgence) {
+		this.id=id;
+		this.nom = nom;
+		this.prenom = prenom;
+		this.cin = cin;
+		this.username = username;
+		this.password = password;
+		this.numContrat = numContrat;
+		this.numAgence = numAgence;
 	}
 
 }

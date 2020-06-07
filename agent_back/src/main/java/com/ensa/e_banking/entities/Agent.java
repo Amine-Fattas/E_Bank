@@ -27,11 +27,11 @@ public class Agent {
 	private String password;
 	private String numContrat;
 
-	private int numAgence;
+	private Integer numAgence;
 	
 
    
-	public Agent(Long id, String nom, String prenom, String cin, String username, String password, int numAgence) {
+	public Agent(Long id, String nom, String prenom, String cin, String username, String password, Integer numAgence) {
 		super();
 		this.id = id;
 		this.nom = nom;
@@ -128,7 +128,7 @@ public class Agent {
 
 
 
-	public Agent(Long id, String nom, String prenom, String cin, int numAgence) {
+	public Agent(Long id, String nom, String prenom, String cin, Integer numAgence) {
 		super();
 		this.id = id;
 		this.nom = nom;
@@ -156,7 +156,7 @@ public class Agent {
 		return numAgence;
 	}
 
-	public void setNumAgence(int numAgence) {
+	public void setNumAgence(Integer numAgence) {
 		this.numAgence = numAgence;
 	}
 }

@@ -13,7 +13,7 @@ public class Agence implements Serializable {
     private String adresse;
     private String ville;
     private String tel;
-    static private int code_banque= 435;
+    static private int code_banque=30045;
     /*@OneToMany
     private Collection<Agent> agents;*/
 

@@ -1,11 +1,15 @@
 package com.admin;
 
+import com.admin.Repository.AdminRepository;
 import com.admin.Repository.AgenceRepository;
 
+import com.admin.models.Admin;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.client.RestTemplate;
 //import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 
@@ -19,16 +23,19 @@ public class DemoApplication {
 		return new RestTemplate();
 	}
 
+
+
 	public static void main(String[] args) {
 		//SpringApplication.run(Application.class, args);
 		//SpringApplication.run(Application.class, args);
 		ApplicationContext ctx =SpringApplication.run(DemoApplication.class, args);
 		/*AgentRepository agent=ctx.getBean(AgentRepository.class);*/
 		AgenceRepository agence=ctx.getBean(AgenceRepository.class);
+		AdminRepository adminRepository=ctx.getBean(AdminRepository.class);
 		/*ClientRepository client=ctx.getBean(ClientRepository.class);*/
 		//Agent a;
 		//agent.save(a=new Agent());
-
+    // Admin admin = new Admin((long) 101,"admin","admin","admin","admin",new BCryptPasswordEncoder().encode("admin"));
 		//agent.save(new Agent(337755.44,44.4422));$(function() {
 		//        $('.table #deleteButton').on('click',function (event) {
 		//                event.preventDefault();
