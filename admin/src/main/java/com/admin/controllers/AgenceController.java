@@ -12,6 +12,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.client.RestTemplate;
 
 import java.util.Iterator;
 import java.util.List;
@@ -29,10 +30,13 @@ public class AgenceController{
     private static final int INITIAL_PAGE = 0;
     private static final int INITIAL_PAGE_SIZE = 8;
 
+    private String url = "http://localhost:8081";
+
+
     @RequestMapping(value="/get-agence")
-    public String findAgence(Model model, int id)
+    public String findAgence(Model model, String id)
     {
-        Agence agence = agenceRepository.findById(id);
+        Agence agence = agenceRepository.findByNomAgence(id);
         model.addAttribute("agence",agence);
         return "Agence/agence";
     }
@@ -100,4 +104,17 @@ public class AgenceController{
         return "redirect:/liste";
 
     }*/
+
+    @RequestMapping(value="/deleteAgence" , method= RequestMethod.GET)
+    @Cascade(CascadeType.DELETE)
+    public String deleteAgence(Model model, Integer numAgence){
+        Agence a=agenceRepository.findById(numAgence).get();
+        Integer id = a.getNumAgence();
+        RestTemplate restTemplate = new RestTemplate();
+        restTemplate.getForObject(url+"/agent/deleteagence/"+id, String.class);
+
+        agenceRepository.delete(a);
+        return "redirect:/liste";
+
+    }
 }

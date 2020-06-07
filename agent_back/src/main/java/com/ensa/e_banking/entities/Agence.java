@@ -17,7 +17,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 public class Agence {
 	//il faut avoir des taux predefini comme pour le taux de virement
 
-	private int numAgence;//code guichet
+	private Integer numAgence;//code guichet
 
 	//nom Banque A,J = 1 ; B,K,S = 2 ; C,L,T = 3 ; D,M,U = 4 ; E,N,V = 5 F,O,W = 6 ; G,P,X = 7 ; H,Q,Y = 8 ; I,R,Z = 9
 
@@ -32,11 +32,11 @@ public class Agence {
 	private String tel;
 
 
-	public int getNumAgence() {
+	public Integer getNumAgence() {
 		return numAgence;
 	}
 
-	public void setNumAgence(int numAgence) {
+	public void setNumAgence(Integer numAgence) {
 		this.numAgence = numAgence;
 	}
 
@@ -80,7 +80,7 @@ public class Agence {
 		this.tel = tel;
 	}
 
-	public Agence(int numAgence, String nomAgence, int code_banque, String adresse, String ville, String tel) {
+	public Agence(Integer numAgence, String nomAgence, int code_banque, String adresse, String ville, String tel) {
 		this.numAgence = numAgence;
 		this.nomAgence = nomAgence;
 		this.code_banque = code_banque;

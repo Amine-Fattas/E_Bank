@@ -86,7 +86,7 @@
                 <li class="">
                     <a class="" href="/">
                         <i class="icon_house_alt"></i>
-                        <span>Dashboard</span>
+                        <span>Acceuil</span>
                     </a>
                 </li>
                 <li class="sub-menu">
@@ -113,6 +113,55 @@
                         <li><a class="" href="/add">AjoutAgent</a></li>
                     </ul>
                 </li>
+
+
+
+                <li class="sub-menu">
+                    <a href="javascript:;" class="">
+                        <i class="icon_document_alt"></i>
+                        <span>Clients</span>
+                        <span class="menu-arrow arrow_carrot-right"></span>
+                    </a>
+                    <ul class="sub">
+                        <li><a class="" href="/clients">ListeClients</a></li>
+                    </ul>
+
+                </li>
+
+                <li class="sub-menu">
+                    <a href="javascript:;" class="">
+                        <i class="icon_document_alt"></i>
+                        <span>Comptes</span>
+                        <span class="menu-arrow arrow_carrot-right"></span>
+                    </a>
+                    <ul class="sub">
+                        <li><a class="" href="/comptebancaireactive">ComptesActives</a></li>
+                        <li><a class="" href="/comptebancairedesavtive">Comptes Désactivés</a></li>
+                    </ul>
+
+                </li>
+
+                <li class="sub-menu">
+                    <a href="javascript:;" class="">
+                        <i class="icon_document_alt"></i>
+                        <span>Opérations</span>
+                        <span class="menu-arrow arrow_carrot-right"></span>
+                    </a>
+                    <ul class="sub">
+                        <li><a class="" href="/operations">Liste Opértions</a></li>
+                    </ul>
+
+                </li>
+
+
+
+
+
+
+
+
+
+
 
             </ul>
             <!-- sidebar menu end-->
@@ -146,7 +195,6 @@
                         <th>prenom</th>
                         <th>cin</th>
                         <th>login</th>
-                        <th>password</th>
                         <th>Agence</th>
                         <th>Actions</th>
                     </tr>
@@ -157,14 +205,13 @@
                         <td th:text="${a.getNom()}"></td>
                         <td th:text="${a.getPrenom()}"></td>
                         <td th:text="${a.getCin()}"></td>
-                        <td th:text="${a.getLogin()}"></td>
-                        <td th:text="${a.getPassword()}"></td>
+                        <td th:text="${a.getUsername()}"></td>
                         <td><a th:href="@{get-agence(id=${a?.getAgence()?.getNomAgence()})}" th:text="${a?.getAgence()?.getNomAgence()}"></a></td>
 
 
                         <td>
-                            <a id="deleteButton" th:href="@{delete(id=${a.getSuffixContrat()})}" class="delete" data-toggle="modal" data-target="#deleteModal"><i class="material-icons" title="Delete">&#xE872;</i></a>
-                            <a id="editButton" th:href="@{edit(id=${a.getSuffixContrat()})}" class="edit"><i class="material-icons" title="Edit">&#xE254;</i></a>
+                            <a id="deleteButton" th:href="@{delete(id=${a.getId()})}" class="delete" data-toggle="modal" data-target="#deleteModal"><i class="material-icons" title="Delete">&#xE872;</i></a>
+                            <a id="editButton" th:href="@{edit(id=${a.getId()})}" class="edit"><i class="material-icons" title="Edit">&#xE254;</i></a>
                         </td>
                     </tr>
                     </tbody>
@@ -172,7 +219,7 @@
             </section>
             <!-- page end-->
         </section>
-        <div th:if="${listeAgents.totalPages != 1}" class="form-group col-md-11 pagination-centered">
+    <!--    <div th:if="${listeAgents.totalPages != 1}" class="form-group col-md-11 pagination-centered">
             <ul class="pagination">
                 <li class="page-item" th:classappend="${listeAgents.number eq 0} ? disabled">
                     <a class="pageLink" th:href="@{findAgentsByAgence(id=${agent?.getAgence()?.getNumAgence()},page=1)}" ><i class="material-icons">first_page</i></a>
@@ -192,7 +239,7 @@
                 </li>
 
             </ul>
-        </div><!-- fin total page-->
+        </div> -->
     </section>
     <!--main content end-->
 
