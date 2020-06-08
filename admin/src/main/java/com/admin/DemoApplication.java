@@ -1,5 +1,5 @@
 package com.admin;
-
+/*
 import com.admin.Repository.AdminRepository;
 import com.admin.Repository.AgenceRepository;
 
@@ -29,10 +29,10 @@ public class DemoApplication {
 		//SpringApplication.run(Application.class, args);
 		//SpringApplication.run(Application.class, args);
 		ApplicationContext ctx =SpringApplication.run(DemoApplication.class, args);
-		/*AgentRepository agent=ctx.getBean(AgentRepository.class);*/
+		/*AgentRepository agent=ctx.getBean(AgentRepository.class);
 		AgenceRepository agence=ctx.getBean(AgenceRepository.class);
 		AdminRepository adminRepository=ctx.getBean(AdminRepository.class);
-		/*ClientRepository client=ctx.getBean(ClientRepository.class);*/
+		/*ClientRepository client=ctx.getBean(ClientRepository.class);
 		//Agent a;
 		//agent.save(a=new Agent());
     // Admin admin = new Admin((long) 101,"admin","admin","admin","admin",new BCryptPasswordEncoder().encode("admin"));
@@ -58,4 +58,62 @@ public class DemoApplication {
 
 	}
 
+}*/
+
+
+import com.admin.Repository.AdminRepository;
+import com.admin.Repository.AgenceRepository;
+//import com.admin.Repository.AgentRepository;
+//import com.admin.Repository.ClientRepository;
+import com.admin.models.Admin;
+//import com.ensa.e_banking.entities.Agence;
+//import com.ensa.e_banking.entities.Agent;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.CommandLineRunner;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.Bean;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.stereotype.Component;
+import org.springframework.web.client.RestTemplate;
+
+import javax.annotation.PostConstruct;
+import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+
+@SpringBootApplication
+public class DemoApplication  implements CommandLineRunner {
+	@Autowired
+	private BCryptPasswordEncoder bCryptPasswordEncoder;
+
+	@Autowired
+	private AdminRepository adminRepository;
+
+	@Bean
+	public RestTemplate restTemplate(){
+		return new RestTemplate();
+	}
+
+	public static void main(String[] args) {
+		//SpringApplication.run(Application.class, args);
+		ApplicationContext ctx =SpringApplication.run(DemoApplication.class, args);
+		//AgentRepository agent=ctx.getBean(AgentRepository.class);
+		AgenceRepository agence=ctx.getBean(AgenceRepository.class);
+	//	ClientRepository client=ctx.getBean(ClientRepository.class);
+
+
+	}
+
+
+	@Override
+	public void run(String... args) throws  Exception {
+
+		adminRepository.save(new Admin((long) 101,"admin","admin","admin","admin",new BCryptPasswordEncoder().encode("admin")));
+
+		//adminRepository.save(new Admin((long)44,"hajar", bCryptPasswordEncoder.encode("hajar")));
+	}
 }
+
+
