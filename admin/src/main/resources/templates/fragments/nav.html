@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8" />
+    <title>Home</title>
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="../static/css/bootstrap.min.css" th:href="@{css/bootstrap.min.css}" />
+    <!-- bootstrap theme -->
+    <link rel="stylesheet" href="../static/css/bootstrap-theme.css" th:href="@{css/bootstrap-theme.css}" />
+    <!--external css-->
+    <!-- font icon -->
+    <link rel="stylesheet" href="../static/css/elegant-icons-style.css" th:href="@{css/elegant-icons-style.css}" />
+    <link rel="stylesheet" href="../static/css/font-awesome.min.css" th:href="@{css/font-awesome.min.css}" />
+    <!-- Custom styles -->
+    <link rel="stylesheet" href="../static/css/style.css" th:href="@{css/style.css}" />
+    <link rel="stylesheet" href="../static/css/style-responsive.css" th:href="@{css/style-responsive.css}" />
+</head>
+<body>
+<!--sidebar start-->
+<aside th:fragment="header">
+    <div id="sidebar" class="nav-collapse ">
+        <!-- sidebar menu start-->
+        <ul class="sidebar-menu">
+            <li class="">
+                <a class="" href="/">
+                    <i class="icon_house_alt"></i>
+                    <span>Acceuil</span>
+                </a>
+            </li>
+            <li class="sub-menu">
+                <a href="javascript:;" class="">
+                    <i class="icon_document_alt"></i>
+                    <span>Agences</span>
+                    <span class="menu-arrow arrow_carrot-right"></span>
+                </a>
+                <ul class="sub">
+                    <li><a class="" href="/liste">ListeAgences</a></li>
+                    <li><a class="" href="/addAgence">AjoutAgence</a></li>
+                </ul>
+            </li>
+
+
+            <li class="sub-menu">
+                <a href="javascript:;" class="">
+                    <i class="icon_table"></i>
+                    <span>Agents</span>
+                    <span class="menu-arrow arrow_carrot-right"></span>
+                </a>
+                <ul class="sub">
+                    <li><a class="" href="/index">ListeAgents</a></li>
+                    <li><a class="" href="/add">AjoutAgent</a></li>
+                </ul>
+            </li>
+
+
+
+            <li class="sub-menu">
+                <a href="javascript:;" class="">
+                    <i class="icon_document_alt"></i>
+                    <span>Clients</span>
+                    <span class="menu-arrow arrow_carrot-right"></span>
+                </a>
+                <ul class="sub">
+                    <li><a class="" href="/clients">ListeClients</a></li>
+                </ul>
+
+            </li>
+
+            <li class="sub-menu">
+                <a href="javascript:;" class="">
+                    <i class="icon_document_alt"></i>
+                    <span>Comptes</span>
+                    <span class="menu-arrow arrow_carrot-right"></span>
+                </a>
+                <ul class="sub">
+                    <li><a class="" href="/comptebancaireactive">ComptesActives</a></li>
+                    <li><a class="" href="/comptebancairedesavtive">Comptes Désactivés</a></li>
+                </ul>
+
+            </li>
+
+            <li class="sub-menu">
+                <a href="javascript:;" class="">
+                    <i class="icon_document_alt"></i>
+                    <span>Opérations</span>
+                    <span class="menu-arrow arrow_carrot-right"></span>
+                </a>
+                <ul class="sub">
+                    <li><a class="" href="/operations">Liste Opértions</a></li>
+                </ul>
+
+            </li>
+
+
+        </ul>
+        <!-- sidebar menu end-->
+    </div>
+</aside>
+<!--sidebar end-->
+
+
+<!-- javascripts -->
+<script   th:src="@{js/jquery.js}"></script>
+<script th:src="@{js/bootstrap.min.js}"></script>
+<!-- nice scroll -->
+<script  th:src="@{js/jquery.scrollTo.min.js}"></script>
+<script th:src="@{js/jquery.nicescroll.js}"></script>
+<!--custome script for all page-->
+<script  th:src="@{js/scripts.js}"></script>
+</body>
+</html>

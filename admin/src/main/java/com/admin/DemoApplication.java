@@ -112,7 +112,7 @@ public class DemoApplication  implements CommandLineRunner {
 
 		adminRepository.save(new Admin((long) 101,"admin","admin","admin","admin",new BCryptPasswordEncoder().encode("admin")));
 
-		//adminRepository.save(new Admin((long)44,"hajar", bCryptPasswordEncoder.encode("hajar")));
+		adminRepository.save(new Admin((long)44,"hajar", bCryptPasswordEncoder.encode("hajar")));
 	}
 }
 
