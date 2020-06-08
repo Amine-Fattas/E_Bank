@@ -2,10 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { OperationService } from '../Service/operation.service';
 import { Operation } from '../model/operation';
 import { Compte } from '../model/Compte';
-import { Agent } from '../model/Agent';
 import { CompteService } from '../Service/compte.service';
 import { AuthentificationService } from '../Service/authentification.service';
 import { Client } from '../model/client';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-virement',
@@ -48,8 +48,16 @@ export class VirementComponent implements OnInit {
     console.log("Succes Virement \n"+this.newOperation)
     this._operationService.virer(this.newOperation)
               .subscribe(
-                data => console.log("Success ! :", data),
-                error => console.error("Error ! : ", error)
+                data => Swal.fire(
+                 
+                  'Virement  effectué par succes' ,
+                  'success'
+                  
+                ) , err => { Swal.fire({
+                  icon: 'error',
+                  title: 'Oops...',
+                  text: 'Compte n existe pas ou désactivé!'
+                });}
               )
     // this._compteService.getCompteByRib(this.newOperation.compteDestination.rib).subscribe(
     //   data => {

@@ -6,6 +6,7 @@ import { Agent } from '../model/Agent';
 import { CompteService } from '../Service/compte.service';
 import { AuthentificationService } from '../Service/authentification.service';
 import { Client } from '../model/client';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-recharge',
@@ -54,10 +55,21 @@ export class RechargeComponent implements OnInit {
     console.log("Succes Recharge \n"+this.newOperation)
     this._operationService.recharge(this.newOperation, parseInt(this.codeRecharge.code))
               .subscribe(
-                data => console.log("Success ! :", data),
-                error => console.error("Error ! : ", error)
-              )
+                data => Swal.fire(
+                 
+                  'Recharge  effectue par succes' ,
+                  'success'
+                  
+                ) , err => { Swal.fire({
+                  icon: 'error',
+                  title: 'Oops...',
+                  text: 'Code recharge nom valid!'
+                });
+              }
+                
+              );
   }
+
 
 
 

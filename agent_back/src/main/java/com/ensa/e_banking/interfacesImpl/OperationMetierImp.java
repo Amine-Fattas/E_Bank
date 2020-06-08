@@ -63,6 +63,7 @@ public class OperationMetierImp implements OperationMetier{
 
 		@Override
 		public boolean virement(Operation operation) {
+	 	System.out.println(operation.toString());
 			Compte compteSource=compteRepository.findById(operation.getCompteSource().getNumCompte()).orElse(null);
 			if(compteSource == null || compteSource.isEtat() == false) throw new RuntimeException("Compte n'existe pas");
 			
