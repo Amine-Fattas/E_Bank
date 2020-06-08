@@ -14,7 +14,7 @@ public class Admin{
 		this.nom = nom;
 		this.prenom = prenom;
 		this.cin = cin;
-		this.userName = username;
+		this.username = username;
 		this.password = password;
 	}
 
@@ -24,7 +24,7 @@ public class Admin{
 	private String nom;
 	private String prenom;
 	private String cin;
-	private String userName;
+	private String username;
 	private String password;
 
 
@@ -39,12 +39,12 @@ public class Admin{
 */
 
 	public String getUsername() {
-		return userName;
+		return username;
 	}
 
 
 	public void setUsername(String username) {
-		this.userName = username;
+		this.username = username;
 	}
 
 
