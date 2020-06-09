@@ -31,6 +31,7 @@ getCompteByRib(rib:String){
 
 
 getCompteByIdClient(idClient: number){
+  console.log("getCompteByIdClient")
   return this.http.get<Compte>(this._urlClient+"client/"+idClient)
 }
 

@@ -5,6 +5,7 @@ import { OperationService } from '../Service/operation.service';
 import { AuthentificationService } from '../Service/authentification.service';
 import { CompteService } from '../Service/compte.service';
 import { Agent } from '../model/Agent';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-retrait',
@@ -33,21 +34,36 @@ export class RetraitComponent implements OnInit {
   }
 
   onSubmit(){
+    console.log(this._compte.rib)
     this.newOperation.agent = this._agent //this.compte.agent
+    console.log(this._compte.rib)
     this._compteService.getCompteByRib(this._compte.rib).subscribe(
       data => {
-        this._compte = data
-        console.log(this._compte)
-        this.newOperation.compteSource = this._compte
+        //this._compte = data
+        console.log(data)
+        this.newOperation.compteSource = data
         this.newOperation.numOperation = Math.floor(Math.random() * 1000000)
-        console.log("Succes Retrait \n"+this.newOperation)
+        console.log(this.newOperation)
         this._operationService.retirer(this.newOperation)
               .subscribe(
-                data => console.log("Success ! :", data),
-                error => console.error("Error ! : ", error)
-              )
-      },
-      error => console.error(error)
+                data => Swal.fire(
+                 
+                  'Retrait effectué par succes' ,
+                  'success'
+                  
+                ).then(function(){
+                  window.location.href = "/acceuil"})
+                   , err => { Swal.fire({
+                  icon: 'error',
+                  title: 'Oops...',
+                  text: 'Compte n existe pas ou le solde est insuffisant!'
+                }).then(function(){
+                  window.location.href = "/operations/retrait";
+                })
+                   })
+      }
+
+      
     )
     
 

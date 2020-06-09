@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CompteService } from '../Service/compte.service';
 import { OperationService } from '../Service/operation.service';
-
+import Swal from 'sweetalert2';
 import { Operation } from '../model/operation';
 import { AuthentificationService } from '../Service/authentification.service';
 import { Agent } from '../model/Agent';
@@ -37,18 +37,31 @@ export class VersementComponent implements OnInit {
     this.newOperation.agent = this._agent //this.compte.agent
     this._compteService.getCompteByRib(this._compte.rib).subscribe(
       data => {
-        this._compte = data
-        console.log(this._compte)
-        this.newOperation.compteDestination = this._compte
+       // this._compte = data
+        console.log(data)
+        this.newOperation.compteDestination = data
         this.newOperation.numOperation = Math.floor(Math.random() * 1000000)
         console.log("Succes Versement \n"+this.newOperation)
+        
         this._operationService.verser(this.newOperation)
               .subscribe(
-                data => console.log("Success ! :", data),
-                error => console.error("Error ! : ", error)
-              )
-      },
-      error => console.error(error)
+                data => Swal.fire(
+                 
+                  'Versement effectué par succes' ,
+                  'success'
+                  
+                ).then(function(){
+                  window.location.href = "/acceuil"})
+                   , err => { Swal.fire({
+                  icon: 'error',
+                  title: 'Oops...',
+                  text: 'Compte n existe pas ou désactivé!'
+                }).then(function(){
+                  window.location.href = "/operations/versement";
+                })
+                   })
+      
+      }
     )
     
 

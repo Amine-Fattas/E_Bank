@@ -54,20 +54,23 @@ export class RechargeComponent implements OnInit {
     this.newOperation.numOperation = Math.floor(Math.random() * 1000000)
     console.log("Succes Recharge \n"+this.newOperation)
     this._operationService.recharge(this.newOperation, parseInt(this.codeRecharge.code))
-              .subscribe(
-                data => Swal.fire(
-                 
-                  'Recharge  effectue par succes' ,
-                  'success'
-                  
-                ) , err => { Swal.fire({
-                  icon: 'error',
-                  title: 'Oops...',
-                  text: 'Code recharge nom valid!'
-                });
-              }
-                
-              );
+             
+    .subscribe(
+      data => Swal.fire(
+       
+        'Recharge  effectué par succes' ,
+        'success'
+        
+      ).then(function(){
+        window.location.href = "/acceuil"})
+         , err => { Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'Code recharge non valide !'
+      }).then(function(){
+        window.location.href = "/operations/recharge";
+      })
+         })
   }
 
 

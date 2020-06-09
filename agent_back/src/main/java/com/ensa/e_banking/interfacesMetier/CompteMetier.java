@@ -15,6 +15,7 @@ public interface CompteMetier {
 	  public String formaterRib(int codeBanque, int codeGuichet, Long numCompte);
 	  public Compte consulterCompte(Long id);
 	  public Compte DesactiverCompte(Compte compte);
+	  public Compte ActiverCompte(Compte compte);
 	  public List<Compte> getCompteActive();
 	  public List<Compte> getCompteDesactive();
       public List<Compte> chercherD(String mc);

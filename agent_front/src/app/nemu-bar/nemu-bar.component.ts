@@ -15,7 +15,7 @@ export class NemuBarComponent implements OnInit {
   }
   logout(){
     Swal.fire({
-      title: 'Vous etes sur de se déconnecte ?',
+      title: 'Vous etes vraiment  se déconnecter ?',
       icon: 'warning',
       showCancelButton: true,
       confirmButtonColor: '#3085d6',

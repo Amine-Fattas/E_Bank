@@ -9,9 +9,10 @@ public interface OperationMetier {
        public boolean retirer(Operation operation);
        //public getReleverBancainre
        public boolean virement(Operation operation);
+       public List<Operation> getOperationByCompte(String mc,String rib);
        public boolean recharge(Operation operation, Long codeRecharge);
        public double fraisVirement(double montant);
-       public List<Operation> getOperationByIdClient(Long id);
+       public List<Operation> getOperationByIdCompte(String rib);
        public List<Operation> getOperations();
 
 }

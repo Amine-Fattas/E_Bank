@@ -32,9 +32,9 @@ export class OperationsComponent implements OnInit {
         this._compteService.getCompteByIdClient(this.client.id).subscribe(
           data => {
             this.compte = data
-            console.log(this.compte)
+            console.log(this.compte.rib)
     
-            this.operationService.getOperation(this.compte.numCompte)
+            this.operationService.getOperation(this.compte.rib)
             .subscribe(
               data =>{
                 console.log("show : "+data);

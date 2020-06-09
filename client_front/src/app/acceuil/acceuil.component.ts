@@ -22,13 +22,17 @@ export class AcceuilComponent implements OnInit {
     this.compte.agent = new Agent()
     this._authentificationService.currentClient().subscribe(
       client => {
+        
         this.client = client;
         console.log(client);
         this._compteService.getCompteByIdClient(this.client.id).subscribe(
           data => {
+            
             this.compte = data
-            console.log(this.compte)
             this.compte.client = this.client
+            console.log("-------------------------------------")
+            console.log(this.client)
+            
           },
           error => console.error(error)
         )

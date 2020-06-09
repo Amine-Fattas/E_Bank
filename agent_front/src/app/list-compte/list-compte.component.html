@@ -38,7 +38,7 @@
       <div  class="content">
         <input type="search" (keyup)="keyBoardEvent($event)" placeholder="search ... " [(ngModel)]="motCle">
         <table class="table table-striped" >
-          <thead style="color: #FF4500; font-weight: bolder; font-style: italic;">
+          <thead style="color: #4babc0; font-weight: bolder; font-style: italic;">
             <tr>
                 <th>Type </th>
                 <th>Num </th>
@@ -60,7 +60,8 @@
                 <td>{{c.agent.id}}</td>
                 <td>{{c.idClient}}</td>
                 <td>
-                    <a  class="desactive" (click)="onDesactiver(c)">Désactiver</a>
+                    <a  class="icon" (click)="onDesactiver(c)"><img src="assets/images/close.png" title="desactive"></a> &nbsp;
+                    <a  class="icon" (click)="onDetailCompte(c.rib)"> <img  src="../assets/images/detail.png"  class="img-responsive" title="detail"></a>
                 </td>
               
           </tbody>

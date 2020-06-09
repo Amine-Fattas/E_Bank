@@ -1,0 +1,82 @@
+<!--<div class="container">
+<div id="body">
+    <app-nemu-bar></app-nemu-bar>
+<div class="route">
+    <div  class="content">
+    
+      <table class="table table-striped" >
+        <thead style="color: #FF4500; font-weight: bolder; font-style: italic;">
+          <tr>
+            <th>Type opération</th>
+            <th>Num opération</th>
+            <th>date opération</th>
+            <th>Compte Source</th>
+            <th>Compte Destination</th>
+            <th>Montant</th>
+            <th>Agent</th>
+          </tr>
+        </thead>
+        <tbody >
+            <tr *ngFor="let op of listOperation">
+                <td>{{op.typeOperation}}</td>
+                <td>{{op.numOperation}}</td>
+                <td>{{op.dateOperation}}</td>
+                <td>{{op?.compteSource?.rib}}</td>
+                <td>{{op?.compteDestination?.rib}}</td>
+                <td>{{op.montant}}</td>
+                <td>{{op?.agent?.idAgent}}</td>
+
+              
+            </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+-->
+  <div id="body">
+    <app-nemu-bar></app-nemu-bar>
+
+    <div class="route">
+      <div  class="content">
+       
+        <table class="table table-striped" >
+          <thead style="color: #FF4500; font-weight: bolder; font-style: italic;">
+            <tr>
+                <th>N°</th>
+                <th>Type</th>
+                <th>Date d'Opération</th>
+                <th>Acteur</th>
+                <th>Source</th>
+                <th>Destination</th>
+                <th>Montant(DH)</th>  
+            </tr>
+          </thead>
+          <tbody >
+            <tr *ngFor="let o of listOperation">
+                <td>{{o.numOperation}}</td>
+                <td>{{o.typeOperation}}</td>
+                <td>{{o.dateOperation}}</td>
+                <td *ngIf="o.agent!=null; else elseAgent">
+                    Ag: {{o.agent.id}}</td>
+                <ng-template #elseAgent><td>-</td></ng-template>
+
+
+                <td *ngIf="o.compteSource!=null; else elseTag">
+                    {{o.compteSource.rib}}</td>
+                <ng-template #elseTag><td>-</td></ng-template>
+                <td *ngIf="o.compteDestination!=null; else elseTag">
+                    {{o.compteDestination.rib}}</td>
+
+                <td>{{o.montant | number: '.2'}} MAD</td>
+                <td>
+              
+               
+            </tr>
+              
+            
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+

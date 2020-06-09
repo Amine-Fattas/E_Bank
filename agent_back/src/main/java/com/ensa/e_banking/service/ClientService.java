@@ -1,5 +1,10 @@
 package com.ensa.e_banking.service;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.Date;
 import java.util.List;
 
 import javax.mail.MessagingException;
@@ -10,6 +15,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -53,13 +59,17 @@ public class ClientService {
 //		return clientMetier.getClients(page);
 //	}*/
 //
-//	@RequestMapping("/agent/send-email")
-//	public void sendMail(@RequestBody Client client) throws MessagingException {
-//		System.out.println("email");
-//		System.out.println(client);
-//		String body="Votre mot de passe est "+client.getPassword()+" Bienvenue chez nous";
-//		this.smtpMailSender.sendMail(client.getUsername(), "Your Password", body);
-//	}
+@Autowired
+BCryptPasswordEncoder bCryptPasswordEncoder=new  BCryptPasswordEncoder();
+	@RequestMapping("/agent/send-email")
+	public void sendMail(@RequestBody Client client) throws MessagingException {
+		System.out.println(client.getPassword());
+	System.out.println(client.getUsername().toString());
+
+	String body="Votre mot de passe est "+client.getPassword()+" Bienvenue chez nous";
+	this.smtpMailSender.sendMail(client.getUsername(), "Your Password", body);
+
+	}
 //
 //	@RequestMapping(value="/agent/listClient",method=RequestMethod.GET)
 //	public List<Client> listeClient() {
@@ -75,11 +85,18 @@ public class ClientService {
 	}
 //
 	@RequestMapping(value="/client/{id}",method=RequestMethod.GET)
-	public Client getClientById(@PathVariable Long id){
+	public Client getClientById(@PathVariable Long id) throws ParseException {
+
+
+
+
 //		return restTemplate.getForObject(url+"/client/"+id, Client.class);
 		List<Client> list = getClients();
 		for(Client cl : list){
-			if(cl.getId() == id) return cl;
+
+			if(cl.getId() == id) {
+				return cl;
+			}
 		}
 		return null;
 	}

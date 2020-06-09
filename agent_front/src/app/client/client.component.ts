@@ -47,11 +47,11 @@ export class ClientComponent implements OnInit {
   
 
   onEditClient(id:number){
-   this.router.navigate(['editClient',id]);
+   this.router.navigate(['editClient',id],{skipLocationChange: true});
  }
 
  onDetailClient(id:number){
-  this.router.navigate(['detailsClient',id]);
+  this.router.navigate(['detailsClient',id],{skipLocationChange: true});
  }
 
  onDeleteClient(client: Client){

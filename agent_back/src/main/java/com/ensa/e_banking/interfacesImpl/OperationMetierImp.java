@@ -31,8 +31,10 @@ public class OperationMetierImp implements OperationMetier{
 	 @Override
 		@Transactional
 		public boolean retirer(Operation operation) {
-		 
-			Compte compte=compteRepository.findById(operation.getCompteSource().getNumCompte()).orElse(null);
+
+
+
+			Compte compte=compteRepository.findCompteByRib(operation.getCompteSource().getRib());
 			if(compte == null || compte.isEtat() == false) throw new RuntimeException("Compte n'existe pas");
 			
 			if(compte.getSolde() < operation.getMontant())  throw new RuntimeException("Solde insuffisant");
@@ -46,7 +48,7 @@ public class OperationMetierImp implements OperationMetier{
 	 
 
 		@Override
-		
+		@Transactional
 		public boolean verser(Operation operation) {
 			Compte compteDestination = compteRepository.findCompteByRib(operation.getCompteDestination().getRib());
 			if(compteDestination ==null || compteDestination.isEtat() == false)  throw new RuntimeException("Compte n'existe pas ou désactivé");
@@ -60,19 +62,23 @@ public class OperationMetierImp implements OperationMetier{
 		}
 		
 
-
+@Transactional
 		@Override
 		public boolean virement(Operation operation) {
-	 	System.out.println(operation.toString());
-			Compte compteSource=compteRepository.findById(operation.getCompteSource().getNumCompte()).orElse(null);
-			if(compteSource == null || compteSource.isEtat() == false) throw new RuntimeException("Compte n'existe pas");
+
+			Compte compteSource=compteRepository.findCompteByRib(operation.getCompteSource().getRib());
+			Compte compteDestination=compteRepository.findCompteByRib(operation.getCompteDestination().getRib());
+
+			if(compteSource == null || compteDestination == null) throw new RuntimeException("Compte source ou destination n'existe pas");
+
+			if(compteSource.isEtat() == false || compteDestination.isEtat()==false ) throw  new RuntimeException("Compte source ou destination désactivé");
 			
 			
 			if(compteSource.getSolde() < operation.getMontant())  throw new RuntimeException("Solde insuffisant");
-//			Compte compteDestination = compteRepository.findById(operation.getCompteDestination().getNumCompte()).get();
-			Compte compteDestination = compteRepository.findCompteByRib(operation.getCompteDestination().getRib());
-			if(compteDestination ==null || compteDestination.isEtat() == false)  throw new RuntimeException("Compte n'existe pas ou désactivé");
+
+			//if(compteDestination ==null || compteDestination.isEtat() == false)  throw new RuntimeException("Compte n'existe pas ou désactivé");
 			operation.setCompteDestination(compteDestination);
+			operation.setCompteSource(compteDestination);
 			
 			
 			compteSource.setSolde(compteSource.getSolde()-operation.getMontant());
@@ -82,8 +88,14 @@ public class OperationMetierImp implements OperationMetier{
 		    
 		    return true;
 		}
-		
-		@Override
+
+	@Override
+	public List<Operation> getOperationByCompte(String mc, String rib) {
+		return operationRepository.chercherO("%"+mc+"%",rib);
+	}
+
+	@Override
+		@Transactional
 		public boolean recharge(Operation operation, Long codeRecharge) {
 			
 			Recharge recharge = rechargeRepository.findById(codeRecharge).orElse(null);
@@ -91,8 +103,8 @@ public class OperationMetierImp implements OperationMetier{
 			
 			operation.setMontant(operation.getMontant()+recharge.getValeur());
 			
-			Compte compte=compteRepository.findById(operation.getCompteDestination().getNumCompte()).get();
-			if(compte==null || compte.isEtat() == false)  throw new RuntimeException("Compte n'existe pas");
+			Compte compte=compteRepository.findCompteByRib(operation.getCompteDestination().getRib());
+			//if(compte==null || compte.isEtat() == false)  throw new RuntimeException("Compte n'existe pas");
 			
 			compte.setSolde(compte.getSolde()+operation.getMontant());
 			operationRepository.save(operation);
@@ -111,8 +123,8 @@ public class OperationMetierImp implements OperationMetier{
 
 
 	@Override
-	public List<Operation> getOperationByIdClient(Long id) {
-		return operationRepository.findOperationByIdClient(id);
+	public List<Operation> getOperationByIdCompte(String rib) {
+		return operationRepository.findOperationByIdCompte(rib);
 	}
 
 

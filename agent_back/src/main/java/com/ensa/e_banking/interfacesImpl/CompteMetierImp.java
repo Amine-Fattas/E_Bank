@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -28,6 +29,9 @@ public class CompteMetierImp implements CompteMetier{
 
 	@Autowired
 	private HomeController homeController;
+
+	@Autowired
+	BCryptPasswordEncoder bCryptPasswordEncoder=new  BCryptPasswordEncoder();
 
 
 	@Autowired
@@ -49,7 +53,7 @@ public class CompteMetierImp implements CompteMetier{
 	public Long genererRib(int codeBanque, int codeGuichet, Long numCompte) {
 		return 97-(((89*codeBanque)+(15*codeGuichet)+(3*numCompte)) % 97);
 	}
-    
+
 	@Override
 	public Compte saveCompte(Compte compte){
 		compte.getClient().setPassword(clientMetier.genererPassword());
@@ -91,8 +95,13 @@ public class CompteMetierImp implements CompteMetier{
 	
 	@Override
 	public Compte getCompteByRib(String rib) {
-		return  compteRepository.findCompteByRib(rib);
+		System.out.println(rib);
+		Compte compte= compteRepository.findCompteByRib(rib);
+		System.out.println(compte);
+		return  compte;
 	}
+
+
 
 	@Override
 	public Compte getCompteByIdClient(Long idClient) {
@@ -113,6 +122,12 @@ public class CompteMetierImp implements CompteMetier{
 	public Compte DesactiverCompte(Compte compte) {
 	           compte.setEtat(false);
 		   		return compteRepository.save(compte);
+	}
+
+	@Override
+	public Compte ActiverCompte(Compte compte) {
+		compte.setEtat(true);
+		return compteRepository.save(compte);
 	}
 
 	@Override

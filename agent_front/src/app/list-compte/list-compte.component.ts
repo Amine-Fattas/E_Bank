@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { CompteService } from '../Service/compte.service';
 import Swal from 'sweetalert2';
+import { OperationService } from '../Service/operation.service';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -14,7 +16,7 @@ export class ListCompteComponent implements OnInit {
   public pageCompte:any=[];
   public page:number=0;
   public desactivationReussite:boolean;
-  constructor(public httpClient:HttpClient,public compteService:CompteService) { }
+  constructor(public httpClient:HttpClient,public compteService:CompteService,public router:Router) { }
 
   ngOnInit(): void {
    this.listCompte();
@@ -44,6 +46,7 @@ export class ListCompteComponent implements OnInit {
       this.pageCompte.splice(
         this.pageCompte.indexOf(c),1
       );
+      window.location.href = "comptes/compteDesactive"
      },
         err=>{ Swal.fire(
           'Erreur non désactivé')})
@@ -51,6 +54,11 @@ export class ListCompteComponent implements OnInit {
       }
     })
   
+  }
+  onDetailCompte(idCompte){
+    console.log(idCompte);
+   /* this.router.navigate(['comptes/detailsCompte',idCompte]);*/
+    this.router.navigate(['comptes/detailsCompte',idCompte], {skipLocationChange: true});
   }
   
 

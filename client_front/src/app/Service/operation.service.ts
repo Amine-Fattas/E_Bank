@@ -16,8 +16,8 @@ export class OperationService {
   //   return this.http.get(this._urlClient+"list")
   // }
 
-  getOperation(idClient: number){
-    return this.http.get(this._urlClient+"listOperation/"+idClient)
+  getOperation(rib: string){
+    return this.http.get(this._urlClient+"listOperation/"+rib)
   }
 
   verser(operation: Operation){

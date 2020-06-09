@@ -3,6 +3,7 @@ import { Client } from '../model/client'
 import { ActivatedRoute, Router } from '@angular/router';
 import { ClientService } from '../Service/client.service';
 import Swal from 'sweetalert2';
+import { DatePipe } from '@angular/common';
 
 
 
@@ -15,17 +16,22 @@ export class EditClientComponent implements OnInit {
  public client: Client = new Client();
  public idClient: number;
  constructor(public activatedRoute: ActivatedRoute, public serviceClient: ClientService,
-  public router: Router) {
+  public router: Router,private datePipe: DatePipe) {
    this.idClient = activatedRoute.snapshot.params['id'];
  }
 
   ngOnInit(): void {
     this.serviceClient.getClient(this.idClient)
     .subscribe(data => {
-     this.client = data },
+      console.log(data)
+
+     this.client = data;
+   
+     console.log(this.client.dateNaissance)},
     erreur => console.log(erreur)
     )
   }
+
   numericOnly(event): boolean { // restrict e,+,-,E characters in  input type number
     const charCode = (event.which) ? event.which : event.keyCode;
     if (charCode === 101 || charCode === 69 || charCode === 45 || charCode === 43) {
