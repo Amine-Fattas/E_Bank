@@ -1,5 +1,7 @@
 package com.ensa.entities;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import java.util.Date;
 
 import javax.persistence.Entity;
@@ -20,8 +22,8 @@ public class Client {
 	
 	private String password;
 	private String sexe;
-	
-	
+
+
 	private Date dateNaissance;
 	private String numTel;
 	

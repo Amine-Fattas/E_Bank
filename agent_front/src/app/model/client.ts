@@ -8,7 +8,7 @@ export class Client{
     public cin:string="";
     public username:string="";
     public sexe:string="";
-    public numTel:number;
+    public numTel:string;
     public dateNaissance:Date;
     public compte:Compte;
     public passord:string;

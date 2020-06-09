@@ -53,12 +53,16 @@ export class VirementComponent implements OnInit {
                   'Virement  effectué par succes' ,
                   'success'
                   
-                ) , err => { Swal.fire({
+                ).then(function(){
+                  window.location.href = "/acceuil"})
+                   , err => { Swal.fire({
                   icon: 'error',
                   title: 'Oops...',
                   text: 'Compte n existe pas ou désactivé!'
-                });}
-              )
+                }).then(function(){
+                  window.location.href = "/operations/virement/externe";
+                })
+                   })}
     // this._compteService.getCompteByRib(this.newOperation.compteDestination.rib).subscribe(
     //   data => {
     //     this._compteDestination = data;
@@ -66,7 +70,7 @@ export class VirementComponent implements OnInit {
         
     //   }
     // )
-  }
+  
 
   init(){
     this.newOperation = new Operation()

@@ -11,13 +11,42 @@ import Swal from 'sweetalert2';
 export class CompteDesactiveComponent implements OnInit {
   pageCompte:Array<Compte>;
   motCle:string="";
-
+  activationReussite:any;
   constructor(public compteService:CompteService) { }
 
   ngOnInit(): void {
     this.listCompteDesactive();
   }
+  onActiver(c){Swal.fire({
+    title: 'Vous etes sur ?',
+    icon: 'warning',
+    showCancelButton: true,
+    confirmButtonColor: '#3085d6',
+    cancelButtonColor: '#d33',
+    cancelButtonText: 'Non',
+    confirmButtonText: 'Oui désactivé !'
+  }).then((result) => {
+    if (result.value) {
+      
+     Swal.fire(
+      'Désactivation avec succés',
+      'success'
+     )
 
+    this.compteService.activerCompte(c)
+   . subscribe((data:boolean)=>{
+     this.activationReussite=data;
+    console.log(this.activationReussite);
+    this.pageCompte.splice(
+      this.pageCompte.indexOf(c),1
+    );
+    window.location.href = "comptes/compteActive"
+   },
+      err=>{ Swal.fire(
+        'Erreur non désactivé')})
+     
+    }
+  })}
   listCompteDesactive(){
     this.compteService.getCompteDesactive()
     .subscribe((data:any)=>{

@@ -3,12 +3,7 @@ package com.ensa.e_banking.service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import com.ensa.e_banking.entities.Operation;
 import com.ensa.e_banking.interfacesMetier.OperationMetier;
 
@@ -36,6 +31,7 @@ public class OperationService {
 	
 	@RequestMapping(value="/operation/virement",method=RequestMethod.POST)
 	 public boolean virement(@RequestBody Operation operation, HttpServletRequest req) {
+
 		//if(!test.check(req)) throw new HTTPException(403);
 		return operationMetier.virement(operation);
 	}
@@ -47,17 +43,20 @@ public class OperationService {
 		return operationMetier.recharge(operation, codeRecharge);
 	}
 	
-	@RequestMapping(value="/operation/listOperation/{id}",method=RequestMethod.GET)
-	public List<Operation> getOperationsByClient(@PathVariable Long id, HttpServletRequest req){
-		if(!test.check(req)) throw new HTTPException(403);
-		return operationMetier.getOperationByIdClient(id);
+	@RequestMapping(value="/operation/listOperation/{rib}",method=RequestMethod.GET)
+	public List<Operation> getOperationsByClient(@PathVariable String rib, HttpServletRequest req){
+		System.out.println(rib);
+		return operationMetier.getOperationByIdCompte(rib);
 	}
 
 	@RequestMapping(value="/operation/list",method=RequestMethod.GET)
 	public List<Operation> getList(){
 	return  operationMetier.getOperations();
 	}
-	
+
+   /*@RequestMapping(value = "/operation/chercheO/{rib}",method = RequestMethod.GET)
+	public List<Operation> getOperationByCompte(@RequestParam(name="mc",defaultValue="") String mc,@RequestParam(name="rib",defaultValue="")String rib){
+		return operationMetier.getOperationByCompte(mc,rib);}*/
 	
 
 }

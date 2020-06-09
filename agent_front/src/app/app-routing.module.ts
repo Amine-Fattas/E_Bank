@@ -16,6 +16,7 @@ import { LoginComponent } from './login/login.component';
 import { MultiFormComponent } from './multi-form/multi-form.component';
 import { RetraitComponent } from './retrait/retrait.component';
 import { ProfileComponent } from './profile/profile.component';
+import { DetailCompteComponent } from './detail-compte/detail-compte.component';
 
 
 
@@ -26,16 +27,16 @@ const routes: Routes = [
   { path: 'login',component:LoginComponent},// eventuellement anbiw ngeriw l'error  hafnld te7t  // '**' hadi pour gerer les erreur
   //{ path: '**', component: LoginComponent},// ** pour gerer les erreur de login err
   {path:"listClient",component:ClientComponent},
-  {path:"detailsClient/:id",component:DetailClientComponent},// Oki, s
-  // {path:"contacts",component:ContactsComponent},
-  // {path:"new-contact",component: NouveauContactComponent},
+// Oki, s
   { path: "editClient/:id", component: EditClientComponent},
   { path: "acceuil", component:ProfileComponent},
   {path:"comptes",
         children:[
+          {path:"detailsCompte/:id",component:DetailCompteComponent},
           {path:"ajoutCompte",component:MultiFormComponent},
           {path:"listCompte",component:ListCompteComponent},
-          {path:"compteDesactive",component:CompteDesactiveComponent}
+          {path:"compteDesactive",component:CompteDesactiveComponent},
+          {path:"compteActive",component:ListCompteComponent}
         ]},
   { path: "operations", 
       children: [

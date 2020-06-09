@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, ErrorHandler } from '@angular/core';
+import { DatePipe } from '@angular/common';
 import { FormsModule,ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http'; 
 import { MatCheckboxModule} from '@angular/material/checkbox';
@@ -28,6 +29,7 @@ import { MultiFormComponent } from './multi-form/multi-form.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RetraitComponent } from './retrait/retrait.component';
 import { ProfileComponent } from './profile/profile.component';
+import { DetailCompteComponent } from './detail-compte/detail-compte.component';
 
 
 
@@ -46,14 +48,15 @@ import { ProfileComponent } from './profile/profile.component';
     LogoutComponent,
     MultiFormComponent,
     RetraitComponent,
-    ProfileComponent
+    ProfileComponent,
+    DetailCompteComponent
   ],
   imports: [
     BrowserModule, AppRoutingModule,HttpClientModule,FormsModule,BrowserAnimationsModule ,MatStepperModule,
     MatIconModule,MatButtonModule,MatCheckboxModule,MatFormFieldModule,MatInputModule,ReactiveFormsModule
    
   ],
-  providers: [ClientService,CompteService,OperationService,LoginService, CookieService,AuthentificationService,
+  providers: [ClientService,CompteService,DatePipe,OperationService,LoginService, CookieService,AuthentificationService,
   {
   provide:ErrorHandler,
   useClass:ErrorHandlerService

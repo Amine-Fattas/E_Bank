@@ -9,6 +9,7 @@ import org.springframework.http.HttpMethod;
 import org.springframework.http.RequestEntity;
 import org.springframework.http.ResponseEntity;
 import org.springframework.lang.Nullable;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 
@@ -24,6 +25,7 @@ public class OperationService {
 	private String url = "http://localhost:8081";
 
 	@RequestMapping(value="/operation/virement",method= RequestMethod.POST)
+	@Transactional
 	 public boolean virement(@RequestBody Operation operation) {
 		Compte compteDestination = restTemplate.getForObject(url+"/compte/CC/rib/"+operation.getCompteDestination().getRib(), Compte.class);
 		operation.setCompteDestination(compteDestination);
@@ -32,16 +34,18 @@ public class OperationService {
 	}
 
 	@RequestMapping(value="/operation/recharge/{codeRecharge}",method= RequestMethod.POST)
+	@Transactional
 	 public boolean recharge(@RequestBody Operation operation, @PathVariable Long codeRecharge) {
 		System.out.println("Recharge : "+operation.toString());
 		restTemplate.postForEntity(url+"/operation/recharge/"+codeRecharge, operation, boolean.class);
 		return true;
 	}
 
-	@RequestMapping(value="/operation/listOperation/{id}",method= RequestMethod.GET)
-	public List<Operation> getList(@PathVariable Long id, HttpServletRequest req){
+	@RequestMapping(value="/operation/listOperation/{rib}",method= RequestMethod.GET)
+	public List<Operation> getList(@PathVariable String rib, HttpServletRequest req){
+
 		ResponseEntity<List<Operation>> response = restTemplate.exchange(
-				url+"/operation/listOperation/"+id, HttpMethod.GET, null, new ParameterizedTypeReference<List<Operation>>() {}
+				url+"/operation/listOperation/"+rib, HttpMethod.GET, null, new ParameterizedTypeReference<List<Operation>>() {}
 		);
 		List<Operation> list = response.getBody();
 	return  list;

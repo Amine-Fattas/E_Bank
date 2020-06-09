@@ -3,13 +3,7 @@ package com.ensa.e_banking.service;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import com.ensa.e_banking.entities.Compte;
 import com.ensa.e_banking.interfacesMetier.CompteMetier;
 import org.springframework.web.server.ResponseStatusException;
@@ -90,7 +84,10 @@ public class CompteService {
 		}
 	 
 	 
-	
+	@RequestMapping(value ="/agent/activeCompte",method =RequestMethod.PUT)
+	public Compte activerCompte(@RequestBody Compte compte){
+	 	return compteMetier.ActiverCompte(compte);
+	}
 	
 	 
 	

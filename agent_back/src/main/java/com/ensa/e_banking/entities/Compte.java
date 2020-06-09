@@ -27,8 +27,9 @@ import com.fasterxml.jackson.annotation.JsonTypeInfo;
 
 public  class Compte{
 	
-	@Id 
+
 	private Long numCompte;
+	@Id
 	private String rib;
 	@Temporal(TemporalType.DATE)
 	private Date dateCreation;

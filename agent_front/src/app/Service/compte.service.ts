@@ -25,6 +25,10 @@ export class CompteService {
    desactiverCompte(compte: Compte){
     return this.http.put("http://localhost:8081/agent/desactiverCompte",compte);
      }
+
+     activerCompte(compte:Compte){
+       return this.http.put("http://localhost:8081/agent/activeCompte",compte);
+     }
      
     getCompteDesactive(){
       return this.http.get("http://localhost:8081/agent/listCompteDesactive");

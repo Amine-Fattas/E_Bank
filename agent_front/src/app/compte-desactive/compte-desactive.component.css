@@ -22,6 +22,14 @@ input[type="search"]::-webkit-search-cancel-button{
   -webkit-appearance:none;
 }
 
+.icon{
+  font-size: 15px;
+  color: black;
+  font-weight: bolder;
+  font-style: italic;
+  text-decoration: underline;
+  cursor: pointer;
+}
   .listCompte{
       margin-top: 10px;
      

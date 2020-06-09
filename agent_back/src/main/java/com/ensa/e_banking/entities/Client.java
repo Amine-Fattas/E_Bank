@@ -4,8 +4,9 @@ import java.util.Collection;
 import java.util.Date;
 import javax.persistence.*;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-
+import org.springframework.format.annotation.DateTimeFormat;
 
 
 public class Client {

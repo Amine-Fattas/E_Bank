@@ -8,7 +8,7 @@
     <form #form="ngForm" (ngSubmit)="onSubmit()" novalidate>
         <h1>Retrait</h1>
         <!-- {{form.value | json}} -->
-        <input class="input" [(ngModel)]="this._compte.rib" name="rib"  type="text" placeholder="Compte Destination (RIB / CIN)">
+        <input class="input" [(ngModel)]="this?._compte.rib" name="rib"  type="text" placeholder="Compte Source (RIB / CIN)">
         <input class="input" [(ngModel)]="newOperation.montant" name="montant" type="number" min="0" placeholder="Montant">
         <button type="submit" class="submit">Valider</button>
         <!-- {{_compte | json}} -->

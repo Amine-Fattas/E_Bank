@@ -56,7 +56,7 @@ export class MultiFormComponent implements OnInit {
     .subscribe(response => {
       this.nouveauCompte = response;
       console.log(this.nouveauCompte);
-      this.clientService.sendEmailToClient(this.nouveauCompte.client)
+     this.clientService.sendEmailToClient(this.nouveauCompte.client)
       .subscribe(res =>
         console.log(res),
         err =>

@@ -16,7 +16,8 @@ export class DetailClientComponent implements OnInit {
      this.idClient = activatedRoute.snapshot.params['id'];
    }
 
-  ngOnInit(): void { this.afficherList(); }
+  ngOnInit(): void { console.log("listeOperation")
+    this.afficherList(); }
 
 
   afficherList() {

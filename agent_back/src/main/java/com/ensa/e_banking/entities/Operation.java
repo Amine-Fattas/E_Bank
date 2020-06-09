@@ -40,12 +40,12 @@ public class Operation {
 	private double montant;
   
 	@ManyToOne
-	@JoinColumn(name="id_Source")
+	@JoinColumn(name="Rib_Source")
 	private Compte compteSource;
 	
 	
 	@ManyToOne
-	@JoinColumn(name="id_Destination")
+	@JoinColumn(name="Rib_Destination")
 	private Compte compteDestination;
 	//dans la banque c'est l'agent qui effectue les operation
    

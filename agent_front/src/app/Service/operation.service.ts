@@ -14,6 +14,12 @@ export class OperationService {
     return this.http.get(this._url+"listOperation/"+id);   
    }
 
+
+   
+   getOperationsParCompte(id:number){
+    return this.http.get(this._url+"listOperation/"+id);   
+   }
+
   getOperations(){
     return this.http.get(this._url+"list")
   }

@@ -5,6 +5,7 @@ import { Compte } from '../model/Compte';
 import { Agent } from '../model/Agent';
 import { AuthentificationService } from '../Service/authentification.service';
 import { CompteService } from '../Service/compte.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-virement',
@@ -34,43 +35,49 @@ export class VirementComponent implements OnInit {
   }
 
   onSubmit(){
-    this.newOperation.agent = this._agent //this.compte.agent
-    this._compteService.getCompteByRib(this._compteSource.rib).subscribe(
+   this.newOperation.agent = this._agent //this.compte.agent
+   /* this._compteService.getCompteByRib(this._compteSource.rib).subscribe(
       data => {
         this._compteSource = data
         console.log(this._compteSource)
         // CompteDestination
-        this.newOperation.agent = this._agent //this.compte.agent
+      
         this._compteService.getCompteByRib(this._compteDestination.rib).subscribe(
           data => {
-            this._compteDestination = data
+            //this._compteDestination = data*/
             console.log(this._compteDestination)
 
             this.newOperation.compteSource = this._compteSource
-            this.newOperation.compteDestination = this._compteDestination
+            this.newOperation.compteDestination = this._compteDestination;
             this.newOperation.numOperation = Math.floor(Math.random() * 1000000)
             console.log("Succes Versement \n"+this.newOperation)
             this._operationService.virer(this.newOperation)
                 .subscribe(
-                  data => console.log("Success ! :", data),
-                  error => console.error("Error ! : ", error)
-                )  
-      },
-      error => console.error(error)
-    )
-        
-      },
-      error => console.error(error)
-    )
+                  data => Swal.fire(
+                 
+                    'Virement  effectué par succes' ,
+                    'success'
+                    
+                  ).then(function(){
+                    window.location.href = "/acceuil"})
+                     , err => { Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: 'Compte n existe pas ou désactivé!'
+                  }).then(function(){
+                    window.location.href = "/operations/virement";
+                  })
+                     })
+      }
+    
 
     
     
   
     
-
     
     
-  }
+  
 
   init(){
     this._compteSource = new Compte()
