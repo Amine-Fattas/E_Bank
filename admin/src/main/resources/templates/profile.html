@@ -16,6 +16,9 @@
     <!-- Custom styles -->
     <link rel="stylesheet" href="../static/css/style.css" th:href="@{css/style.css}" />
     <link rel="stylesheet" href="../static/css/style-responsive.css" th:href="@{css/style-responsive.css}" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+
+
 </head>
 
 <body>
@@ -50,27 +53,46 @@
             </div>
             <!-- page start-->
             <!--notification start-->
-            <section class="panel">
-                <header class="panel-heading">
+               <!-- <header class="panel-heading">
                     Informations
-                </header>
-                <p>
+                </header> -->
 
-                <h5>Welcome <span th:text="${admin.getUsername()}"/></h5>
-                <h5>Welcome <span th:text="${admin.getId()}"/></h5>
-                <h5>Welcome <span th:text="${admin.getPassword()}"/></h5>
+                <div class="panel-profile profile profile-card js-profile-card">
 
-
-
+                <div class="profile-card-img">
+                    <img src="./img/icons8-male-user-100.jpg" alt="profile card">
+                </div>
 
 
+                    <div class="profile-header">
+                <h3>I N F O</h3>
+                    </div>
 
+                    <div class="profile-about">
+                <h4 class="admin-name"><span class="info-text" th:text="${admin.getPrenom()+'  '+admin.getNom()}"/></h4>
+                <h4> Administrateur de la banque AFOIH.</h4>
+                    </div>
 
+                <div class="profile-item">
+                <i class="material-icons icon">card_membership</i>
+                <span class="info-text" th:text="'ID  '+${admin.getId()}"/>
+                </div>
+
+                <div class="profile-item">
+                <i class="material-icons icon">confirmation_number</i>
+                <span class="info-text" th:text="${admin.getCin()}"/>
+                </div>
+
+                <div class="profile-item">
+                <i class="material-icons icon">alternate_email</i>
+                <span class="info-text" th:text="${admin.getUsername()}"/>
+                </div>
 
 
                 </div>
-                </p>
-            </section>
+
+
+
             <!--notification end-->
             <!-- page end-->
         </section>
