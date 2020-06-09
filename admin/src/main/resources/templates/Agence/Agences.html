@@ -55,11 +55,19 @@
             <section class="panel">
                 <header class="panel-heading">
                     Liste Des Agences
+
+
+
+                                    <input class="fa-search-plus" placeholder=" Chercher .. " type="text">
+
+                        <!--  search form end -->
+
                 </header>
+
 
                 <table class="table table-striped table-advance table-hover">
                     <thead>
-                    <tr>
+                        <th></th>
                         <th>Numéro agence</th>
                         <th>Nom d'Agence</th>
                         <th>Adresse</th>
@@ -70,6 +78,10 @@
                     </thead>
                     <tbody>
                     <tr th:each="a:${listeAgences}">
+                        <td>
+                            <a id="photoButton" th:href="@{img/iconeA.png}">
+                                <img th:src="@{img/iconeA.png}"  width="40" height="40" />
+                            </a>
                         <td th:text="${a.getNumAgence()}"></td>
                         <td th:text="${a.getNomAgence()}"></td>
                         <td th:text="${a.getAdresse()}"></td>
