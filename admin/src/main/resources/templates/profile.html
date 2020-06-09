@@ -3,7 +3,6 @@
 
 <head>
     <meta charset="utf-8" />
-
     <title>Home</title>
 
     <!-- Bootstrap CSS -->
@@ -17,122 +16,28 @@
     <!-- Custom styles -->
     <link rel="stylesheet" href="../static/css/style.css" th:href="@{css/style.css}" />
     <link rel="stylesheet" href="../static/css/style-responsive.css" th:href="@{css/style-responsive.css}" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+
+
 </head>
 
 <body>
 <!-- container section start -->
+
 <section id="container" class="">
     <!--header start-->
 
-    <header class="header dark-bg">
-        <div class="toggle-nav">
-            <div class="icon-reorder tooltips" data-original-title="Toggle Navigation" data-placement="bottom"><i class="icon_menu"></i></div>
-        </div>
 
-        <!--logo start-->
-        <a href="/" class="logo">AFOIHI<span class="lite">BANK</span></a>
-        <!--logo end-->
-
-        <div class="nav search-row" id="top_menu">
-            <!--  search form start -->
-            <ul class="nav top-menu">
-                <li>
-                    <form class="navbar-form">
-                        <input class="form-control" placeholder="Search" type="text">
-                    </form>
-                </li>
-            </ul>
-            <!--  search form end -->
-        </div>
-
-        <div class="top-nav notification-row">
-            <!-- notificatoin dropdown start-->
-            <ul class="nav pull-right top-menu">
-                <!-- user login dropdown start-->
-                <li class="dropdown">
-                    <a data-toggle="dropdown" class="dropdown-toggle" href="#">
-                            <span class="profile-ava">
-
-                            </span>
-                        <span class="username">Deconnexion</span>
-                        <b class="caret"></b>
-                    </a>
-                    <ul class="dropdown-menu extended logout">
-                        <div class="log-arrow-up"></div>
-                        <li class="eborder-top">
-                            <a href="/profile"><i class="icon_profile"></i> My Profile</a>
-                        </li>
-                        <li>
-                            <a href="#"><i class="icon_key_alt"></i> Log Out</a>
-                        </li>
-
-                    </ul>
-                </li>
-                <!-- user login dropdown end -->
-            </ul>
-            <!-- notificatoin dropdown end-->
-        </div>
-    </header>
+    <div th:replace="fragments/base :: header">
+    </div>
     <!--header end-->
 
     <!--sidebar start-->
-    <aside>
-        <div id="sidebar" class="nav-collapse ">
-            <!-- sidebar menu start-->
-            <ul class="sidebar-menu">
-                <li class="">
-                    <a class="" href="/">
-                        <i class="icon_house_alt"></i>
-                        <span>Acceuil</span>
-                    </a>
-                </li>
-                <li class="sub-menu">
-                    <a href="javascript:;" class="">
-                        <i class="icon_document_alt"></i>
-                        <span>Agences</span>
-                        <span class="menu-arrow arrow_carrot-right"></span>
-                    </a>
-                    <ul class="sub">
-                        <li><a class="" href="/liste">ListeAgences</a></li>
-                        <li><a class="" href="/addAgence">AjoutAgence</a></li>
-                    </ul>
-                </li>
 
-
-                <li class="sub-menu">
-                    <a href="javascript:;" class="">
-                        <i class="icon_table"></i>
-                        <span>Agents</span>
-                        <span class="menu-arrow arrow_carrot-right"></span>
-                    </a>
-                    <ul class="sub">
-                        <li><a class="" href="/index">ListeAgents</a></li>
-                        <li><a class="" href="/add">AjoutAgent</a></li>
-                    </ul>
-                </li>
-
-
-
-                <li class="sub-menu">
-                    <a href="javascript:;" class="">
-                        <i class="icon_document_alt"></i>
-                        <span>Clients</span>
-                        <span class="menu-arrow arrow_carrot-right"></span>
-                    </a>
-                    <ul class="sub">
-                        <li><a class="" href="#">ListeClients</a></li>
-                        <li><a class="" href="#">EditClient</a></li>
-                    </ul>
-                </li>
-
-
-
-
-            </ul>
-            <!-- sidebar menu end-->
-        </div>
-    </aside>
+    <div th:replace="fragments/nav :: header">
+    </div>
     <!--sidebar end-->
+
 
     <!--main content start-->
     <section id="main-content">
@@ -140,39 +45,55 @@
             <div class="row">
                 <div class="col-lg-12">
                     <ol class="breadcrumb">
-                        <li><i class="fa fa-home"></i><a href="/">Profile</a></li>
-                        <li><i class="fa fa-bars"></i>Page</li>
-                        <li><i class="fa fa-user-md"></i>Profile</li>
+                        <li><i class="fa fa-home"></i><a href="/">Home</a></li>
+                        <li><i class="fa fa-bars"></i>Profil</li>
+                        <li><i class="fa fa-square-o"></i>Profil</li>
                     </ol>
                 </div>
             </div>
             <!-- page start-->
+            <!--notification start-->
+               <!-- <header class="panel-heading">
+                    Informations
+                </header> -->
 
-                <!-- profile-widget -->
-                <div class="col-lg-12">
-                    <div class="profile-widget profile-widget-info">
-                        <div class="panel-body">
-                            <div class="col-lg-2 col-sm-2">
-                                <h4>NomAdmin</h4>
-                                <div class="follow-ava">
-                                    <img src="../static/img/profile-widget-avatar.jpg" alt="">
-                                </div>
-                                <h6>Administrator</h6>
-                            </div>
-                            <div class="col-lg-4 col-sm-4 follow-info">
-                                <p>Hello I’m NomAdmin, an expert ......</p>
-                                <p>@emailAdmin</p>
-                                <p><i class="fa fa-twitter">NomAdmin</i></p>
-                                <p><i class="fa fa-facebook">NomAdmin</i></p>
+                <div class="panel-profile profile profile-card js-profile-card">
 
-                            </div>
-
-
-
-                        </div>
-                    </div>
+                <div class="profile-card-img">
+                    <img src="./img/icons8-male-user-100.jpg" alt="profile card">
                 </div>
 
+
+                    <div class="profile-header">
+                <h3>I N F O</h3>
+                    </div>
+
+                    <div class="profile-about">
+                <h4 class="admin-name"><span class="info-text" th:text="${admin.getPrenom()+'  '+admin.getNom()}"/></h4>
+                <h4> Administrateur de la banque AFOIH.</h4>
+                    </div>
+
+                <div class="profile-item">
+                <i class="material-icons icon">card_membership</i>
+                <span class="info-text" th:text="'ID  '+${admin.getId()}"/>
+                </div>
+
+                <div class="profile-item">
+                <i class="material-icons icon">confirmation_number</i>
+                <span class="info-text" th:text="${admin.getCin()}"/>
+                </div>
+
+                <div class="profile-item">
+                <i class="material-icons icon">alternate_email</i>
+                <span class="info-text" th:text="${admin.getUsername()}"/>
+                </div>
+
+
+                </div>
+
+
+
+            <!--notification end-->
             <!-- page end-->
         </section>
     </section>

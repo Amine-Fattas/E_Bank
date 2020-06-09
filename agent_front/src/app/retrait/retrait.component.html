@@ -1,12 +1,11 @@
-<div class="container">
-    <div class="container">
-        <div class="row " >
-            <div class="col-lg-2 col-12">
-                <app-nemu-bar></app-nemu-bar>
-            </div>
-            <div class="col-lg-10 col-12">
-    <form #form="ngForm" (ngSubmit)="onSubmit()" novalidate>
+<div id="body">
+    <app-nemu-bar></app-nemu-bar>
+
+    <div class="route">
+    
         <h1>Retrait</h1>
+    <form #form="ngForm" (ngSubmit)="onSubmit()" novalidate>
+        
         <!-- {{form.value | json}} -->
         <input class="input" [(ngModel)]="this?._compte.rib" name="rib"  type="text" placeholder="Compte Source (RIB / CIN)">
         <input class="input" [(ngModel)]="newOperation.montant" name="montant" type="number" min="0" placeholder="Montant">
@@ -15,8 +14,7 @@
     </form>
     
 </div>
-</div>
-</div>
+
 
 
 

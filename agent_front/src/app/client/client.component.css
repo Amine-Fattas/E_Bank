@@ -126,5 +126,14 @@ input[type="search"]::-webkit-search-cancel-button{
   -webkit-appearance:none;
 }
 
-
+h1{
+ 
+  display: inline-block;
+  position: relative;
+  font-family: 'Dancing Script', cursive;
+  font-size: 30px;
+  font-style: italic;
+  
+ 
+}
 

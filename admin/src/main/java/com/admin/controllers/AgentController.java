@@ -73,15 +73,6 @@ public class AgentController {
         return "Agent/Agents";
     }
 
-    @RequestMapping(value = "/")
-    public String home() {
-        return "home";
-    }
-
-    @RequestMapping(value = "/profile")
-    public String profile() {
-        return "profile";
-    }
 
 
     @RequestMapping(value = "/save", method = RequestMethod.POST)

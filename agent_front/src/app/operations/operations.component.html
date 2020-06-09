@@ -1,64 +1,12 @@
 
-    <!--<div class="container">
-        <div class="row " >
-            <div class="col-lg-2 col-12">
-                <app-nemu-bar></app-nemu-bar>
-            </div>
-            <div class="col-lg-10 col-12">
-    <div class="panel panel-primary">
-      
-        <div class="panel-heading search">
-           <input type="search" placeholder="search ... " [(ngModel)]="motif">
-           <i style="position: absolute; left: 62%; top:-10% ;cursor: pointer;" ><img src="../assets/images/search.png" ></i>
-        </div>
-        
-
-        <div class="panel-body">
-           
-              <br>
-            <table class="table table-striped">
-                <tr>
-                    <th>N°</th>
-                    <th>Type</th>
-                    <th>Date d'Opération</th>
-                    <th>Acteur</th>
-                    <th>Source</th>
-                    <th>Destination</th>
-                    <th>Montant(DH)</th>                    
-                </tr>
-                  <tr *ngFor="let o of pageOperation">
-                    <td>{{o.numOperation}}</td>
-                    <td>{{o.typeOperation}}</td>
-                    <td>{{o.dateOperation}}</td>
-                    <td *ngIf="o.agent!=null; else elseAgent">
-                        Ag: {{o.agent.id}}</td>
-                    <ng-template #elseAgent><td>-</td></ng-template>
-
-
-                    <td *ngIf="o.compteSource!=null; else elseTag">
-                        {{o.compteSource.rib}}</td>
-                    <ng-template #elseTag><td>-</td></ng-template>
-                    <td *ngIf="o.compteDestination!=null; else elseTag">
-                        {{o.compteDestination.rib}}</td>
-
-                    <td>{{o.montant | number: '.2'}} MAD</td>
-                    <td>
-                  
-                    <td>
-                      
-                       &nbsp; <a href=""> <img src="../assets/images/detail.png"   title="detail" class="img-responsive"></a>
-
-                    </td>
-                </tr>
-            </table>-->
             <div id="body">
                 <app-nemu-bar></app-nemu-bar>
             
                 <div class="route">
                   <div  class="content">
-                    <input type="search" placeholder="search ... " >
+                    <input type="search" (keyup)="keyBoardEvent($event)"  placeholder="search ... "  [(ngModel)]="motCle">
                     <table class="table table-striped" >
-                      <thead style="color: #FF4500; font-weight: bolder; font-style: italic;">
+                      <thead style="color: #4babc0; font-weight: bolder; font-style: italic;">
                         <tr>
                             <th>N°</th>
                             <th>Type</th>
@@ -87,12 +35,8 @@
         
                             <td>{{o.montant | number: '.2'}} MAD</td>
                             <td>
-                          
-                            <td>
-                              
-                               &nbsp; <a href=""> <img src="../assets/images/detail.png"   title="detail" class="img-responsive"></a>
-        
-                            </td>
+
+                            
                         </tr>
                           
                         

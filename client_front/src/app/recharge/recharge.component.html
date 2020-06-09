@@ -9,14 +9,10 @@
           Recharge
         </h1>
         <form #form="ngForm" (ngSubmit)="onSubmit()" novalidate>
-            
-     
             <input  name="codeRecharge"
              class="input" type="text" [(ngModel)]="codeRecharge.code"  maxlength="8" placeholder="Code de recharge">
             <br>
             <button type="submit" class="submit">Recharger</button>
-            
-         
         </form>
       </div>
    
@@ -24,16 +20,4 @@
   </div>
 </div>
 
-<!--<div>
-    <form #form="ngForm" (ngSubmit)="onSubmit()" novalidate>
-        <h1>Recharge</h1>
- 
-        <input  name="codeRecharge"
-         class="input" type="text" [(ngModel)]="codeRecharge.code"  maxlength="8" placeholder="Code de recharge">
-        <br>
-        <button type="submit" class="submit">Recharger</button>
-        
-     
-    </form>
-    
-</div>-->
+

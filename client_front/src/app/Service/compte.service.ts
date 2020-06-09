@@ -21,9 +21,7 @@ export class CompteService {
 getCompte(id:number){
   return this.http.get<Compte>(this._urlClient+id)
 }
-// test(){
-//   return this.http.get(this.hostTest);
-// }
+
 
 getCompteByRib(rib:String){
   return this.http.get<Compte>(this._urlClient+"rib/"+rib)

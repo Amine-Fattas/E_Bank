@@ -110,14 +110,14 @@ input{
 }
 
 .btn{
-    background: #FF4500;
+    background: #4babc0;
     border-radius: 15px;
     margin-left: 450px;
     color: white;
 }
 
 .btn:hover{
-    background: tomato;
+    background:#4babc0;
     transform: scale(1.05);
 }
 
@@ -128,4 +128,12 @@ button:focus {
     outline: none;
 }
 
-
+.routeE{
+  
+    position: absolute;
+    top: 2%;
+    left: 20%;
+    width: 80%;
+    /*height: 100vh;*/
+    
+  }

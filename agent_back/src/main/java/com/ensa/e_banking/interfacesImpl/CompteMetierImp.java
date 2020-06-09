@@ -60,7 +60,7 @@ public class CompteMetierImp implements CompteMetier{
 //        clientMetier.saveClient(compte.getClient());
 		restTemplate.postForObject(url+"/client/ajoutClient", compte.getClient(), Client.class);
         compte.setDateCreation(new Date());
-        compte.setSolde(0.0);
+        //compte.setSolde(0.0);
         compte.setEtat(true);
         compte.setFraisOuverture(20.0);
         if(compteRepository.dernierEnregistrement() != null) {

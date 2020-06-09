@@ -1,11 +1,11 @@
 
-    <div class="container">
-        <div class="container">
-            <div class="row " >
-                <div class="col-lg-2 col-12">
-                    <app-nemu-bar></app-nemu-bar>
-                </div>
-                <div class="col-lg-10 col-12">
+ <div id="body">
+    <app-nemu-bar></app-nemu-bar>
+
+    <div class="routeE">
+    
+       
+
    <form #f="ngForm" novalidate>
         
         <div class="contact-form">
@@ -53,19 +53,20 @@
                  <small class="text-danger" [class.d-none]="type.valid || type.untouched">Ce champs est obligatoire</small>
                </div>
               
-                <button [disabled]="!f.valid"  (click)="updateClient()" type="btn" class="btn submit">Save</button> 
-                
+               <div class="col-lg-6 col-12">
+               <button [disabled]="!f.valid"  (click)="updateClient()" style="float: right; margin-top: 8%;" type="submit" class="submit">Save</button> 
+               </div>
             </div>
            
-            
+           
            
         </div>
            
        
     </div>
+ 
 </form>
 
 </div>
-</div>
-</div>
+
     
