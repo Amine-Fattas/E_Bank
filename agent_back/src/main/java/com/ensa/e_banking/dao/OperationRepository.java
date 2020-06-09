@@ -21,5 +21,8 @@ public interface OperationRepository extends JpaRepository<Operation, Long>{
 	@Query("select o from Operation o  where o.compteSource.rib like :x or o.typeOperation like :x or  o.compteDestination.rib like :x and o.compteDestination.rib like :y or o.compteSource.rib like :y")
     public List<Operation> chercherO(@Param("x") String mc,@Param("y") String rib);
 
+	@Query("select o from Operation o  where o.compteSource.rib like :x or o.typeOperation like :x or  o.compteDestination.rib like :x ")
+	public List<Operation> chercherOperation(@Param("x") String mc);
+
 
 }

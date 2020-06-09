@@ -11,6 +11,7 @@ public interface OperationMetier {
        public boolean virement(Operation operation);
        public List<Operation> getOperationByCompte(String mc,String rib);
        public boolean recharge(Operation operation, Long codeRecharge);
+       public List<Operation> chercherOperation(String mc);
        public double fraisVirement(double montant);
        public List<Operation> getOperationByIdCompte(String rib);
        public List<Operation> getOperations();

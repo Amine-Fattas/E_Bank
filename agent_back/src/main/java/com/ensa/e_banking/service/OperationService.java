@@ -2,6 +2,7 @@ package com.ensa.e_banking.service;
 
 import java.util.List;
 
+import com.ensa.e_banking.entities.Compte;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import com.ensa.e_banking.entities.Operation;
@@ -53,6 +54,13 @@ public class OperationService {
 	public List<Operation> getList(){
 	return  operationMetier.getOperations();
 	}
+
+	@RequestMapping(value="/operation/recherche",method=RequestMethod.GET)
+	public List<Operation> rechercheOperation(@RequestParam(name="mc",defaultValue="") String mc){
+		System.out.println(mc);
+		return  operationMetier.chercherOperation(mc);
+	}
+
 
    /*@RequestMapping(value = "/operation/chercheO/{rib}",method = RequestMethod.GET)
 	public List<Operation> getOperationByCompte(@RequestParam(name="mc",defaultValue="") String mc,@RequestParam(name="rib",defaultValue="")String rib){

@@ -113,6 +113,10 @@ public class OperationMetierImp implements OperationMetier{
 			return true;
 		}
 
+	@Override
+	public List<Operation> chercherOperation(String mc) {
+		return operationRepository.chercherOperation("%"+mc+"%");
+	}
 
 
 	@Override

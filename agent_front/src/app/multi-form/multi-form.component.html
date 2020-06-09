@@ -58,7 +58,7 @@
                   
                      
                    
-                    <button mat-button matStepperNext   [disabled]="!f.valid" style="float: left;" (click)="onNextStep1()">Next</button>
+                    <button mat-button matStepperNext   [disabled]="!f.valid" style="margin-top: 2%;" (click)="onNextStep1()">Next</button>
                     
                     
                 </div>
@@ -75,8 +75,8 @@
             
         <div class="container">
             
-                 <div class="row  mx-auto justify-content-center align-items-center flex-column">
-                    <input type="radio" value="CC" name="typeCompte" [(ngModel)]="compte.typeCompte" #type='ngModel' required > Compte Courant
+                 <div class="row  mx-auto justify-content-center align-items-center ">
+                    <input type="radio" value="CC" name="typeCompte" [(ngModel)]="compte.typeCompte" #type='ngModel' required > Compte Courant &nbsp;
                     <input type="radio" value="CE" name="typeCompte" [(ngModel)]="compte.typeCompte" #type='ngModel'  required> Compte Epargne   
                     <small class="text-danger" [class.d-none]="type.valid || type.untouched">Ce champs est obligatoire</small>
                  </div>
@@ -85,6 +85,10 @@
                   <div class="row  mx-auto justify-content-center align-items-center flex-column">
                     <input class="inputStyle"  type="date"  [(ngModel)]="compte.dateCreation" #dateC='ngModel' name="dateCreation" placeholder="Date de creation"  required><br>
                     <small class="text-danger" [class.d-none]="dateC.valid || dateC.untouched">Ce champs est obligatoire</small>
+                 </div>
+                 <div class="row  mx-auto justify-content-center align-items-center flex-column">
+                    <input class="inputStyle"  type="number"  [(ngModel)]="compte.solde" #sol='ngModel' name="solde" placeholder="Solde initiale"  required><br>
+                    <small class="text-danger" [class.d-none]="sol.valid || sol.untouched">Ce champs est obligatoire</small>
                  </div>
                  
                 <div class="row" style="margin-left:30%;">

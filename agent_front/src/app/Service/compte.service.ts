@@ -19,6 +19,8 @@ export class CompteService {
    }
 
    chercherCompteD(motCle: String){
+     console.log("chercher compte");
+    
     return this.http.get("http://localhost:8081/agent/chercherD?mc="+motCle);
      }
 

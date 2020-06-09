@@ -19,9 +19,27 @@ form{
     align-items: center;
 }
 
+
+
+
+
 h1{
-    margin-bottom: 25px;
+ 
+  display: inline-block;
+  position: relative;
+  font-family: 'Dancing Script', cursive;
+  font-size: 30px;
+  font-style: italic;
+ 
 }
+
+
+
+
+
+
+
+
 
 
 
