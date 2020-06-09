@@ -79,10 +79,10 @@
                     <tr th:each="o:${operations}">
                         <td th:text="${o?.getNumOperation()}"></td>
                         <td th:text="${o?.getTypeOperation()}"></td>
-                        <td th:text="${o?.getDateOperation()}"></td>
-                        <td th:text="${o?.getAgent()?.getId()?.toString()}"></td>
-                        <td th:text="${o?.getCompteDestination()?.getRib()?.toString()}"></td>
-                        <td th:text="${o?.getCompteSource()?.getRib()?.toString()}"></td>
+                        <td th:text="${#dates.format(o?.getDateOperation(), 'dd-MM-yyyy HH:mm')}"></td>
+                        <td th:text="${o?.getAgent()?.getId()?.toString() != null } ? ${o?.getAgent()?.getId()?.toString()} : '---'"></td>
+                        <td th:text="${o?.getCompteDestination()?.getRib()?.toString() != null } ? ${o?.getCompteDestination()?.getRib()?.toString()} : '---'"></td>
+                        <td th:text="${o?.getCompteSource()?.getRib()?.toString() != null } ? ${o?.getCompteSource()?.getRib()?.toString()} : '---'"></td>
                         <td th:text="${o?.getMontant()}"></td>
                     </tr>
                     </tbody>

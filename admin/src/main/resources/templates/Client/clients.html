@@ -78,7 +78,7 @@
                         <td th:text="${c.getCin()}"></td>
                         <td th:text="${c.getUsername()}"></td>
                         <td th:text="${c.getNumTel()}"></td>
-                        <td th:text="${c.getDateNaissance()}"></td>
+                        <td th:text="${#dates.format(c.getDateNaissance(), 'dd-MM-yyyy')}"></td>
 
                         <!--  <td th:text="${c.getCompteC().getRib()}"></td>
                           <td><a th:href="@{comptebancaire(id=${c.getCompteC().getRib()})}">Plus de détails</a></td>

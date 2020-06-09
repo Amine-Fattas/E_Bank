@@ -66,7 +66,7 @@ public class AgenceController{
     }
     @RequestMapping(path = "/editAgence", method = RequestMethod.GET)
     public String editAgence(Model model,int numAgence) {
-        Agence a= agenceRepository.findById(numAgence);
+        Agence a= agenceRepository.findById(numAgence).get();
         model.addAttribute("agence",a);
         return "Agence/edit-agence";
     }

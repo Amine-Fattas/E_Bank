@@ -6,7 +6,7 @@ body{
     margin: 0;
     background-image: url("../img/bankAcceuil.jpg");
     background-repeat:no-repeat;
-    Background-position-y : 5%;
+    background-position-y: 5%;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -18,8 +18,8 @@ body{
     height: 420px;
     background: rgba(0, 0, 0, 0.25);
     color: #fff;
-    top: 36%;
-    left: 50%;
+    top: 50%;
+    left: 65%;
     position: absolute;
     transform: translate(-50%,-50%);
     box-sizing: border-box;

@@ -81,6 +81,7 @@ public class AgentController {
         String pass=Password.pass();
         System.out.println(pass);
         agent.setPassword(bCryptPasswordEncoder.encode(pass));
+       // agent.setPassword(pass);
         Agence agence = agenceRepository.findByNomAgence(agent.getAgence().getNomAgence());
         agent.setAgence(agence);
         agent.setNumAgence(agence.getNumAgence());
