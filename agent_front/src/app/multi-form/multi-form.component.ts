@@ -52,6 +52,7 @@ export class MultiFormComponent implements OnInit {
     }
 
   onNextStep2() {
+    console.log(this.compte.client);
   this.compteService.saveCompte(this.compte)
     .subscribe(response => {
       this.nouveauCompte = response;

@@ -56,12 +56,18 @@ public class CompteMetierImp implements CompteMetier{
 
 	@Override
 	public Compte saveCompte(Compte compte){
+
 		compte.getClient().setPassword(clientMetier.genererPassword());
+		System.out.println("saaaaaaaaaave");
+
 //        clientMetier.saveClient(compte.getClient());
-		restTemplate.postForObject(url+"/client/ajoutClient", compte.getClient(), Client.class);
+		Client cl=restTemplate.postForObject(url+"/client/ajoutClient", compte.getClient(), Client.class);
         compte.setDateCreation(new Date());
         //compte.setSolde(0.0);
         compte.setEtat(true);
+		System.out.println(cl.getId());
+
+        compte.setIdClient(cl.getId());
         compte.setFraisOuverture(20.0);
         if(compteRepository.dernierEnregistrement() != null) {
       
