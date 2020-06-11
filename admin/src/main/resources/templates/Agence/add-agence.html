@@ -61,19 +61,21 @@
                                 <label for="fullname" class="control-label col-lg-2">Nom d'agence<span class="required">*</span></label>
                                 <div class="col-lg-10">
                                     <input class=" form-control" id="fullname"  type="text" name="nomAgence" th:value="${agence.getNomAgence()}" />
+                                    <span id="missNom"></span><br>
                                 </div>
                             </div>
                             <div class="form-group ">
                                 <label for="address" class="control-label col-lg-2">Addresse <span class="required">*</span></label>
                                 <div class="col-lg-10">
                                     <input class=" form-control" id="address"  type="text"  name="adresse"  th:value="${agence.getAdresse()}"/>
+                                    <span id="missAdresse"></span><br>
                                 </div>
                             </div>
                             <div class="form-group ">
                                 <label class="control-label col-lg-2">Ville<span class="required">*</span></label>
                                                 <div class="col-sm-10">
-                                                    <option value="" disabled selected>Choose your country</option>
                                                     <input class=" form-control" type="text" name="ville" th:value="${agence.getVille()}" />
+                                                    <span id="missVille"></span><br>
 
                                                 </div>
                                             </div>
@@ -92,7 +94,7 @@
 
                             <div class="form-group">
                                 <div class="col-lg-offset-2 col-lg-10">
-                                    <button class="btn-enregistrer" type="submit">Enregistrer</button>
+                                    <button id="envoy" class="btn-enregistrer" type="submit">Enregistrer</button>
                                     <button class="btn-annuler" href="/liste" type="button">Annuler</button>
                                 </div>
                             </div>
