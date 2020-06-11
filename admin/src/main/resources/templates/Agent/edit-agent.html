@@ -71,7 +71,8 @@
                     <select class="form-control" th:field="${agent.agence.nomAgence}">
                         <option th:each="a:${listeAgence}"
                                 th:text="${a.nomAgence}"
-                                th:value="${a.nomAgence}"/>
+                                th:value="${a.nomAgence}"
+                                th:selected="${agent.agence.nomAgence}"/>
                     </select>
                 </div>
                 <div class="divsave">

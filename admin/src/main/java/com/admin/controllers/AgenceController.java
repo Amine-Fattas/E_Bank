@@ -1,6 +1,8 @@
 package com.admin.controllers;
 
+import com.admin.Repository.ActivityRepository;
 import com.admin.Repository.AgenceRepository;
+import com.admin.models.Activity;
 import com.admin.models.Agence;
 import com.admin.models.Agent;
 import com.admin.models.Pager;
@@ -14,6 +16,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 
+import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Optional;
@@ -24,7 +27,11 @@ public class AgenceController{
    @Autowired
     private AgenceRepository agenceRepository;
 
+    @Autowired
+    private ActivityRepository activityRepository;
 
+    @Autowired
+    private AdminRestController adminRestController;
 
     private static final int BUTTONS_TO_SHOW = 5;
     private static final int INITIAL_PAGE = 0;
@@ -76,6 +83,11 @@ public class AgenceController{
         Agence a=agenceRepository.findById(id).get();
         agence.setNumAgence(id);
         agenceRepository.save(agence);
+        Activity activity = new Activity("Admin ID: "+adminRestController.currentAdmin().getId()
+                + " a modifié l'agence "+ agence.getNumAgence());
+        activity.setDate(new Date());
+        activityRepository.save(activity);
+
         return "redirect:/liste";
     }
 
@@ -88,6 +100,10 @@ public class AgenceController{
         else{lastCodeGuichet=agenceRepository.lastcodeguichet()+1;}
         agence.setNumAgence(lastCodeGuichet);
         agenceRepository.save(agence);
+        Activity activity = new Activity("Admin ID: "+adminRestController.currentAdmin().getId()
+        + " a ajouté l'agence "+ agence.getNumAgence() +" " + agence.getNomAgence());
+        activity.setDate(new Date());
+        activityRepository.save(activity);
         return "redirect:/liste";
     }
    /* @RequestMapping(value="/deleteAgence" , method= RequestMethod.GET)
@@ -114,6 +130,11 @@ public class AgenceController{
         restTemplate.getForObject(url+"/agent/deleteagence/"+id, String.class);
 
         agenceRepository.delete(a);
+
+        Activity activity = new Activity("Admin ID: "+adminRestController.currentAdmin().getId()
+                + " a supprimé l'agence "+ a.getNumAgence() +" " + a.getNomAgence());
+        activity.setDate(new Date());
+        activityRepository.save(activity);
         return "redirect:/liste";
 
     }

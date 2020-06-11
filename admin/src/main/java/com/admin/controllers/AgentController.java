@@ -1,5 +1,6 @@
 package com.admin.controllers;
 
+import com.admin.Repository.ActivityRepository;
 import com.admin.Repository.AgenceRepository;
 import com.admin.models.*;
 
@@ -18,6 +19,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -27,6 +29,12 @@ public class AgentController {
 
     @Autowired
     private AgenceRepository agenceRepository;
+
+    @Autowired
+    private AdminRestController adminRestController;
+
+    @Autowired
+    private ActivityRepository activityRepository;
 
     private static final int BUTTONS_TO_SHOW = 5;
     private static final int INITIAL_PAGE = 0;
@@ -86,6 +94,7 @@ public class AgentController {
         agent.setAgence(agence);
         agent.setNumAgence(agence.getNumAgence());
         restTemplate.postForObject(url + "/agent/add", agent, Agent.class);
+
         return "redirect:/index";
     }
 
@@ -106,6 +115,11 @@ public class AgentController {
         agent.setNumAgence(agence.getNumAgence());
         restTemplate.postForObject(url + "/agent/update/"+id, agent, Agent.class);
         //  restTemplate.put(url+"/agent/update/"+id, agent);
+
+        Activity activity = new Activity("Admin ID: "+adminRestController.currentAdmin().getId()
+                + " a modifié l'agent ID "+ id);
+        activity.setDate(new Date());
+        activityRepository.save(activity);
         return "redirect:/index";
     }
 
@@ -133,6 +147,7 @@ public class AgentController {
                 agent.setPassword(ag.getPassword());
                 agent.setNumContrat(ag.getNumContrat());
                 agent.setNumAgence(ag.getNumAgence());
+                agent.setAgence(agenceRepository.findById(ag.getNumAgence()).get());
                 break;
             }
             // System.out.println(agent);
@@ -180,6 +195,10 @@ public class AgentController {
 
         RestTemplate restTemplate = new RestTemplate();
         restTemplate.getForObject(url+"/agent/deleteagent/"+id, String.class);
+        Activity activity = new Activity("Admin ID: "+adminRestController.currentAdmin().getId()
+                + " a supprimé l'agent ID "+ id);
+        activity.setDate(new Date());
+        activityRepository.save(activity);
 
         return "redirect:/index";
 

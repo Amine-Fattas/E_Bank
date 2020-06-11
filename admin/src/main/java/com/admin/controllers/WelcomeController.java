@@ -1,6 +1,8 @@
 package com.admin.controllers;
 
 
+import com.admin.Repository.ActivityRepository;
+import com.admin.models.Activity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.stereotype.Controller;
@@ -12,20 +14,24 @@ import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.util.List;
 
 @Controller
 public class WelcomeController {
 
+
+    @Autowired
+    public ActivityRepository activityRepository;
 
     @RequestMapping(value = "/login", method = RequestMethod.GET)
     public String login() {
         return "login";
     }
 
-    @RequestMapping(value = {
-            "/"
-    }, method = RequestMethod.GET)
+    @RequestMapping(value = {"/"}, method = RequestMethod.GET)
     public String welcome(Model model) {
+        List<Activity> list=activityRepository.findAll();
+        model.addAttribute("activities",list);
         return "home";
     }
 

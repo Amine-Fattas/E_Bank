@@ -61,6 +61,7 @@ public class DemoApplication {
 }*/
 
 
+import com.admin.Repository.ActivityRepository;
 import com.admin.Repository.AdminRepository;
 import com.admin.Repository.AgenceRepository;
 //import com.admin.Repository.AgentRepository;
@@ -101,6 +102,7 @@ public class DemoApplication  implements CommandLineRunner {
 		ApplicationContext ctx =SpringApplication.run(DemoApplication.class, args);
 		//AgentRepository agent=ctx.getBean(AgentRepository.class);
 		AgenceRepository agence=ctx.getBean(AgenceRepository.class);
+		ActivityRepository activity=ctx.getBean(ActivityRepository.class);
 	//	ClientRepository client=ctx.getBean(ClientRepository.class);
 
 
@@ -110,9 +112,9 @@ public class DemoApplication  implements CommandLineRunner {
 	@Override
 	public void run(String... args) throws  Exception {
 
-		adminRepository.save(new Admin((long) 102,"Laftoumi","Fatima Ezzahra","EE456643","admin1@AFOIHebank.com",new BCryptPasswordEncoder().encode("admin")));
+	//	adminRepository.save(new Admin((long) 102,"Laftoumi","Fatima Ezzahra","EE456643","admin1@AFOIHebank.com",new BCryptPasswordEncoder().encode("admin")));
 
-		adminRepository.save(new Admin((long)44,"hajar", bCryptPasswordEncoder.encode("hajar")));
+	//	adminRepository.save(new Admin((long)44,"hajar", bCryptPasswordEncoder.encode("hajar")));
 	}
 }
 

@@ -47,27 +47,18 @@
             </div>
             <!-- page start-->
             <!--notification start-->
-            <section class="panel">
-                <header class="panel-heading">
-                    Historique
-                </header>
-                <div class="panel-body">
-                    <div class="alert alert-success fade in">
-                        <button data-dismiss="alert" class="close close-sm" type="button">
-                            <i class="icon-remove"></i>
-                        </button>
-                        <strong>1</strong> Admin X Action Y
-                    </div>
-                    <div class="alert alert-block alert-danger fade in">
-                        <button data-dismiss="alert" class="close close-sm" type="button">
-                            <i class="icon-remove"></i>
-                        </button>
-                        <strong>2</strong> Admin Y Action X
-                    </div>
 
 
+            <h2>Historique d'activités</h2>
+            <div class="activity-feed">
+                <div class="feed-item"  th:each="a:${activities}">
+                    <div class="date" th:text="${#dates.format(a.getDate(), 'dd-MM-yyyy HH:mm')}"></div>
+                    <div class="text" th:text="${a.getAction()}"></div>
                 </div>
-            </section>
+
+
+
+            </div>
             <!--notification end-->
             <!-- page end-->
         </section>
