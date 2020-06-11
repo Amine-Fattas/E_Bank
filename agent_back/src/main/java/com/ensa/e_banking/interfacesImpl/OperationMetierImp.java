@@ -78,7 +78,7 @@ public class OperationMetierImp implements OperationMetier{
 
 			//if(compteDestination ==null || compteDestination.isEtat() == false)  throw new RuntimeException("Compte n'existe pas ou désactivé");
 			operation.setCompteDestination(compteDestination);
-			operation.setCompteSource(compteDestination);
+			operation.setCompteSource(compteSource);
 			
 			
 			compteSource.setSolde(compteSource.getSolde()-operation.getMontant());

@@ -46,6 +46,7 @@ export class VirementComponent implements OnInit {
     this.newOperation.agent = null
     this.newOperation.numOperation = Math.floor(Math.random() * 1000000)
     console.log("Succes Virement \n"+this.newOperation)
+    console.log(this.newOperation)
     this._operationService.virer(this.newOperation)
               .subscribe(
                 data => Swal.fire(
