@@ -30,7 +30,7 @@ public class WelcomeController {
 
     @RequestMapping(value = {"/"}, method = RequestMethod.GET)
     public String welcome(Model model) {
-        List<Activity> list=activityRepository.findAll();
+        List<Activity> list=activityRepository.findFirst20ByOrderByIdDesc();
         model.addAttribute("activities",list);
         return "home";
     }

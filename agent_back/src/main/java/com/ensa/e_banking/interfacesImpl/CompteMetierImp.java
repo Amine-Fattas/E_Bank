@@ -45,6 +45,7 @@ public class CompteMetierImp implements CompteMetier{
 	
     Long numCompte;
 	private String url = "http://localhost:8082";
+	private String urla="http://localhost:8083";
 
 	
 	Agence agence=new Agence();
@@ -127,7 +128,9 @@ public class CompteMetierImp implements CompteMetier{
 	@Override
 	public Compte DesactiverCompte(Compte compte) {
 	           compte.setEtat(false);
-		   		return compteRepository.save(compte);
+		String act= "l'agent ID : "+ homeController.currentAgent().getId() + "a désactivé le compte RIB : "+ compte.getRib();
+		restTemplate.postForObject(urla + "/desactiverCompte", act, String.class);
+		return compteRepository.save(compte);
 	}
 
 	@Override

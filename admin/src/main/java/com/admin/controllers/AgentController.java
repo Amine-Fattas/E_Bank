@@ -93,7 +93,11 @@ public class AgentController {
         Agence agence = agenceRepository.findByNomAgence(agent.getAgence().getNomAgence());
         agent.setAgence(agence);
         agent.setNumAgence(agence.getNumAgence());
-        restTemplate.postForObject(url + "/agent/add", agent, Agent.class);
+        Agent ag= restTemplate.postForObject(url + "/agent/add", agent, Agent.class);
+        Activity activity = new Activity("Admin ID: "+adminRestController.currentAdmin().getId()
+                + " a ajouté l'agent ID "+ ag.getId());
+        activity.setDate(new Date());
+        activityRepository.save(activity);
 
         return "redirect:/index";
     }

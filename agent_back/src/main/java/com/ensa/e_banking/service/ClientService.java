@@ -37,10 +37,14 @@ import org.springframework.web.client.RestTemplate;
 @CrossOrigin("*")
 public class ClientService {
 
+	@Autowired
+	private HomeController homeController;
+
     @Autowired
     RestTemplate restTemplate;
 
     private String url = "http://localhost:8082";
+	private String urla="http://localhost:8083";
 
 //	@Autowired
 //	private ClientMetier clientMetier;
@@ -118,6 +122,9 @@ BCryptPasswordEncoder bCryptPasswordEncoder=new  BCryptPasswordEncoder();
 		operationRepository.deleteOperationByCompte(compte.getRib());
 		compteRepository.deleteCompteByIdClient(id);
 	    restTemplate.delete(url+"client/delete/"+id);
+		String act= "l'agent ID : "+ homeController.currentAgent().getId() + " a supprimé le client ID : "+ id +
+				" ainsi que son compte RIB : " + compte.getRib();
+		restTemplate.postForObject(urla + "/supprimerClient", act, String.class);
 	    return true;
 	}
 //
