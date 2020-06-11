@@ -1,0 +1,72 @@
+2020-06-11 03:19:52 - Starting DemoApplication on DESKTOP-CJCQTMP with PID 35048 (C:\Users\pc\Documents\E_Bank\admin\target\classes started by pc in C:\Users\pc\Documents\E_Bank\admin)
+2020-06-11 03:19:52 - Running with Spring Boot v2.2.6.RELEASE, Spring v5.2.5.RELEASE
+2020-06-11 03:19:52 - No active profile set, falling back to default profiles: default
+2020-06-11 03:19:52 - The Class-Path manifest attribute in C:\Users\pc\.m2\repository\org\glassfish\jaxb\jaxb-runtime\2.3.2\jaxb-runtime-2.3.2.jar referenced one or more files that do not exist: file:/C:/Users/pc/.m2/repository/org/glassfish/jaxb/jaxb-runtime/2.3.2/jakarta.xml.bind-api-2.3.2.jar,file:/C:/Users/pc/.m2/repository/org/glassfish/jaxb/jaxb-runtime/2.3.2/txw2-2.3.2.jar,file:/C:/Users/pc/.m2/repository/org/glassfish/jaxb/jaxb-runtime/2.3.2/istack-commons-runtime-3.0.8.jar,file:/C:/Users/pc/.m2/repository/org/glassfish/jaxb/jaxb-runtime/2.3.2/stax-ex-1.8.1.jar,file:/C:/Users/pc/.m2/repository/org/glassfish/jaxb/jaxb-runtime/2.3.2/FastInfoset-1.2.16.jar,file:/C:/Users/pc/.m2/repository/org/glassfish/jaxb/jaxb-runtime/2.3.2/jakarta.activation-api-1.2.1.jar
+2020-06-11 03:19:52 - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2020-06-11 03:19:52 - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2020-06-11 03:19:53 - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2020-06-11 03:19:53 - Finished Spring Data repository scanning in 51ms. Found 2 JPA repository interfaces.
+2020-06-11 03:19:53 - Bean 'org.springframework.security.config.annotation.configuration.ObjectPostProcessorConfiguration' of type [org.springframework.security.config.annotation.configuration.ObjectPostProcessorConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-06-11 03:19:53 - Bean 'objectPostProcessor' of type [org.springframework.security.config.annotation.configuration.AutowireBeanFactoryObjectPostProcessor] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-06-11 03:19:53 - Bean 'org.springframework.security.access.expression.method.DefaultMethodSecurityExpressionHandler@1148f968' of type [org.springframework.security.access.expression.method.DefaultMethodSecurityExpressionHandler] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-06-11 03:19:53 - Bean 'org.springframework.security.config.annotation.method.configuration.GlobalMethodSecurityConfiguration' of type [org.springframework.security.config.annotation.method.configuration.GlobalMethodSecurityConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-06-11 03:19:53 - Bean 'methodSecurityMetadataSource' of type [org.springframework.security.access.method.DelegatingMethodSecurityMetadataSource] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-06-11 03:19:54 - Tomcat initialized with port(s): 8083 (http)
+2020-06-11 03:19:54 - Starting service [Tomcat]
+2020-06-11 03:19:54 - Starting Servlet engine: [Apache Tomcat/9.0.33]
+2020-06-11 03:19:54 - Initializing Spring embedded WebApplicationContext
+2020-06-11 03:19:54 - Root WebApplicationContext: initialization completed in 1575 ms
+2020-06-11 03:19:54 - HHH000204: Processing PersistenceUnitInfo [name: default]
+2020-06-11 03:19:54 - HHH000412: Hibernate ORM core version 5.4.12.Final
+2020-06-11 03:19:54 - HCANN000001: Hibernate Commons Annotations {5.1.0.Final}
+2020-06-11 03:19:54 - HikariPool-1 - Starting...
+2020-06-11 03:19:54 - HikariPool-1 - Start completed.
+2020-06-11 03:19:54 - HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2020-06-11 03:19:55 - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2020-06-11 03:19:55 - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2020-06-11 03:19:55 - Unable to start LiveReload server
+2020-06-11 03:19:55 - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2020-06-11 03:19:56 - Creating filter chain: any request, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@70cd6b83, org.springframework.security.web.context.SecurityContextPersistenceFilter@39a5acac, org.springframework.security.web.header.HeaderWriterFilter@9b96b33, org.springframework.security.web.csrf.CsrfFilter@53ebab67, org.springframework.security.web.authentication.logout.LogoutFilter@148944a1, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@3f779468, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@4824c22, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@7a6e32, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@53c6a9a1, org.springframework.security.web.session.SessionManagementFilter@1d1ec49a, org.springframework.security.web.access.ExceptionTranslationFilter@1be2079a, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@1c40cf20]
+2020-06-11 03:19:56 - Initializing ExecutorService 'applicationTaskExecutor'
+2020-06-11 03:19:56 - Tomcat started on port(s): 8083 (http) with context path ''
+2020-06-11 03:19:56 - Started DemoApplication in 4.51 seconds (JVM running for 5.627)
+2020-06-11 03:20:18 - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2020-06-11 03:20:18 - Initializing Servlet 'dispatcherServlet'
+2020-06-11 03:20:18 - Completed initialization in 17 ms
+2020-06-11 03:21:19 - Agence numero 26012 ajoutée par l'admin avec l'Id 102
+2020-06-11 03:24:47 - Starting DemoApplication on DESKTOP-CJCQTMP with PID 26276 (C:\Users\pc\Documents\E_Bank\admin\target\classes started by pc in C:\Users\pc\Documents\E_Bank\admin)
+2020-06-11 03:24:47 - Running with Spring Boot v2.2.6.RELEASE, Spring v5.2.5.RELEASE
+2020-06-11 03:24:47 - No active profile set, falling back to default profiles: default
+2020-06-11 03:24:47 - The Class-Path manifest attribute in C:\Users\pc\.m2\repository\org\glassfish\jaxb\jaxb-runtime\2.3.2\jaxb-runtime-2.3.2.jar referenced one or more files that do not exist: file:/C:/Users/pc/.m2/repository/org/glassfish/jaxb/jaxb-runtime/2.3.2/jakarta.xml.bind-api-2.3.2.jar,file:/C:/Users/pc/.m2/repository/org/glassfish/jaxb/jaxb-runtime/2.3.2/txw2-2.3.2.jar,file:/C:/Users/pc/.m2/repository/org/glassfish/jaxb/jaxb-runtime/2.3.2/istack-commons-runtime-3.0.8.jar,file:/C:/Users/pc/.m2/repository/org/glassfish/jaxb/jaxb-runtime/2.3.2/stax-ex-1.8.1.jar,file:/C:/Users/pc/.m2/repository/org/glassfish/jaxb/jaxb-runtime/2.3.2/FastInfoset-1.2.16.jar,file:/C:/Users/pc/.m2/repository/org/glassfish/jaxb/jaxb-runtime/2.3.2/jakarta.activation-api-1.2.1.jar
+2020-06-11 03:24:47 - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2020-06-11 03:24:47 - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2020-06-11 03:24:48 - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2020-06-11 03:24:48 - Finished Spring Data repository scanning in 50ms. Found 2 JPA repository interfaces.
+2020-06-11 03:24:48 - Bean 'org.springframework.security.config.annotation.configuration.ObjectPostProcessorConfiguration' of type [org.springframework.security.config.annotation.configuration.ObjectPostProcessorConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-06-11 03:24:48 - Bean 'objectPostProcessor' of type [org.springframework.security.config.annotation.configuration.AutowireBeanFactoryObjectPostProcessor] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-06-11 03:24:48 - Bean 'org.springframework.security.access.expression.method.DefaultMethodSecurityExpressionHandler@54410757' of type [org.springframework.security.access.expression.method.DefaultMethodSecurityExpressionHandler] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-06-11 03:24:48 - Bean 'org.springframework.security.config.annotation.method.configuration.GlobalMethodSecurityConfiguration' of type [org.springframework.security.config.annotation.method.configuration.GlobalMethodSecurityConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-06-11 03:24:48 - Bean 'methodSecurityMetadataSource' of type [org.springframework.security.access.method.DelegatingMethodSecurityMetadataSource] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-06-11 03:24:49 - Tomcat initialized with port(s): 8083 (http)
+2020-06-11 03:24:49 - Starting service [Tomcat]
+2020-06-11 03:24:49 - Starting Servlet engine: [Apache Tomcat/9.0.33]
+2020-06-11 03:24:49 - Initializing Spring embedded WebApplicationContext
+2020-06-11 03:24:49 - Root WebApplicationContext: initialization completed in 1447 ms
+2020-06-11 03:24:49 - HHH000204: Processing PersistenceUnitInfo [name: default]
+2020-06-11 03:24:49 - HHH000412: Hibernate ORM core version 5.4.12.Final
+2020-06-11 03:24:49 - HCANN000001: Hibernate Commons Annotations {5.1.0.Final}
+2020-06-11 03:24:49 - HikariPool-1 - Starting...
+2020-06-11 03:24:49 - HikariPool-1 - Start completed.
+2020-06-11 03:24:49 - HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2020-06-11 03:24:50 - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2020-06-11 03:24:50 - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2020-06-11 03:24:50 - Unable to start LiveReload server
+2020-06-11 03:24:50 - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2020-06-11 03:24:50 - Creating filter chain: any request, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@2d99fcd1, org.springframework.security.web.context.SecurityContextPersistenceFilter@3dff1639, org.springframework.security.web.header.HeaderWriterFilter@29a03140, org.springframework.security.web.csrf.CsrfFilter@65dd955f, org.springframework.security.web.authentication.logout.LogoutFilter@18ec8f2a, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@7781b9d4, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@68079c78, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@1e471d7c, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@651e476c, org.springframework.security.web.session.SessionManagementFilter@63779bb9, org.springframework.security.web.access.ExceptionTranslationFilter@6234c359, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@674a1891]
+2020-06-11 03:24:51 - Initializing ExecutorService 'applicationTaskExecutor'
+2020-06-11 03:24:51 - Tomcat started on port(s): 8083 (http) with context path ''
+2020-06-11 03:24:51 - Started DemoApplication in 4.244 seconds (JVM running for 5.357)
+2020-06-11 03:25:07 - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2020-06-11 03:25:07 - Initializing Servlet 'dispatcherServlet'
+2020-06-11 03:25:07 - Completed initialization in 18 ms
+2020-06-11 03:30:08 - Agent avec l'Idnull ajouté par l'admin avec l'Id 102

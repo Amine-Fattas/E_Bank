@@ -10,6 +10,9 @@ import java.util.List;
 import javax.mail.MessagingException;
 
 import com.ensa.e_banking.dao.CompteRepository;
+import com.ensa.e_banking.dao.OperationRepository;
+
+import com.ensa.e_banking.entities.Compte;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.core.ParameterizedTypeReference;
@@ -47,6 +50,11 @@ public class ClientService {
 
 	@Autowired
 	private CompteRepository compteRepository;
+
+	@Autowired
+	private OperationRepository operationRepository;
+
+
 //
 	@RequestMapping(value="/client/ajoutClient",method=RequestMethod.POST)
 	public Client saveClient(@RequestBody Client client) {
@@ -105,6 +113,9 @@ BCryptPasswordEncoder bCryptPasswordEncoder=new  BCryptPasswordEncoder();
 	@Transactional
 	@RequestMapping(value="/client/delete/{id}",method=RequestMethod.DELETE)
 	public boolean supprimer(@PathVariable long id){
+
+		Compte compte=compteRepository.findCompteByIdClient(id);
+		operationRepository.deleteOperationByCompte(compte.getRib());
 		compteRepository.deleteCompteByIdClient(id);
 	    restTemplate.delete(url+"client/delete/"+id);
 	    return true;
