@@ -1,0 +1,5 @@
+2020-21-11 06:21:50    Admin ID: 102 a modifié l'agent ID 10000006
+2020-43-11 07:43:10    l'agent ID : 10000000a désactivé le compte RIB : 30045 26005 00000000004 41
+2020-43-11 07:43:36    l'agent ID : 10000000a supprimé le client ID : 6ainsi que son compte RIB : 30045 26005 00000000004 41
+2020-02-12 12:02:30    Admin ID: 102 a modifié l'agent ID 10000001
+2020-34-12 01:34:50    Admin ID: 102 a modifié l'agent ID 10000000
