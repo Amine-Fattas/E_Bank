@@ -50,14 +50,12 @@
 
 
             <h2>Activités récentes</h2>
+            <a th:href="@{/downloadhistorique}"><span>télécharger le fichier</span></a>
             <div class="activity-feed">
                 <div class="feed-item"  th:each="a:${activities}">
                     <div class="date" th:text="${#dates.format(a.getDate(), 'dd-MM-yyyy HH:mm')}"></div>
                     <div class="text" th:text="${a.getAction()}"></div>
                 </div>
-
-
-
             </div>
             <!--notification end-->
             <!-- page end-->
