@@ -62,6 +62,8 @@ public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilte
 			Authentication authResult) throws IOException, ServletException {
 		System.out.println("success-agent");
 		User springUser=(User)authResult.getPrincipal();
+
+
 		String jwtToken=Jwts.builder()
 		.setSubject(springUser.getUsername())
 		.setExpiration(new

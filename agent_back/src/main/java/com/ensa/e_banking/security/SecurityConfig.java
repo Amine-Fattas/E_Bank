@@ -57,12 +57,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 				.antMatchers("/agent/list")
 				.antMatchers("/operation/list")
 				.antMatchers("/agent/listCompteDesactive")
-				.antMatchers("/agent/listCompteActive")
-				.antMatchers("/operation/recharge/{codeRecharge}")
-				.antMatchers("/operation/virement")
-				.antMatchers("/operation/listOperation/{rib}")
-				.antMatchers("/compte/CC/client/{id}")
-				.antMatchers("/compte/CC/rib/{rib}");
+				.antMatchers("/agent/listCompteActive");
+				//.antMatchers("/operation/recharge/{codeRecharge}")
+				//.antMatchers("/operation/virement")
+				//.antMatchers("/operation/listOperation/{rib}")
+				//.antMatchers("/compte/CC/client/{id}")
+				//.antMatchers("/compte/CC/rib/{rib}");
 	}
 
 

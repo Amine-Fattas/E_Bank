@@ -98,19 +98,21 @@ public class Client {
 		this.numTel = numTel;
 	}
 
-	public Client(Long id, String nom, String prenom, String cin, String username, String password, String sexe, Date dateNaissance, String numTel) {
+
+
+	public Client() {
+	}
+
+	public Client(Long id, String nom, String prenom, String cin, String sexe, Date dateNaissance, String numTel) {
 		this.id = id;
 		this.nom = nom;
 		this.prenom = prenom;
 		this.cin = cin;
-		this.username = username;
-		this.password = password;
 		this.sexe = sexe;
 		this.dateNaissance = dateNaissance;
 		this.numTel = numTel;
 	}
 
-	public Client() {
 
-	}
+
 }

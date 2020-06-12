@@ -5,11 +5,13 @@ import java.util.List;
 import org.springframework.data.domain.Page;
 import com.ensa.e_banking.entities.Compte;
 
+import javax.servlet.http.HttpServletRequest;
+
 
 public interface CompteMetier {
 	
       public Long genererRib(int codeBanque,int codeGuichet,Long numCompte);
-      public Compte saveCompte(Compte compte);
+      public Compte saveCompte(Compte compte, HttpServletRequest request);
       public Page<Compte> getComptes(int page);
       public List<Compte> chercherA(String mc);
 	  public String formaterRib(int codeBanque, int codeGuichet, Long numCompte);

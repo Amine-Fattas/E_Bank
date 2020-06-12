@@ -35,18 +35,7 @@ public class securityConfig extends WebSecurityConfigurerAdapter {
 		auth.userDetailsService(appUserDetailsService).passwordEncoder(passwordEncoder());
 	}
 
-	@Override
-	public void configure(WebSecurity web) throws Exception {
 
-		super.configure(web);
-			web.ignoring()
-					.antMatchers("/client/recherche/{mc}")
-					.antMatchers("/client/list")
-					.antMatchers("/client/delete/{id}")
-					.antMatchers("/client/update/{id}")
-					.antMatchers("/client/ajoutClient");
-
-	}
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {

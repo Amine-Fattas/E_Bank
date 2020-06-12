@@ -195,4 +195,18 @@ public  class Compte{
 		this.idClient = idClient;
 
 	}
+
+	public Compte(Long numCompte, String rib, Date dateCreation, Double solde, boolean etat, Double fraisOuverture, Client client, Long idClient, Agent agent, Collection<Operation> compteSource, Collection<Operation> compteDestination) {
+		this.numCompte = numCompte;
+		this.rib = rib;
+		this.dateCreation = dateCreation;
+		this.solde = solde;
+		this.etat = etat;
+		this.fraisOuverture = fraisOuverture;
+		this.client = client;
+		this.idClient = idClient;
+		this.agent = agent;
+		this.compteSource = compteSource;
+		this.compteDestination = compteDestination;
+	}
 }

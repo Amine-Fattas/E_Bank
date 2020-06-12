@@ -4,19 +4,22 @@ package com.ensa.e_banking.service;
 
 import com.ensa.e_banking.entities.Client;
 import com.ensa.e_banking.interfacesMetier.ClientMetier;
-import net.bytebuddy.implementation.bind.MethodDelegationBinder;
+import com.ensa.e_banking.security.SecurityConstants;
+import io.jsonwebtoken.Jwts;
+import io.jsonwebtoken.SignatureAlgorithm;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 
+import org.springframework.security.core.userdetails.User;
 import org.springframework.security.web.authentication.AbstractAuthenticationTargetUrlRequestHandler;
 import org.springframework.web.bind.annotation.*;
 
 import com.ensa.e_banking.entities.Agent;
 import com.ensa.e_banking.interfacesMetier.AgentMetier;
+
+import java.security.Principal;
+import java.util.Date;
 
 @RestController
 @CrossOrigin("*")
@@ -42,6 +45,18 @@ public class HomeController{
 	    return null;
 	}
 
+	String genererToken(){
+		//request.getHeader(SecurityConstants.HEADER_STRING)
+		String jwtToken= Jwts.builder()
+				.setSubject(currentAgent().getUsername())
+				.setExpiration(new
+						Date(System.currentTimeMillis()+ SecurityConstants.EXPIRATION_TIME))
+				.signWith(SignatureAlgorithm.HS512, SecurityConstants.SECRET)
+				.claim("agent", "agentBank")
+				.compact();
+		return "Authorization :"+SecurityConstants.TOKEN_PREFIX+jwtToken;
+	}
+
 
 
 
@@ -51,5 +66,5 @@ public class HomeController{
 }
 	
 	
-	
+
 

@@ -70,6 +70,7 @@ export var currentAgent: Agent*/
     });*/
     onLogin(user) {
       console.log("user1")
+      console.log(user)
        this.authService.login(user)
       .subscribe(resp=>{
         console.log("user2")

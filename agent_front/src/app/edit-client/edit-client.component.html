@@ -36,7 +36,7 @@
                 </div>
                 <div class="row">
                     <div class="col-lg-6 col-12 ">
-                        <input  type="number" (keypress)="numericOnly($event)"   [(ngModel)]="client.numTel" name="numTel" #num='ngModel' placeholder="Telephone"  required><br>
+                        <input  type="text" (keypress)="numericOnly($event)"   [(ngModel)]="client.numTel" name="numTel" #num='ngModel' placeholder="Telephone"  required><br>
                        <small class="text-danger " [class.d-none]="! num.errors?.required || num.untouched">Ce champs est obligatoire</small>
                     </div> 
                     <div class="col-lg-6 col-12">

@@ -62,9 +62,9 @@ public class OperationService {
 	}
 
 
-   /*@RequestMapping(value = "/operation/chercheO/{rib}",method = RequestMethod.GET)
+   @RequestMapping(value ="/operation/chercheO",method = RequestMethod.GET)
 	public List<Operation> getOperationByCompte(@RequestParam(name="mc",defaultValue="") String mc,@RequestParam(name="rib",defaultValue="")String rib){
-		return operationMetier.getOperationByCompte(mc,rib);}*/
+		return operationMetier.getOperationByCompte(mc,rib);}
 	
 
 }

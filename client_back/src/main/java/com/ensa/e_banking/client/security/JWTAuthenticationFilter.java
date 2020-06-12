@@ -40,6 +40,7 @@ private AuthenticationManager authenticationManager;
 	@Override
 	public Authentication attemptAuthentication(HttpServletRequest request, HttpServletResponse response)
 			throws AuthenticationException {
+		System.out.println("je suis dans jwtAuthentication");
 		
 		Client client=null;
 		

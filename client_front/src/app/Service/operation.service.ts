@@ -36,5 +36,12 @@ export class OperationService {
     return this.http.post<any>(this._urlClient+"recharge/"+codeRacharge, operation)
   }
 
+  chercherOperation(motCle: String,rib:String){
+    console.log("chercher operation");
+
+   return this.http.get(this._urlClient+"chercheO?mc="+motCle+"&rib="+rib);
+    }
+
+
   
 }

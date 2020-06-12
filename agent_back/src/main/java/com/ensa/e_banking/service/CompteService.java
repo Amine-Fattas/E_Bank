@@ -1,7 +1,10 @@
 package com.ensa.e_banking.service;
 
 import java.util.List;
+
+import com.ensa.e_banking.security.SecurityConstants;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import com.ensa.e_banking.entities.Compte;
@@ -21,13 +24,16 @@ public class CompteService {
 
 	@Autowired
 	private test test;
+
+	HttpHeaders headers=new HttpHeaders();
 	
 	
 	
 	 @RequestMapping(value="/agent/saveCompte",method=RequestMethod.POST)
-	 public Compte saveCompte(@RequestBody Compte compte) {
+	 public Compte saveCompte(@RequestBody Compte compte,HttpServletRequest request) {
 		 System.out.println("ajout");
-		 return compteMetier.saveCompte(compte);
+
+		 return compteMetier.saveCompte(compte,request);
 	 }
 	 
 	 @RequestMapping(value="/compte/CC/{id}",method=RequestMethod.GET)

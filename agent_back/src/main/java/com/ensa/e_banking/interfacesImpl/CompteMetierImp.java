@@ -5,11 +5,14 @@ import java.util.Date;
 import java.util.List;
 
 
+import com.ensa.e_banking.security.SecurityConstants;
 import com.ensa.e_banking.service.HomeController;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -21,6 +24,8 @@ import com.ensa.e_banking.entities.Compte;
 import com.ensa.e_banking.interfacesMetier.ClientMetier;
 import com.ensa.e_banking.interfacesMetier.CompteMetier;
 import org.springframework.web.client.RestTemplate;
+
+import javax.servlet.http.HttpServletRequest;
 
 
 @Service
@@ -47,7 +52,7 @@ public class CompteMetierImp implements CompteMetier{
 	private String url = "http://localhost:8082";
 	private String urla="http://localhost:8083";
 
-	
+	HttpHeaders headers=new HttpHeaders();
 	Agence agence=new Agence();
 	
 	@Override
@@ -56,13 +61,17 @@ public class CompteMetierImp implements CompteMetier{
 	}
 
 	@Override
-	public Compte saveCompte(Compte compte){
+	public Compte saveCompte(Compte compte, HttpServletRequest request){
 
 		compte.getClient().setPassword(clientMetier.genererPassword());
 		System.out.println("saaaaaaaaaave");
 
 //        clientMetier.saveClient(compte.getClient());
-		Client cl=restTemplate.postForObject(url+"/client/ajoutClient", compte.getClient(), Client.class);
+
+		headers.set(SecurityConstants.HEADER_STRING,
+				SecurityConstants.TOKEN_PREFIX+request.getHeader(SecurityConstants.HEADER_STRING));
+		HttpEntity<Client> req = new HttpEntity<>(compte.getClient(),headers);
+		Client cl=restTemplate.postForObject(url+"/client/ajoutClient", req, Client.class);
         compte.setDateCreation(new Date());
         //compte.setSolde(0.0);
         compte.setEtat(true);
