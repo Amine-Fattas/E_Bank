@@ -16,9 +16,11 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 
+import javax.validation.Valid;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
@@ -84,8 +86,12 @@ public class AgentController {
 
 
     @RequestMapping(value = "/save", method = RequestMethod.POST)
-    public String save(Model model, Agent agent) {
-
+    public String save(Model model, @Valid Agent agent, BindingResult bindingResult) {
+        if (bindingResult.hasErrors()) {
+            List<Agence> Agences = agenceRepository.findAll();
+            model.addAttribute("listeAgences", Agences);
+            return "Agent/add-agent";
+        }
         String pass=Password.pass();
         System.out.println(pass);
         agent.setPassword(bCryptPasswordEncoder.encode(pass));

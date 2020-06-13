@@ -46,6 +46,7 @@ formValid.addEventListener('click',validation);
           event.preventDefault();
           missNom.textContent = 'Nom Obligatoire';
           missNom.style.color='red';
+          missNom.style.fontWeight='normal';
 
       }
 
@@ -61,11 +62,65 @@ formValid.addEventListener('click',validation);
             event.preventDefault();
             missCin.textContent = 'Cin Obligatoire';
             missCin.style.color='red';
+            missCin.style.fontWeight='normal';
 
         }
 
       }
 
+
+
+var nomA = document.getElementById('nomA');
+var missNom = document.getElementById('missNomA');
+var missAdresse = document.getElementById('missAddress');
+var adresse = document.getElementById('address');
+var missVille = document.getElementById('missVille');
+var ville = document.getElementById('ville');
+var tel = document.getElementById('tel');
+var missTel = document.getElementById('missTel');
+formValid.addEventListener('click',validation);
+//var regx =/^\d{9}$/;
+function validation(event) {
+
+    if(nomA.validity.valueMissing) {
+        event.preventDefault();
+        missNom.textContent = 'Nom Obligatoire';
+        missNom.style.color='red';
+        missNom.style.fontWeight='normal';
+
+    }
+
+
+
+    if(adresse.validity.valueMissing) {
+        event.preventDefault();
+        missAdresse.textContent = 'Adresse Obligatoire';
+        missAdresse.style.color='red';
+        missAdresse.style.fontWeight='normal';
+
+    }
+    if(ville.validity.valueMissing) {
+        event.preventDefault();
+        missVille.textContent = 'Ville Obligatoire';
+        missVille.style.color='red';
+        missVille.style.fontWeight='normal';
+
+
+    }
+
+    if(tel.validity.valueMissing) {
+        event.preventDefault();
+        missTel.textContent = 'Tel Obligatoire';
+        missTel.style.color='red';
+        missTel.style.fontWeight='normal';
+
+    }
+
+
+}
+
+
+/*
 function checkNum()
 {
     var num = document.getElementById('num');
@@ -95,5 +150,4 @@ function checkNum()
         message.style.color = none;
         message.innerHTML = "";
     }
-}
-
+}*/

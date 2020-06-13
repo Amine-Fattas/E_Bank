@@ -1761,3 +1761,17 @@ table.sliders tr td {
     position: relative;
     top: -3px;
 }
+
+.help-block{
+    color:#F75D59 !important;
+    font-weight: normal !important;
+}
+
+.exclam{
+    position: absolute;
+    margin-left: 95%;
+    height: 25px;
+    display: flex;
+    align-items: center;
+
+}
