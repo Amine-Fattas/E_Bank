@@ -56,39 +56,47 @@
                 </header>
                 <div class="panel-body">
                     <div class="form">
-                        <form th:action="@{saveAgence}" class="form-validate form-horizontal" method="post">
+                        <form th:action="@{saveAgence}" th:object="${agence}" class="form-validate form-horizontal" method="post">
                             <div class="form-group ">
-                                <label for="fullname" class="control-label col-lg-2">Nom d'agence<span class="required">*</span></label>
+                                <label for="nomA" class="control-label col-lg-2">Nom d'agence<span class="required">*</span></label>
                                 <div class="col-lg-10">
-                                    <input class=" form-control" id="fullname"  type="text" name="nomAgence" th:value="${agence.getNomAgence()}" />
-                                    <span id="missNom"></span><br>
+                                    <div th:classappend="${#fields.hasErrors('nomAgence')} ? 'input-icon right' : ''">
+                                        <i th:if="${#fields.hasErrors('nomAgence')}" class="fa fa-exclamation tooltips exclam" data-original-title="nom invalid" data-container="body"></i>
+                                        <input class=" form-control" id="nomA"  type="text" name="nomAgence" th:field="*{nomAgence}" th:value="${agence.getNomAgence()}" required />
+                                    <span id="missNomA"></span><br>
+                                    </div>
                                 </div>
                             </div>
                             <div class="form-group ">
                                 <label for="address" class="control-label col-lg-2">Addresse <span class="required">*</span></label>
                                 <div class="col-lg-10">
-                                    <input class=" form-control" id="address"  type="text"  name="adresse"  th:value="${agence.getAdresse()}"/>
-                                    <span id="missAdresse"></span><br>
+                                    <div th:classappend="${#fields.hasErrors('adresse')} ? 'input-icon right' : ''">
+                                        <i th:if="${#fields.hasErrors('adresse')}" class="fa fa-exclamation tooltips exclam" data-original-title="adresse invalid" data-container="body"></i>
+                                        <input class=" form-control" id="address"  type="text"  name="adresse" th:field="*{adresse}" th:value="${agence.getAdresse()}" required/>
+                                    <span id="missAddress"></span><br>
+                                    </div>
                                 </div>
                             </div>
                             <div class="form-group ">
                                 <label class="control-label col-lg-2">Ville<span class="required">*</span></label>
                                                 <div class="col-sm-10">
-                                                    <input class=" form-control" type="text" name="ville" th:value="${agence.getVille()}" />
+                                                    <div th:classappend="${#fields.hasErrors('ville')} ? 'input-icon right' : ''">
+                                                        <i th:if="${#fields.hasErrors('ville')}" class="fa fa-exclamation tooltips exclam" data-original-title="ville invalid" data-container="body"></i>
+                                                        <input class=" form-control" id="ville" type="text" name="ville" th:field="*{ville}" th:value="${agence.getVille()}" required/>
                                                     <span id="missVille"></span><br>
-
+                                                    </div>
                                                 </div>
                                             </div>
 
 
-
-
-
                             <div class="form-group ">
-                                <label for="num" class="control-label col-lg-2">Telephone<span class="required">*</span></label>
+                                <label for="tel" class="control-label col-lg-2">Telephone<span class="required">*</span></label>
                                 <div class="col-lg-10">
-                                    <input class="form-control " id="num" type="text" name="tel"  th:value="${agence.getTel()}" />
-                                    <span id="confirmeNum" class="confirmeNum"></span>
+                                    <div th:classappend="${#fields.hasErrors('tel')} ? 'input-icon right' : ''">
+                                    <i th:if="${#fields.hasErrors('tel')}" class="fa fa-exclamation tooltips exclam" data-original-title="téléphone invalid" data-container="body"></i>
+                                    <input class="form-control " id="tel" type="text" name="tel" th:field="*{tel}" th:value="${agence.getTel()}" required/>
+                                    <span id="missTel" class="confirmeNum"></span><br>
+                                    </div>
                                 </div>
                             </div>
 

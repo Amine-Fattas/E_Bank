@@ -3,3 +3,12 @@
 2020-43-11 07:43:36    l'agent ID : 10000000a supprimé le client ID : 6ainsi que son compte RIB : 30045 26005 00000000004 41
 2020-02-12 12:02:30    Admin ID: 102 a modifié l'agent ID 10000001
 2020-34-12 01:34:50    Admin ID: 102 a modifié l'agent ID 10000000
+2020-37-12 04:37:01    Admin ID: 102 a modifié l'agent ID 10000001
+2020-37-12 04:37:26    Admin ID: 102 a modifié l'agent ID 10000003
+2020-38-12 04:38:41    l'agent ID : 10000006 a supprimé le client ID : 7 ainsi que son compte RIB : 30045 26005 00000000004 41
+2020-39-12 04:39:17    Admin ID: 102 a ajouté l'agent ID 10000006
+2020-39-12 04:39:24    Admin ID: 102 a supprimé l'agent ID 10000006
+2020-39-12 04:39:54    Admin ID: 102 a modifié l'agent ID 10000002
+2020-40-12 04:40:45    Admin ID: 102 a modifié l'agent ID 10000003
+2020-56-12 04:56:00    Admin ID: 102 a ajouté l'agence 26015 
+2020-21-12 07:21:19    Admin ID: 102 a ajouté l'agence 26016 

@@ -3,13 +3,23 @@ package com.admin.models;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.persistence.*;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
 import java.io.Serializable;
 import java.util.Collection;
 
 public class Agent implements Serializable{
 	private Long id;
+
+	@Size(min=3, max=20, message="nom doit etre entre 10 et 40")
+	@Pattern(regexp = "^[a-zA-Z]+(?:[\\s-][a-zA-Z]+)*$", message="ville invalid")
 	private String nom;
+
+	@Size(min=3, max=20, message="prenom doit etre entre 10 et 40")
+	@Pattern(regexp = "^[a-zA-Z]+(?:[\\s-][a-zA-Z]+)*$", message="ville invalid")
 	private String prenom;
+
+	@Pattern(regexp = "^([a-zA-Z]){1,2}(\\d)+$", message="nom invalid")
 	private String cin;
 	private String username;
 	private String password;

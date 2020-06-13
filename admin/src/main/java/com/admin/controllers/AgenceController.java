@@ -13,9 +13,11 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 
+import javax.validation.Valid;
 import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
@@ -93,7 +95,10 @@ public class AgenceController{
     }
 
     @RequestMapping(value="/saveAgence" , method= RequestMethod.POST)
-    public String saveAgence(Model model, Agence agence){
+    public String saveAgence(Model model,@Valid Agence agence, BindingResult bindingResult){
+        if (bindingResult.hasErrors()) {
+            return "Agence/add-agence";
+        }
         Integer lastCodeGuichet;
         if(agenceRepository.lastcodeguichet()==null){
             lastCodeGuichet=26000;

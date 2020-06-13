@@ -1,6 +1,8 @@
 package com.admin.models;
 
 import javax.persistence.*;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
 import java.io.Serializable;
 import java.util.Collection;
 
@@ -9,10 +11,21 @@ public class Agence implements Serializable {
 
     @Id
     private Integer numAgence; // code guichet
+
+    @Size(min=10, max=40, message="nom doit etre entre 10 et 40")
+    @Pattern(regexp = "^((?![\\^!@#$*~ <>?]).)((?![\\^!@#$*~<>?]).){0,38}((?![\\^!@#$*~ <>?]).)$", message="nom invalid")
     private String nomAgence;
+
+    @Size(min=10, max=80, message="adresse doit etre entre 10 et 80")
+    @Pattern(regexp = "^((?![\\^!@#$*~ <>?]).)((?![\\^!@#$*~<>?]).){0,78}((?![\\^!@#$*~ <>?]).)$", message="adresse invalid")
     private String adresse;
+
+    @Pattern(regexp = "^[a-zA-Z]+(?:[\\s-][a-zA-Z]+)*$", message="ville invalid")
     private String ville;
+
+    @Pattern(regexp = "(\\+212|0)([ \\-_/]*)(\\d[ \\-_/]*){9}", message="téléphone invalid")
     private String tel;
+
     static private int code_banque=30045;
     /*@OneToMany
     private Collection<Agent> agents;*/
