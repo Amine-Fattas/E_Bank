@@ -32,8 +32,6 @@ public class OperationMetierImp implements OperationMetier{
 		@Transactional
 		public boolean retirer(Operation operation) {
 
-
-
 			Compte compte=compteRepository.findCompteByRib(operation.getCompteSource().getRib());
 			if(compte == null || compte.isEtat() == false) throw new RuntimeException("Compte n'existe pas");
 			
@@ -91,6 +89,7 @@ public class OperationMetierImp implements OperationMetier{
 
 	@Override
 	public List<Operation> getOperationByCompte(String mc, String rib) {
+	 	System.out.println(mc);
 		return operationRepository.chercherO("%"+mc+"%",rib);
 	}
 
@@ -137,7 +136,5 @@ public class OperationMetierImp implements OperationMetier{
 		return operationRepository.findAll();
 	}
 
-
-	
 
 }

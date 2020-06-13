@@ -10,9 +10,11 @@
         </h1>
         <form #form="ngForm" (ngSubmit)="onSubmit()" novalidate>
             <input  name="codeRecharge"
-             class="input" type="text" [(ngModel)]="codeRecharge.code"  maxlength="8" placeholder="Code de recharge">
+             class="input" type="text" [(ngModel)]="codeRecharge.code" #rech='ngModel' minlength="3" maxlength="8" placeholder="Code de recharge" required>
+            <br> <small class="text-danger " [class.d-none]="rech.valid || rech.untouched">Ce champs est obligatoire</small>
             <br>
-            <button type="submit" class="submit">Recharger</button>
+      
+            <button type="submit"  [disabled]="!form.valid"  class="submit">Recharger</button>
         </form>
       </div>
    

@@ -40,17 +40,18 @@
                        <small class="text-danger " [class.d-none]="! num.errors?.required || num.untouched">Ce champs est obligatoire</small>
                     </div> 
                     <div class="col-lg-6 col-12">
-                        <input   type="date"  [(ngModel)]="client.dateNaissance" #dateN='ngModel'  name="dateNaissance" placeholder="Date de naissance" data-date-format="dd/mm/yyyy"  required><br>
-                        <small class="text-danger" [class.d-none]="dateN.valid || dateN.untouched">Ce champs est obligatoire</small>
+                        <input style="margin-left:-20%" type="radio" value="homme" name="sexe" [(ngModel)]="client.sexe" #type='ngModel' required >Homme
+                        <input style="margin-left:-20%" type="radio" value="femme" name="sexe" [(ngModel)]="client.sexe" #type='ngModel'  required> Femme 
+                     <small class="text-danger" [class.d-none]="type.valid || type.untouched">Ce champs est obligatoire</small>
+                       <!-- <input   type="date"  [(ngModel)]="client.dateNaissance" #dateN='ngModel'  name="dateNaissance" placeholder="Date de naissance" data-date-format="dd/mm/yyyy"  required><br>
+                        <small class="text-danger" [class.d-none]="dateN.valid || dateN.untouched">Ce champs est obligatoire</small>-->
                      </div>
                  </div>
             
                 
             <div class="row" >
                 <div class="col-lg-3 col-12">
-                    <input style="margin-left:-20%" type="radio" value="homme" name="sexe" [(ngModel)]="client.sexe" #type='ngModel' required >Homme
-                    <input style="margin-left:-20%" type="radio" value="femme" name="sexe" [(ngModel)]="client.sexe" #type='ngModel'  required> Femme 
-                 <small class="text-danger" [class.d-none]="type.valid || type.untouched">Ce champs est obligatoire</small>
+                   
                </div>
               
                <div class="col-lg-6 col-12">

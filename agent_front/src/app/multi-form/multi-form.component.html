@@ -40,13 +40,22 @@
                         </div>
                     <div class="row">
                     <div class="col-lg-6 col-12 ">
-                        <input class="inputStyle"  type="text" (keypress)="numericOnly($event)"   [(ngModel)]="client.numTel" name="numTel" #num='ngModel' placeholder="Telephone"  required><br>
-                       <small class="text-danger " [class.d-none]="! num.errors?.required || num.untouched">Ce champs est obligatoire</small>
+                        <input class="inputStyle"  type="text" (keypress)="numericOnly($event)"   [(ngModel)]="client.numTel" name="numTel" #num='ngModel' placeholder="Telephone" pattern="^((06)|(07))[0-9]{8}$" required><br>
+                       <!--<small class="text-danger " [class.d-none]="! num.errors?.required || num.untouched">Ce champs est obligatoire</small>-->
+                       <div *ngIf="num.errors && num.touched">
+                        <small class="text-danger" *ngIf="num.errors.required">Ce champs est obligatoire </small>
+                        <small class="text-danger" *ngIf="num.errors.pattern">le num est de la forme 06|07 ** ** ** **</small>
+                     </div>
+                    
                     </div> 
                        
-                         <div class="col-lg-6 col-12 ">
-                         <input  class="inputStyle"  [(ngModel)]="client.username" name="email" type="email" #em='ngModel' placeholder="Email"  required><br>
-                            <small class="text-danger " [class.d-none]="em.valid || em.untouched">Ce champs est obligatoire</small>
+                         <div class="col-lg-6 col-12 "><!--emailref.errors?.pattern"-->
+                         <input  class="inputStyle"  [(ngModel)]="client.username" name="email" type="email" #em='ngModel' placeholder="Email"  pattern="[a-z0-9._]+@[a-z]+\.[a-z]{2,3}$" required><br>
+                           <!-- <small class="text-danger " [class.d-none]="em.valid || em.untouched">Ce champs est obligatoire</small>-->
+                           <div *ngIf="em.errors && em.touched">
+                            <small class="text-danger" *ngIf="em.errors.required">Ce champs est obligatoire </small>
+                            <small class="text-danger" *ngIf="em.errors.pattern">la forme d'email doit etre de la forme : *****@****.**</small>
+                         </div>
                          </div>
                      </div>
        
@@ -71,13 +80,14 @@
     <mat-step  [stepControl]="f2" [completed]="nextS2">
         <ng-template matStepLabel><b>Etape 2</b></ng-template>
         <form #f2="ngForm"  class="compteForm2" novalidate>
+            <br>
             <p class=head>Type de Compte</p> 
-            
+            <br>
         <div class="container">
-            
+            <br>
                  <div class="row  mx-auto justify-content-center align-items-center ">
-                    <input type="radio" value="CC" name="typeCompte" [(ngModel)]="compte.typeCompte" #type='ngModel' required > Compte Courant &nbsp;
-                    <input type="radio" value="CE" name="typeCompte" [(ngModel)]="compte.typeCompte" #type='ngModel'  required> Compte Epargne   
+                    <input type="radio" value="CC" name="typeCompte" [(ngModel)]="compte.typeCompte" #type='ngModel' required >  Compte Courant &nbsp; &nbsp;&nbsp;
+                    <input type="radio" value="CE" name="typeCompte" [(ngModel)]="compte.typeCompte" #type='ngModel'  required>  Compte Epargne   
                     <small class="text-danger" [class.d-none]="type.valid || type.untouched">Ce champs est obligatoire</small>
                  </div>
                  
@@ -90,11 +100,12 @@
                     <input class="inputStyle"  type="number"  [(ngModel)]="compte.solde" #sol='ngModel' name="solde" placeholder="Solde initiale"  required><br>
                     <small class="text-danger" [class.d-none]="sol.valid || sol.untouched">Ce champs est obligatoire</small>
                  </div>
-                 
+                 <br>
                 <div class="row" style="margin-left:30%;">
                     <button mat-button matStepperPrevious >Back</button>
                     <button mat-button matStepperNext  [disabled]="!f2.valid"  (click)="onNextStep2()">Confirmer</button>
                 </div>
+                <br>
          </div>
         </form>
       
@@ -103,8 +114,15 @@
     </mat-step>
     <mat-step [completed]="nextS2">
         <ng-template matStepLabel><b>Etape 3</b></ng-template>
-        Bilan client<br>
-       <strong>Nom & Prenom :</strong> {{nouveauCompte?.client.prenom}} {{nouveauCompte?.client.nom}}<br>
-        <strong>Rib :</strong> {{nouveauCompte?.rib}}
+        <br>
+        <br>
+       <h1>Bilan client</h1> <br>
+       <br>
+       <div style="margin-left:33%;">
+       <strong >Nom & Prenom :</strong> {{nouveauCompte?.client.prenom}} {{nouveauCompte?.client.nom}}<br>
+        <strong>Rib :</strong> {{nouveauCompte?.rib}}<br>
+        <strong>Numero de telephone :</strong> {{nouveauCompte?.client.numTel}}<br>
+        <strong>username :</strong> {{nouveauCompte?.client.username}}
+    </div>
     </mat-step>
 </mat-horizontal-stepper>
