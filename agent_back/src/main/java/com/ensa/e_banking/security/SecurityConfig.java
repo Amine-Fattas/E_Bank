@@ -49,6 +49,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	public void configure(WebSecurity web) throws Exception {
 		web.ignoring()
 				//.antMatchers("/agent/{id}")
+				.antMatchers("/agent/list/{keyword}")
 				.antMatchers("/agent/deleteagence/{id}")
 				.antMatchers("/agent/deleteagent/{id}")
 				.antMatchers("/agent/agentsbyagence/{id}")
@@ -57,10 +58,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 				.antMatchers("/agent/list")
 				.antMatchers("/operation/list")
 				.antMatchers("/agent/listCompteDesactive")
-				.antMatchers("/agent/listCompteActive");
-				//.antMatchers("/operation/recharge/{codeRecharge}")
-				//.antMatchers("/operation/virement")
-				//.antMatchers("/operation/listOperation/{rib}")
+				.antMatchers("/agent/listCompteActive")
+		         .antMatchers("/agent/chercherA/{mc}")
+				.antMatchers("/agent/chercherD/{mc}")
+				 .antMatchers("/operation/recherche/{mc}");
 				//.antMatchers("/compte/CC/client/{id}")
 				//.antMatchers("/compte/CC/rib/{rib}");
 	}

@@ -5,7 +5,6 @@ import com.admin.Repository.AgenceRepository;
 import com.admin.models.Activity;
 import com.admin.models.Agence;
 import com.admin.models.Agent;
-import com.admin.models.Pager;
 import org.hibernate.annotations.Cascade;
 import org.hibernate.annotations.CascadeType;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,10 +34,6 @@ public class AgenceController{
     @Autowired
     private AdminRestController adminRestController;
 
-    private static final int BUTTONS_TO_SHOW = 5;
-    private static final int INITIAL_PAGE = 0;
-    private static final int INITIAL_PAGE_SIZE = 8;
-
     private String url = "http://localhost:8081";
 
 
@@ -51,17 +46,16 @@ public class AgenceController{
     }
 
     @RequestMapping(value="/liste")
-    public String liste(Model model, @RequestParam("page") Optional<Integer> page)
+    public String liste(Model model,String keyword)
     {
-        int evalPageSize = INITIAL_PAGE_SIZE;
 
-        int evalPage = (page.orElse(0) < 1) ? INITIAL_PAGE : page.get() - 1;
-
-        Page<Agence> Agences = agenceRepository.findAll(PageRequest.of(evalPage, evalPageSize));
-        Pager pager = new Pager(Agences.getTotalPages(), Agences.getNumber(), BUTTONS_TO_SHOW);
-        model.addAttribute("listeAgences",Agences);
-        model.addAttribute("selectedPageSize", evalPageSize);
-        model.addAttribute("pager", pager);
+        if(keyword != null && keyword !=""){
+            model.addAttribute("listeAgences",agenceRepository.findByKeyword(keyword));
+        }
+        else {
+            List<Agence> Agences = agenceRepository.findAll();
+            model.addAttribute("listeAgences", Agences);
+        }
 
         return "Agence/Agences";
     }
@@ -112,20 +106,7 @@ public class AgenceController{
         activityRepository.save(activity);
         return "redirect:/liste";
     }
-   /* @RequestMapping(value="/deleteAgence" , method= RequestMethod.GET)
-    @Cascade(CascadeType.DELETE)
-    public String deleteAgence(Model model, Integer numAgence){
-        Agence a=agenceRepository.findById(numAgence).get();
-        List<Agent> agents= agentRepository.findAllByAgenceNumAgence(a.getNumAgence());
-        for (int i = 0; i < agents.size(); i++) {
-            agents.get(i).setAgence(null);
-            agentRepository.save(agents.get(i));
-        }
 
-        agenceRepository.delete(a);
-        return "redirect:/liste";
-
-    }*/
 
     @RequestMapping(value="/deleteAgence" , method= RequestMethod.GET)
     @Cascade(CascadeType.DELETE)

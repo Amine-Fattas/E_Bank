@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.ensa.e_banking.security.SecurityConstants;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.query.Param;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -79,8 +80,19 @@ public class CompteService {
 		public List<Compte> chercherA(@RequestParam(name="mc",defaultValue="") String mc){
 			return compteMetier.chercherA(mc);
 		}
+
+	@RequestMapping(value="/agent/chercherA/{mc}",method=RequestMethod.GET)
+	public List<Compte> chercherAk(@PathVariable String mc){
+		return compteMetier.chercherA(mc);
+	}
+
 	@RequestMapping(value="/agent/chercherD",method=RequestMethod.GET)
 	public List<Compte> chercherD(@RequestParam(name="mc",defaultValue="") String mc){
+		return compteMetier.chercherD(mc);
+	}
+
+	@RequestMapping(value="/agent/chercherD/{mc}",method=RequestMethod.GET)
+	public List<Compte> chercherDk(@PathVariable String mc){
 		return compteMetier.chercherD(mc);
 	}
 	

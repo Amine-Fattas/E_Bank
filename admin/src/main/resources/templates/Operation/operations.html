@@ -59,6 +59,12 @@
             <section class="panel">
                 <header class="panel-heading">
                     Historique des opérations
+
+                    <form th:action="@{operations}" method="get">
+                        <input id="txtSearch" type="text" name="mc" placeholder="Chercher .."/>
+                        <button type="submit" class="btn-enregistrer"> chercher  </button>
+                    </form>
+
                 </header>
 
                 <table class="table">

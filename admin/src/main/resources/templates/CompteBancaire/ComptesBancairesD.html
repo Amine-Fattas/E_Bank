@@ -58,6 +58,12 @@
             <section class="panel">
                 <header class="panel-heading">
                     Comptes Bancaires désactivés
+
+                    <form th:action="@{comptebancairedesavtive}" class="form-group" method="get">
+                        <input id="txtSearch" type="text" name="mc" class="form-field" placeholder="Chercher .."/>
+                        <button type="submit" class="btn-enregistrer"> chercher  </button>
+                    </form>
+
                 </header>
 
                 <table class="table table-striped table-advance table-hover">

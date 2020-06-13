@@ -30,6 +30,14 @@ public class securityConfig extends WebSecurityConfigurerAdapter {
 
 
 	@Override
+	public void configure(WebSecurity web) throws Exception {
+		web.ignoring()
+				.antMatchers("/client/list")
+	        	.antMatchers("/client/recherche/{mc}");
+
+	}
+
+	@Override
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
 		System.out.println("Quand");
 		auth.userDetailsService(appUserDetailsService).passwordEncoder(passwordEncoder());

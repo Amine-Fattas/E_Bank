@@ -26,7 +26,15 @@ public class AgentService {
 
 	@RequestMapping(value = "/agent/list", method = RequestMethod.GET)
 	public List<Agent> getAgents() {
+
 		return agentRepository.findAll();
+	}
+
+	@RequestMapping(value = "/agent/list/{mc}", method = RequestMethod.GET)
+	public List<Agent> getAgentsk(@PathVariable String keyword) {
+
+			return agentRepository.findByKeyword(keyword);
+
 	}
 
 
