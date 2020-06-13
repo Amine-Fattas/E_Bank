@@ -1775,3 +1775,7 @@ table.sliders tr td {
     align-items: center;
 
 }
+#txtSearch{
+    border: none;
+    border-left: #8c96a3 1px;
+}

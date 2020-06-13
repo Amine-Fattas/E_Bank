@@ -34,7 +34,8 @@ public class HomeController {
 
 
     @RequestMapping("/client/list")
-    public List<Client> getClients(){
+    public List<Client> getClients()
+    {
         return clientRepository.findAll();
     }
 

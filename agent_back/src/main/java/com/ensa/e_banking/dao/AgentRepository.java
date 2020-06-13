@@ -18,7 +18,7 @@ public interface AgentRepository extends JpaRepository<Agent,Long> ,  PagingAndS
 	@Query(value="SELECT id from agent order by num_contrat desc LIMIT 1",nativeQuery=true)
 	public Long last_suffix();
 	List<Agent> findAllByNumAgence(Integer id);
-	@Query(value="select * from agent a where a.nom like %:keyword% or a.prenom like %:keyword% or a.username like %:keywoard%",nativeQuery=true)
+	@Query(value="select * from agent a where a.nom like %:keyword% or a.prenom like %:keyword% or a.username like %:keyword%",nativeQuery=true)
 	List<Agent> findByKeyword(@Param("keyword") String keyword);
 
 

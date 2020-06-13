@@ -65,6 +65,12 @@ public class OperationService {
    public List<Operation> chercheOperation (@PathVariable(name = "mc") String mc, @PathVariable(name = "rib") String rib)
    {
 		return operationMetier. getOperationByCompte(mc,rib);}
-	
+
+	@RequestMapping(value="/operation/recherche/{mc}",method=RequestMethod.GET)
+	public List<Operation> rechercheOperationk(@PathVariable String mc){
+		System.out.println(mc);
+		return  operationMetier.chercherOperation(mc);
+	}
+
 
 }

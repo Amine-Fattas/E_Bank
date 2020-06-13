@@ -40,9 +40,6 @@ public class AgentController {
     @Autowired
     private ActivityRepository activityRepository;
 
-    private static final int BUTTONS_TO_SHOW = 5;
-    private static final int INITIAL_PAGE = 0;
-    private static final int INITIAL_PAGE_SIZE = 8;
 
     private String url = "http://localhost:8081";
 
@@ -56,15 +53,13 @@ public class AgentController {
 
 
     @RequestMapping(value = "/index")
-    public String list(Model model,String keyword,@RequestParam("page") Optional<Integer> page) {
-System.out.println(keyword);
-        int evalPageSize = INITIAL_PAGE_SIZE;
+    public String list(Model model,String keyword) {
 
-        int evalPage = (page.orElse(0) < 1) ? INITIAL_PAGE : page.get() - 1;
+
         List<Agent> list = null;
-if(keyword != null) {
+if(keyword != null && keyword !="") {
     ResponseEntity<List<Agent>> response = restTemplate.exchange(
-            url + "/agent/list" + keyword, HttpMethod.GET, null, new ParameterizedTypeReference<List<Agent>>() {
+            url + "/agent/list/" + keyword, HttpMethod.GET, null, new ParameterizedTypeReference<List<Agent>>() {
             }
     );
    list = response.getBody();
@@ -85,11 +80,6 @@ else{
                 }
             }
 
-       // Page<Agent> listp = new PageImpl<>(list);
-       // Pager pager = new Pager(listp.getTotalPages(), listp.getNumber(), BUTTONS_TO_SHOW);
-
-       // model.addAttribute("selectedPageSize", evalPageSize);
-        //model.addAttribute("pager", pager);
         model.addAttribute("listAgents", list);
         return "Agent/Agents";
     }

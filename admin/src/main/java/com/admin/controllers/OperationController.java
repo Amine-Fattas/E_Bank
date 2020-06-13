@@ -28,13 +28,26 @@ public class OperationController {
 
 
     @RequestMapping(value="/operations")
-    public String listOperation(Model model) {
+    public String listOperation(Model model,String mc) {
 
-        ResponseEntity<List<Operation>> response = restTemplate.exchange(
-                url+"/operation/list", HttpMethod.GET, null, new ParameterizedTypeReference<List<Operation>>() {}
-        );
-        List<Operation> listOpe = response.getBody();
-        model.addAttribute("operations",listOpe);
+        List<Operation> list = null;
+        if(mc != null && mc !="") {
+            ResponseEntity<List<Operation>> response = restTemplate.exchange(
+                    url + "/operation/recherche/" + mc, HttpMethod.GET, null, new ParameterizedTypeReference<List<Operation>>() {
+                    }
+            );
+            list = response.getBody();
+        }
+        else{
+            ResponseEntity<List<Operation>> response = restTemplate.exchange(
+                    url + "/operation/list", HttpMethod.GET, null, new ParameterizedTypeReference<List<Operation>>() {
+                    }
+            );
+            list = response.getBody();
+        }
+
+
+        model.addAttribute("operations",list);
         return "Operation/operations";
 
 
