@@ -85,7 +85,7 @@ export class OperationsComponent implements OnInit {
       }
   
     recherche() {
-      this.operationService.chercherOperation(this.motCle,this.compte.rib)
+      this.operationService.cherche(this.motCle,this.compte.rib)
       .subscribe((data: any) => {
        this.pageOperation = data;
        console.log(data)

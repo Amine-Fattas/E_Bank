@@ -71,6 +71,9 @@ public class ClientService {
 	@Autowired
 	private  HomeController homeController;
 
+	@Autowired
+	private  ClientMetier clientMetier;
+
 
 //
 	@RequestMapping(value="/client/ajoutClient",method=RequestMethod.POST)
@@ -92,12 +95,19 @@ public class ClientService {
 @Autowired
 BCryptPasswordEncoder bCryptPasswordEncoder=new  BCryptPasswordEncoder();
 	@RequestMapping("/agent/send-email")
-	public void sendMail(@RequestBody Client client) throws MessagingException {
+	public void sendMail(@RequestBody Client client,HttpServletRequest request) throws MessagingException {
 		System.out.println(client.getPassword());
 	System.out.println(client.getUsername().toString());
+		//String pass=clientMetier.genererPassword();
 
 	String body="Votre mot de passe est "+client.getPassword()+" Bienvenue chez nous";
 	this.smtpMailSender.sendMail(client.getUsername(), "Your Password", body);
+	client.setPassword(bCryptPasswordEncoder.encode(clientMetier.genererPassword()));
+	System.out.println(client.getId());
+	System.out.println(client.getPassword());
+	System.out.println(request);
+	updateClient(client.getId(),client,request);
+
 
 	}
 //
@@ -110,7 +120,7 @@ BCryptPasswordEncoder bCryptPasswordEncoder=new  BCryptPasswordEncoder();
 //
 	@RequestMapping(value="/client/update/{id}",method=RequestMethod.PUT)
 	public Boolean updateClient(@PathVariable long id,@RequestBody Client client,HttpServletRequest request){
-
+System.out.println("upd");
 		headers.set(SecurityConstants.HEADER_STRING,
 				SecurityConstants.TOKEN_PREFIX+request.getHeader(SecurityConstants.HEADER_STRING));
 		HttpEntity<Client> entity = new HttpEntity<Client>(client,headers);
