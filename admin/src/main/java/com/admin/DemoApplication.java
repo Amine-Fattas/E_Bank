@@ -78,6 +78,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.annotation.PostConstruct;
 import javax.servlet.ServletOutputStream;
@@ -103,6 +104,8 @@ public class DemoApplication  implements CommandLineRunner {
 	public RestTemplate restTemplate(){
 		return new RestTemplate();
 	}
+
+
 
 	@Bean
 	public HttpServletResponse servletResponse(){ return new HttpServletResponse() {
