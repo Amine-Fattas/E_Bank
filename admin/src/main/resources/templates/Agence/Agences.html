@@ -57,16 +57,18 @@
                     Liste Des Agences
 
 
-
-                                    <input class="fa-search-plus" placeholder=" Chercher .. " type="text">
-
+                <form th:action="@{liste}" method="get">
+                    <input id="txtSearch" type="text" name="keyword" />
+                    <button type="submit">chercher</button>
+                </form>
                         <!--  search form end -->
 
                 </header>
 
 
-                <table class="table table-striped table-advance table-hover">
+                <table id="tableagence" class="table table-striped table-advance table-hover">
                     <thead>
+
                         <th></th>
                         <th>Numéro agence</th>
                         <th>Nom d'Agence</th>
@@ -74,7 +76,7 @@
                         <th>Ville</th>
                         <th>Telephone</th>
                         <th>Actions</th>
-                    </tr>
+
                     </thead>
                     <tbody>
                     <tr th:each="a:${listeAgences}">
@@ -100,7 +102,7 @@
             </section>
             <!-- page end-->
         </section>
-        <div th:if="${listeAgences.totalPages != 1}" class="form-group col-md-11 pagination-centered">
+   <!--     <div th:if="${listeAgences.totalPages != 1}" class="form-group col-md-11 pagination-centered">
             <ul class="pagination">
                 <li class="page-item" th:classappend="${listeAgences.number eq 0} ? disabled">
                     <a class="pageLink" th:href="@{liste(page=1)}" ><i class="material-icons">first_page</i></a>
@@ -120,7 +122,7 @@
                 </li>
 
             </ul>
-        </div><!-- fin total page-->
+        </div> -->
     </section>
     <!--main content end-->
 
@@ -158,7 +160,66 @@
 <!--custome script for all page-->
 <script  th:src="@{js/scripts.js}"></script>
 <script  th:src="@{js/script.js}"></script>
+<!--<script th:inline="javascript">
+    /*<![CDATA[*/
+ var agences = /*[[${listeAgences}]]*/ ' ';
+    /*]]>*/
 
+    $('#txtSearch').on('keyup',function () {
+        var value = $(this).val();
+        // gEt filtred
+        var data = FilterFunction(value,agences);
+
+        //clear th etable
+
+        rebuildTable(data);
+
+    });
+
+    function FilterFunction(value,data) {
+
+        var filtredData =[];
+        for (var i=0;i<data.length;i++){
+            value = value.toLowerCase();
+            var fname = data[i].nomAgence.toLowerCase();
+
+            if(fname.includes(value)){
+                filtredData.push(data[i]);
+            }
+
+        }
+        return filtredData;
+
+    }
+
+    function rebuildTable(data) {
+
+        var table = document.getElementById('tableagence')
+        table.innerHTML =''
+        for (var i=0;i<data.length;i++){
+
+            var row = `<tr>
+               <td> ${data[i].numAgence} </td>
+               <td> ${data[i].nomAgence} </td>
+                  <td> ${data[i].adresse} </td>
+                     <td> ${data[i].ville} </td>
+                        <td> ${data[i].tel} </td>
+                        </tr>`
+            table.innerHTML +=row
+        }
+
+    }
+
+
+
+
+
+
+
+
+
+
+</script> -->
 
 </body>
 

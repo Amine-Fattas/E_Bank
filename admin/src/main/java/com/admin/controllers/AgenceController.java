@@ -51,17 +51,23 @@ public class AgenceController{
     }
 
     @RequestMapping(value="/liste")
-    public String liste(Model model, @RequestParam("page") Optional<Integer> page)
+    public String liste(Model model,String keyword, @RequestParam("page") Optional<Integer> page)
     {
         int evalPageSize = INITIAL_PAGE_SIZE;
 
         int evalPage = (page.orElse(0) < 1) ? INITIAL_PAGE : page.get() - 1;
 
-        Page<Agence> Agences = agenceRepository.findAll(PageRequest.of(evalPage, evalPageSize));
-        Pager pager = new Pager(Agences.getTotalPages(), Agences.getNumber(), BUTTONS_TO_SHOW);
-        model.addAttribute("listeAgences",Agences);
-        model.addAttribute("selectedPageSize", evalPageSize);
-        model.addAttribute("pager", pager);
+        if(keyword != null){
+            model.addAttribute("listeAgences",agenceRepository.findByKeyword(keyword));
+        }
+        else {
+            // Page<Agence> Agences = agenceRepository.findAll(PageRequest.of(evalPage, evalPageSize));
+            List<Agence> Agences = agenceRepository.findAll();
+            // Pager pager = new Pager(Agences.getTotalPages(), Agences.getNumber(), BUTTONS_TO_SHOW);
+            model.addAttribute("listeAgences", Agences);
+        }
+      //  model.addAttribute("selectedPageSize", evalPageSize);
+      //  model.addAttribute("pager", pager);
 
         return "Agence/Agences";
     }

@@ -52,19 +52,26 @@ public class AgentController {
 
 
     @RequestMapping(value = "/index")
-    public String list(Model model,@RequestParam("page") Optional<Integer> page) {
-
+    public String list(Model model,String keyword,@RequestParam("page") Optional<Integer> page) {
+System.out.println(keyword);
         int evalPageSize = INITIAL_PAGE_SIZE;
 
         int evalPage = (page.orElse(0) < 1) ? INITIAL_PAGE : page.get() - 1;
-
-
-        ResponseEntity<List<Agent>> response = restTemplate.exchange(
-                url + "/agent/list", HttpMethod.GET, null, new ParameterizedTypeReference<List<Agent>>() {
-                }
-        );
-        List<Agent> list = response.getBody();
-
+        List<Agent> list = null;
+if(keyword != null) {
+    ResponseEntity<List<Agent>> response = restTemplate.exchange(
+            url + "/agent/list" + keyword, HttpMethod.GET, null, new ParameterizedTypeReference<List<Agent>>() {
+            }
+    );
+   list = response.getBody();
+}
+else{
+    ResponseEntity<List<Agent>> response = restTemplate.exchange(
+            url + "/agent/list", HttpMethod.GET, null, new ParameterizedTypeReference<List<Agent>>() {
+            }
+    );
+    list = response.getBody();
+}
             for (Agent ag : list) {
                 if(ag.getNumAgence().equals(0)){
                     ag.setAgence(new Agence());
@@ -74,12 +81,12 @@ public class AgentController {
                 }
             }
 
-        Page<Agent> listp = new PageImpl<>(list);
-        Pager pager = new Pager(listp.getTotalPages(), listp.getNumber(), BUTTONS_TO_SHOW);
+       // Page<Agent> listp = new PageImpl<>(list);
+       // Pager pager = new Pager(listp.getTotalPages(), listp.getNumber(), BUTTONS_TO_SHOW);
 
-        model.addAttribute("selectedPageSize", evalPageSize);
-        model.addAttribute("pager", pager);
-        model.addAttribute("listAgents", listp);
+       // model.addAttribute("selectedPageSize", evalPageSize);
+        //model.addAttribute("pager", pager);
+        model.addAttribute("listAgents", list);
         return "Agent/Agents";
     }
 
