@@ -30,6 +30,7 @@ const routes: Routes = [
 // Oki, s
   { path: "editClient/:id", component: EditClientComponent},
   { path: "acceuil", component:ProfileComponent},
+  { path :"detailClient/:id",component: DetailClientComponent},
   {path:"comptes",
         children:[
           {path:"detailsCompte/:id",component:DetailCompteComponent},

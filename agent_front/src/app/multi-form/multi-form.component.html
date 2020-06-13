@@ -119,11 +119,12 @@
        <h1>Bilan client</h1> <br>
        <br>
        <div style="margin-left:33%;">
-       <strong >Nom & Prenom :</strong> {{nouveauCompte?.client.prenom}} {{nouveauCompte?.client.nom}}<br>
-        <strong>Rib :</strong> {{nouveauCompte?.rib}}<br>
-        <strong>Numero de telephone :</strong> {{nouveauCompte?.client.numTel}}<br>
-        <strong>username :</strong> {{nouveauCompte?.client.username}}
+       <strong >Nom & Prenom :</strong> {{nouveauCompte?.client.prenom}} {{nouveauCompte?.client.nom}}<br><br>
+        <strong>Rib :</strong> {{nouveauCompte?.rib}}<br><br>
+        <strong>Numero de telephone :</strong> {{nouveauCompte?.client.numTel}}<br><br>
+        <strong>username :</strong> {{nouveauCompte?.client.username}}<br>
     </div>
+    <br>
     <button  class="submit" (click)="onTerminer()">Terminer</button>
     </mat-step>
 </mat-horizontal-stepper>

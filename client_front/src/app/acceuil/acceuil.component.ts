@@ -4,6 +4,7 @@ import { Client } from '../model/client';
 import { AuthentificationService } from '../Service/authentification.service';
 import { CompteService } from '../Service/compte.service';
 import { Agent } from '../model/Agent';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-acceuil',
@@ -29,6 +30,17 @@ export class AcceuilComponent implements OnInit {
           data => {
             
             this.compte = data
+            if(this.compte.etat==false){
+              Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                background: '#FFFFFF',
+                text: 'Votre compte est désactivé  !'
+              }).then(function(){
+                window.location.href = "/login";
+              })
+          }
+          
             this.compte.client = this.client
             console.log("-------------------------------------")
             console.log(this.client)

@@ -60,6 +60,11 @@ export class ListCompteComponent implements OnInit {
    /* this.router.navigate(['comptes/detailsCompte',idCompte]);*/
     this.router.navigate(['comptes/detailsCompte',idCompte], {skipLocationChange: true});
   }
+
+  onDetailClient(id){
+    console.log(id);
+    this.router.navigate(['detailClient',id]);
+   }
   
 
   chercher(){

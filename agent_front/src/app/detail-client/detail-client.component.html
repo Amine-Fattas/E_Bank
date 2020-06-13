@@ -44,33 +44,17 @@
 <div id="body">
     <app-nemu-bar></app-nemu-bar>
 <div class="route">
+    <br><br>
     <div  class="content">
-     <!-- <input type="search" (keyup)="keyBoardEvent($event)" placeholder="search ... " [(ngModel)]="motCle">-->
-      <table class="table table-striped" >
-        <thead style="color: #4babc0; font-weight: bolder; font-style: italic;">
-          <tr>
-            <th>Type opération</th>
-            <th>Num opération</th>
-            <th>date opération</th>
-            <th>Compte Source</th>
-            <th>Compte Destination</th>
-            <th>Montant</th>
-            <th>Agent</th>
-          </tr>
-        </thead>
-        <tbody >
-            <tr *ngFor="let op of pageOperation">
-                <td>{{op.typeOperation}}</td>
-                <td>{{op.numOperation}}</td>
-                <td>{{op.dateOperation}}</td>
-                <td>{{op.compteSource.numCompte}}</td>
-                <td>{{op.compteDestination.numCompte}}</td>
-                <td>{{op.montant}}</td>
-                <td>{{op.agent.idAgent}}</td>
-
-              
-            </tr>
-        </tbody>
-      </table>
+      <h1>Info Client</h1>
+      <br>
+      <div style="margin-left:33%;">
+        <strong >Nom :</strong> {{client?.nom}}<br><br>
+        <strong>Prenom :</strong> {{client?.prenom}}<br><br>
+         <strong>Date de dateNaissance :</strong> {{client?.dateNaissance |  date:'dd/mm/yyy'}}<br><br>
+         <strong>Numero de telephone :</strong> {{client?.numTel}}<br><br>
+         <strong>username :</strong> {{client?.username}}
+     </div><br><br>
+     <button style="margin-left:60%;"  class="submit" (click)="onTerminer()">Precedent</button>
     </div>
   </div>

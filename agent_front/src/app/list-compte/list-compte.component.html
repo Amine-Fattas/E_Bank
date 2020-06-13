@@ -58,7 +58,9 @@
                 <td>{{c.rib}}</td>
                 <td>{{c.solde}}</td>
                 <td>{{c.agent.id}}</td>
-                <td>{{c.idClient}}</td>
+                <td>{{c.idClient}} 
+                    <a  class="icon" (click)=" onDetailClient(c.idClient)"><img src="assets/images/next.png" title="detail"></a>
+                </td>
                 <td>
                     <a  class="icon" (click)="onDesactiver(c)"><img src="assets/images/close.png" title="desactive"></a> &nbsp;
                     <a  class="icon" (click)="onDetailCompte(c.rib)"> <img  src="../assets/images/detail.png"  class="img-responsive" title="detail"></a>
