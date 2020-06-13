@@ -21,6 +21,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.validation.Valid;
 import java.util.Date;
@@ -103,10 +104,12 @@ else{
         Agent ag= restTemplate.postForObject(url + "/agent/add", agent, Agent.class);
         Activity activity = new Activity("Admin ID: "+adminRestController.currentAdmin().getId()
                 + " a ajouté l'agent ID "+ ag.getId());
+        model.addAttribute("pass", pass);
+        model.addAttribute("agentcree", ag.getUsername());
         activity.setDate(new Date());
         activityRepository.save(activity);
 
-        return "redirect:/index";
+        return "Agent/agent-cree";
     }
 
     @RequestMapping(value = "/add", method = RequestMethod.GET)

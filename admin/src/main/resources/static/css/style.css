@@ -1779,3 +1779,8 @@ table.sliders tr td {
     border: none;
     border-left: #8c96a3 1px;
 }
+
+.profile-btn{
+    margin: 10px;
+    margin-top: 25px;
+}
