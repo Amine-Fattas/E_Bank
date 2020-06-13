@@ -37,11 +37,16 @@ export class OperationService {
   }
 
   chercherOperation(motCle: String,rib:String){
-    console.log("chercher operation");
-
+    console.log(motCle);
+    console.log(rib);
    return this.http.get(this._urlClient+"chercheO?mc="+motCle+"&rib="+rib);
     }
 
+    cherche(motCle: String,rib:String){
+      console.log(motCle);
+      console.log(rib);
+     return this.http.get(this._urlClient+"cherche/"+motCle+"/"+rib);
+      }
 
   
 }

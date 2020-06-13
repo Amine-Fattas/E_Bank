@@ -57,7 +57,8 @@ export class MultiFormComponent implements OnInit {
     .subscribe(response => {
       this.nouveauCompte = response;
       console.log(this.nouveauCompte);
-     this.clientService.sendEmailToClient(this.nouveauCompte.client)
+      console.log(this.nouveauCompte.client.id);
+     /*this.clientService.sendEmailToClient(this.nouveauCompte.client)
       .subscribe(res =>
         console.log(res),
         err =>
@@ -69,7 +70,7 @@ export class MultiFormComponent implements OnInit {
       icon: 'error',
       title: 'Oops...',
       text: 'Compte non sauvegardé !'
-    });
+    });*/
     });
     this.nextS2 = true;
     

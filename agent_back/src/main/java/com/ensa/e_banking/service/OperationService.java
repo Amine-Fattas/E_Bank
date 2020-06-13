@@ -32,7 +32,6 @@ public class OperationService {
 	
 	@RequestMapping(value="/operation/virement",method=RequestMethod.POST)
 	 public boolean virement(@RequestBody Operation operation, HttpServletRequest req) {
-
 		//if(!test.check(req)) throw new HTTPException(403);
 		return operationMetier.virement(operation);
 	}
@@ -62,9 +61,10 @@ public class OperationService {
 	}
 
 
-   @RequestMapping(value ="/operation/chercheO",method = RequestMethod.GET)
-	public List<Operation> getOperationByCompte(@RequestParam(name="mc",defaultValue="") String mc,@RequestParam(name="rib",defaultValue="")String rib){
-		return operationMetier.getOperationByCompte(mc,rib);}
+   @RequestMapping(value ="/operation/chercheO/{mc}/{rib}",method = RequestMethod.GET)
+   public List<Operation> chercheOperation (@PathVariable(name = "mc") String mc, @PathVariable(name = "rib") String rib)
+   {
+		return operationMetier. getOperationByCompte(mc,rib);}
 	
 
 }

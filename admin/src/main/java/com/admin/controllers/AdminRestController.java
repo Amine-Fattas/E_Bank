@@ -3,7 +3,9 @@ package com.admin.controllers;
 
 import com.admin.Repository.AdminRepository;
 import com.admin.models.Admin;
+import org.apache.tomcat.util.codec.binary.Base64;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.ui.Model;
@@ -29,6 +31,8 @@ public class AdminRestController {
         }
         return admin;
     }
+
+
 
 
 }

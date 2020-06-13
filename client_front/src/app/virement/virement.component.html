@@ -10,12 +10,18 @@
             <!-- {{form.value | json}} -->
             
             <input [(ngModel)]="newOperation.compteDestination.rib" name="compteDestination"
-             class="input" type="text" placeholder="Compte Destination (RIB / CIN)">
-    
-            <input [(ngModel)]="newOperation.montant" name="montant"
-             class="input" type="number" min="0" placeholder="Montant"><br>
-   
-            <button type="submit" class="submit">Valider</button>
+             class="input" type="text" #ver='ngModel' placeholder="Compte Destination (RIB / CIN)" required>
+             <br> <small class="text-danger" [class.d-none]="ver.valid || ver.untouched">Ce champs est obligatoire</small>
+
+             <input  name="montant"
+             class="input" type="number" [(ngModel)]="newOperation.montant" #mont='ngModel' min="100" maxlength="8" placeholder="Montant" required>
+            <br> <!--<small class="text-danger " [class.d-none]="rech.valid || rech.untouched">Ce champs est obligatoire</small>-->
+            <div *ngIf="mont.errors && mont.touched">
+              <small class="text-danger" *ngIf="mont.errors.required">Ce champs est obligatoire</small>
+              <small class="text-danger" *ngIf="mont.errors.min">Le montant doit etre superieur de 100</small>
+           </div>
+            <br> 
+            <button type="submit"  [disabled]="!form.valid" class="submit">Valider</button>
     
             <!-- {{newOperation | json}} -->
         </form>   

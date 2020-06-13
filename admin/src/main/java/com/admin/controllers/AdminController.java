@@ -3,6 +3,7 @@ package com.admin.controllers;
 import com.admin.Repository.AdminRepository;
 import com.admin.models.Admin;
 import com.sun.org.apache.xpath.internal.operations.Mod;
+import org.springframework.http.HttpHeaders;
 import org.springframework.ui.Model;
 import com.sun.xml.bind.util.AttributesImpl;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,6 +34,7 @@ public class AdminController {
         model.addAttribute("admin",admin);
         return "profile";
     }
+
 }
 
 

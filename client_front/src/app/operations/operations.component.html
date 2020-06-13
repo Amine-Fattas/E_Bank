@@ -47,10 +47,6 @@
 </div>-->
 <app-nemu-bar></app-nemu-bar>
 <div class="container">
-    
-     
-   
-  
     <input type="search" (keyup)="keyBoardEvent($event)" placeholder="search ... " [(ngModel)]="motCle">
     <div id="data" class="table-responsive">
         <table class="table">
@@ -72,7 +68,7 @@
                    
                     <td *ngIf="o.compteDestination!=null; else elseTag">
                         {{o.compteDestination.rib}}</td>
-                        <ng-template #elseTag><td style="color: tomato;font-style: italic;">-Mon compte</td></ng-template>
+                        <ng-template #elseTag><td>-</td></ng-template>
                     <td>{{o.montant | number: '.2'}} MAD</td>
                    
                 </tr>

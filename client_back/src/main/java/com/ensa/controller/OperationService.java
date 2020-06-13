@@ -59,14 +59,30 @@ public class OperationService {
 	return  list;
 	}
 
-	@RequestMapping(value="/operation/chercheO",method=RequestMethod.GET)
+	/*@RequestMapping(value="/operation/chercheO",method=RequestMethod.GET)
 	public List<Operation> rechercheOperation(@RequestParam(name="mc",defaultValue="") String mc,@RequestParam(name="rib",defaultValue="") String rib,HttpServletRequest request){
 		headers.set(SecurityConstants.HEADER_STRING,
 				SecurityConstants.TOKEN_PREFIX+request.getHeader(SecurityConstants.HEADER_STRING));
 		HttpEntity<Operation> entity = new HttpEntity<Operation>(headers);
+
 		ResponseEntity<List<Operation>> response = restTemplate.exchange(
 				url+"/operation/chercheO?mc="+mc+"&rib="+rib, HttpMethod.GET, entity, new ParameterizedTypeReference<List<Operation>>() {}
 		);
+		System.out.println(url+"/operation/chercheO?mc="+mc+"&rib="+rib);
+		List<Operation> list = response.getBody();
+		return  list;
+	}
+*/
+	@RequestMapping(method=RequestMethod.GET, value="/operation/cherche/{mc}/{rib}")
+	public List<Operation> chercheOperation (@PathVariable(name = "mc") String mc, @PathVariable(name = "rib") String rib,HttpServletRequest request){
+		headers.set(SecurityConstants.HEADER_STRING,
+				SecurityConstants.TOKEN_PREFIX+request.getHeader(SecurityConstants.HEADER_STRING));
+		HttpEntity<Operation> entity = new HttpEntity<>(headers);
+
+		ResponseEntity<List<Operation>> response = restTemplate.exchange(
+				url+"/operation/chercheO/"+mc+"/"+rib, HttpMethod.GET, entity, new ParameterizedTypeReference<List<Operation>>() {}
+		);
+
 		List<Operation> list = response.getBody();
 		return  list;
 	}

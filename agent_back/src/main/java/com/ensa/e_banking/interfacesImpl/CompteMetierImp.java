@@ -5,6 +5,7 @@ import java.util.Date;
 import java.util.List;
 
 
+import com.ensa.e_banking.config.SmtpMailSender;
 import com.ensa.e_banking.security.SecurityConstants;
 import com.ensa.e_banking.service.HomeController;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,6 +37,9 @@ public class CompteMetierImp implements CompteMetier{
 	private HomeController homeController;
 
 	@Autowired
+	private SmtpMailSender smtpMailSender;
+
+	@Autowired
 	BCryptPasswordEncoder bCryptPasswordEncoder=new  BCryptPasswordEncoder();
 
 
@@ -63,10 +67,11 @@ public class CompteMetierImp implements CompteMetier{
 	@Override
 	public Compte saveCompte(Compte compte, HttpServletRequest request){
 
-		compte.getClient().setPassword(clientMetier.genererPassword());
+		String pass=clientMetier.genererPassword();
 		System.out.println("saaaaaaaaaave");
-
-//        clientMetier.saveClient(compte.getClient());
+		String body="Votre mot de passe est "+pass+" Bienvenue chez nous";
+		this.smtpMailSender.sendMail(compte.getClient().getUsername(), "Your Password", body);
+		compte.getClient().setPassword(bCryptPasswordEncoder.encode(pass));
 
 		headers.set(SecurityConstants.HEADER_STRING,
 				SecurityConstants.TOKEN_PREFIX+request.getHeader(SecurityConstants.HEADER_STRING));
