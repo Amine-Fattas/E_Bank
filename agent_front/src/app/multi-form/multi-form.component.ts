@@ -50,6 +50,7 @@ export class MultiFormComponent implements OnInit {
       this.compte.client = this.client;
       this.nextS1 = true;
     }
+    onTerminer(){ window.location.href = "/listClient";}
 
   onNextStep2() {
     console.log(this.compte.client);
@@ -58,6 +59,7 @@ export class MultiFormComponent implements OnInit {
       this.nouveauCompte = response;
       console.log(this.nouveauCompte);
       console.log(this.nouveauCompte.client.id);
+      
      /*this.clientService.sendEmailToClient(this.nouveauCompte.client)
       .subscribe(res =>
         console.log(res),
