@@ -1,17 +1,5 @@
 package com.ensa.e_banking.entities;
 
-import java.util.Collection;
-
-import javax.persistence.CascadeType;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
 
 
 public class Agence {
@@ -19,7 +7,6 @@ public class Agence {
 
 	private Integer numAgence;//code guichet
 
-	//nom Banque A,J = 1 ; B,K,S = 2 ; C,L,T = 3 ; D,M,U = 4 ; E,N,V = 5 F,O,W = 6 ; G,P,X = 7 ; H,Q,Y = 8 ; I,R,Z = 9
 
 	private String nomAgence;
 	// 5 chiffre

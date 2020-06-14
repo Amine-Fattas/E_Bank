@@ -87,27 +87,7 @@
             </section>
             <!-- page end-->
         </section>
-    <!--    <div th:if="${listeAgents.totalPages != 1}" class="form-group col-md-11 pagination-centered">
-            <ul class="pagination">
-                <li class="page-item" th:classappend="${listeAgents.number eq 0} ? disabled">
-                    <a class="pageLink" th:href="@{findAgentsByAgence(id=${agent?.getAgence()?.getNumAgence()},page=1)}" ><i class="material-icons">first_page</i></a>
-                </li>
-                <li th:classappend="${listeAgents.number eq 0} ? disabled">
-                    <a class="pageLink" th:href="@{findAgentsByAgence(id=${agent?.getAgence()?.getNumAgence()},page=${listeAgents.number})}"><i class="material-icons">chevron_left</i></a>
-                </li>
-                <li class="page-item" th:classappend="${listeAgents.number + 1 eq page} ? actived"
-                    th:each="page : ${#numbers.sequence(pager.startPage, pager.endPage)}">
-                    <a class="pageLink" th:href="@{findAgentsByAgence(id=${agent?.getAgence()?.getNumAgence()},page=${page})}" th:text="${page}"></a>
-                </li>
-                <li th:classappend="${listeAgents.number + 1 eq listeAgents.totalPages} ? disabled">
-                    <a class="pageLink" th:href="@{findAgentsByAgence(id=${agent?.getAgence()?.getNumAgence()},page=${listeAgents.number + 2})}"><i class="material-icons">chevron_right</i></a>
-                </li>
-                <li th:classappend="${listeAgents.number + 1 eq listeAgents.totalPages} ? disabled">
-                    <a class="pageLink" th:href="@{findAgentsByAgence(id=${agent?.getAgence()?.getNumAgence()},page=${listeAgents.totalPages})}"><i class="material-icons">last_page</i></a>
-                </li>
 
-            </ul>
-        </div> -->
     </section>
     <!--main content end-->
 

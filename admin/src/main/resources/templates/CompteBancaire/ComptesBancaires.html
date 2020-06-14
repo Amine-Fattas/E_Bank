@@ -94,49 +94,10 @@
                     </tbody>
                 </table>
 
-                <!-- <h5 class="text-md-left" style="color:gray">Historique des opérations</h5>
-                 <table class="table">
-                     <thead class="my-5">
-                     <tr>
-                         <th>Numéro opération</th>
-                         <th>Type</th>
-                         <th>Date</th>
-                     </tr>
-                     </thead>
-                     <tbody>
-                     <tr>
-                     </tr>
-                     <tr th:each="o:${operations}">
-                         <td th:text="${o.getNumOperation()}"></td>
-                         <td th:text="${o.getType()}"></td>
-                         <td th:text="${o.getDate()}"></td>
-                     </tr>
-                     </tbody>
-                 </table> -->
             </section>
             <!-- page end-->
         </section>
-     <!--   <div th:if="${comptes.totalPages != 1}" class="form-group col-md-11 pagination-centered">
-            <ul class="pagination">
-                <li class="page-item" th:classappend="${comptes.number eq 0} ? disabled">
-                    <a class="pageLink" th:href="@{index(page=1)}" ><i class="material-icons">first_page</i></a>
-                </li>
-                <li th:classappend="${comptes.number eq 0} ? disabled">
-                    <a class="pageLink" th:href="@{index(page=${comptes.number})}"><i class="material-icons">chevron_left</i></a>
-                </li>
-                <li class="page-item" th:classappend="${comptes.number + 1 eq page} ? actived"
-                    th:each="page : ${#numbers.sequence(pager.startPage, pager.endPage)}">
-                    <a class="pageLink" th:href="@{index(page=${page})}" th:text="${page}"></a>
-                </li>
-                <li th:classappend="${comptes.number + 1 eq comptes.totalPages} ? disabled">
-                    <a class="pageLink" th:href="@{index(page=${comptes.number + 2})}"><i class="material-icons">chevron_right</i></a>
-                </li>
-                <li th:classappend="${comptes.number + 1 eq comptes.totalPages} ? disabled">
-                    <a class="pageLink" th:href="@{index(page=${comptes.totalPages})}"><i class="material-icons">last_page</i></a>
-                </li>
 
-            </ul>
-        </div> -->
     </section>
     <!--main content end-->
 

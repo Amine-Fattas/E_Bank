@@ -1,34 +1,17 @@
 package com.ensa.e_banking.entities;
 
 import java.util.Date;
-
-import javax.persistence.DiscriminatorColumn;
-import javax.persistence.DiscriminatorType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Inheritance;
-import javax.persistence.InheritanceType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonSubTypes;
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import com.fasterxml.jackson.annotation.JsonSubTypes.Type;
 
 @Entity
-//@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
-//@DiscriminatorColumn(name="type_operation",discriminatorType = DiscriminatorType.STRING,length=8)
-
-
-
 public class Operation {
 	
 	@Id
@@ -52,10 +35,7 @@ public class Operation {
 	@ManyToOne
 	@JoinColumn(name="id_agent")
 	private Agent agent;
-	
-	/*@ManyToOne
-	@JoinColumn(name="id_client")
-	private Client client;*/
+
 
 	
 	public Long getNumOperation() {
@@ -75,23 +55,6 @@ public class Operation {
 		this.dateOperation = dateOperation;
 	}
 
-
-	/*public double getMontantHT() {
-		return montantHT;
-	}
-
-
-	public void setMontantHT(double montantHT) {
-		this.montantHT = montantHT;
-	}
-
-	public double getFraisOperation() {
-		return fraisOperation;
-	}
-
-	public void setFraisOperation(double fraisOperation) {
-		this.fraisOperation = fraisOperation;
-	}*/
 
 	public double getMontant() {
 		return montant;
@@ -162,11 +125,6 @@ public class Operation {
 		
 	}
 
-	/*public Operation(Compte compte, Agent agent) {
-		super();
-		this.compte = compte;
-		this.agent = agent;
-	}*/
 	
 
 	

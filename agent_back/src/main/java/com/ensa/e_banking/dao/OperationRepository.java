@@ -9,13 +9,9 @@ import com.ensa.e_banking.entities.Operation;
 
 
 public interface OperationRepository extends JpaRepository<Operation, Long>{
-	
-//	@Query(value ="SELECT * FROM operation  where  id_client like ?1",nativeQuery=true)
-//	List <Operation>findOperation(@Param("x") Long id);
+
 	@Query(value ="SELECT * FROM operation  where  rib_source=:x or rib_destination=:x",nativeQuery=true)
 	List <Operation> findOperationByIdCompte(@Param("x") String rib);
-
-
 
 	@Query("select o from Operation o  where  o.typeOperation like :x and (o.compteSource.rib like :y or o.compteDestination.rib like :y)")
     List<Operation> chercherO(@Param("x") String mc,@Param("y") String rib);

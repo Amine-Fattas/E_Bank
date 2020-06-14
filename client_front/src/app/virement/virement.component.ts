@@ -64,7 +64,8 @@ export class VirementComponent implements OnInit {
                    , err => { Swal.fire({
                   icon: 'error',
                   title: 'Oops...',
-                  background: 'black',
+                  confirmButtonColor: 'black',
+
                   
        
                   text: 'Compte n existe pas ou désactivé!'

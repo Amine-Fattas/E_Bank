@@ -1,10 +1,7 @@
 package com.ensa.e_banking.interfacesImpl;
 
 import org.springframework.beans.factory.annotation.Autowired;
-
-
 import org.springframework.stereotype.Service;
-
 import com.ensa.e_banking.dao.AgentRepository;
 import com.ensa.e_banking.entities.Agent;
 import com.ensa.e_banking.interfacesMetier.AgentMetier;

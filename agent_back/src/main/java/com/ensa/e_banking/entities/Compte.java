@@ -4,7 +4,6 @@ package com.ensa.e_banking.entities;
 import java.util.Collection;
 import java.util.Date;
 import javax.persistence.*;
-
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonSubTypes.Type;
@@ -45,9 +44,7 @@ public  class Compte{
 	private Long idClient;
 
 	
-   
-   // @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @ManyToOne
+	@ManyToOne
     @JoinColumn(name="id_agent")
 	private Agent agent;
 	

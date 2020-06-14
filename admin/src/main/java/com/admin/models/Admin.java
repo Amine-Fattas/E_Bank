@@ -1,9 +1,7 @@
 package com.admin.models;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 import javax.persistence.*;
-import java.io.Serializable;
+
 
 @Entity
 @Table

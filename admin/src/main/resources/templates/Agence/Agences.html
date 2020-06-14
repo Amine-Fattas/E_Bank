@@ -81,9 +81,6 @@
                     <tbody>
                     <tr th:each="a:${listeAgences}">
 
-                         <!--   <a id="photoButton" th:href="@{img/iconeA.png}">
-                                <img th:src="@{img/iconeA.png}"  width="40" height="40" />
-                            </a> -->
                         <td th:text="${a.getNumAgence()}"></td>
                         <td th:text="${a.getNomAgence()}"></td>
                         <td th:text="${a.getAdresse()}"></td>
@@ -102,27 +99,7 @@
             </section>
             <!-- page end-->
         </section>
-   <!--     <div th:if="${listeAgences.totalPages != 1}" class="form-group col-md-11 pagination-centered">
-            <ul class="pagination">
-                <li class="page-item" th:classappend="${listeAgences.number eq 0} ? disabled">
-                    <a class="pageLink" th:href="@{liste(page=1)}" ><i class="material-icons">first_page</i></a>
-                </li>
-                <li th:classappend="${listeAgences.number eq 0} ? disabled">
-                    <a class="pageLink" th:href="@{liste(page=${listeAgences.number})}"><i class="material-icons">chevron_left</i></a>
-                </li>
-                <li class="page-item" th:classappend="${listeAgences.number + 1 eq page} ? actived"
-                    th:each="page : ${#numbers.sequence(pager.startPage, pager.endPage)}">
-                    <a class="pageLink" th:href="@{liste(page=${page})}" th:text="${page}"></a>
-                </li>
-                <li th:classappend="${listeAgences.number + 1 eq listeAgences.totalPages} ? disabled">
-                    <a class="pageLink" th:href="@{liste(page=${listeAgences.number + 2})}"><i class="material-icons">chevron_right</i></a>
-                </li>
-                <li th:classappend="${listeAgences.number + 1 eq listeAgences.totalPages} ? disabled">
-                    <a class="pageLink" th:href="@{liste(page=${listeAgences.totalPages})}"><i class="material-icons">last_page</i></a>
-                </li>
 
-            </ul>
-        </div> -->
     </section>
     <!--main content end-->
 
@@ -160,66 +137,7 @@
 <!--custome script for all page-->
 <script  th:src="@{js/scripts.js}"></script>
 <script  th:src="@{js/script.js}"></script>
-<!--<script th:inline="javascript">
-    /*<![CDATA[*/
- var agences = /*[[${listeAgences}]]*/ ' ';
-    /*]]>*/
 
-    $('#txtSearch').on('keyup',function () {
-        var value = $(this).val();
-        // gEt filtred
-        var data = FilterFunction(value,agences);
-
-        //clear th etable
-
-        rebuildTable(data);
-
-    });
-
-    function FilterFunction(value,data) {
-
-        var filtredData =[];
-        for (var i=0;i<data.length;i++){
-            value = value.toLowerCase();
-            var fname = data[i].nomAgence.toLowerCase();
-
-            if(fname.includes(value)){
-                filtredData.push(data[i]);
-            }
-
-        }
-        return filtredData;
-
-    }
-
-    function rebuildTable(data) {
-
-        var table = document.getElementById('tableagence')
-        table.innerHTML =''
-        for (var i=0;i<data.length;i++){
-
-            var row = `<tr>
-               <td> ${data[i].numAgence} </td>
-               <td> ${data[i].nomAgence} </td>
-                  <td> ${data[i].adresse} </td>
-                     <td> ${data[i].ville} </td>
-                        <td> ${data[i].tel} </td>
-                        </tr>`
-            table.innerHTML +=row
-        }
-
-    }
-
-
-
-
-
-
-
-
-
-
-</script> -->
 
 </body>
 

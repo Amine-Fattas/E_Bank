@@ -3,16 +3,8 @@ package com.admin.controllers;
 import com.admin.Repository.ActivityRepository;
 import com.admin.Repository.AgenceRepository;
 import com.admin.models.*;
-
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
 import org.springframework.core.ParameterizedTypeReference;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageImpl;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
-import org.springframework.http.HttpEntity;
-import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -21,12 +13,9 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-
 import javax.validation.Valid;
 import java.util.Date;
 import java.util.List;
-import java.util.Optional;
 
 
 @Controller
@@ -49,8 +38,6 @@ public class AgentController {
 
     @Autowired
     BCryptPasswordEncoder bCryptPasswordEncoder =new BCryptPasswordEncoder();
-
-    HttpHeaders headers=new HttpHeaders();
 
 
     @RequestMapping(value = "/index")
@@ -95,9 +82,7 @@ else{
             return "Agent/add-agent";
         }
         String pass=Password.pass();
-        System.out.println(pass);
         agent.setPassword(bCryptPasswordEncoder.encode(pass));
-       // agent.setPassword(pass);
         Agence agence = agenceRepository.findByNomAgence(agent.getAgence().getNomAgence());
         agent.setAgence(agence);
         agent.setNumAgence(agence.getNumAgence());
@@ -128,7 +113,6 @@ else{
         agent.setAgence(agence);
         agent.setNumAgence(agence.getNumAgence());
         restTemplate.postForObject(url + "/agent/update/"+id, agent, Agent.class);
-        //  restTemplate.put(url+"/agent/update/"+id, agent);
 
         Activity activity = new Activity("Admin ID: "+adminRestController.currentAdmin().getId()
                 + " a modifié l'agent ID "+ id);
@@ -139,8 +123,7 @@ else{
 
     @RequestMapping(path = "/edit", method = RequestMethod.GET)
     public String editAgent(Model model, Long id) {
-        //Agent agent=restTemplate.getForObject(url+"/agent/"+id,Agent.class);
-//		return restTemplate.getForObject(url+"/client/"+id, Client.class);
+
         ResponseEntity<List<Agent>> response = restTemplate.exchange(
                 url + "/agent/list", HttpMethod.GET, null, new ParameterizedTypeReference<List<Agent>>() {
                 }
@@ -148,11 +131,7 @@ else{
         List<Agent> list = response.getBody();
         Agent agent = new Agent();
         for (Agent ag : list) {
-            System.out.println(ag.getId());
-            System.out.println("im in for");
             if (id.equals(ag.getId())) {
-                System.out.println("im in if");
-                System.out.println(ag.getId());
                 agent.setId(id);
                 agent.setNom(ag.getNom());
                 agent.setPrenom(ag.getPrenom());
@@ -164,7 +143,6 @@ else{
                 agent.setAgence(agenceRepository.findById(ag.getNumAgence()).get());
                 break;
             }
-            // System.out.println(agent);
         }
 
         List<Agence> Agences = agenceRepository.findAll();
@@ -186,19 +164,8 @@ else{
             ag.setAgence(agenceRepository.findById(ag.getNumAgence()).get());
         }
 
-
-      /*  int evalPageSize = INITIAL_PAGE_SIZE;
-        int evalPage = (page.orElse(0) < 1) ? INITIAL_PAGE : page.get() - 1;
-        Pageable pag = PageRequest.of(evalPage, evalPageSize);
-        Page<Agent> agents = agentRepository.findAllByAgenceNumAgence(id, pag);
-        List<Agent> agent = agentRepository.findAllByAgenceNumAgence(id);
-       Pager pager = new Pager(agents.getTotalPages(), agents.getNumber(), BUTTONS_TO_SHOW);
-
-       */
         model.addAttribute("listeAgents", agents);
-       // if (!agent.isEmpty()) model.addAttribute("agent", agent.get(0));
-      //  model.addAttribute("selectedPageSize", evalPageSize);
-       // model.addAttribute("pager", pager);
+
         return "Agent/agents-agence";
 
     }
@@ -220,59 +187,3 @@ else{
 
 
 }
-
-/*
-    @RequestMapping(value="/get-agent")
-    public String findAgent(Model model, Long num)
-    {
-        Agent agent = agentRepository.findById(num).get();
-        model.addAttribute("a",agent);
-        return "Agent/agent";
-    }
-
-
-
-    @RequestMapping(value="/index")
-    public String index(Model model, @RequestParam("page") Optional<Integer> page) {
-        //int evalPageSize = pageSize.orElse(INITIAL_PAGE_SIZE);
-        int evalPageSize = INITIAL_PAGE_SIZE;
-
-        int evalPage = (page.orElse(0) < 1) ? INITIAL_PAGE : page.get() - 1;
-
-        Page<Agent> agents = agentRepository.findAll(PageRequest.of(evalPage, evalPageSize));
-        Pager pager = new Pager(agents.getTotalPages(), agents.getNumber(), BUTTONS_TO_SHOW);
-
-        model.addAttribute("listeAgents", agents);
-        model.addAttribute("selectedPageSize", evalPageSize);
-        //  model.addAttribute("pageSizes", PAGE_SIZES);
-        model.addAttribute("pager", pager);
-        // List<Agent> Agents = agentRepository.findAll();
-        // model.addAttribute("listeAgents",agentRepository.findAll(PageRequest.of(page,4)));
-        //model.addAttribute("data",agentRepository.findAll(PageRequest.of(page,4)));
-        return "Agent/Agents";
-
-    }*/
-
-
-
-    /*
-    @RequestMapping(path = "/edit", method = RequestMethod.GET)
-    public String editAgent(Model model,Long id) {
-        Agent a=  agentRepository.findById(id).get();
-        model.addAttribute("agent",a);
-        List<Agence> Agences = agenceRepository.findAll();
-        model.addAttribute("listeAgence",Agences);
-        return "Agent/edit-agent";
-    }
-
-
-
-
-    @RequestMapping(value="/delete" , method= RequestMethod.GET)
-    public String delete(Model model, Long id){
-        Agent a=agentRepository.findById(id).get();
-        agentRepository.delete(a);
-        return "redirect:/index";
-
-    }
-}*/

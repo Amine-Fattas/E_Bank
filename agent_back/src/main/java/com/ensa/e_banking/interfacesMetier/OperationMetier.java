@@ -7,7 +7,6 @@ public interface OperationMetier {
 	   
        public boolean verser(Operation operation);
        public boolean retirer(Operation operation);
-       //public getReleverBancainre
        public boolean virement(Operation operation);
        public List<Operation> getOperationByCompte(String mc,String rib);
        public boolean recharge(Operation operation, Long codeRecharge);

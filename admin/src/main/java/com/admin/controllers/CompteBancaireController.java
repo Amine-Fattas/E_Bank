@@ -12,7 +12,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.client.RestTemplate;
-
 import java.util.List;
 import java.util.Optional;
 
@@ -26,7 +25,7 @@ public class CompteBancaireController {
     RestTemplate restTemplate;
 
     @RequestMapping(value="/comptebancaireactive")
-    public String list(Model model,String mc,@RequestParam("page") Optional<Integer> page) {
+    public String list(Model model,String mc) {
 
 
         List<CompteBancaire> list = null;

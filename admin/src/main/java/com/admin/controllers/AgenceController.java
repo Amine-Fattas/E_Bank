@@ -4,12 +4,9 @@ import com.admin.Repository.ActivityRepository;
 import com.admin.Repository.AgenceRepository;
 import com.admin.models.Activity;
 import com.admin.models.Agence;
-import com.admin.models.Agent;
 import org.hibernate.annotations.Cascade;
 import org.hibernate.annotations.CascadeType;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -18,9 +15,8 @@ import org.springframework.web.client.RestTemplate;
 
 import javax.validation.Valid;
 import java.util.Date;
-import java.util.Iterator;
 import java.util.List;
-import java.util.Optional;
+
 
 
 @Controller

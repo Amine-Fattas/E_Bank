@@ -1,12 +1,10 @@
 package com.admin.models;
 
-import org.springframework.beans.factory.annotation.Autowired;
-
 import javax.persistence.*;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 import java.io.Serializable;
-import java.util.Collection;
+
 
 public class Agent implements Serializable{
 	private Long id;
@@ -30,9 +28,6 @@ public class Agent implements Serializable{
 	private Agence agence;
 
 	private Integer numAgence;
-	/*
-	@OneToMany (mappedBy = "agent")
-	private Collection<Client> listeClients;*/
 
 	public Long getId() {
 		return id;
@@ -111,9 +106,7 @@ public class Agent implements Serializable{
 	public Agent() {
 		super();
 
-		//AgenceServiceImpl as=new AgenceServiceImpl();
-		//this.agence=as.findAgence(nomAgence);
-		//this.numContrat=Integer.toString(agence.getNumAgence())+"-"+Long.toString(suffixContrat);
+
 	}
 
 	public Agent(Long id,String nom, String prenom, String cin, String username, String password, String numContrat, Agence agence) {

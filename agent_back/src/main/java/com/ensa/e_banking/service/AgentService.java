@@ -1,16 +1,13 @@
 package com.ensa.e_banking.service;
 
 import com.ensa.e_banking.dao.AgentRepository;
-import com.ensa.e_banking.entities.Agence;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-
-
 import com.ensa.e_banking.entities.Agent;
 import com.ensa.e_banking.interfacesImpl.AgentMetierImp;
-
 import java.util.List;
 import java.util.Optional;
+
 
 @RestController
 public class AgentService {
@@ -40,7 +37,6 @@ public class AgentService {
 
 	@RequestMapping(value = "/agent/agentsbyagence/{id}", method = RequestMethod.GET)
 	public List<Agent> getAgentsByAgence(@PathVariable Integer id) {
-		System.out.println(id);
 		return agentRepository.findAllByNumAgence(id);
 	}
 
@@ -62,21 +58,10 @@ public class AgentService {
 
 	@RequestMapping(value = "/agent/update/{id}", method = RequestMethod.POST)
 	public Agent updateAgent(@PathVariable Long id, @RequestBody Agent agent) {
-		System.out.println("agent" + id);
-		System.out.println("agent" + agent.getId());
-		System.out.println("agent" + agent.getNom());
-		System.out.println("agent" + agent.getPassword());
-		System.out.println("agent" + agent.getUsername());
-		System.out.println("agent" + agent.getNumContrat());
-		System.out.println("agent" + agent.getNumAgence());
-		//Agent ag = agentRepository.findById(id).get();
-		//if(id.equals(ag.getId()))
-		//   agent.setId(id);
+
 		agent.setNumContrat("AFOIH-" + Long.toString(agent.getId()));
 		agent.setUsername(Long.toString(agent.getId()) + "@AFOIHebank.com");
 
-		// Agence agence=agenceRepository.findByNomAgence(agent.getAgence().getNomAgence());
-		//agent.setAgence(agence);
 		return agentRepository.save(agent);
 
 	}

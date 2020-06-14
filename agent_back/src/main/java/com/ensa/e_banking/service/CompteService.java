@@ -1,17 +1,11 @@
 package com.ensa.e_banking.service;
 
 import java.util.List;
-
-import com.ensa.e_banking.security.SecurityConstants;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.repository.query.Param;
 import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import com.ensa.e_banking.entities.Compte;
 import com.ensa.e_banking.interfacesMetier.CompteMetier;
-import org.springframework.web.server.ResponseStatusException;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.xml.ws.http.HTTPException;
 
@@ -32,16 +26,13 @@ public class CompteService {
 	
 	 @RequestMapping(value="/agent/saveCompte",method=RequestMethod.POST)
 	 public Compte saveCompte(@RequestBody Compte compte,HttpServletRequest request) {
-		 System.out.println("ajout");
 
 		 return compteMetier.saveCompte(compte,request);
 	 }
 	 
 	 @RequestMapping(value="/compte/CC/{id}",method=RequestMethod.GET)
 	 public Compte getCompte(@PathVariable Long id) {
-//	 	if(!test.check(req)){
-//	 		throw new ResponseStatusException(HttpStatus.NOT_FOUND);
-//		}
+
 		 return compteMetier.consulterCompte(id);
 	 }
 	 
@@ -56,16 +47,7 @@ public class CompteService {
 	 	return compteMetier.getCompteByIdClient(id);
 	}
 	 
-	/* @RequestMapping(value="/compte/listCompte",method=RequestMethod.GET)
-	 public List<Compte> listCompte() {
-		 
-		 return compteMetier.getCompteActive();
-	 }*/
-	 
-	/* @RequestMapping(value="/compte/listCompte",method=RequestMethod.GET)
-		public Page<Compte> listeCompte(@RequestParam(name="page",defaultValue="0") int page) {
-			return compteMetier.getComptes(page);
-		}*/
+
 	 
 	 @RequestMapping(value="/agent/listCompteActive",method=RequestMethod.GET)
 		public 	List<Compte> listeCompteActive() {
@@ -107,9 +89,6 @@ public class CompteService {
 	 	return compteMetier.ActiverCompte(compte);
 	}
 	
-	 
-	
-	
-	
+
 
 }

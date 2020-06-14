@@ -1,8 +1,5 @@
 package com.admin.controllers;
 
-
-import com.admin.models.Client;
-import com.admin.models.CompteBancaire;
 import com.admin.models.Operation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.ParameterizedTypeReference;

@@ -103,29 +103,8 @@
             </section>
             <!-- page end-->
         </section>
-     <!--   <div th:if="${listAgents.totalPages != 1}" class="form-group col-md-11 pagination-centered">
-            <ul class="pagination">
-                <li class="page-item" th:classappend="${listAgents.number eq 0} ? disabled">
-                    <a class="pageLink" th:href="@{index(page=1)}" ><i class="material-icons">first_page</i></a>
-                </li>
-                <li th:classappend="${listAgents.number eq 0} ? disabled">
-                    <a class="pageLink" th:href="@{index(page=${listAgents.number})}"><i class="material-icons">chevron_left</i></a>
-                </li>
-                <li class="page-item" th:classappend="${listAgents.number + 1 eq page} ? actived"
-                    th:each="page : ${#numbers.sequence(pager.startPage, pager.endPage)}">
-                    <a class="pageLink" th:href="@{index(page=${page})}" th:text="${page}"></a>
-                </li>
-                <li th:classappend="${listAgents.number + 1 eq listAgents.totalPages} ? disabled">
-                    <a class="pageLink" th:href="@{index(page=${listAgents.number + 2})}"><i class="material-icons">chevron_right</i></a>
-                </li>
-                <li th:classappend="${listAgents.number + 1 eq listAgents.totalPages} ? disabled">
-                    <a class="pageLink" th:href="@{index(page=${listAgents.totalPages})}"><i class="material-icons">last_page</i></a>
-                </li>
 
-            </ul>
-        </div> -->
     </section>
-    <!--main content end-->
 
 </section>
 
@@ -174,26 +153,7 @@
     </div>
 </div>
 
-<!--<div class="modal" id="myModal" tabindex="-1" role="dialog" style="display: none;">
-    <div class="modal-header">
-        <a class="close" data-dismiss="modal">×</a>
-        <h3>Le nouveau agent</h3>
-    </div>
-    <div class="modal-body">
-        <div class="profile-item">
-            <i class="material-icons icon">confirmation_number</i>
-            <span class="info-text" th:text="${agentcree}"/>
-        </div>
 
-        <div class="profile-item">
-            <i class="material-icons icon">confirmation_number</i>
-            <span class="info-text" th:text="${pass}"/>
-        </div>
-    </div>
-    <div class="modal-footer">
-        <a href="#" class="btn">Fermer</a>
-    </div>
-</div> -->
 
 
 <!-- javascripts -->
@@ -205,11 +165,7 @@
 <!--custome script for all page-->
 <script  th:src="@{js/scripts.js}"></script>
 <script  th:src="@{js/script.js}"></script>
-<!-- <script th:inline="javascript" >
-    $(window).on('load',function(){
-        $('#myModal').modal('show');
-    });
-</script> -->
+
 
 </body>
 

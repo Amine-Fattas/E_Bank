@@ -1,7 +1,6 @@
 package com.ensa.e_banking.entities;
 
 import java.util.Date;
-
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import com.fasterxml.jackson.annotation.JsonTypeName;
@@ -10,7 +9,6 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 @DiscriminatorValue("CC")
 @JsonTypeName("CC")
 public class CompteCourant extends Compte{
-	//private Double soldeCourant;
 
 	public CompteCourant() {
 		super();

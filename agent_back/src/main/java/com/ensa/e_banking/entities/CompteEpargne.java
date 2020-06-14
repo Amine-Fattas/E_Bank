@@ -1,7 +1,6 @@
 package com.ensa.e_banking.entities;
 
 import java.util.Date;
-
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import com.fasterxml.jackson.annotation.JsonTypeName;
@@ -10,6 +9,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 @DiscriminatorValue("CE")
 @JsonTypeName("CE")
 public class CompteEpargne extends Compte{
+
   private Double remuneration;
 
 public CompteEpargne() {

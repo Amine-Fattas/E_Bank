@@ -1,12 +1,10 @@
 package com.ensa.e_banking.dao;
 
 import org.springframework.data.jpa.repository.JpaRepository;
-
 import com.ensa.e_banking.entities.Agent;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.data.repository.query.Param;
-
 import java.util.List;
 import java.util.Optional;
 

@@ -2,11 +2,9 @@ package com.ensa.e_banking.interfacesImpl;
 
 
 import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
 import com.ensa.e_banking.dao.AgentRepository;
 import com.ensa.e_banking.dao.CompteRepository;
 import com.ensa.e_banking.dao.OperationRepository;
@@ -15,6 +13,7 @@ import com.ensa.e_banking.entities.Compte;
 import com.ensa.e_banking.entities.Operation;
 import com.ensa.e_banking.entities.Recharge;
 import com.ensa.e_banking.interfacesMetier.OperationMetier;
+
 @Service
 public class OperationMetierImp implements OperationMetier{
 
@@ -22,8 +21,7 @@ public class OperationMetierImp implements OperationMetier{
 	private OperationRepository operationRepository;
 	@Autowired
 	private CompteRepository compteRepository;
-	@Autowired
-	private AgentRepository agentRepository;
+
 	@Autowired
 	private RechargeRepository rechargeRepository;
 	
@@ -60,7 +58,7 @@ public class OperationMetierImp implements OperationMetier{
 		}
 		
 
-@Transactional
+        @Transactional
 		@Override
 		public boolean virement(Operation operation) {
 
@@ -74,7 +72,6 @@ public class OperationMetierImp implements OperationMetier{
 			
 			if(compteSource.getSolde() < operation.getMontant())  throw new RuntimeException("Solde insuffisant");
 
-			//if(compteDestination ==null || compteDestination.isEtat() == false)  throw new RuntimeException("Compte n'existe pas ou désactivé");
 			operation.setCompteDestination(compteDestination);
 			operation.setCompteSource(compteSource);
 			

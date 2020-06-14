@@ -36,7 +36,6 @@ public class CORSFilter implements Filter {
 			throws IOException, ServletException {
 		HttpServletResponse response = (HttpServletResponse) resp;
 		HttpServletRequest request = (HttpServletRequest) req;
-//			response.setHeader("Access-Control-Allow-Origin", ((HttpServletRequest) req).getHeader("Origin"));
 		response.setHeader("Access-Control-Allow-Origin", "*");
 		response.setHeader("Access-Control-Allow-Methods", "POST, GET, OPTIONS, DELETE, PUT");
 		response.setHeader("Access-Control-Max-Age", "3600");
@@ -51,10 +50,8 @@ public class CORSFilter implements Filter {
 
 		if ("OPTIONS".equalsIgnoreCase(request.getMethod())) {
 			response.setStatus(HttpServletResponse.SC_OK);
-			System.out.println(request.getMethod());
 		} else {
-			System.out.println(request.getMethod());
-			System.out.println("cors else ");
+
 			chain.doFilter(req, resp);
 		}
 
