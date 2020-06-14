@@ -14,10 +14,8 @@ import { Client } from '../model/client';
 })
 export class ClientComponent implements OnInit {
  public motCle:string;
- //public page:number=0;
-
  pageClient:any=[];
- //pages:number;
+
  idClient:number;
  
  

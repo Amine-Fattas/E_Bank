@@ -2,12 +2,11 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { OperationsComponent } from './operations/operations.component';
 import { VirementComponent } from './virement/virement.component';
-import { ContactComponent } from './contact/contact.component';
-import { VirementInterneComponent } from './virement-interne/virement-interne.component';
+
+
 import { RechargeComponent } from './recharge/recharge.component';
 import { CompteCourantComponent } from './compte-courant/compte-courant.component';
-import { CompteEpargneComponent } from './compte-epargne/compte-epargne.component';
-import { NemuBarComponent } from './nemu-bar/nemu-bar.component';
+
 import { LoginComponent } from './login/login.component';
 import { AcceuilComponent } from './acceuil/acceuil.component';
 
@@ -15,15 +14,15 @@ import { AcceuilComponent } from './acceuil/acceuil.component';
 
 
 const routes: Routes = [
- /* { path: "", redirectTo: "/compte/courant", pathMatch: "full"},*/
+
   { path: '', redirectTo: '/login', pathMatch: 'full' }, 
   { path: 'login',component:LoginComponent},
   { path: "acceuil", component:AcceuilComponent},
   { path: "compte", 
       children: [
         { path: "", redirectTo: "/compte/courant", pathMatch: "full"},
-        { path: "courant", component: CompteCourantComponent},
-        { path: "epargne", component: CompteEpargneComponent}
+        { path: "courant", component: CompteCourantComponent}
+       
       ] 
   },
   { path: "operations", 
@@ -32,12 +31,11 @@ const routes: Routes = [
         { path: "liste", component: OperationsComponent},
         { path: "recharge", component: RechargeComponent},
         { path: "virement", redirectTo: "/operations/virement/externe", pathMatch: "full"},
-        { path: "virement/externe", component: VirementComponent},
-        { path: "virement/interne", component: VirementInterneComponent}
+        { path: "virement/externe", component: VirementComponent}
         
       ]
-  },
-  {path:"contact", component: ContactComponent}
+  }
+
   
 ];
 
@@ -47,9 +45,8 @@ const routes: Routes = [
 })
 export class AppRoutingModule { }
 export const routingComponents = [CompteCourantComponent,
-                                  CompteEpargneComponent,
+                                 
                                   OperationsComponent,
                                   RechargeComponent,
-                                  VirementComponent,
-                                  VirementInterneComponent,
-                                  ContactComponent]
+                                  VirementComponent
+                                 ]

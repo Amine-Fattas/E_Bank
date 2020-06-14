@@ -1,8 +1,5 @@
 package com.ensa.e_banking.client.security;
 
-
-
-
 import java.io.IOException;
 import java.util.Date;
 
@@ -40,8 +37,6 @@ private AuthenticationManager authenticationManager;
 	@Override
 	public Authentication attemptAuthentication(HttpServletRequest request, HttpServletResponse response)
 			throws AuthenticationException {
-		System.out.println("je suis dans jwtAuthentication");
-		
 		Client client=null;
 		
 		try {
@@ -62,7 +57,7 @@ private AuthenticationManager authenticationManager;
 	@Override
 	protected void successfulAuthentication(HttpServletRequest request, HttpServletResponse response, FilterChain chain,
 			Authentication authResult) throws IOException, ServletException {
-	System.out.println("succes");
+
 		User springUser=(User)authResult.getPrincipal();
 		String jwtToken=Jwts.builder()
 		.setSubject(springUser.getUsername())

@@ -1,46 +1,9 @@
-/*.spacer{
-    position: absolute;
-    left: 10%;
-    top:8%;
-    max-width: 880px;
 
-}
-.title{
-    font-size: 20px;
-    font-weight: bolder;
-    font-style: italic;
-   margin-left: 290px;
-}
-th{
-  color:  #696969
-}
-
-input{
- 
-  border: none;
-  
-    border-bottom:solid gray 1px;
-    
-    width:40%; 
-    position: absolute;
-    left: 20%;
-    top:-10%
-    
-}
-
-input:focus,
-select:focus,
-textarea:focus,
-button:focus {
-    outline: none;
-}*/
-/* import Google Roboto font */
 @import url(https://fonts.googleapis.com/css?family=Roboto:300,700);
 
 body {
-    /* use Roboto font if available, sans-serif if none of the other fonts are available */
+    
     font-family: Roboto, HelveticaNeue, sans-serif;
-    /* add some space around page */
     margin: 10px;
 }
 
@@ -67,31 +30,31 @@ input{
    
   }
 
-/* CSS for smaller view spaces */
+
 @media screen and (max-width: 768px) {
 
-    /* hide table headings */
+  
     .jim-table-responsive table thead {
         display: none;
     }
 
-    /* treat rows like divs */
+    
     .jim-table-responsive table tr {
         display: block;
-        border-top: 2px solid lightgray; /* separate row data with thicker line */
+        border-top: 2px solid lightgray; 
         margin-top: 5px;
     }
 
-    /* treat columns like divs */
+   
     .jim-table-responsive table td {
         display: block;
-        text-align: right; /* text to right */
+        text-align: right; 
     }
 
-    /* this part is ugly, but necessary to show label on left */
+   
     .jim-table-responsive table td:before {
         content: attr(data-label);
-        float: left; /* label to left */
+        float: left; 
         font-weight: 700;
     }
 

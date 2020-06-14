@@ -6,7 +6,7 @@
         <h1>Retrait</h1>
     <form #form="ngForm" (ngSubmit)="onSubmit()" novalidate>
         
-        <!-- {{form.value | json}} -->
+       
         <input class="input" #ver='ngModel' [(ngModel)]="this?._compte.rib" name="rib"  type="text" placeholder="Compte Source (RIB / CIN)" required>
         <small class="text-danger" [class.d-none]="ver.valid || ver.untouched">Ce champs est obligatoire</small>
         <input class="input" #mont='ngModel' [(ngModel)]="newOperation.montant" name="montant" type="number"  pattern="[1-9][0-9]{2,4}"  placeholder="Montant" required>
@@ -15,7 +15,7 @@
             <small class="text-danger" *ngIf="mont.errors.pattern"> * Vous pouvez retirer de 100 a 10000 DH</small>
          </div><br>
         <button type="submit" [disabled]="!form.valid" class="submit">Valider</button>
-        <!-- {{_compte | json}} -->
+       
     </form>
     
 </div>

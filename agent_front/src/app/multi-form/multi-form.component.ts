@@ -6,7 +6,7 @@ import { AgentService } from '../Service/agent.service';
 import { CompteService } from '../Service/compte.service';
 import Swal from 'sweetalert2';
 import { Router } from '@angular/router';
-import { ClientService } from '../Service/client.service';
+
 
 @Component({
   selector: 'app-multi-form',
@@ -23,8 +23,7 @@ export class MultiFormComponent implements OnInit {
 
   constructor(private agentService: AgentService,
      private compteService: CompteService ,
-     private router: Router,
-     private clientService:ClientService) { }
+     private router: Router) { }
 
     ngOnInit(): void {
       this.agentService.currentAgent.subscribe(
@@ -53,26 +52,12 @@ export class MultiFormComponent implements OnInit {
     onTerminer(){ window.location.href = "/listClient";}
 
   onNextStep2() {
-    console.log(this.compte.client);
+    
   this.compteService.saveCompte(this.compte)
     .subscribe(response => {
       this.nouveauCompte = response;
-      console.log(this.nouveauCompte);
-      console.log(this.nouveauCompte.client.id);
-      
-     /*this.clientService.sendEmailToClient(this.nouveauCompte.client)
-      .subscribe(res =>
-        console.log(res),
-        err =>
-        console.log('erreur'));
-      Swal.fire(
-      'Ajout du compte par succes' ,
-      'success'
-    )} , err => { Swal.fire({
-      icon: 'error',
-      title: 'Oops...',
-      text: 'Compte non sauvegardé !'
-    });*/
+     
+    
     });
     this.nextS2 = true;
     

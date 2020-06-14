@@ -64,7 +64,7 @@ export class VirementComponent implements OnInit {
                    , err => { Swal.fire({
                   icon: 'error',
                   title: 'Oops...',
-                  background: 'black',
+                  confirmButtonColor:'black',
                   
        
                   text: 'Compte n existe pas ou désactivé!'
@@ -72,13 +72,7 @@ export class VirementComponent implements OnInit {
                   window.location.href = "/operations/virement/externe";
                 })
                    })}
-    // this._compteService.getCompteByRib(this.newOperation.compteDestination.rib).subscribe(
-    //   data => {
-    //     this._compteDestination = data;
-    //     this.newOperation.compteDestination = this._compteDestination
-        
-    //   }
-    // )
+  
   
 
   init(){

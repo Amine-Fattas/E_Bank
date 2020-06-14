@@ -7,7 +7,7 @@
         </h1>
         <form #form="ngForm" (ngSubmit)="onSubmit()" novalidate>
      
-            <!-- {{form.value | json}} -->
+            
             
             <input [(ngModel)]="newOperation.compteDestination.rib" name="compteDestination"
              class="input" type="text" #ver='ngModel' placeholder="Compte Destination (RIB / CIN)" required>
@@ -15,7 +15,7 @@
 
              <input  name="montant"
              class="input" type="number" [(ngModel)]="newOperation.montant" #mont='ngModel'   pattern="[1-9][0-9]{2,4}" placeholder="Montant" required>
-            <br> <!--<small class="text-danger " [class.d-none]="rech.valid || rech.untouched">Ce champs est obligatoire</small>-->
+            <br> 
             <div *ngIf="mont.errors && mont.touched">
               <small class="text-danger" *ngIf="mont.errors.required">Ce champs est obligatoire</small>
               <small class="text-danger" *ngIf="mont.errors.pattern">Vous pouvez verser de 100 a 10000 DH</small>
@@ -23,7 +23,7 @@
             <br> 
             <button type="submit"  [disabled]="!form.valid" class="submit">Valider</button>
     
-            <!-- {{newOperation | json}} -->
+           
         </form>   
       </div>
     </div>

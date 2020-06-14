@@ -40,14 +40,3 @@ export class DetailClientComponent implements OnInit {
 }
 
 
-/*
-keyBoardEvent(e) {
-  console.log(this.motCle);
-  console.log(this.motCle.length);
-  if ( this.motCle.length !== 0) {
-    this.recherche();
-  }
-  else {
-    this.listClient();
-  }
-}*/

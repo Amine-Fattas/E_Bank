@@ -6,7 +6,7 @@
         <h1 >Versement</h1>
     <form #form="ngForm" (ngSubmit)="onSubmit()" novalidate>
        
-        <!-- {{form.value | json}} -->
+
         <input class="input" [(ngModel)]="this?._compte.rib" #dest='ngModel' name="rib"  type="text" placeholder="Compte Destination (RIB / CIN)" required>
         <small class="text-danger" [class.d-none]="dest.valid || dest.untouched">Ce champs est obligatoire</small>
         <input class="input" #mont='ngModel' [(ngModel)]="newOperation.montant" name="montant" type="number" pattern="[1-9][0-9]{2,100}" placeholder="Montant" required>
@@ -15,7 +15,7 @@
             <small class="text-danger" *ngIf="mont.errors.pattern"> * Le montant doit etre superieur de 100</small>
          </div><br>
         <button type="submit" [disabled]="!form.valid" class="submit">Valider</button>
-        <!-- {{_compte | json}} -->
+    
     </form>
     
 </div>
