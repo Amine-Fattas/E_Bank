@@ -53,17 +53,21 @@ export class VirementComponent implements OnInit {
             console.log("Succes Versement \n"+this.newOperation)
             this._operationService.virer(this.newOperation)
                 .subscribe(
-                  data => Swal.fire(
-                 
-                    'Virement  effectué par succes' ,
-                    'success'
+                  data =>  Swal.fire({
+                  
+                    title:"virement effectue par succes ",
+                   
+                    confirmButtonColor: 'black',
+                    confirmButtonText: "OK",
+                    width: 600
                     
-                  ).then(function(){
+                  }).then(function(){
                     window.location.href = "/acceuil"})
                      , err => { Swal.fire({
                     icon: 'error',
                     title: 'Oops...',
-                    text: 'Compte n existe pas ou désactivé!'
+                    text: 'Compte n existe pas ou désactivé!',
+                    confirmButtonColor: 'black'
                   }).then(function(){
                     window.location.href = "/operations/virement";
                   })

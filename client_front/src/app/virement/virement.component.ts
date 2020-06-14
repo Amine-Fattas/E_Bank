@@ -49,16 +49,22 @@ export class VirementComponent implements OnInit {
     console.log(this.newOperation)
     this._operationService.virer(this.newOperation)
               .subscribe(
-                data => Swal.fire(
-                 
-                  'Virement  effectué par succes' ,
-                  'success'
+                data =>  Swal.fire({
                   
-                ).then(function(){
+                  title:"virement effectue par succes ",
+                 
+                  confirmButtonColor: 'black',
+                  confirmButtonText: "OK",
+                  width: 600
+                  
+                }).then(function(){
                   window.location.href = "/acceuil"})
                    , err => { Swal.fire({
                   icon: 'error',
                   title: 'Oops...',
+                  background: 'black',
+                  
+       
                   text: 'Compte n existe pas ou désactivé!'
                 }).then(function(){
                   window.location.href = "/operations/virement/externe";
@@ -78,7 +84,7 @@ export class VirementComponent implements OnInit {
     this.newOperation.typeOperation = "Virement"
     this.newOperation.numOperation = 0
     this.newOperation.dateOperation = new Date()
-    this.newOperation.montant = 0
+    this.newOperation.montant ;
     this.newOperation.compteSource = new Compte()
     this.newOperation.compteDestination = new Compte()
   }

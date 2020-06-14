@@ -26,7 +26,17 @@ public class OperationService {
 	@RequestMapping(value="/operation/virement",method= RequestMethod.POST)
 	@Transactional
 	 public boolean virement(@RequestBody Operation operation,HttpServletRequest request) {
-		Compte compteDestination = restTemplate.getForObject(url+"/compte/CC/rib/"+operation.getCompteDestination().getRib(), Compte.class);
+
+		headers.set(SecurityConstants.HEADER_STRING,
+				SecurityConstants.TOKEN_PREFIX+request.getHeader(SecurityConstants.HEADER_STRING));
+		HttpEntity<Operation> requ = new HttpEntity<>(headers);
+		//Compte compteDestination = restTemplate.getForObject(url+"/compte/CC/rib/"+operation.getCompteDestination().getRib(), Compte.class);
+		ResponseEntity<Compte> response = restTemplate.exchange(
+				url+"/compte/CC/rib/"+operation.getCompteDestination().getRib(), HttpMethod.GET, requ, new ParameterizedTypeReference<Compte>() {}
+		);
+		Compte compteDestination= response.getBody();
+
+
 		operation.setCompteDestination(compteDestination);
 		headers.set(SecurityConstants.HEADER_STRING,
 				SecurityConstants.TOKEN_PREFIX+request.getHeader(SecurityConstants.HEADER_STRING));

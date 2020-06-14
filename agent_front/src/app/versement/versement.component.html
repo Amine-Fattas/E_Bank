@@ -7,8 +7,9 @@
     <form #form="ngForm" (ngSubmit)="onSubmit()" novalidate>
        
         <!-- {{form.value | json}} -->
-        <input class="input" [(ngModel)]="this?._compte.rib" name="rib"  type="text" placeholder="Compte Destination (RIB / CIN)">
-        <input class="input" [(ngModel)]="newOperation.montant" name="montant" type="number" min="0" placeholder="Montant">
+        <input class="input" [(ngModel)]="this?._compte.rib" #dest='ngModel' name="rib"  type="text" placeholder="Compte Destination (RIB / CIN)" required>
+        <small class="text-danger" [class.d-none]="dest.valid || dest.untouched">Ce champs est obligatoire</small>
+        <input class="input" [(ngModel)]="newOperation.montant" name="montant" type="number" min="0" placeholder="Montant" required>
         <button type="submit" class="submit">Valider</button>
         <!-- {{_compte | json}} -->
     </form>

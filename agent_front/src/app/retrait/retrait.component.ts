@@ -46,17 +46,21 @@ export class RetraitComponent implements OnInit {
         console.log(this.newOperation)
         this._operationService.retirer(this.newOperation)
               .subscribe(
-                data => Swal.fire(
-                 
-                  'Retrait effectué par succes' ,
-                  'success'
+                data =>  Swal.fire({
                   
-                ).then(function(){
+                  title:"Retrait effectue par succes ",
+                 
+                  confirmButtonColor: 'black',
+                  confirmButtonText: "OK",
+                  width: 600
+                  
+                }).then(function(){
                   window.location.href = "/acceuil"})
                    , err => { Swal.fire({
                   icon: 'error',
                   title: 'Oops...',
-                  text: 'Compte n existe pas ou le solde est insuffisant!'
+                  text: 'Compte n existe pas ou le solde est insuffisant!',
+                  confirmButtonColor: 'black',
                 }).then(function(){
                   window.location.href = "/operations/retrait";
                 })
@@ -77,7 +81,7 @@ export class RetraitComponent implements OnInit {
     this.newOperation.typeOperation = "Retrait"
     this.newOperation.numOperation = 0
     this.newOperation.dateOperation = new Date()
-    this.newOperation.montant = 0
+    this.newOperation.montant
     this.newOperation.compteSource = new Compte()
     this.newOperation.compteDestination = null
     // this.newOperation.compteDestination = new Compte() // Ici faut le compte actuelle

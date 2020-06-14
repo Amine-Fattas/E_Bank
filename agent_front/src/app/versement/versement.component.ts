@@ -45,17 +45,21 @@ export class VersementComponent implements OnInit {
         
         this._operationService.verser(this.newOperation)
               .subscribe(
-                data => Swal.fire(
-                 
-                  'Versement effectué par succes' ,
-                  'success'
+                data =>  Swal.fire({
                   
-                ).then(function(){
+                  title:"versement effectue par succes ",
+                 
+                  confirmButtonColor: 'black',
+                  confirmButtonText: "OK",
+                  width: 600
+                  
+                }).then(function(){
                   window.location.href = "/acceuil"})
                    , err => { Swal.fire({
                   icon: 'error',
                   title: 'Oops...',
-                  text: 'Compte n existe pas ou désactivé!'
+                  text: 'Compte n existe pas ou désactivé!',
+                  confirmButtonColor: 'black'
                 }).then(function(){
                   window.location.href = "/operations/versement";
                 })

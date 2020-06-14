@@ -64,8 +64,6 @@
                     <td>{{o.dateOperation|date:'MM/dd/yyyy'}}</td>
                     <td>{{o.typeOperation}}</td>
                    
-              
-                   
                     <td *ngIf="o.compteDestination!=null; else elseTag">
                         {{o.compteDestination.rib}}</td>
                         <ng-template #elseTag><td>-</td></ng-template>

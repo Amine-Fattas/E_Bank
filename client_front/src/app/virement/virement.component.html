@@ -14,7 +14,7 @@
              <br> <small class="text-danger" [class.d-none]="ver.valid || ver.untouched">Ce champs est obligatoire</small>
 
              <input  name="montant"
-             class="input" type="number" [(ngModel)]="newOperation.montant" #mont='ngModel' min="100" maxlength="8" placeholder="Montant" required>
+             class="input" type="number" [(ngModel)]="newOperation.montant" #mont='ngModel' min="100"  placeholder="Montant" required>
             <br> <!--<small class="text-danger " [class.d-none]="rech.valid || rech.untouched">Ce champs est obligatoire</small>-->
             <div *ngIf="mont.errors && mont.touched">
               <small class="text-danger" *ngIf="mont.errors.required">Ce champs est obligatoire</small>

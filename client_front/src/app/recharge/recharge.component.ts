@@ -56,16 +56,20 @@ export class RechargeComponent implements OnInit {
     this._operationService.recharge(this.newOperation, parseInt(this.codeRecharge.code))
              
     .subscribe(
-      data => Swal.fire(
+      data => Swal.fire({
+                  
+        title:"Recharge effectue par succes ",
        
-        'Recharge  effectué par succes' ,
-        'success'
+        confirmButtonColor: 'black',
+        confirmButtonText: "OK",
+        width: 600
         
-      ).then(function(){
+      }).then(function(){
         window.location.href = "/acceuil"})
          , err => { Swal.fire({
         icon: 'error',
         title: 'Oops...',
+        confirmButtonColor: '#FF8080',
         text: 'Code recharge non valide !'
       }).then(function(){
         window.location.href = "/operations/recharge";

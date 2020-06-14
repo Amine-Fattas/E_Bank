@@ -31,12 +31,14 @@
     
         <h1 >Virement</h1>
         <form #form="ngForm" (ngSubmit)="onSubmit()" novalidate>
-        <input [(ngModel)]="_compteSource.rib" name="compteSource" class="input"
-         type="text" placeholder="Compte Source (RIB / CIN)">
-         <input [(ngModel)]="_compteDestination.rib" name="compteDestination" class="input"
-         type="text" placeholder="Compte Destination (RIB / CIN)"> 
+        <input [(ngModel)]="_compteSource.rib" #sour='ngModel' name="compteSource" class="input"
+         type="text" placeholder="Compte Source (RIB / CIN)" required>
+         <small class="text-danger" [class.d-none]="sour.valid || sour.untouched">Ce champs est obligatoire</small>
+         <input [(ngModel)]="_compteDestination.rib"   #dest='ngModel' name="compteDestination" class="input"
+         type="text" placeholder="Compte Destination (RIB / CIN)" required> 
+         <small class="text-danger" [class.d-none]="dest.valid || dest.untouched">Ce champs est obligatoire</small>
          <input [(ngModel)]="newOperation.montant" name="montant" class="input"
-        type="number" min="0" placeholder="Montant">
+        type="number" min="0" placeholder="Montant" required>
         
         <button type="submit" class="submit" >Valider</button>
          </form>
