@@ -17,8 +17,6 @@ public class CompteService {
 	@Autowired
 	private CompteMetier compteMetier;
 
-	@Autowired
-	private test test;
 
 	HttpHeaders headers=new HttpHeaders();
 	
@@ -43,7 +41,6 @@ public class CompteService {
 
 	@RequestMapping(value="/compte/CC/client/{id}",method=RequestMethod.GET)
 	public Compte getCompteByIdClient(@PathVariable Long id, HttpServletRequest req) {
-		if(!test.check(req)) throw new HTTPException(403);
 	 	return compteMetier.getCompteByIdClient(id);
 	}
 	 

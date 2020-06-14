@@ -3,6 +3,7 @@ package com.admin;
 import com.admin.Repository.ActivityRepository;
 import com.admin.Repository.AdminRepository;
 import com.admin.Repository.AgenceRepository;
+import com.admin.models.Admin;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -27,7 +28,11 @@ public class DemoApplication  implements CommandLineRunner {
 		return new RestTemplate();
 	}
 
+   @Autowired
+	public AdminRepository adminRepository;
 
+	@Autowired
+	BCryptPasswordEncoder bCryptPasswordEncoder=new  BCryptPasswordEncoder();
 
 	@Bean
 	public HttpServletResponse servletResponse(){ return new HttpServletResponse() {
@@ -230,10 +235,8 @@ public class DemoApplication  implements CommandLineRunner {
 	@Override
 	public void run(String... args) throws  Exception {
 
-	//adminRepository.save(new Admin((long) 103,"Laftoumi","Fatima Ezzahra","EE456644","admin2@AFOIHebank.com",new BCryptPasswordEncoder().encode("admin")));
 
 
-	//	adminRepository.save(new Admin((long)44,"hajar", bCryptPasswordEncoder.encode("hajar")));
 	}
 }
 
