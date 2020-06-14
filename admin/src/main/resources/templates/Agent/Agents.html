@@ -59,7 +59,7 @@
 
                     <form th:action="@{index}" method="get">
                         <input id="txtSearch" type="text" name="keyword" placeholder="Chercher .."/>
-                        <button type="submit" class="btn-enregistrer"> chercher  </button>
+                        <button type="submit" class="btn-enregistrer"> chercher </button>
                     </form>
 
                 </header>
@@ -95,7 +95,7 @@
 
                        <td>
                             <a id="deleteButton" th:href="@{delete(id=${a.getId()})}" class="delete" data-toggle="modal" data-target="#deleteModal"><i class="material-icons" title="Delete">&#xE872;</i></a>
-                            <a  th:href="@{edit(id=${a.getId()})}" class="edit"><i class="material-icons" title="Edit">&#xE254;</i></a>
+                            <a id="editButton" th:href="@{edit(id=${a.getId()})}" class="edit"><i class="material-icons" title="Edit">&#xE254;</i></a>
                         </td>
                     </tr>
                     </tbody>

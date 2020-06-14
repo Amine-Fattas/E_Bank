@@ -30,7 +30,7 @@ public class AgentService {
 		return agentRepository.findAll();
 	}
 
-	@RequestMapping(value = "/agent/list/{mc}", method = RequestMethod.GET)
+	@RequestMapping(value = "/agent/list/{keyword}", method = RequestMethod.GET)
 	public List<Agent> getAgentsk(@PathVariable String keyword) {
 
 			return agentRepository.findByKeyword(keyword);
