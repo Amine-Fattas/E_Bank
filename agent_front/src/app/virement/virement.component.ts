@@ -90,7 +90,7 @@ export class VirementComponent implements OnInit {
     this.newOperation.typeOperation = "Virement"
     this.newOperation.numOperation = 0
     this.newOperation.dateOperation = new Date()
-    this.newOperation.montant = 0
+    this.newOperation.montant
     this.newOperation.compteSource = new Compte
     this.newOperation.compteDestination = new Compte()
   }

@@ -1,6 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, ErrorHandler } from '@angular/core';
+
 import { FormsModule } from '@angular/forms';
+
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http'; 
 import { XhrInterceptor } from './Service/xhr-interceptor';
 import { AppRoutingModule } from './app-routing.module';
@@ -32,7 +34,7 @@ import {AuthentificationService} from './Service/authentification.service';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule 
+    FormsModule
   ],
   providers: [ClientService,CompteService,OperationService,AuthentificationService,
     { provide: HTTP_INTERCEPTORS, useClass: XhrInterceptor, multi: true},  {

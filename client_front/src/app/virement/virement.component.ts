@@ -6,6 +6,7 @@ import { CompteService } from '../Service/compte.service';
 import { AuthentificationService } from '../Service/authentification.service';
 import { Client } from '../model/client';
 import Swal from 'sweetalert2';
+import { FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-virement',
@@ -18,6 +19,7 @@ export class VirementComponent implements OnInit {
   compte: Compte
   _compteDestination: Compte
   client: Client
+  form: FormGroup;
 
   constructor(private _operationService: OperationService,
               private _compteService: CompteService,

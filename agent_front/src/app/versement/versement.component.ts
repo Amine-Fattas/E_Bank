@@ -79,7 +79,7 @@ export class VersementComponent implements OnInit {
     this.newOperation.typeOperation = "Versement"
     this.newOperation.numOperation = 0
     this.newOperation.dateOperation = new Date()
-    this.newOperation.montant = 0
+    this.newOperation.montant 
     this.newOperation.compteSource = null
     this.newOperation.compteDestination = new Compte()
   }
