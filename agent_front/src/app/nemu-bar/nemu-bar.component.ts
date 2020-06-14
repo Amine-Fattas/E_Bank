@@ -32,6 +32,9 @@ export class NemuBarComponent implements OnInit {
       
     })
   }
+  onAcceuil(){
+    window.location.href="/profile";
+  }
 
     
   }
