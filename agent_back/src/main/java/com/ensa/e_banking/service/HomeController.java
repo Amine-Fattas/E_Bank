@@ -45,23 +45,7 @@ public class HomeController{
 	    return null;
 	}
 
-	String genererToken(){
-		//request.getHeader(SecurityConstants.HEADER_STRING)
-		String jwtToken= Jwts.builder()
-				.setSubject(currentAgent().getUsername())
-				.setExpiration(new
-						Date(System.currentTimeMillis()+ SecurityConstants.EXPIRATION_TIME))
-				.signWith(SignatureAlgorithm.HS512, SecurityConstants.SECRET)
-				.claim("agent", "agentBank")
-				.compact();
-		return "Authorization :"+SecurityConstants.TOKEN_PREFIX+jwtToken;
-	}
 
-
-
-
-
-	
 
 }
 	

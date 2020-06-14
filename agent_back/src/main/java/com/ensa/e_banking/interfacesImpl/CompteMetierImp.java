@@ -70,7 +70,7 @@ public class CompteMetierImp implements CompteMetier{
 		String pass=clientMetier.genererPassword();
 		System.out.println("saaaaaaaaaave");
 		String body="Votre mot de passe est "+pass+" Bienvenue chez nous";
-		this.smtpMailSender.sendMail(compte.getClient().getUsername(), "Your Password", body);
+		//this.smtpMailSender.sendMail(compte.getClient().getUsername(), "Your Password", body);
 		compte.getClient().setPassword(bCryptPasswordEncoder.encode(pass));
 
 		headers.set(SecurityConstants.HEADER_STRING,
@@ -83,7 +83,7 @@ public class CompteMetierImp implements CompteMetier{
 		System.out.println(cl.getId());
 
         compte.setIdClient(cl.getId());
-        compte.setFraisOuverture(20.0);
+        compte.setFraisOuverture(0.0);
         if(compteRepository.dernierEnregistrement() != null) {
       
         numCompte=compteRepository.dernierEnregistrement()+1;

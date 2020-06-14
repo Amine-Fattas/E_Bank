@@ -41,6 +41,17 @@ public class HomeController {
 
     @RequestMapping(value="/client/ajoutClient",method= RequestMethod.POST)
     public Client saveClient(@RequestBody Client client) {
+        List<Client> listClient=clientRepository.findAll();
+        for(Client cl:listClient) {
+           System.out.println(cl.getCin());
+           System.out.println(client.getCin());
+
+            if (client.getCin().equals(cl.getCin())){
+                System.out.println("client existe deja");
+                return cl;
+            }
+        }
+        System.out.println("n'existe pas");
         return clientRepository.save(client);
     }
 

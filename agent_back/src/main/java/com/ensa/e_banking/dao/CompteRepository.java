@@ -43,8 +43,4 @@ public interface CompteRepository extends JpaRepository<Compte,Long> {
 	@Query(value ="delete FROM compte where id_client=:x",nativeQuery=true)
 	int deleteCompteByIdClient(@Param("x") Long id_client);
 
-	
-
-	
-
 }

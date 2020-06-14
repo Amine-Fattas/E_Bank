@@ -34,7 +34,7 @@ export class AcceuilComponent implements OnInit {
               Swal.fire({
                 icon: 'error',
                 title: 'Oops...',
-                background: '#FFFFFF',
+                confirmButtonColor: 'black',
                 text: 'Votre compte est désactivé  !'
               }).then(function(){
                 window.location.href = "/login";
