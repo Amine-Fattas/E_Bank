@@ -41,9 +41,6 @@ public class EBankingAppApplication implements CommandLineRunner {
 	@Override
 	public void run(String... args) throws Exception {
 
-
-		Agent agent1=new Agent((long) 10000006,"ikram","makhloufi","EC5681","agent@gmail.com",bCryptPasswordEncoder.encode("agent"),26002);
-		agentRepository.save(agent1);
 		
 		
 	}
