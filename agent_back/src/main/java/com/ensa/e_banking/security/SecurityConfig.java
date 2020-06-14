@@ -54,7 +54,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 				.antMatchers("/agent/deleteagent/{id}")
 				.antMatchers("/agent/agentsbyagence/{id}")
 				.antMatchers("/agent/update/{id}")
-				.antMatchers("/agent/add")
+			//	.antMatchers("/agent/add")
 				.antMatchers("/agent/list")
 				.antMatchers("/operation/list")
 				.antMatchers("/agent/listCompteDesactive")

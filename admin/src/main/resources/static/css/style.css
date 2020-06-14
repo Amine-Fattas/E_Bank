@@ -23,6 +23,14 @@ body {
 
 }
 
+a {
+    color: #5b8ac7;
+    text-decoration: none;
+}
+a:hover{
+    color: #365a8a;
+}
+
 h1,h2,h3,h4,h5{
 
     font-weight: 300;
