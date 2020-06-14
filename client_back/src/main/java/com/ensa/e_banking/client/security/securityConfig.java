@@ -39,7 +39,6 @@ public class securityConfig extends WebSecurityConfigurerAdapter {
 
 	@Override
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-		System.out.println("Quand");
 		auth.userDetailsService(appUserDetailsService).passwordEncoder(passwordEncoder());
 	}
 
@@ -47,7 +46,7 @@ public class securityConfig extends WebSecurityConfigurerAdapter {
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
-           System.out.println("config");
+
 		http.cors();
 
 		http.csrf().disable()

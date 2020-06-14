@@ -1,6 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { LoginService } from '../Service/login.service';
 import { Router } from '@angular/router';
 
 import { Agent } from '../model/Agent';
@@ -26,7 +24,7 @@ export class LoginComponent implements OnInit {
 
 
   constructor(
-    private loginService:LoginService,
+    
    private agentService:AgentService,
    private authService:AuthentificationService,
     private router: Router) { }
@@ -36,45 +34,15 @@ export class LoginComponent implements OnInit {
       )
   }
 
- /* login(){
-
-    this.loginService.authenticate(this.credentials).subscribe(
-     res=>{
-      console.log(res);
-      this.agentService.changeAgent(res); 
-          
-          // currentAgent = res;
-        }
-            
-    );
-    
-  
-    this.router.navigateByUrl('/acceuil');
-
-}}
-
-export var currentAgent: Agent*/
 
 
-    /*console.log("login-1")
-    this.loginService.authenticate(this.credentials).subscribe(
-      res=>{console.log(res);
-        this.agent=res;
-      this.router.navigateByUrl('/acceuil');
-      console.log("acceuil");}
-      );*/
-
-
-   /* this.loginService.authenticate(this.credentials,()=>{
-      this.router.navigateByUrl('/acceuil');
-    });*/
     onLogin(user) {
-      console.log("user1")
-      console.log(user)
+   
+ 
        this.authService.login(user)
       .subscribe(resp=>{
-        console.log("user2")
-        console.log(resp.headers)
+       
+       
         let jwt = resp.headers.get('authorization');
         this.authService.saveToken(jwt);
         this.router.navigateByUrl('/acceuil');

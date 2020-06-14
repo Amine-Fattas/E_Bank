@@ -23,11 +23,11 @@ import { DetailCompteComponent } from './detail-compte/detail-compte.component';
 
 
 const routes: Routes = [
-  { path: '', redirectTo: '/login', pathMatch: 'full' }, // empty path bach t gerer empty root link yak?
-  { path: 'login',component:LoginComponent},// eventuellement anbiw ngeriw l'error  hafnld te7t  // '**' hadi pour gerer les erreur
-  //{ path: '**', component: LoginComponent},// ** pour gerer les erreur de login err
+  { path: '', redirectTo: '/login', pathMatch: 'full' }, 
+  { path: 'login',component:LoginComponent},
+  {path:'profile',component:ProfileComponent},
   {path:"listClient",component:ClientComponent},
-// Oki, s
+
   { path: "editClient/:id", component: EditClientComponent},
   { path: "acceuil", component:ProfileComponent},
   { path :"detailClient/:id",component: DetailClientComponent},
@@ -47,7 +47,7 @@ const routes: Routes = [
         { path: "virement", component: VirementComponent},
         { path: "versement", component: VersementComponent}
       ]
-} // { path: '**'} ici gere tous les components avant
+} 
 
 
   

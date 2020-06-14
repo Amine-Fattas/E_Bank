@@ -33,9 +33,7 @@ body {
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
- 
- /* -webkit-background-size: cover; 
-  background-size: cover; */
+
   background-position-y: -150px;
  
   
@@ -77,28 +75,7 @@ body {
 
 
 
-/*
 
-.transaction {
-  width: 100%;
-  min-height: 70px;
-  display: flex;
-  flex-direction: row;
-  background-color: #e8e8e8;
-  border-bottom: 2px solid lightgray;
-}
-
-.description {
-  width: 55%;
-  padding-left: 55px;
-  text-align: left;
-}
-
-.amount {
-  flex-grow: 1;
-  text-align: center;
-  padding-right: 10px;
-}*/
 
 #title{
     text-align: center;

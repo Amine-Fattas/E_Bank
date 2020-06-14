@@ -35,22 +35,14 @@ export class VirementComponent implements OnInit {
   }
 
   onSubmit(){
-   this.newOperation.agent = this._agent //this.compte.agent
-   /* this._compteService.getCompteByRib(this._compteSource.rib).subscribe(
-      data => {
-        this._compteSource = data
-        console.log(this._compteSource)
-        // CompteDestination
-      
-        this._compteService.getCompteByRib(this._compteDestination.rib).subscribe(
-          data => {
-            //this._compteDestination = data*/
-            console.log(this._compteDestination)
+   this.newOperation.agent = this._agent 
+   
+          
 
             this.newOperation.compteSource = this._compteSource
             this.newOperation.compteDestination = this._compteDestination;
             this.newOperation.numOperation = Math.floor(Math.random() * 1000000)
-            console.log("Succes Versement \n"+this.newOperation)
+        
             this._operationService.virer(this.newOperation)
                 .subscribe(
                   data =>  Swal.fire({

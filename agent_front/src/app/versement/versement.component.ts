@@ -34,11 +34,11 @@ export class VersementComponent implements OnInit {
   }
 
   onSubmit(){
-    this.newOperation.agent = this._agent //this.compte.agent
+    this.newOperation.agent = this._agent 
     this._compteService.getCompteByRib(this._compte.rib).subscribe(
       data => {
-       // this._compte = data
-        console.log(data)
+      
+       
         this.newOperation.compteDestination = data
         this.newOperation.numOperation = Math.floor(Math.random() * 1000000)
         console.log("Succes Versement \n"+this.newOperation)

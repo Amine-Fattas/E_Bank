@@ -6,8 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
-
-import java.text.SimpleDateFormat;
 import java.util.List;
 import java.util.Optional;
 
@@ -43,15 +41,11 @@ public class HomeController {
     public Client saveClient(@RequestBody Client client) {
         List<Client> listClient=clientRepository.findAll();
         for(Client cl:listClient) {
-           System.out.println(cl.getCin());
-           System.out.println(client.getCin());
-
             if (client.getCin().equals(cl.getCin())){
-                System.out.println("client existe deja");
                 return cl;
             }
         }
-        System.out.println("n'existe pas");
+
         return clientRepository.save(client);
     }
 
@@ -83,15 +77,5 @@ public class HomeController {
         return clientRepository.chercher("%"+mc+"%");
 
     }
-
-
-    //	@RequestMapping(value="/agent/update/{id}",method=RequestMethod.PUT)
-//	public Client update(@PathVariable long id,@RequestBody Client client){
-//		System.out.println("edit");
-//		client.setId(id);
-//	    client.setPassword(clientMetier.getClientById(id).getPassword());
-//		return clientMetier.upDateClient(id, client);
-//	}
-
 
 }

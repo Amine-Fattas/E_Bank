@@ -3,7 +3,7 @@ import { CompteService } from '../Service/compte.service';
 import { Compte } from '../model/Compte';
 import { Client } from '../model/client';
 import { Agent } from '../model/Agent';
-import { error } from 'protractor';
+
 import { AuthentificationService } from '../Service/authentification.service';
 
 @Component({
@@ -20,7 +20,6 @@ export class CompteCourantComponent implements OnInit {
   client: Client
 
   ngOnInit(): void {
-    // this.getTest();
     this.compte = new Compte()
     this.compte.client = new Client()
     this.compte.agent = new Agent()
@@ -39,13 +38,7 @@ export class CompteCourantComponent implements OnInit {
       }
     )
   }
-  // getTest(){
-  //   this.compteService.test().subscribe(respo =>{
-  //     console.log(respo);
-  //   },error =>{
-  //     console.log(error);
-  //   })
-  // }
+ 
 
 
 }

@@ -1,79 +1,6 @@
 
-<!--<div class="sidebar">
-  
-        <header>
-            Name of App
-              
-        </header>
-        
-<nav class="main-nav">
-    <ul class="main-nav-ul">
-        <li>
-          <a >Client<span class="sub-arrow"></span></a>
-           <ul class="sub-menu">
-               <li><a  routerLink="/listClient">Liste client </a></li>
-           </ul>
-        </li>
-        <li><a href="#">Compte<span class="sub-arrow"></span></a>
-            <ul class="sub-menu">
-                <li><a routerLink="/comptes/listCompte">Liste Compte</a></li>
-                <li><a routerLink="/comptes/ajoutCompte">Ajout d'un compte</a></li>
-                <li><a routerLink="/comptes/compteDesactive" >Compte desactive</a></li>
-            </ul>
-        </li>
-        <li><a routerLink="/operations" routerLinkActive="currentTab" router>Operation <span class="sub-arrow"></span></a>
-        <ul class="sub-menu">
-            <li><a routerLink="/operations/liste" >Liste Operation</a></li>
-            <li><a routerLink="/operations/retrait" routerLinkActive="currentTab">Retrait</a></li>
-            <li><a routerLink="/operations/virement" routerLinkActive="currentTab">Virement</a></li>
-            <li><a routerLink="/operations/versement" routerLinkActive="currentTab">Versement</a></li>
-        </ul>
-        </li>
-    </ul>
-</nav>-->
-<!--<body>
-
-  <div class="row d-flex d-md-block flex-nowrap wrapper">
-      <div class="col-md-3 col-1 pl-0 pr-0 collapse width show" id="sidebar">
-        
-          <div class="list-group">
-            
-            <a  class="list-group-item d-inline-block collapsed" style="font-weight: bolder;font-style: italic;"
-             data-parent="#sidebar"> <span class="d-none d-md-inline">Bank app</span></a>
-              <a href="#menu1" class="list-group-item d-inline-block collapsed" style="text-align: center;" data-toggle="collapse" aria-expanded="false"><i class="fa fa-users"></i><span class="d-none d-md-inline">Client</span> </a>
-              <div class="collapse" id="menu1" data-parent="#sidebar">
-                  <a  routerLink="/listClient" class="list-group-item" data-toggle="collapse"><i class="fa fa-caret-right"></i>Liste Client</a>
-              </div>   
-
-              
-             
-              <a href="#menu2" class="list-group-item d-inline-block collapsed" style="text-align: center;" data-toggle="collapse" aria-expanded="false"> <i class="fa fa-money"></i><span class="d-none d-md-inline">Compte</span></a>
-                  <div class="collapse" id="menu2" data-parent="#sidebar">
-                      <a routerLink="/comptes/ajoutCompte" class="list-group-item" data-parent="#menu1sub1"><i class="fa fa-caret-right"></i>Ajout Compte</a>
-                      <a routerLink="/comptes/listCompte" class="list-group-item" data-parent="#menu1sub1"><i class="fa fa-caret-right"></i>Liste Compte</a>
-                      <a routerLink="/comptes/compteDesactive" class="list-group-item" data-parent="#menu1sub1"><i class="fa fa-caret-right"></i>Compte désactivé</a>
-                      
-                 
-              </div>
-    
-              <a href="#menu3" class="list-group-item d-inline-block collapsed" style="text-align: center;" data-toggle="collapse" aria-expanded="false"><i class="fa fa-address-card"></i><span class="d-none d-md-inline">Operation</span></a>
-              <div class="collapse" id="menu3" data-parent="#sidebar">
-                  <a routerLink="/operations/liste" class="list-group-item"  data-parent="#menu3"><i class="fa fa-caret-right"></i>Liste Operation</a>
-                  <a routerLink="/operations/retrait" class="list-group-item" data-parent="#menu3"><i class="fa fa-caret-right"></i>Retrait</a>
-                  <a routerLink="/operations/virement"class="list-group-item" data-parent="#menu3"><i class="fa fa-caret-right"></i>Virement</a>
-                  <a routerLink="/operations/versement" class="list-group-item" data-parent="#menu3"><i class="fa fa-caret-right"></i>Versement</a>
-                  
-              </div>
-              
-          </div>
-         
-      </div>
-      </div>
-    </body>   -->
-
-
   <nav class="navbar navbar-expand-lg  fixed-top" style="background: black;">
-    <a class="navbar-brand" style="color: #BADFE7; font-weight: bolder; font-style: italic;">Bank App</a>
+    <a class="navbar-brand" (click)="onAcceuil()" style="color: #BADFE7; font-weight: bolder; font-style: italic;cursor: pointer;">AFOIHI Bank</a>
     <button
       class="navbar-toggler"
       type="button"
@@ -84,7 +11,7 @@
       aria-label="Toggle navigation"
       
     >
-      <!--<span  class="navbar-toggler-icon"> </span>-->
+     
       <span class="navbar-toggler-icon">   
         <i class="fa fa-bars" style="color:#BADFE7; font-size:28px;"></i>
     </span>

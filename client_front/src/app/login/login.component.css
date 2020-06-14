@@ -51,13 +51,7 @@
 }
  
 .wrapper input{
-/*  border:none;
-  border-bottom:1px solid #ffffff;
-  background-color: transparent;
-  outline: none;
-  height: 2%;
-  color: #ffffff;
-  display: 4%*/
+
 	padding: 10px;
   margin: 10px 0px;
   border:none;

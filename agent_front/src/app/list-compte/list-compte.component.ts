@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { CompteService } from '../Service/compte.service';
 import Swal from 'sweetalert2';
-import { OperationService } from '../Service/operation.service';
 import { Router } from '@angular/router';
 
 
@@ -56,8 +55,6 @@ export class ListCompteComponent implements OnInit {
   
   }
   onDetailCompte(idCompte){
-    console.log(idCompte);
-   /* this.router.navigate(['comptes/detailsCompte',idCompte]);*/
     this.router.navigate(['comptes/detailsCompte',idCompte], {skipLocationChange: true});
   }
 
